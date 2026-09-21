@@ -1,12 +1,186 @@
 {
   "scenario": "cli-none",
   "orchestrator": "cli",
-  "lease_id": "cli-none-20260920-175313",
-  "vm_id": "microvm-af779375-4397-3675-9522-41a334a5620f",
-  "watch_seconds": 5.9,
-  "wall_seconds": 182.7,
+  "lease_id": "cli-none-20260920-185546",
+  "vm_id": "microvm-bd277d6f-b321-3c03-a584-298c674c59c5",
+  "watch_seconds": 5.5,
+  "wall_seconds": 172.6,
   "status": {
-    "error": "microvm-af779375-4397-3675-9522-41a334a5620f answered 502 on /status"
+    "phase": "done",
+    "started": "2026-09-21T01:55:50Z",
+    "elapsed_s": 6.892,
+    "progress": {
+      "done": 4,
+      "total": 4
+    },
+    "counters": {},
+    "log_tail": [
+      {
+        "seq": 1,
+        "t": "2026-09-21T01:55:50Z",
+        "level": "info",
+        "msg": "lease accepted",
+        "phase": "init",
+        "kind": "none",
+        "lease_id": "cli-none-20260920-185546"
+      },
+      {
+        "seq": 2,
+        "t": "2026-09-21T01:55:50Z",
+        "level": "info",
+        "msg": "phase: step 1/4",
+        "phase": "step 1/4"
+      },
+      {
+        "seq": 3,
+        "t": "2026-09-21T01:55:50Z",
+        "level": "info",
+        "msg": "$ uname -m",
+        "phase": "step 1/4"
+      },
+      {
+        "seq": 4,
+        "t": "2026-09-21T01:55:50Z",
+        "level": "info",
+        "msg": "aarch64",
+        "phase": "step 1/4",
+        "step": 1,
+        "exit_code": 0,
+        "duration_s": 0.034
+      },
+      {
+        "seq": 5,
+        "t": "2026-09-21T01:55:50Z",
+        "level": "info",
+        "msg": "phase: step 2/4",
+        "phase": "step 2/4"
+      },
+      {
+        "seq": 6,
+        "t": "2026-09-21T01:55:50Z",
+        "level": "info",
+        "msg": "$ python3 -c 'print(2+2)'",
+        "phase": "step 2/4"
+      },
+      {
+        "seq": 7,
+        "t": "2026-09-21T01:55:50Z",
+        "level": "info",
+        "msg": "4",
+        "phase": "step 2/4",
+        "step": 2,
+        "exit_code": 0,
+        "duration_s": 0.017
+      },
+      {
+        "seq": 8,
+        "t": "2026-09-21T01:55:50Z",
+        "level": "info",
+        "msg": "phase: step 3/4",
+        "phase": "step 3/4"
+      },
+      {
+        "seq": 9,
+        "t": "2026-09-21T01:55:50Z",
+        "level": "info",
+        "msg": "$ sleep 2",
+        "phase": "step 3/4"
+      },
+      {
+        "seq": 10,
+        "t": "2026-09-21T01:55:52Z",
+        "level": "info",
+        "msg": "(no output)",
+        "phase": "step 3/4",
+        "step": 3,
+        "exit_code": 0,
+        "duration_s": 2.005
+      },
+      {
+        "seq": 11,
+        "t": "2026-09-21T01:55:52Z",
+        "level": "info",
+        "msg": "phase: step 4/4",
+        "phase": "step 4/4"
+      },
+      {
+        "seq": 12,
+        "t": "2026-09-21T01:55:52Z",
+        "level": "info",
+        "msg": "$ echo done",
+        "phase": "step 4/4"
+      },
+      {
+        "seq": 13,
+        "t": "2026-09-21T01:55:52Z",
+        "level": "info",
+        "msg": "done",
+        "phase": "step 4/4",
+        "step": 4,
+        "exit_code": 0,
+        "duration_s": 0.001
+      },
+      {
+        "seq": 14,
+        "t": "2026-09-21T01:55:52Z",
+        "level": "info",
+        "msg": "phase: done",
+        "phase": "done"
+      },
+      {
+        "seq": 15,
+        "t": "2026-09-21T01:55:52Z",
+        "level": "info",
+        "msg": "passed 4 step(s)",
+        "phase": "done",
+        "result": {
+          "passed": true,
+          "steps": [
+            {
+              "cmd": "uname -m",
+              "exit_code": 0,
+              "duration_s": 0.034
+            },
+            {
+              "cmd": "python3 -c 'print(2+2)'",
+              "exit_code": 0,
+              "duration_s": 0.017
+            },
+            {
+              "cmd": "sleep 2",
+              "exit_code": 0,
+              "duration_s": 2.005
+            },
+            {
+              "cmd": "echo done",
+              "exit_code": 0,
+              "duration_s": 0.001
+            }
+          ],
+          "parallel": false,
+          "microvm_id": "microvm-bd277d6f-b321-3c03-a584-298c674c59c5",
+          "heartbeats": 0
+        }
+      },
+      {
+        "seq": 16,
+        "t": "2026-09-21T01:55:52Z",
+        "level": "info",
+        "msg": "lease success delivered",
+        "phase": "done",
+        "kind": "none"
+      }
+    ],
+    "lease": {
+      "kind": "none",
+      "id": "cli-none-20260920-185546",
+      "heartbeats": 0,
+      "lost": false,
+      "done": true,
+      "error": null
+    },
+    "microvm_id": "microvm-bd277d6f-b321-3c03-a584-298c674c59c5",
+    "seq": 16
   },
   "vm_log_lines": 16,
   "files": [

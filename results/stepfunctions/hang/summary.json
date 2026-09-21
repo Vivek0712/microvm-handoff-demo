@@ -2,34 +2,38 @@
   "scenario": "hang",
   "orchestrator": "stepfunctions",
   "status": "FAILED",
-  "expected": "sfn: States.Timeout -> Reap terminates the VM -> Failed",
-  "matches_expected": false,
-  "start": "2026-09-21T01:09:33.347+00:00",
-  "stop": "2026-09-21T01:10:33.665+00:00",
-  "seconds_by_service": 60.318,
+  "expected": "sfn: States.Timeout at 60 s -> OnLeaseError -> Reap (nothing stale yet) -> Failed; the timed-out task carries no VM id, so the VM runs until its MaximumDurationInSeconds (budget + slack = 120 s) ends it, which GetMicrovm's startedAt/terminatedAt must show",
+  "matches_expected": true,
+  "start": "2026-09-21T01:32:25.151+00:00",
+  "stop": "2026-09-21T01:33:25.500+00:00",
+  "seconds_by_service": 60.349,
   "vm_ids": [
-    "microvm-a1f16a50-2105-3030-aafb-63c45e2176cf"
+    "microvm-ce0cb515-1378-37d7-b878-90ed30ce5487"
   ],
   "runmicrovm_calls": 1,
   "notes": [
-    "deviation: Reap did not terminate the hung VM. TerminateStale only terminates members older than budget + slack (120 s here) and the VM was ~60 s old at States.Timeout, so the Map ran over an empty list; the VM kept running on its own MaximumDurationInSeconds cap until run.py's straggler check terminated it.",
-    "straggler: microvm-a1f16a50-2105-3030-aafb-63c45e2176cf was still RUNNING after the execution ended; run.py terminated it"
+    "microvm-ce0cb515-1378-37d7-b878-90ed30ce5487 was ended by the platform 122.03 s after start (neither the machine nor run.py terminated it)",
+    "microvm-ce0cb515-1378-37d7-b878-90ed30ce5487: startedAt 2026-09-21T01:32:25.432+00:00, terminatedAt 2026-09-21T01:34:27.462+00:00, lifetime 122.03 s against MaximumDurationInSeconds 120 (budget 60 + slack 60); terminated by platform (MaximumDurationInSeconds cap or idle policy)",
+    "microvm-ce0cb515-1378-37d7-b878-90ed30ce5487 was still RUNNING after the execution ended; run.py did not terminate it and polled GetMicrovm until the platform did"
   ],
   "microvm_ctl": {
-    "version": "0.3.0",
+    "version": "0.3.1",
     "path": "/Users/vivekrajaps/Library/Python/3.9/lib/python/site-packages/microvm/__init__.py"
   },
   "checks": {
     "failed": true,
     "states_timeout": true,
-    "reap_then_failed": true,
-    "reap_terminated_the_vm": false
+    "timeout_at_60s": true,
+    "path_onleaseerror_reap_failed": true,
+    "nothing_terminated_by_machine": true,
+    "vm_ended_by_platform_cap_about_120s": true
   },
-  "execution_arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease-short:hang-20260921-010929",
+  "execution_arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease-short:hang-20260921-013219",
   "state_machine_arn": "arn:aws:states:us-east-1:643603452951:stateMachine:mvm-demo-sfn-lease-short",
   "error": "LeaseFailed",
   "states_entered": [
     "Lease",
+    "OnLeaseError",
     "Reap",
     "TerminateStale",
     "Failed"
@@ -38,10 +42,10 @@
     {
       "state": "Lease",
       "index": null,
-      "TaskScheduled": "2026-09-21T01:09:33.369+00:00",
+      "TaskScheduled": "2026-09-21T01:32:25.174+00:00",
       "last": "TaskTimedOut",
-      "TaskSubmitted": "2026-09-21T01:09:33.644+00:00",
-      "TaskTimedOut": "2026-09-21T01:10:33.439+00:00",
+      "TaskSubmitted": "2026-09-21T01:32:25.485+00:00",
+      "TaskTimedOut": "2026-09-21T01:33:25.273+00:00",
       "error": "States.Timeout"
     }
   ],
@@ -50,29 +54,41 @@
   "terminated_by_machine": [],
   "in_vm_wall_s": null,
   "vm_states": {
-    "microvm-a1f16a50-2105-3030-aafb-63c45e2176cf": {
+    "microvm-ce0cb515-1378-37d7-b878-90ed30ce5487": {
       "state": "TERMINATED",
-      "startedAt": "2026-09-21T01:09:33.576+00:00",
-      "terminatedAt": "2026-09-21T01:10:40.634+00:00",
+      "startedAt": "2026-09-21T01:32:25.432+00:00",
+      "terminatedAt": "2026-09-21T01:34:27.462+00:00",
       "imageVersion": "1.0",
-      "lifetime_s": 67.058,
-      "terminated_by": "run.py straggler check"
+      "lifetime_s": 122.03,
+      "terminated_by": "platform (MaximumDurationInSeconds cap or idle policy)"
     }
   },
   "fleet_check": {
-    "at": "2026-09-21T01:10:38+00:00",
+    "at": "2026-09-21T01:33:29+00:00",
     "active_before": [
       {
-        "microvmId": "microvm-a1f16a50-2105-3030-aafb-63c45e2176cf",
+        "microvmId": "microvm-ce0cb515-1378-37d7-b878-90ed30ce5487",
         "state": "RUNNING",
         "image": "demo-agent",
-        "startedAt": "2026-09-21T01:09:33.576+00:00"
+        "startedAt": "2026-09-21T01:32:25.432+00:00"
       }
     ],
-    "terminated": [
-      "microvm-a1f16a50-2105-3030-aafb-63c45e2176cf"
-    ],
+    "terminated": [],
     "left_alone": [],
-    "all_terminated_by": "2026-09-21T01:10:51+00:00"
+    "watched": [
+      "microvm-ce0cb515-1378-37d7-b878-90ed30ce5487"
+    ],
+    "watched_until": "2026-09-21T01:34:37+00:00"
+  },
+  "observations": {
+    "lease_task_timed_out_at": "2026-09-21T01:33:25.273+00:00",
+    "seconds_from_start_to_timeout": 60.122,
+    "vm_lifetime_s": {
+      "microvm-ce0cb515-1378-37d7-b878-90ed30ce5487": 122.03
+    },
+    "vm_ended_by_platform": {
+      "microvm-ce0cb515-1378-37d7-b878-90ed30ce5487": true
+    },
+    "maximum_duration_in_seconds": 120
   }
 }

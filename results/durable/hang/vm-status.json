@@ -1,0 +1,194 @@
+[
+  {
+    "t": "2026-09-21T01:35:18.813Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 0.819,
+    "heartbeats": 0,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:35:22.280Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 4.287,
+    "heartbeats": 0,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:35:25.712Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 7.712,
+    "heartbeats": 0,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:35:29.128Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 11.134,
+    "heartbeats": 1,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:35:32.549Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 14.555,
+    "heartbeats": 1,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:35:35.949Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 17.955,
+    "heartbeats": 1,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:35:39.323Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 21.329,
+    "heartbeats": 2,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:35:42.674Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 24.68,
+    "heartbeats": 2,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:35:46.058Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 28.063,
+    "heartbeats": 2,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:35:49.463Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 31.468,
+    "heartbeats": 3,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:35:52.890Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 34.894,
+    "heartbeats": 3,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:35:56.294Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 38.3,
+    "heartbeats": 3,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:35:59.738Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 41.743,
+    "heartbeats": 4,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:36:03.113Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 45.119,
+    "heartbeats": 4,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:36:06.515Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 48.521,
+    "heartbeats": 4,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:36:09.914Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 51.921,
+    "heartbeats": 5,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:36:13.325Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 55.332,
+    "heartbeats": 5,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:36:16.742Z",
+    "vm": "microvm-a3651a60-9b49-345d-bee0-e32cc1e9138a",
+    "phase": "hang",
+    "elapsed_s": 58.749,
+    "heartbeats": 5,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:36:25.874Z",
+    "vm": "microvm-d6881350-9e6d-3cc0-8204-4b7dcce104a4",
+    "phase": "hang",
+    "elapsed_s": 7.369,
+    "heartbeats": 0,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:36:34.532Z",
+    "vm": "microvm-d6881350-9e6d-3cc0-8204-4b7dcce104a4",
+    "phase": "hang",
+    "elapsed_s": 16.024,
+    "heartbeats": 1,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:36:43.306Z",
+    "vm": "microvm-d6881350-9e6d-3cc0-8204-4b7dcce104a4",
+    "phase": "hang",
+    "elapsed_s": 24.799,
+    "heartbeats": 2,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:36:51.955Z",
+    "vm": "microvm-d6881350-9e6d-3cc0-8204-4b7dcce104a4",
+    "phase": "hang",
+    "elapsed_s": 33.448,
+    "heartbeats": 3,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:37:00.593Z",
+    "vm": "microvm-d6881350-9e6d-3cc0-8204-4b7dcce104a4",
+    "phase": "hang",
+    "elapsed_s": 42.085,
+    "heartbeats": 4,
+    "lease_done": false
+  },
+  {
+    "t": "2026-09-21T01:37:09.251Z",
+    "vm": "microvm-d6881350-9e6d-3cc0-8204-4b7dcce104a4",
+    "phase": "hang",
+    "elapsed_s": 50.746,
+    "heartbeats": 5,
+    "lease_done": false
+  }
+]

@@ -1,6 +1,6 @@
 {
   "stateMachineArn": "arn:aws:states:us-east-1:643603452951:stateMachine:mvm-demo-sfn-lease",
-  "execution": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease:retryable-fail-20260921-011342",
+  "execution": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease:retryable-fail-20260921-013159",
   "input": {
     "steps": [
       "echo before the injected failure"

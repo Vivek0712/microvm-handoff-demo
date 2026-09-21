@@ -1,25 +1,27 @@
-execution  arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease-short:hang-20260921-010929
+execution  arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease-short:hang-20260921-013219
 status     FAILED
-start      2026-09-21T01:09:33.347+00:00
-stop       2026-09-21T01:10:33.665+00:00
-seconds    60.318
+start      2026-09-21T01:32:25.151+00:00
+stop       2026-09-21T01:33:25.500+00:00
+seconds    60.349
 
  +seconds  timestamp                     event                          state
-   +0.000  2026-09-21T01:09:33.347+00:00 ExecutionStarted               
-   +0.022  2026-09-21T01:09:33.369+00:00 TaskStateEntered               Lease
-   +0.022  2026-09-21T01:09:33.369+00:00 TaskScheduled                  Lease  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
-   +0.092  2026-09-21T01:09:33.439+00:00 TaskStarted                    Lease  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
-   +0.297  2026-09-21T01:09:33.644+00:00 TaskSubmitted                  Lease  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
-  +60.092  2026-09-21T01:10:33.439+00:00 TaskTimedOut                   Lease  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken  error=States.Timeout
-  +60.106  2026-09-21T01:10:33.453+00:00 TaskStateExited                Lease
-  +60.106  2026-09-21T01:10:33.453+00:00 TaskStateEntered               Reap
-  +60.106  2026-09-21T01:10:33.453+00:00 TaskScheduled                  Reap  aws-sdk:lambdamicrovms:listMicrovms
-  +60.158  2026-09-21T01:10:33.505+00:00 TaskStarted                    Reap  aws-sdk:lambdamicrovms:listMicrovms
-  +60.278  2026-09-21T01:10:33.625+00:00 TaskSucceeded                  Reap  aws-sdk:lambdamicrovms:listMicrovms
-  +60.292  2026-09-21T01:10:33.639+00:00 TaskStateExited                Reap
-  +60.292  2026-09-21T01:10:33.639+00:00 MapStateEntered                TerminateStale
-  +60.292  2026-09-21T01:10:33.639+00:00 MapStateStarted                TerminateStale  length=0
-  +60.292  2026-09-21T01:10:33.639+00:00 MapStateSucceeded              TerminateStale
-  +60.292  2026-09-21T01:10:33.639+00:00 MapStateExited                 TerminateStale
-  +60.292  2026-09-21T01:10:33.639+00:00 FailStateEntered               Failed
-  +60.318  2026-09-21T01:10:33.665+00:00 ExecutionFailed                Failed  error=LeaseFailed
+   +0.000  2026-09-21T01:32:25.151+00:00 ExecutionStarted               
+   +0.023  2026-09-21T01:32:25.174+00:00 TaskStateEntered               Lease
+   +0.023  2026-09-21T01:32:25.174+00:00 TaskScheduled                  Lease  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +0.122  2026-09-21T01:32:25.273+00:00 TaskStarted                    Lease  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +0.334  2026-09-21T01:32:25.485+00:00 TaskSubmitted                  Lease  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+  +60.122  2026-09-21T01:33:25.273+00:00 TaskTimedOut                   Lease  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken  error=States.Timeout
+  +60.137  2026-09-21T01:33:25.288+00:00 TaskStateExited                Lease
+  +60.137  2026-09-21T01:33:25.288+00:00 ChoiceStateEntered             OnLeaseError
+  +60.137  2026-09-21T01:33:25.288+00:00 ChoiceStateExited              OnLeaseError
+  +60.137  2026-09-21T01:33:25.288+00:00 TaskStateEntered               Reap
+  +60.137  2026-09-21T01:33:25.288+00:00 TaskScheduled                  Reap  aws-sdk:lambdamicrovms:listMicrovms
+  +60.193  2026-09-21T01:33:25.344+00:00 TaskStarted                    Reap  aws-sdk:lambdamicrovms:listMicrovms
+  +60.313  2026-09-21T01:33:25.464+00:00 TaskSucceeded                  Reap  aws-sdk:lambdamicrovms:listMicrovms
+  +60.326  2026-09-21T01:33:25.477+00:00 TaskStateExited                Reap
+  +60.326  2026-09-21T01:33:25.477+00:00 MapStateEntered                TerminateStale
+  +60.326  2026-09-21T01:33:25.477+00:00 MapStateStarted                TerminateStale  length=0
+  +60.326  2026-09-21T01:33:25.477+00:00 MapStateSucceeded              TerminateStale
+  +60.326  2026-09-21T01:33:25.477+00:00 MapStateExited                 TerminateStale
+  +60.326  2026-09-21T01:33:25.477+00:00 FailStateEntered               Failed
+  +60.349  2026-09-21T01:33:25.500+00:00 ExecutionFailed                Failed  error=LeaseFailed

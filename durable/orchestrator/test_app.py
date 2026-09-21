@@ -97,7 +97,7 @@ def test_single_routes_to_lease_with_relaunch(fm):
         launch = fm.leases[0]
         assert launch["image"] == "demo-agent" and launch["task"] == TASK
         assert launch["lease"].kind == "durable" and launch["lease"].token == cb
-        assert launch["lease"].heartbeat_s == 10  # well under the 30 s heartbeat timeout
+        assert launch["lease"].heartbeat_s == 10  # the library's clamp: a third of the 30 s heartbeat timeout
         # the launch step rebuilds the policy from its time fields; the ceilings live in the plan
         pol = launch["policy"]
         assert (pol.budget_s, pol.heartbeat_timeout_s, pol.slack_s) == (120, 30, 60)

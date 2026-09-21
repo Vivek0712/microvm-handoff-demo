@@ -3,29 +3,31 @@
   "orchestrator": "durable",
   "status": "SUCCEEDED",
   "expected": "SUCCEEDED, passed: true, 3 steps, VM terminated",
+  "microvm_ctl": "0.3.1",
+  "function_version": "3",
   "matches_expected": true,
-  "start": "2026-09-21T01:23:54.783Z",
-  "stop": "2026-09-21T01:24:01.871Z",
-  "seconds_by_service": 7.088,
+  "start": "2026-09-21T01:34:43.112Z",
+  "stop": "2026-09-21T01:34:50.313Z",
+  "seconds_by_service": 7.201,
   "vm_ids": [
-    "microvm-83ecd6ce-ea26-397d-b92e-5f6d35e7c592"
+    "microvm-a9b37a7f-d78d-3d99-b41d-3446d7c4757b"
   ],
   "runmicrovm_calls": 1,
   "notes": [],
-  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:2/durable-execution/mvm-demo-durable-single-20260921-012354/aba681c1-ed24-3f98-afdd-6bc1e62c9e82",
-  "execution_name": "mvm-demo-durable-single-20260921-012354",
+  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:3/durable-execution/mvm-demo-durable-single-20260921-013442/a8e17cc6-5414-3352-8987-dd3840a1b035",
+  "execution_name": "mvm-demo-durable-single-20260921-013442",
   "outcome_status": "done",
   "history_events": 10,
   "history": "1 launch step; 1 lease callback succeeded; 1 terminate step; ExecutionSucceeded with status done",
   "vm_states_after": {
-    "microvm-83ecd6ce-ea26-397d-b92e-5f6d35e7c592": "TERMINATED"
+    "microvm-a9b37a7f-d78d-3d99-b41d-3446d7c4757b": "TERMINATED"
   },
-  "vm_seconds": 4.7,
+  "vm_seconds": 4.4,
   "vm_records": {
-    "microvm-83ecd6ce-ea26-397d-b92e-5f6d35e7c592": {
-      "microvmId": "microvm-83ecd6ce-ea26-397d-b92e-5f6d35e7c592",
+    "microvm-a9b37a7f-d78d-3d99-b41d-3446d7c4757b": {
+      "microvmId": "microvm-a9b37a7f-d78d-3d99-b41d-3446d7c4757b",
       "state": "TERMINATED",
-      "endpoint": "ccd060c8-0509-3c9d-0f4c-dab7c404eb6d.lambda-microvm.us-east-1.on.aws",
+      "endpoint": "6cd060cc-f7a5-5d3d-5a66-82fa60895930.lambda-microvm.us-east-1.on.aws",
       "imageArn": "arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent",
       "imageVersion": "1.0",
       "executionRoleArn": "arn:aws:iam::643603452951:role/mvm-demo-durable-agent-execution-role",
@@ -35,8 +37,8 @@
         "autoResumeEnabled": false
       },
       "maximumDurationInSeconds": 180,
-      "startedAt": "2026-09-20 18:23:57.634000-07:00",
-      "terminatedAt": "2026-09-20 18:24:02.291000-07:00",
+      "startedAt": "2026-09-20 18:34:46.142000-07:00",
+      "terminatedAt": "2026-09-20 18:34:50.544000-07:00",
       "stateReason": "Success.",
       "ingressNetworkConnectors": [
         "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS"

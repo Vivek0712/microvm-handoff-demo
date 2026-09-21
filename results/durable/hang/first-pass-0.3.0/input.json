@@ -1,0 +1,10 @@
+{
+  "mode": "single",
+  "task": {
+    "steps": [
+      "echo hang"
+    ],
+    "hang_s": 400
+  },
+  "budget_s": 60
+}

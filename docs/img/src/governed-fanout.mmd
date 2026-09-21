@@ -1,0 +1,24 @@
+flowchart TD
+  classDef plan fill:#e7eefc,stroke:#3b5bdb,color:#111
+  classDef bad fill:#fdecec,stroke:#c92a2a,color:#111
+  classDef gate fill:#fff4e0,stroke:#e67700,color:#111
+  classDef ok fill:#e8f6ee,stroke:#2b8a3e,color:#111
+  classDef plain fill:#f2f2f2,stroke:#666,color:#111
+
+  IN["N tasks: {shards: [task, ...]}, each a lease of demo-agent (512 MiB)<br/>demo inputs: 4, 8, 12, 40 shards"]:::plain
+  PLAN["plan: FleetManager.plan / mvm lease plan (since 0.3.0)<br/>fanout_limit = min(memory quota 8 GB / 512 MiB = 16, policy max_concurrency 4) = 4<br/>waves = ceil(N / 4)<br/>worst case = N x (budget 120 s + slack 60 s) VM-seconds, priced at 512 MiB"]:::plan
+  REJ["rejected: worst case over max_vm_seconds 3000<br/>40 shards = 7200 VM-s<br/>sfn: mvm lease plan exits 2, run.py never starts the execution<br/>durable: lease_map plan step returns status: rejected<br/>zero RunMicrovm calls"]:::bad
+  GATE["approval gate: worst case USD over approval_usd 0.015<br/>12 shards = 2160 VM-s = $0.0189 (mvm lease plan exits 3)<br/>sfn: Gate (count > ApproveAboveShards 8) -> RequestApproval sns:publish.waitForTaskToken<br/>-> SNS mvm-demo-approvals -> SQS mvm-demo-approvals-q, waits up to 3600 s<br/>durable: approve(callback_id, plan) -> SQS mvm-demo-durable-approvals, waits up to 600 s"]:::gate
+  APP["approver reads the queue<br/>approve: SendTaskSuccess / SendDurableExecutionCallbackSuccess<br/>deny: SendTaskFailure / SendDurableExecutionCallbackFailure"]:::gate
+  DEN["denied (or no answer): sfn Denied state, durable status: denied<br/>nothing launched"]:::bad
+  RUN["run: 4 shards = 720 VM-s, 1 wave; 8 shards = 1440 VM-s = $0.0126, 2 waves<br/>both under max_vm_seconds and approval_usd"]:::ok
+  MAP["sfn Map / durable context.map, MaxConcurrency = plan concurrency = 4<br/>items = {index, task}; lease id and ClientToken carry the index<br/>RunMicrovm quota 1/s: a throttled launch retries after 2 s, doubling, full jitter, 8 attempts"]:::plan
+  LEASE["one lease per shard (figure a)<br/>RunMicrovm -> /run -> heartbeats -> completion by the VM -> Terminate<br/>wave 1: shards 0-3; wave 2: shards 4-7"]:::ok
+  RES["results: one outcome per shard<br/>sfn: Map output with 4 or 8 results, then Done<br/>durable: {status: done, plan, outcomes, succeeded, failed}"]:::ok
+
+  IN --> PLAN
+  PLAN -- "over max_vm_seconds" --> REJ
+  PLAN -- "over approval_usd" --> GATE --> APP
+  APP -- "approved" --> MAP
+  APP -- "denied or timeout" --> DEN
+  PLAN -- "fits both ceilings" --> RUN --> MAP --> LEASE --> RES

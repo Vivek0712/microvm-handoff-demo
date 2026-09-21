@@ -129,10 +129,7 @@ def main() -> int:
     # 3. the job's final status, the fleet listing, the VM's own log lines, then terminate
     run(MVM + ["status", vm_id], os.path.join(OUT, "status.txt"), env=env)
     run(MVM + ["ls", "--all"], os.path.join(OUT, "ls.txt"), env=env)
-    try:
-        status = client.status()
-    except Exception as e:  # the endpoint is gone once the job finished and the VM idled out
-        status = {"error": str(e)}
+    status = snap  # the last snapshot the watch stream delivered: the job's final state
     run(MVM + ["terminate", vm_id], os.path.join(OUT, "terminate.txt"), env=env)
     time.sleep(30)  # log delivery lags the VM by a few seconds
     run(MVM + ["logs", a.image, "--minutes", "10"], os.path.join(OUT, "logs.txt"), env=env)

@@ -1,0 +1,162 @@
+[
+  {
+    "EventType": "ExecutionStarted",
+    "EventId": 1,
+    "Id": "553ee9c1-37be-3d4a-9024-a930ac1c23a1",
+    "Name": "mvm-demo-durable-fanout-denied-20260921-013052",
+    "EventTimestamp": "2026-09-20 18:30:52.822000-07:00",
+    "ExecutionStartedDetails": {
+      "Input": {
+        "Payload": "{\"mode\": \"fanout\", \"shards\": [{\"steps\": [\"echo shard 0\", \"sleep 1\"]}, {\"steps\": [\"echo shard 1\", \"sleep 1\"]}, {\"steps\": [\"echo shard 2\", \"sleep 1\"]}, {\"steps\": [\"echo shard 3\", \"sleep 1\"]}, {\"steps\": [\"echo shard 4\", \"sleep 1\"]}, {\"steps\": [\"echo shard 5\", \"sleep 1\"]}, {\"steps\": [\"echo shard 6\", \"sleep 1\"]}, {\"steps\": [\"echo shard 7\", \"sleep 1\"]}, {\"steps\": [\"echo shard 8\", \"sleep 1\"]}, {\"steps\": [\"echo shard 9\", \"sleep 1\"]}, {\"steps\": [\"echo shard 10\", \"sleep 1\"]}, {\"steps\": [\"echo shard 11\", \"sleep 1\"]}]}",
+        "Truncated": false
+      },
+      "ExecutionTimeout": 3600
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 2,
+    "Id": "1ced8f5be2db23a6513eba4d819c73806424748a7bc6fa0d792cc1c7d1775a97",
+    "Name": "shard-plan",
+    "EventTimestamp": "2026-09-20 18:30:52.936000-07:00",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 3,
+    "Id": "1ced8f5be2db23a6513eba4d819c73806424748a7bc6fa0d792cc1c7d1775a97",
+    "Name": "shard-plan",
+    "EventTimestamp": "2026-09-20 18:30:52.936000-07:00",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"shards\":{\"t\":\"i\",\"v\":12},\"baseline_mib\":{\"t\":\"i\",\"v\":512},\"policy\":{\"t\":\"m\",\"v\":{\"budget_s\":{\"t\":\"i\",\"v\":120},\"heartbeat_timeout_s\":{\"t\":\"i\",\"v\":30},\"slack_s\":{\"t\":\"i\",\"v\":60},\"max_concurrency\":{\"t\":\"i\",\"v\":4},\"max_vm_seconds\":{\"t\":\"i\",\"v\":3000},\"approval_usd\":{\"t\":\"f\",\"v\":0.015}}},\"limit\":{\"t\":\"m\",\"v\":{\"baseline_mib\":{\"t\":\"i\",\"v\":512},\"memory_quota_gb\":{\"t\":\"f\",\"v\":8.0},\"launch_rate\":{\"t\":\"f\",\"v\":0.8},\"by_memory\":{\"t\":\"i\",\"v\":16},\"by_policy\":{\"t\":\"i\",\"v\":4},\"limit\":{\"t\":\"i\",\"v\":4},\"reason\":{\"t\":\"s\",\"v\":\"policy max_concurrency 4\"}}},\"concurrency\":{\"t\":\"i\",\"v\":4},\"waves\":{\"t\":\"i\",\"v\":3},\"launch_to_all_running_s\":{\"t\":\"f\",\"v\":21.75},\"worst_case_vm_seconds\":{\"t\":\"i\",\"v\":2160},\"worst_case_usd\":{\"t\":\"f\",\"v\":0.018915},\"needs_approval\":{\"t\":\"b\",\"v\":true},\"rejected\":{\"t\":\"n\",\"v\":null},\"summary\":{\"t\":\"s\",\"v\":\"12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all running in ~22 s, worst case 2160 VM-s = $0.02, needs approval (above $0.015)\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "ContextStarted",
+    "SubType": "WaitForCallback",
+    "EventId": 4,
+    "Id": "c5faca15ac2f93578b39ef4b6bbb871bdedce4ddd584fd31f0bb66fade3947e6",
+    "Name": "shard-approval",
+    "EventTimestamp": "2026-09-20 18:30:52.991000-07:00",
+    "ContextStartedDetails": {}
+  },
+  {
+    "EventType": "CallbackStarted",
+    "SubType": "Callback",
+    "EventId": 5,
+    "Id": "9b9a566e6a3acb025bf1e7f9316f877f4def1a4320ddf2c8674e0fa6ceea6d64",
+    "Name": "shard-approval create callback id",
+    "EventTimestamp": "2026-09-20 18:30:52.991000-07:00",
+    "ParentId": "c5faca15ac2f93578b39ef4b6bbb871bdedce4ddd584fd31f0bb66fade3947e6",
+    "CallbackStartedDetails": {
+      "CallbackId": "Ab9hZXi0YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoyL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtZmFub3V0LWRlbmllZC0yMDI2MDkyMS0wMTMwNTIvNTUzZWU5YzEtMzdiZS0zZDRhLTkwMjQtYTkzMGFjMWMyM2ExYWl4JGNlYmJlNmRjLWU0M2QtNGE1ZC1iNGZjLWI4MTVmMDg1NjMzMf8",
+      "Timeout": 600
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 6,
+    "Id": "a8516b4e833f3cc433c80f07d32057b8255a22837a3d36c8b5c3aed83c6241f4",
+    "Name": "shard-approval submitter",
+    "EventTimestamp": "2026-09-20 18:30:53.085000-07:00",
+    "ParentId": "c5faca15ac2f93578b39ef4b6bbb871bdedce4ddd584fd31f0bb66fade3947e6",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 7,
+    "Id": "a8516b4e833f3cc433c80f07d32057b8255a22837a3d36c8b5c3aed83c6241f4",
+    "Name": "shard-approval submitter",
+    "EventTimestamp": "2026-09-20 18:30:53.085000-07:00",
+    "ParentId": "c5faca15ac2f93578b39ef4b6bbb871bdedce4ddd584fd31f0bb66fade3947e6",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "null",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "InvocationCompleted",
+    "EventId": 8,
+    "EventTimestamp": "2026-09-20 18:30:53.210000-07:00",
+    "InvocationCompletedDetails": {
+      "StartTimestamp": "2026-09-20 18:30:52.871000-07:00",
+      "EndTimestamp": "2026-09-20 18:30:53.205000-07:00",
+      "RequestId": "91c71414-012e-452f-9b09-2c262272c5cd"
+    }
+  },
+  {
+    "EventType": "CallbackFailed",
+    "SubType": "Callback",
+    "EventId": 9,
+    "Id": "9b9a566e6a3acb025bf1e7f9316f877f4def1a4320ddf2c8674e0fa6ceea6d64",
+    "Name": "shard-approval create callback id",
+    "EventTimestamp": "2026-09-20 18:30:53.350000-07:00",
+    "ParentId": "c5faca15ac2f93578b39ef4b6bbb871bdedce4ddd584fd31f0bb66fade3947e6",
+    "CallbackFailedDetails": {
+      "Error": {
+        "Payload": {
+          "ErrorMessage": "denied by approver.py: 12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all running in ~22 s, worst case 2160 VM-s = $0.02, needs approval (above $0.015)",
+          "ErrorType": "ApprovalDenied",
+          "ErrorData": "{\"approved\": false, \"by\": \"approver.py\"}"
+        },
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "ContextFailed",
+    "SubType": "WaitForCallback",
+    "EventId": 10,
+    "Id": "c5faca15ac2f93578b39ef4b6bbb871bdedce4ddd584fd31f0bb66fade3947e6",
+    "Name": "shard-approval",
+    "EventTimestamp": "2026-09-20 18:30:53.427000-07:00",
+    "ContextFailedDetails": {
+      "Error": {
+        "Payload": {
+          "ErrorMessage": "denied by approver.py: 12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all running in ~22 s, worst case 2160 VM-s = $0.02, needs approval (above $0.015)",
+          "ErrorType": "aws_durable_execution_sdk_python.exceptions.CallbackExternalError",
+          "ErrorData": "{\"approved\": false, \"by\": \"approver.py\"}"
+        },
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "InvocationCompleted",
+    "EventId": 11,
+    "EventTimestamp": "2026-09-20 18:30:53.549000-07:00",
+    "InvocationCompletedDetails": {
+      "StartTimestamp": "2026-09-20 18:30:53.388000-07:00",
+      "EndTimestamp": "2026-09-20 18:30:53.545000-07:00",
+      "RequestId": "45c865ee-e4ab-47b9-880b-07fbb79e48cb"
+    }
+  },
+  {
+    "EventType": "ExecutionSucceeded",
+    "EventId": 12,
+    "Id": "553ee9c1-37be-3d4a-9024-a930ac1c23a1",
+    "Name": "mvm-demo-durable-fanout-denied-20260921-013052",
+    "EventTimestamp": "2026-09-20 18:30:53.549000-07:00",
+    "ExecutionSucceededDetails": {
+      "Result": {
+        "Payload": "{\"status\": \"denied\", \"reason\": \"denied by approver.py: 12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all running in ~22 s, worst case 2160 VM-s = $0.02, needs approval (above $0.015)\", \"plan\": {\"shards\": 12, \"baseline_mib\": 512, \"policy\": {\"budget_s\": 120, \"heartbeat_timeout_s\": 30, \"slack_s\": 60, \"max_concurrency\": 4, \"max_vm_seconds\": 3000, \"approval_usd\": 0.015}, \"limit\": {\"baseline_mib\": 512, \"memory_quota_gb\": 8.0, \"launch_rate\": 0.8, \"by_memory\": 16, \"by_policy\": 4, \"limit\": 4, \"reason\": \"policy max_concurrency 4\"}, \"concurrency\": 4, \"waves\": 3, \"launch_to_all_running_s\": 21.75, \"worst_case_vm_seconds\": 2160, \"worst_case_usd\": 0.018915, \"needs_approval\": true, \"rejected\": null, \"summary\": \"12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all running in ~22 s, worst case 2160 VM-s = $0.02, needs approval (above $0.015)\"}}",
+        "Truncated": false
+      }
+    }
+  }
+]

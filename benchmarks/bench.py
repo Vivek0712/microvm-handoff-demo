@@ -28,6 +28,7 @@ from datetime import datetime, timezone
 
 import boto3
 
+import microvm
 from microvm.client import microvm_client
 from microvm.lease import VM_USD_PER_GB_S
 
@@ -195,7 +196,7 @@ def svg(summary: list[dict]) -> str:
     parts = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" font-family="Helvetica, Arial, sans-serif" font-size="13">',
              f'<rect width="{w}" height="{h}" fill="#ffffff"/>',
              f'<text x="{left}" y="24" font-size="16" font-weight="600" fill="#1c1c1c">Lease handoff, p50 end to end by the orchestrator\'s own clock</text>',
-             f'<text x="{left}" y="42" fill="#5a5a5a">demo-agent 512 MiB, us-east-1, microvm-ctl 0.3.0</text>']
+             f'<text x="{left}" y="42" fill="#5a5a5a">demo-agent 512 MiB, us-east-1, microvm-ctl {microvm.__version__}</text>']
     for i in range(5):
         v = vmax * i / 4
         y = top + plot_h - plot_h * i / 4
@@ -280,6 +281,7 @@ def main() -> int:
     b = Bench(a)
     rows: list[dict] = []
     meta = {"started": datetime.now(timezone.utc).isoformat(), "region": a.region, "image": "demo-agent",
+            "microvm_ctl": microvm.__version__,
             "baseline_mib": BASELINE_MIB, "usd_per_gb_s": VM_USD_PER_GB_S, "args": vars(a)}
     try:
         for kind in kinds:

@@ -1,6 +1,6 @@
 {
   "stateMachineArn": "arn:aws:states:us-east-1:643603452951:stateMachine:mvm-demo-sfn-lease",
-  "execution": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease:single-20260921-011505",
+  "execution": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease:single-20260921-013142",
   "input": {
     "steps": [
       "uname -m",

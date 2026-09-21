@@ -2,9 +2,9 @@
   {
     "EventType": "ExecutionStarted",
     "EventId": 1,
-    "Id": "34caf69c-6d5f-3c79-98c8-777429a60bd1",
-    "Name": "mvm-demo-durable-fanout-approved-20260921-010756",
-    "EventTimestamp": "2026-09-20 18:07:56.211000-07:00",
+    "Id": "e5193991-72b3-3769-a4a3-0c8f2a4082e5",
+    "Name": "mvm-demo-durable-fanout-approved-20260921-013000",
+    "EventTimestamp": "2026-09-20 18:30:00.506000-07:00",
     "ExecutionStartedDetails": {
       "Input": {
         "Payload": "{\"mode\": \"fanout\", \"shards\": [{\"steps\": [\"echo shard 0\", \"sleep 1\"]}, {\"steps\": [\"echo shard 1\", \"sleep 1\"]}, {\"steps\": [\"echo shard 2\", \"sleep 1\"]}, {\"steps\": [\"echo shard 3\", \"sleep 1\"]}, {\"steps\": [\"echo shard 4\", \"sleep 1\"]}, {\"steps\": [\"echo shard 5\", \"sleep 1\"]}, {\"steps\": [\"echo shard 6\", \"sleep 1\"]}, {\"steps\": [\"echo shard 7\", \"sleep 1\"]}, {\"steps\": [\"echo shard 8\", \"sleep 1\"]}, {\"steps\": [\"echo shard 9\", \"sleep 1\"]}, {\"steps\": [\"echo shard 10\", \"sleep 1\"]}, {\"steps\": [\"echo shard 11\", \"sleep 1\"]}]}",
@@ -19,7 +19,7 @@
     "EventId": 2,
     "Id": "1ced8f5be2db23a6513eba4d819c73806424748a7bc6fa0d792cc1c7d1775a97",
     "Name": "shard-plan",
-    "EventTimestamp": "2026-09-20 18:07:56.307000-07:00",
+    "EventTimestamp": "2026-09-20 18:30:00.588000-07:00",
     "StepStartedDetails": {}
   },
   {
@@ -28,7 +28,7 @@
     "EventId": 3,
     "Id": "1ced8f5be2db23a6513eba4d819c73806424748a7bc6fa0d792cc1c7d1775a97",
     "Name": "shard-plan",
-    "EventTimestamp": "2026-09-20 18:07:56.307000-07:00",
+    "EventTimestamp": "2026-09-20 18:30:00.588000-07:00",
     "StepSucceededDetails": {
       "Result": {
         "Payload": "{\"t\":\"m\",\"v\":{\"shards\":{\"t\":\"i\",\"v\":12},\"baseline_mib\":{\"t\":\"i\",\"v\":512},\"policy\":{\"t\":\"m\",\"v\":{\"budget_s\":{\"t\":\"i\",\"v\":120},\"heartbeat_timeout_s\":{\"t\":\"i\",\"v\":30},\"slack_s\":{\"t\":\"i\",\"v\":60},\"max_concurrency\":{\"t\":\"i\",\"v\":4},\"max_vm_seconds\":{\"t\":\"i\",\"v\":3000},\"approval_usd\":{\"t\":\"f\",\"v\":0.015}}},\"limit\":{\"t\":\"m\",\"v\":{\"baseline_mib\":{\"t\":\"i\",\"v\":512},\"memory_quota_gb\":{\"t\":\"f\",\"v\":8.0},\"launch_rate\":{\"t\":\"f\",\"v\":0.8},\"by_memory\":{\"t\":\"i\",\"v\":16},\"by_policy\":{\"t\":\"i\",\"v\":4},\"limit\":{\"t\":\"i\",\"v\":4},\"reason\":{\"t\":\"s\",\"v\":\"policy max_concurrency 4\"}}},\"concurrency\":{\"t\":\"i\",\"v\":4},\"waves\":{\"t\":\"i\",\"v\":3},\"launch_to_all_running_s\":{\"t\":\"f\",\"v\":21.75},\"worst_case_vm_seconds\":{\"t\":\"i\",\"v\":2160},\"worst_case_usd\":{\"t\":\"f\",\"v\":0.018915},\"needs_approval\":{\"t\":\"b\",\"v\":true},\"rejected\":{\"t\":\"n\",\"v\":null},\"summary\":{\"t\":\"s\",\"v\":\"12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all running in ~22 s, worst case 2160 VM-s = $0.02, needs approval (above $0.015)\"}}}",
@@ -45,7 +45,7 @@
     "EventId": 4,
     "Id": "c5faca15ac2f93578b39ef4b6bbb871bdedce4ddd584fd31f0bb66fade3947e6",
     "Name": "shard-approval",
-    "EventTimestamp": "2026-09-20 18:07:56.367000-07:00",
+    "EventTimestamp": "2026-09-20 18:30:00.622000-07:00",
     "ContextStartedDetails": {}
   },
   {
@@ -54,10 +54,10 @@
     "EventId": 5,
     "Id": "9b9a566e6a3acb025bf1e7f9316f877f4def1a4320ddf2c8674e0fa6ceea6d64",
     "Name": "shard-approval create callback id",
-    "EventTimestamp": "2026-09-20 18:07:56.367000-07:00",
+    "EventTimestamp": "2026-09-20 18:30:00.622000-07:00",
     "ParentId": "c5faca15ac2f93578b39ef4b6bbb871bdedce4ddd584fd31f0bb66fade3947e6",
     "CallbackStartedDetails": {
-      "CallbackId": "Ab9hZXi2YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoxL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtZmFub3V0LWFwcHJvdmVkLTIwMjYwOTIxLTAxMDc1Ni8zNGNhZjY5Yy02ZDVmLTNjNzktOThjOC03Nzc0MjlhNjBiZDFhaXgkY2VmMWE3NjUtYmVmNC00YjU4LWExNjEtNTQ2MWU5N2FmNWRi/w",
+      "CallbackId": "Ab9hZXi2YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoyL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtZmFub3V0LWFwcHJvdmVkLTIwMjYwOTIxLTAxMzAwMC9lNTE5Mzk5MS03MmIzLTM3NjktYTRhMy0wYzhmMmE0MDgyZTVhaXgkN2NiMjg3NmYtOGZmNC00NWVlLWFlYWQtMjYyMDU0ZjJlNTA0/w",
       "Timeout": 600
     }
   },
@@ -67,7 +67,7 @@
     "EventId": 6,
     "Id": "a8516b4e833f3cc433c80f07d32057b8255a22837a3d36c8b5c3aed83c6241f4",
     "Name": "shard-approval submitter",
-    "EventTimestamp": "2026-09-20 18:07:56.524000-07:00",
+    "EventTimestamp": "2026-09-20 18:30:00.770000-07:00",
     "ParentId": "c5faca15ac2f93578b39ef4b6bbb871bdedce4ddd584fd31f0bb66fade3947e6",
     "StepStartedDetails": {}
   },
@@ -77,7 +77,7 @@
     "EventId": 7,
     "Id": "a8516b4e833f3cc433c80f07d32057b8255a22837a3d36c8b5c3aed83c6241f4",
     "Name": "shard-approval submitter",
-    "EventTimestamp": "2026-09-20 18:07:56.616000-07:00",
+    "EventTimestamp": "2026-09-20 18:30:00.867000-07:00",
     "ParentId": "c5faca15ac2f93578b39ef4b6bbb871bdedce4ddd584fd31f0bb66fade3947e6",
     "StepSucceededDetails": {
       "Result": {
@@ -92,66 +92,1474 @@
   {
     "EventType": "InvocationCompleted",
     "EventId": 8,
-    "EventTimestamp": "2026-09-20 18:07:56.740000-07:00",
+    "EventTimestamp": "2026-09-20 18:30:00.992000-07:00",
     "InvocationCompletedDetails": {
-      "StartTimestamp": "2026-09-20 18:07:56.258000-07:00",
-      "EndTimestamp": "2026-09-20 18:07:56.736000-07:00",
-      "RequestId": "26c16047-107f-48cb-8119-934a4ba55277"
+      "StartTimestamp": "2026-09-20 18:30:00.549000-07:00",
+      "EndTimestamp": "2026-09-20 18:30:00.987000-07:00",
+      "RequestId": "0b190d6b-5af7-4d67-a76e-a1a70b88e2c7"
     }
   },
   {
-    "EventType": "CallbackTimedOut",
+    "EventType": "CallbackSucceeded",
     "SubType": "Callback",
     "EventId": 9,
     "Id": "9b9a566e6a3acb025bf1e7f9316f877f4def1a4320ddf2c8674e0fa6ceea6d64",
     "Name": "shard-approval create callback id",
-    "EventTimestamp": "2026-09-20 18:17:56.367000-07:00",
+    "EventTimestamp": "2026-09-20 18:30:01.090000-07:00",
     "ParentId": "c5faca15ac2f93578b39ef4b6bbb871bdedce4ddd584fd31f0bb66fade3947e6",
-    "CallbackTimedOutDetails": {
-      "Error": {
-        "Payload": {
-          "ErrorType": "Callback.Timeout"
-        },
+    "CallbackSucceededDetails": {
+      "Result": {
+        "Payload": "{\"approved\": true, \"by\": \"approver.py\", \"plan_summary\": \"12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all running in ~22 s, worst case 2160 VM-s = $0.02, needs approval (above $0.015)\"}",
         "Truncated": false
       }
     }
   },
   {
-    "EventType": "ContextFailed",
+    "EventType": "ContextSucceeded",
     "SubType": "WaitForCallback",
     "EventId": 10,
     "Id": "c5faca15ac2f93578b39ef4b6bbb871bdedce4ddd584fd31f0bb66fade3947e6",
     "Name": "shard-approval",
-    "EventTimestamp": "2026-09-20 18:17:58.747000-07:00",
-    "ContextFailedDetails": {
-      "Error": {
-        "Payload": {
-          "ErrorMessage": "Callback timed out",
-          "ErrorType": "aws_durable_execution_sdk_python.exceptions.CallbackTimeoutError"
-        },
+    "EventTimestamp": "2026-09-20 18:30:01.170000-07:00",
+    "ContextSucceededDetails": {
+      "Result": {
+        "Payload": "\"{\\\"approved\\\": true, \\\"by\\\": \\\"approver.py\\\", \\\"plan_summary\\\": \\\"12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all running in ~22 s, worst case 2160 VM-s = $0.02, needs approval (above $0.015)\\\"}\"",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "ContextStarted",
+    "SubType": "Map",
+    "EventId": 11,
+    "Id": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "Name": "shard-map",
+    "EventTimestamp": "2026-09-20 18:30:01.209000-07:00",
+    "ContextStartedDetails": {}
+  },
+  {
+    "EventType": "ContextStarted",
+    "SubType": "MapIteration",
+    "EventId": 12,
+    "Id": "be82df04f8b607cccfb1de6e9f6c5b80247cdf7c7941921dc5c5560d636e942e",
+    "Name": "map-item-0",
+    "EventTimestamp": "2026-09-20 18:30:01.209000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextStartedDetails": {}
+  },
+  {
+    "EventType": "CallbackStarted",
+    "SubType": "Callback",
+    "EventId": 13,
+    "Id": "8ca92aecc8656af9d6eabcef467216e8dc899889f5941402df1335bb7b69397a",
+    "Name": "shard-0-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:01.209000-07:00",
+    "ParentId": "be82df04f8b607cccfb1de6e9f6c5b80247cdf7c7941921dc5c5560d636e942e",
+    "CallbackStartedDetails": {
+      "CallbackId": "Ab9hZXi2YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoyL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtZmFub3V0LWFwcHJvdmVkLTIwMjYwOTIxLTAxMzAwMC9lNTE5Mzk5MS03MmIzLTM3NjktYTRhMy0wYzhmMmE0MDgyZTVhaXgkYTM3ZWNjOWItZDE0MS00YzAxLTk5ZWYtOWY3ODI2NjdkZmQ1/w",
+      "HeartbeatTimeout": 30,
+      "Timeout": 120
+    }
+  },
+  {
+    "EventType": "ContextStarted",
+    "SubType": "MapIteration",
+    "EventId": 14,
+    "Id": "4fcce65ec00309c63e7973cc7ba98d082f6db23ff491f8ae0d358d94a449573f",
+    "Name": "map-item-1",
+    "EventTimestamp": "2026-09-20 18:30:01.209000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextStartedDetails": {}
+  },
+  {
+    "EventType": "CallbackStarted",
+    "SubType": "Callback",
+    "EventId": 15,
+    "Id": "7a97a6d63294fcba2f9d304c1b5a1d057049945e0d6e892fe753bdfeae379e9e",
+    "Name": "shard-1-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:01.209000-07:00",
+    "ParentId": "4fcce65ec00309c63e7973cc7ba98d082f6db23ff491f8ae0d358d94a449573f",
+    "CallbackStartedDetails": {
+      "CallbackId": "Ab9hZXi2YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoyL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtZmFub3V0LWFwcHJvdmVkLTIwMjYwOTIxLTAxMzAwMC9lNTE5Mzk5MS03MmIzLTM3NjktYTRhMy0wYzhmMmE0MDgyZTVhaXgkOGY5YjRjOWYtOWViMi00YzM0LThlYTAtMWIzZDMxZTkzZGIx/w",
+      "HeartbeatTimeout": 30,
+      "Timeout": 120
+    }
+  },
+  {
+    "EventType": "ContextStarted",
+    "SubType": "MapIteration",
+    "EventId": 16,
+    "Id": "5430c3612b2dbf51c497ea3272514f5540f0d18e8e5f4c6e5f52a8080385df6b",
+    "Name": "map-item-2",
+    "EventTimestamp": "2026-09-20 18:30:01.209000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextStartedDetails": {}
+  },
+  {
+    "EventType": "CallbackStarted",
+    "SubType": "Callback",
+    "EventId": 17,
+    "Id": "7087fe6c1e70f6252943eedc2a6a4f4baced806f397c156c1e8af3adeb5a7131",
+    "Name": "shard-2-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:01.209000-07:00",
+    "ParentId": "5430c3612b2dbf51c497ea3272514f5540f0d18e8e5f4c6e5f52a8080385df6b",
+    "CallbackStartedDetails": {
+      "CallbackId": "Ab9hZXi2YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoyL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtZmFub3V0LWFwcHJvdmVkLTIwMjYwOTIxLTAxMzAwMC9lNTE5Mzk5MS03MmIzLTM3NjktYTRhMy0wYzhmMmE0MDgyZTVhaXgkZjQ1Mjg2ZDktYTBlOC00M2RhLWEwMTQtZTRlMTM4NzRjN2Nj/w",
+      "HeartbeatTimeout": 30,
+      "Timeout": 120
+    }
+  },
+  {
+    "EventType": "ContextStarted",
+    "SubType": "MapIteration",
+    "EventId": 18,
+    "Id": "76592ec184f07ea43832454f0986f6f0d22bc14a622e4cbc8c4c3dca6ad5f061",
+    "Name": "map-item-3",
+    "EventTimestamp": "2026-09-20 18:30:01.209000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextStartedDetails": {}
+  },
+  {
+    "EventType": "CallbackStarted",
+    "SubType": "Callback",
+    "EventId": 19,
+    "Id": "acda3d3392d8bf16a771d4c2620186a36ec5979e0d921c0c0f065d6fd6c96df5",
+    "Name": "shard-3-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:01.209000-07:00",
+    "ParentId": "76592ec184f07ea43832454f0986f6f0d22bc14a622e4cbc8c4c3dca6ad5f061",
+    "CallbackStartedDetails": {
+      "CallbackId": "Ab9hZXi2YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoyL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtZmFub3V0LWFwcHJvdmVkLTIwMjYwOTIxLTAxMzAwMC9lNTE5Mzk5MS03MmIzLTM3NjktYTRhMy0wYzhmMmE0MDgyZTVhaXgkMWY0OTNjNDYtYTA0Ny00OTc3LTg2ZjItYzI2YWM2ZmY0NmEz/w",
+      "HeartbeatTimeout": 30,
+      "Timeout": 120
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 20,
+    "Id": "47e3115a63e61e28e3bceac1cd3451138e81e33814a709c5e8da28ac9f2ef481",
+    "Name": "shard-1-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:01.245000-07:00",
+    "ParentId": "4fcce65ec00309c63e7973cc7ba98d082f6db23ff491f8ae0d358d94a449573f",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 21,
+    "Id": "190fbf6f2712235ee3b9cc2effa39d439cdd696e767bb8d7f3c938d0640ffb25",
+    "Name": "shard-2-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:01.245000-07:00",
+    "ParentId": "5430c3612b2dbf51c497ea3272514f5540f0d18e8e5f4c6e5f52a8080385df6b",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 22,
+    "Id": "d017618a228f56e574c7d1066fb920e7098c9a13041caa4aa2d56842bd259e87",
+    "Name": "shard-0-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:01.245000-07:00",
+    "ParentId": "be82df04f8b607cccfb1de6e9f6c5b80247cdf7c7941921dc5c5560d636e942e",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 23,
+    "Id": "ac4e8977d0dd096f58ee320763f3ec9b376cecfe059ca33a562b0620bbdab425",
+    "Name": "shard-3-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:01.245000-07:00",
+    "ParentId": "76592ec184f07ea43832454f0986f6f0d22bc14a622e4cbc8c4c3dca6ad5f061",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 24,
+    "Id": "47e3115a63e61e28e3bceac1cd3451138e81e33814a709c5e8da28ac9f2ef481",
+    "Name": "shard-1-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:01.425000-07:00",
+    "ParentId": "4fcce65ec00309c63e7973cc7ba98d082f6db23ff491f8ae0d358d94a449573f",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-9a21a731-6266-3118-beb7-0303da8c4087\"},\"endpoint\":{\"t\":\"s\",\"v\":\"fad060ca-cb62-142c-6135-5c2347905488.lambda-microvm.us-east-1.on.aws\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 25,
+    "Id": "190fbf6f2712235ee3b9cc2effa39d439cdd696e767bb8d7f3c938d0640ffb25",
+    "Name": "shard-2-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:02.685000-07:00",
+    "ParentId": "5430c3612b2dbf51c497ea3272514f5540f0d18e8e5f4c6e5f52a8080385df6b",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-d62b2409-0116-3ad0-ac61-602dfa8a1d02\"},\"endpoint\":{\"t\":\"s\",\"v\":\"50d060ca-cdd0-d9e4-2e35-b0dfdd00b0d8.lambda-microvm.us-east-1.on.aws\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 26,
+    "Id": "d017618a228f56e574c7d1066fb920e7098c9a13041caa4aa2d56842bd259e87",
+    "Name": "shard-0-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:03.917000-07:00",
+    "ParentId": "be82df04f8b607cccfb1de6e9f6c5b80247cdf7c7941921dc5c5560d636e942e",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-b56ef778-80ca-3efa-be02-94163fb8cd2a\"},\"endpoint\":{\"t\":\"s\",\"v\":\"08d060ca-d041-3472-e9fc-f93f998c2f23.lambda-microvm.us-east-1.on.aws\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "CallbackSucceeded",
+    "SubType": "Callback",
+    "EventId": 27,
+    "Id": "7a97a6d63294fcba2f9d304c1b5a1d057049945e0d6e892fe753bdfeae379e9e",
+    "Name": "shard-1-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:04.130000-07:00",
+    "ParentId": "4fcce65ec00309c63e7973cc7ba98d082f6db23ff491f8ae0d358d94a449573f",
+    "CallbackSucceededDetails": {
+      "Result": {
+        "Payload": "{\"microvm_id\": \"microvm-9a21a731-6266-3118-beb7-0303da8c4087\", \"lease_id\": \"e5193991-72b3-3769-a4a3-0c8f2a4082e5\", \"elapsed_s\": 1.373, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 1\", \"exit_code\": 0, \"duration_s\": 0.037, \"output_tail\": \"shard 1\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.05, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-9a21a731-6266-3118-beb7-0303da8c4087\", \"heartbeats\": 0}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 28,
+    "Id": "ac4e8977d0dd096f58ee320763f3ec9b376cecfe059ca33a562b0620bbdab425",
+    "Name": "shard-3-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:05.190000-07:00",
+    "ParentId": "76592ec184f07ea43832454f0986f6f0d22bc14a622e4cbc8c4c3dca6ad5f061",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-eacf35d6-988a-3039-9461-7b8b6c893a19\"},\"endpoint\":{\"t\":\"s\",\"v\":\"e6d060ca-d2b5-622e-d60e-db38c1174756.lambda-microvm.us-east-1.on.aws\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "InvocationCompleted",
+    "EventId": 29,
+    "EventTimestamp": "2026-09-20 18:30:05.311000-07:00",
+    "InvocationCompletedDetails": {
+      "StartTimestamp": "2026-09-20 18:30:01.126000-07:00",
+      "EndTimestamp": "2026-09-20 18:30:05.307000-07:00",
+      "RequestId": "1bf0b0ba-c68f-4e02-ac48-4a6a2ec65d77"
+    }
+  },
+  {
+    "EventType": "CallbackSucceeded",
+    "SubType": "Callback",
+    "EventId": 30,
+    "Id": "7087fe6c1e70f6252943eedc2a6a4f4baced806f397c156c1e8af3adeb5a7131",
+    "Name": "shard-2-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:05.320000-07:00",
+    "ParentId": "5430c3612b2dbf51c497ea3272514f5540f0d18e8e5f4c6e5f52a8080385df6b",
+    "CallbackSucceededDetails": {
+      "Result": {
+        "Payload": "{\"microvm_id\": \"microvm-d62b2409-0116-3ad0-ac61-602dfa8a1d02\", \"lease_id\": \"e5193991-72b3-3769-a4a3-0c8f2a4082e5\", \"elapsed_s\": 1.521, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 2\", \"exit_code\": 0, \"duration_s\": 0.036, \"output_tail\": \"shard 2\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.051, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-d62b2409-0116-3ad0-ac61-602dfa8a1d02\", \"heartbeats\": 0}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 31,
+    "Id": "91d4fd02d6ac7983c40ae6e530265542948cd2d2ea6dde31d7e2c02b4aa07583",
+    "Name": "shard-1-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:05.495000-07:00",
+    "ParentId": "4fcce65ec00309c63e7973cc7ba98d082f6db23ff491f8ae0d358d94a449573f",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 32,
+    "Id": "b031468168769bdb63f46d68a671fe05025006d7c20068282b2f8853bb8a89f8",
+    "Name": "shard-2-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:05.495000-07:00",
+    "ParentId": "5430c3612b2dbf51c497ea3272514f5540f0d18e8e5f4c6e5f52a8080385df6b",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 33,
+    "Id": "91d4fd02d6ac7983c40ae6e530265542948cd2d2ea6dde31d7e2c02b4aa07583",
+    "Name": "shard-1-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:05.495000-07:00",
+    "ParentId": "4fcce65ec00309c63e7973cc7ba98d082f6db23ff491f8ae0d358d94a449573f",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"terminated\":{\"t\":\"s\",\"v\":\"microvm-9a21a731-6266-3118-beb7-0303da8c4087\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 34,
+    "Id": "b031468168769bdb63f46d68a671fe05025006d7c20068282b2f8853bb8a89f8",
+    "Name": "shard-2-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:05.530000-07:00",
+    "ParentId": "5430c3612b2dbf51c497ea3272514f5540f0d18e8e5f4c6e5f52a8080385df6b",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"terminated\":{\"t\":\"s\",\"v\":\"microvm-d62b2409-0116-3ad0-ac61-602dfa8a1d02\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "ContextSucceeded",
+    "SubType": "MapIteration",
+    "EventId": 35,
+    "Id": "4fcce65ec00309c63e7973cc7ba98d082f6db23ff491f8ae0d358d94a449573f",
+    "Name": "map-item-1",
+    "EventTimestamp": "2026-09-20 18:30:05.530000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.037},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 1\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.05},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-9a21a731-6266-3118-beb7-0303da8c4087\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-9a21a731-6266-3118-beb7-0303da8c4087\"},\"endpoint\":{\"t\":\"s\",\"v\":\"fad060ca-cb62-142c-6135-5c2347905488.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "ContextStarted",
+    "SubType": "MapIteration",
+    "EventId": 37,
+    "Id": "aa8a88f06a3a8cbd09a62ab2046a21d38074a534652c7c0060595ff607be8ad9",
+    "Name": "map-item-4",
+    "EventTimestamp": "2026-09-20 18:30:05.564000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextStartedDetails": {}
+  },
+  {
+    "EventType": "CallbackStarted",
+    "SubType": "Callback",
+    "EventId": 38,
+    "Id": "06582bb39d86b31d03a318571073d6a4620e1f42a013144ca26dd9f599cba280",
+    "Name": "shard-4-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:05.564000-07:00",
+    "ParentId": "aa8a88f06a3a8cbd09a62ab2046a21d38074a534652c7c0060595ff607be8ad9",
+    "CallbackStartedDetails": {
+      "CallbackId": "Ab9hZXi2YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoyL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtZmFub3V0LWFwcHJvdmVkLTIwMjYwOTIxLTAxMzAwMC9lNTE5Mzk5MS03MmIzLTM3NjktYTRhMy0wYzhmMmE0MDgyZTVhaXgkMGVhZThmMzgtZGI2MC00MTdjLTkzYjgtNWZjN2I5NzI4MWI3/w",
+      "HeartbeatTimeout": 30,
+      "Timeout": 120
+    }
+  },
+  {
+    "EventType": "ContextSucceeded",
+    "SubType": "MapIteration",
+    "EventId": 36,
+    "Id": "5430c3612b2dbf51c497ea3272514f5540f0d18e8e5f4c6e5f52a8080385df6b",
+    "Name": "map-item-2",
+    "EventTimestamp": "2026-09-20 18:30:05.564000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 2\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.036},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 2\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.051},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-d62b2409-0116-3ad0-ac61-602dfa8a1d02\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-d62b2409-0116-3ad0-ac61-602dfa8a1d02\"},\"endpoint\":{\"t\":\"s\",\"v\":\"50d060ca-cdd0-d9e4-2e35-b0dfdd00b0d8.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 39,
+    "Id": "a33a783c6801d2c93c9abf7888278fc7f0ee303d9e008315c753b886f21f12df",
+    "Name": "shard-4-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:05.600000-07:00",
+    "ParentId": "aa8a88f06a3a8cbd09a62ab2046a21d38074a534652c7c0060595ff607be8ad9",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "ContextStarted",
+    "SubType": "MapIteration",
+    "EventId": 40,
+    "Id": "46470be143fb891be5dbe2cbfa88dd3f3f43dcf641e0ed6b029bf72375ff0964",
+    "Name": "map-item-5",
+    "EventTimestamp": "2026-09-20 18:30:05.600000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextStartedDetails": {}
+  },
+  {
+    "EventType": "CallbackStarted",
+    "SubType": "Callback",
+    "EventId": 41,
+    "Id": "6ebf26da64a48aecedac7b949bf61d4641940e717b35913b8ac2f8fcfa866536",
+    "Name": "shard-5-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:05.600000-07:00",
+    "ParentId": "46470be143fb891be5dbe2cbfa88dd3f3f43dcf641e0ed6b029bf72375ff0964",
+    "CallbackStartedDetails": {
+      "CallbackId": "Ab9hZXi2YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoyL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtZmFub3V0LWFwcHJvdmVkLTIwMjYwOTIxLTAxMzAwMC9lNTE5Mzk5MS03MmIzLTM3NjktYTRhMy0wYzhmMmE0MDgyZTVhaXgkNDMyNzM5YjctZDdjOS00YWIwLWFlNzMtMmIyMmQxMTM1Yjgz/w",
+      "HeartbeatTimeout": 30,
+      "Timeout": 120
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 42,
+    "Id": "b30b60fff2ea2d753d4bcfb0900737df1bbe4662d1cc2c0fb3221833ebae253a",
+    "Name": "shard-5-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:05.629000-07:00",
+    "ParentId": "46470be143fb891be5dbe2cbfa88dd3f3f43dcf641e0ed6b029bf72375ff0964",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 43,
+    "Id": "b30b60fff2ea2d753d4bcfb0900737df1bbe4662d1cc2c0fb3221833ebae253a",
+    "Name": "shard-5-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:06.426000-07:00",
+    "ParentId": "46470be143fb891be5dbe2cbfa88dd3f3f43dcf641e0ed6b029bf72375ff0964",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-1c76f9b9-6d49-3270-9187-46a052337875\"},\"endpoint\":{\"t\":\"s\",\"v\":\"02d060ca-d527-1c39-321a-11d934b6ebf0.lambda-microvm.us-east-1.on.aws\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "CallbackSucceeded",
+    "SubType": "Callback",
+    "EventId": 44,
+    "Id": "8ca92aecc8656af9d6eabcef467216e8dc899889f5941402df1335bb7b69397a",
+    "Name": "shard-0-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:06.612000-07:00",
+    "ParentId": "be82df04f8b607cccfb1de6e9f6c5b80247cdf7c7941921dc5c5560d636e942e",
+    "CallbackSucceededDetails": {
+      "Result": {
+        "Payload": "{\"microvm_id\": \"microvm-b56ef778-80ca-3efa-be02-94163fb8cd2a\", \"lease_id\": \"e5193991-72b3-3769-a4a3-0c8f2a4082e5\", \"elapsed_s\": 1.331, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 0\", \"exit_code\": 0, \"duration_s\": 0.016, \"output_tail\": \"shard 0\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.022, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-b56ef778-80ca-3efa-be02-94163fb8cd2a\", \"heartbeats\": 0}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 45,
+    "Id": "a33a783c6801d2c93c9abf7888278fc7f0ee303d9e008315c753b886f21f12df",
+    "Name": "shard-4-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:07.678000-07:00",
+    "ParentId": "aa8a88f06a3a8cbd09a62ab2046a21d38074a534652c7c0060595ff607be8ad9",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-be17f08d-e46d-3b5a-8ce8-1e9f5b26b084\"},\"endpoint\":{\"t\":\"s\",\"v\":\"f6d060ca-d797-9025-eccc-6cdd696a1f73.lambda-microvm.us-east-1.on.aws\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "InvocationCompleted",
+    "EventId": 46,
+    "EventTimestamp": "2026-09-20 18:30:07.800000-07:00",
+    "InvocationCompletedDetails": {
+      "StartTimestamp": "2026-09-20 18:30:05.358000-07:00",
+      "EndTimestamp": "2026-09-20 18:30:07.795000-07:00",
+      "RequestId": "cb15fded-1110-428b-b6a0-cfcc20f265c5"
+    }
+  },
+  {
+    "EventType": "CallbackSucceeded",
+    "SubType": "Callback",
+    "EventId": 47,
+    "Id": "acda3d3392d8bf16a771d4c2620186a36ec5979e0d921c0c0f065d6fd6c96df5",
+    "Name": "shard-3-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:08.429000-07:00",
+    "ParentId": "76592ec184f07ea43832454f0986f6f0d22bc14a622e4cbc8c4c3dca6ad5f061",
+    "CallbackSucceededDetails": {
+      "Result": {
+        "Payload": "{\"microvm_id\": \"microvm-eacf35d6-988a-3039-9461-7b8b6c893a19\", \"lease_id\": \"e5193991-72b3-3769-a4a3-0c8f2a4082e5\", \"elapsed_s\": 1.422, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 3\", \"exit_code\": 0, \"duration_s\": 0.039, \"output_tail\": \"shard 3\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.057, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-eacf35d6-988a-3039-9461-7b8b6c893a19\", \"heartbeats\": 0}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 48,
+    "Id": "424f0626f4f6ab4a9f6354264f58677e258f77e5c5badbc6cb78f4dba6e654aa",
+    "Name": "shard-0-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:08.590000-07:00",
+    "ParentId": "be82df04f8b607cccfb1de6e9f6c5b80247cdf7c7941921dc5c5560d636e942e",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 49,
+    "Id": "e7bc13efcdbe4193ec546d49a8a732ff22b7b2f8c820379575122d245242c618",
+    "Name": "shard-3-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:08.590000-07:00",
+    "ParentId": "76592ec184f07ea43832454f0986f6f0d22bc14a622e4cbc8c4c3dca6ad5f061",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 50,
+    "Id": "424f0626f4f6ab4a9f6354264f58677e258f77e5c5badbc6cb78f4dba6e654aa",
+    "Name": "shard-0-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:08.590000-07:00",
+    "ParentId": "be82df04f8b607cccfb1de6e9f6c5b80247cdf7c7941921dc5c5560d636e942e",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"terminated\":{\"t\":\"s\",\"v\":\"microvm-b56ef778-80ca-3efa-be02-94163fb8cd2a\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 51,
+    "Id": "e7bc13efcdbe4193ec546d49a8a732ff22b7b2f8c820379575122d245242c618",
+    "Name": "shard-3-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:08.624000-07:00",
+    "ParentId": "76592ec184f07ea43832454f0986f6f0d22bc14a622e4cbc8c4c3dca6ad5f061",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"terminated\":{\"t\":\"s\",\"v\":\"microvm-eacf35d6-988a-3039-9461-7b8b6c893a19\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "ContextSucceeded",
+    "SubType": "MapIteration",
+    "EventId": 52,
+    "Id": "be82df04f8b607cccfb1de6e9f6c5b80247cdf7c7941921dc5c5560d636e942e",
+    "Name": "map-item-0",
+    "EventTimestamp": "2026-09-20 18:30:08.624000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 0\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.016},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 0\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.022},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-b56ef778-80ca-3efa-be02-94163fb8cd2a\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-b56ef778-80ca-3efa-be02-94163fb8cd2a\"},\"endpoint\":{\"t\":\"s\",\"v\":\"08d060ca-d041-3472-e9fc-f93f998c2f23.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "ContextStarted",
+    "SubType": "MapIteration",
+    "EventId": 54,
+    "Id": "09bdd65b91e7f27da0907e870642e149d2adeedf5d5e9cb81e57048442407e7b",
+    "Name": "map-item-6",
+    "EventTimestamp": "2026-09-20 18:30:08.660000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextStartedDetails": {}
+  },
+  {
+    "EventType": "CallbackStarted",
+    "SubType": "Callback",
+    "EventId": 55,
+    "Id": "5b634a6439f5f54c3d1dc704351cb5f16b0172bb6b341f6f1f76a7e6fc450852",
+    "Name": "shard-6-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:08.660000-07:00",
+    "ParentId": "09bdd65b91e7f27da0907e870642e149d2adeedf5d5e9cb81e57048442407e7b",
+    "CallbackStartedDetails": {
+      "CallbackId": "Ab9hZXi2YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoyL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtZmFub3V0LWFwcHJvdmVkLTIwMjYwOTIxLTAxMzAwMC9lNTE5Mzk5MS03MmIzLTM3NjktYTRhMy0wYzhmMmE0MDgyZTVhaXgkZWRjZjc0MmYtZmMyYi00YzgwLTliNTYtZGRjZDc4N2U3NzY1/w",
+      "HeartbeatTimeout": 30,
+      "Timeout": 120
+    }
+  },
+  {
+    "EventType": "ContextSucceeded",
+    "SubType": "MapIteration",
+    "EventId": 53,
+    "Id": "76592ec184f07ea43832454f0986f6f0d22bc14a622e4cbc8c4c3dca6ad5f061",
+    "Name": "map-item-3",
+    "EventTimestamp": "2026-09-20 18:30:08.660000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 3\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.039},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 3\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.057},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-eacf35d6-988a-3039-9461-7b8b6c893a19\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-eacf35d6-988a-3039-9461-7b8b6c893a19\"},\"endpoint\":{\"t\":\"s\",\"v\":\"e6d060ca-d2b5-622e-d60e-db38c1174756.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 56,
+    "Id": "0da2a562971fb8e19248e70efb667379cd162dec64f4710c2e06be5217746de1",
+    "Name": "shard-6-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:08.696000-07:00",
+    "ParentId": "09bdd65b91e7f27da0907e870642e149d2adeedf5d5e9cb81e57048442407e7b",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "ContextStarted",
+    "SubType": "MapIteration",
+    "EventId": 57,
+    "Id": "09dbbb66c2e67978b3bb76608fdb198db528c43b895ccb02a8009503799194ef",
+    "Name": "map-item-7",
+    "EventTimestamp": "2026-09-20 18:30:08.696000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextStartedDetails": {}
+  },
+  {
+    "EventType": "CallbackStarted",
+    "SubType": "Callback",
+    "EventId": 58,
+    "Id": "a236bd618ff1f58fa0a1b64f3f6f0ca1dab2ad9ef21f87e1f9d83867d6c3c4aa",
+    "Name": "shard-7-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:08.696000-07:00",
+    "ParentId": "09dbbb66c2e67978b3bb76608fdb198db528c43b895ccb02a8009503799194ef",
+    "CallbackStartedDetails": {
+      "CallbackId": "Ab9hZXi2YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoyL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtZmFub3V0LWFwcHJvdmVkLTIwMjYwOTIxLTAxMzAwMC9lNTE5Mzk5MS03MmIzLTM3NjktYTRhMy0wYzhmMmE0MDgyZTVhaXgkOTIxYmZmZGQtOGE0My00MWE0LTk2M2YtOThhYWQ0YTI5NDhj/w",
+      "HeartbeatTimeout": 30,
+      "Timeout": 120
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 59,
+    "Id": "9bbe34471511236450c90900309a96a5a5182773a355a05b1fc2096f6ff70a29",
+    "Name": "shard-7-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:08.723000-07:00",
+    "ParentId": "09dbbb66c2e67978b3bb76608fdb198db528c43b895ccb02a8009503799194ef",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 60,
+    "Id": "9bbe34471511236450c90900309a96a5a5182773a355a05b1fc2096f6ff70a29",
+    "Name": "shard-7-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:08.891000-07:00",
+    "ParentId": "09dbbb66c2e67978b3bb76608fdb198db528c43b895ccb02a8009503799194ef",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-9c1d46cd-25a5-3057-89e2-47ad595f8067\"},\"endpoint\":{\"t\":\"s\",\"v\":\"6ed060ca-da05-95b3-2504-013ef5a33117.lambda-microvm.us-east-1.on.aws\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "CallbackSucceeded",
+    "SubType": "Callback",
+    "EventId": 61,
+    "Id": "6ebf26da64a48aecedac7b949bf61d4641940e717b35913b8ac2f8fcfa866536",
+    "Name": "shard-5-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:09.234000-07:00",
+    "ParentId": "46470be143fb891be5dbe2cbfa88dd3f3f43dcf641e0ed6b029bf72375ff0964",
+    "CallbackSucceededDetails": {
+      "Result": {
+        "Payload": "{\"microvm_id\": \"microvm-1c76f9b9-6d49-3270-9187-46a052337875\", \"lease_id\": \"e5193991-72b3-3769-a4a3-0c8f2a4082e5\", \"elapsed_s\": 1.286, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 5\", \"exit_code\": 0, \"duration_s\": 0.023, \"output_tail\": \"shard 5\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.013, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-1c76f9b9-6d49-3270-9187-46a052337875\", \"heartbeats\": 0}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 62,
+    "Id": "0da2a562971fb8e19248e70efb667379cd162dec64f4710c2e06be5217746de1",
+    "Name": "shard-6-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:10.164000-07:00",
+    "ParentId": "09bdd65b91e7f27da0907e870642e149d2adeedf5d5e9cb81e57048442407e7b",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-24ba38f1-4025-34c9-9ba2-c27fc3436f3e\"},\"endpoint\":{\"t\":\"s\",\"v\":\"58d060ca-dc77-0c64-c9e5-7953b04ba5ab.lambda-microvm.us-east-1.on.aws\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "InvocationCompleted",
+    "EventId": 63,
+    "EventTimestamp": "2026-09-20 18:30:10.289000-07:00",
+    "InvocationCompletedDetails": {
+      "StartTimestamp": "2026-09-20 18:30:08.475000-07:00",
+      "EndTimestamp": "2026-09-20 18:30:10.285000-07:00",
+      "RequestId": "6baabe05-4d48-40a1-8eb6-184a0b9232fb"
+    }
+  },
+  {
+    "EventType": "CallbackSucceeded",
+    "SubType": "Callback",
+    "EventId": 64,
+    "Id": "06582bb39d86b31d03a318571073d6a4620e1f42a013144ca26dd9f599cba280",
+    "Name": "shard-4-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:10.388000-07:00",
+    "ParentId": "aa8a88f06a3a8cbd09a62ab2046a21d38074a534652c7c0060595ff607be8ad9",
+    "CallbackSucceededDetails": {
+      "Result": {
+        "Payload": "{\"microvm_id\": \"microvm-be17f08d-e46d-3b5a-8ce8-1e9f5b26b084\", \"lease_id\": \"e5193991-72b3-3769-a4a3-0c8f2a4082e5\", \"elapsed_s\": 1.352, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 4\", \"exit_code\": 0, \"duration_s\": 0.042, \"output_tail\": \"shard 4\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.041, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-be17f08d-e46d-3b5a-8ce8-1e9f5b26b084\", \"heartbeats\": 0}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 65,
+    "Id": "4d16240f411a11f97553b782d41c3797e9b7855ea8c5b64383b628dd47bb6b12",
+    "Name": "shard-5-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:10.568000-07:00",
+    "ParentId": "46470be143fb891be5dbe2cbfa88dd3f3f43dcf641e0ed6b029bf72375ff0964",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 66,
+    "Id": "de04f58382a32c005696dd6d07d055abeabce68f2e1aa8b124199043c9c7a32e",
+    "Name": "shard-4-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:10.568000-07:00",
+    "ParentId": "aa8a88f06a3a8cbd09a62ab2046a21d38074a534652c7c0060595ff607be8ad9",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 67,
+    "Id": "de04f58382a32c005696dd6d07d055abeabce68f2e1aa8b124199043c9c7a32e",
+    "Name": "shard-4-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:10.568000-07:00",
+    "ParentId": "aa8a88f06a3a8cbd09a62ab2046a21d38074a534652c7c0060595ff607be8ad9",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"terminated\":{\"t\":\"s\",\"v\":\"microvm-be17f08d-e46d-3b5a-8ce8-1e9f5b26b084\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 68,
+    "Id": "4d16240f411a11f97553b782d41c3797e9b7855ea8c5b64383b628dd47bb6b12",
+    "Name": "shard-5-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:10.568000-07:00",
+    "ParentId": "46470be143fb891be5dbe2cbfa88dd3f3f43dcf641e0ed6b029bf72375ff0964",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"terminated\":{\"t\":\"s\",\"v\":\"microvm-1c76f9b9-6d49-3270-9187-46a052337875\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "ContextSucceeded",
+    "SubType": "MapIteration",
+    "EventId": 69,
+    "Id": "46470be143fb891be5dbe2cbfa88dd3f3f43dcf641e0ed6b029bf72375ff0964",
+    "Name": "map-item-5",
+    "EventTimestamp": "2026-09-20 18:30:10.612000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 5\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.023},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 5\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.013},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-1c76f9b9-6d49-3270-9187-46a052337875\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-1c76f9b9-6d49-3270-9187-46a052337875\"},\"endpoint\":{\"t\":\"s\",\"v\":\"02d060ca-d527-1c39-321a-11d934b6ebf0.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "ContextSucceeded",
+    "SubType": "MapIteration",
+    "EventId": 70,
+    "Id": "aa8a88f06a3a8cbd09a62ab2046a21d38074a534652c7c0060595ff607be8ad9",
+    "Name": "map-item-4",
+    "EventTimestamp": "2026-09-20 18:30:10.612000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 4\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.042},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 4\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.041},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-be17f08d-e46d-3b5a-8ce8-1e9f5b26b084\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-be17f08d-e46d-3b5a-8ce8-1e9f5b26b084\"},\"endpoint\":{\"t\":\"s\",\"v\":\"f6d060ca-d797-9025-eccc-6cdd696a1f73.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "ContextStarted",
+    "SubType": "MapIteration",
+    "EventId": 71,
+    "Id": "c5bb58ce8824f262e693782432ff40c1f63489cf15982c644227bf4d16ba9db2",
+    "Name": "map-item-8",
+    "EventTimestamp": "2026-09-20 18:30:10.653000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextStartedDetails": {}
+  },
+  {
+    "EventType": "CallbackStarted",
+    "SubType": "Callback",
+    "EventId": 72,
+    "Id": "dffbddd0974c6a28ad0af2bcb164ad329c1fdff6cbe05b7df8b4e29f8c0d283e",
+    "Name": "shard-8-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:10.653000-07:00",
+    "ParentId": "c5bb58ce8824f262e693782432ff40c1f63489cf15982c644227bf4d16ba9db2",
+    "CallbackStartedDetails": {
+      "CallbackId": "Ab9hZXi2YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoyL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtZmFub3V0LWFwcHJvdmVkLTIwMjYwOTIxLTAxMzAwMC9lNTE5Mzk5MS03MmIzLTM3NjktYTRhMy0wYzhmMmE0MDgyZTVhaXgkMDkwMGQxOWEtYjA1OS00NWIwLWFiYWItNzZhNzYzZTZjY2Jl/w",
+      "HeartbeatTimeout": 30,
+      "Timeout": 120
+    }
+  },
+  {
+    "EventType": "ContextStarted",
+    "SubType": "MapIteration",
+    "EventId": 73,
+    "Id": "26a4721c3893b1c8af43f459de3ed92e037fc474ebe59403508c18df63496f4f",
+    "Name": "map-item-9",
+    "EventTimestamp": "2026-09-20 18:30:10.653000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextStartedDetails": {}
+  },
+  {
+    "EventType": "CallbackStarted",
+    "SubType": "Callback",
+    "EventId": 74,
+    "Id": "97e6f1aebeca9685bbd351dd5ebb795a6cf7fcba0aea2e27085b8bdea5d742d2",
+    "Name": "shard-9-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:10.653000-07:00",
+    "ParentId": "26a4721c3893b1c8af43f459de3ed92e037fc474ebe59403508c18df63496f4f",
+    "CallbackStartedDetails": {
+      "CallbackId": "Ab9hZXi2YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoyL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtZmFub3V0LWFwcHJvdmVkLTIwMjYwOTIxLTAxMzAwMC9lNTE5Mzk5MS03MmIzLTM3NjktYTRhMy0wYzhmMmE0MDgyZTVhaXgkNDEwZWI2MjAtMTIyNi00ODg4LTg4ZWEtZDFkMTkyNDU2ZTZm/w",
+      "HeartbeatTimeout": 30,
+      "Timeout": 120
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 75,
+    "Id": "3c156b06995d74e89cd013d533738ac2b2def94f245e57805861f7116d04f199",
+    "Name": "shard-8-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:10.706000-07:00",
+    "ParentId": "c5bb58ce8824f262e693782432ff40c1f63489cf15982c644227bf4d16ba9db2",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 76,
+    "Id": "7b0e15fed827abc55efc53690374024c823a35f64251fadbce50f30c3d4b92e8",
+    "Name": "shard-9-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:10.706000-07:00",
+    "ParentId": "26a4721c3893b1c8af43f459de3ed92e037fc474ebe59403508c18df63496f4f",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 77,
+    "Id": "7b0e15fed827abc55efc53690374024c823a35f64251fadbce50f30c3d4b92e8",
+    "Name": "shard-9-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:11.460000-07:00",
+    "ParentId": "26a4721c3893b1c8af43f459de3ed92e037fc474ebe59403508c18df63496f4f",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-5f8942b1-abf7-3abb-a18e-41f803afb40d\"},\"endpoint\":{\"t\":\"s\",\"v\":\"0ed060ca-dee9-7b3c-dc07-d2cab83a5b81.lambda-microvm.us-east-1.on.aws\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "CallbackSucceeded",
+    "SubType": "Callback",
+    "EventId": 78,
+    "Id": "a236bd618ff1f58fa0a1b64f3f6f0ca1dab2ad9ef21f87e1f9d83867d6c3c4aa",
+    "Name": "shard-7-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:11.596000-07:00",
+    "ParentId": "09dbbb66c2e67978b3bb76608fdb198db528c43b895ccb02a8009503799194ef",
+    "CallbackSucceededDetails": {
+      "Result": {
+        "Payload": "{\"microvm_id\": \"microvm-9c1d46cd-25a5-3057-89e2-47ad595f8067\", \"lease_id\": \"e5193991-72b3-3769-a4a3-0c8f2a4082e5\", \"elapsed_s\": 1.585, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 7\", \"exit_code\": 0, \"duration_s\": 0.041, \"output_tail\": \"shard 7\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.049, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-9c1d46cd-25a5-3057-89e2-47ad595f8067\", \"heartbeats\": 0}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 79,
+    "Id": "3c156b06995d74e89cd013d533738ac2b2def94f245e57805861f7116d04f199",
+    "Name": "shard-8-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:12.662000-07:00",
+    "ParentId": "c5bb58ce8824f262e693782432ff40c1f63489cf15982c644227bf4d16ba9db2",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-98976623-f99f-3e27-9665-e741eeb60d30\"},\"endpoint\":{\"t\":\"s\",\"v\":\"fad060ca-e159-c63b-7198-61746831a682.lambda-microvm.us-east-1.on.aws\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "InvocationCompleted",
+    "EventId": 80,
+    "EventTimestamp": "2026-09-20 18:30:12.787000-07:00",
+    "InvocationCompletedDetails": {
+      "StartTimestamp": "2026-09-20 18:30:10.427000-07:00",
+      "EndTimestamp": "2026-09-20 18:30:12.782000-07:00",
+      "RequestId": "5b86129e-0dd5-4259-bb17-c5e33f323c69"
+    }
+  },
+  {
+    "EventType": "CallbackSucceeded",
+    "SubType": "Callback",
+    "EventId": 81,
+    "Id": "5b634a6439f5f54c3d1dc704351cb5f16b0172bb6b341f6f1f76a7e6fc450852",
+    "Name": "shard-6-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:12.857000-07:00",
+    "ParentId": "09bdd65b91e7f27da0907e870642e149d2adeedf5d5e9cb81e57048442407e7b",
+    "CallbackSucceededDetails": {
+      "Result": {
+        "Payload": "{\"microvm_id\": \"microvm-24ba38f1-4025-34c9-9ba2-c27fc3436f3e\", \"lease_id\": \"e5193991-72b3-3769-a4a3-0c8f2a4082e5\", \"elapsed_s\": 1.29, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 6\", \"exit_code\": 0, \"duration_s\": 0.029, \"output_tail\": \"shard 6\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.016, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-24ba38f1-4025-34c9-9ba2-c27fc3436f3e\", \"heartbeats\": 0}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 82,
+    "Id": "460ad7634821399a2925e18a5ce32f28963ec2012c6503f35aedd01ba408d655",
+    "Name": "shard-6-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:13.018000-07:00",
+    "ParentId": "09bdd65b91e7f27da0907e870642e149d2adeedf5d5e9cb81e57048442407e7b",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 83,
+    "Id": "50d01da5fb6734d552d9f92f99ceac368bd33f9a1d43c70f74d5da0b07beddfd",
+    "Name": "shard-7-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:13.018000-07:00",
+    "ParentId": "09dbbb66c2e67978b3bb76608fdb198db528c43b895ccb02a8009503799194ef",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 84,
+    "Id": "460ad7634821399a2925e18a5ce32f28963ec2012c6503f35aedd01ba408d655",
+    "Name": "shard-6-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:13.018000-07:00",
+    "ParentId": "09bdd65b91e7f27da0907e870642e149d2adeedf5d5e9cb81e57048442407e7b",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"terminated\":{\"t\":\"s\",\"v\":\"microvm-24ba38f1-4025-34c9-9ba2-c27fc3436f3e\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 85,
+    "Id": "50d01da5fb6734d552d9f92f99ceac368bd33f9a1d43c70f74d5da0b07beddfd",
+    "Name": "shard-7-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:13.054000-07:00",
+    "ParentId": "09dbbb66c2e67978b3bb76608fdb198db528c43b895ccb02a8009503799194ef",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"terminated\":{\"t\":\"s\",\"v\":\"microvm-9c1d46cd-25a5-3057-89e2-47ad595f8067\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "ContextSucceeded",
+    "SubType": "MapIteration",
+    "EventId": 86,
+    "Id": "09bdd65b91e7f27da0907e870642e149d2adeedf5d5e9cb81e57048442407e7b",
+    "Name": "map-item-6",
+    "EventTimestamp": "2026-09-20 18:30:13.054000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 6\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.029},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 6\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.016},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-24ba38f1-4025-34c9-9ba2-c27fc3436f3e\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-24ba38f1-4025-34c9-9ba2-c27fc3436f3e\"},\"endpoint\":{\"t\":\"s\",\"v\":\"58d060ca-dc77-0c64-c9e5-7953b04ba5ab.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "ContextStarted",
+    "SubType": "MapIteration",
+    "EventId": 88,
+    "Id": "f7a85c741995d60202674aca37ad405751542eb9bfc6a35ac0815e98084ab722",
+    "Name": "map-item-10",
+    "EventTimestamp": "2026-09-20 18:30:13.093000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextStartedDetails": {}
+  },
+  {
+    "EventType": "CallbackStarted",
+    "SubType": "Callback",
+    "EventId": 89,
+    "Id": "c762a67833ff3949e09fa4569b36e48c5ba1cfe1f5746064dff50626fd312c5b",
+    "Name": "shard-10-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:13.093000-07:00",
+    "ParentId": "f7a85c741995d60202674aca37ad405751542eb9bfc6a35ac0815e98084ab722",
+    "CallbackStartedDetails": {
+      "CallbackId": "Ab9hZXi2YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoyL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtZmFub3V0LWFwcHJvdmVkLTIwMjYwOTIxLTAxMzAwMC9lNTE5Mzk5MS03MmIzLTM3NjktYTRhMy0wYzhmMmE0MDgyZTVhaXgkMjA1ZGRjNGUtMjA2YS00ODU1LWI4OTYtYzAxYmNkOTc1N2Y3/w",
+      "HeartbeatTimeout": 30,
+      "Timeout": 120
+    }
+  },
+  {
+    "EventType": "ContextSucceeded",
+    "SubType": "MapIteration",
+    "EventId": 87,
+    "Id": "09dbbb66c2e67978b3bb76608fdb198db528c43b895ccb02a8009503799194ef",
+    "Name": "map-item-7",
+    "EventTimestamp": "2026-09-20 18:30:13.093000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 7\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.041},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 7\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.049},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-9c1d46cd-25a5-3057-89e2-47ad595f8067\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-9c1d46cd-25a5-3057-89e2-47ad595f8067\"},\"endpoint\":{\"t\":\"s\",\"v\":\"6ed060ca-da05-95b3-2504-013ef5a33117.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 90,
+    "Id": "79ca5b2dcb8afa01ff407eea18d2c1079936281723a184e3bdc731f218ba798a",
+    "Name": "shard-10-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:13.136000-07:00",
+    "ParentId": "f7a85c741995d60202674aca37ad405751542eb9bfc6a35ac0815e98084ab722",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "ContextStarted",
+    "SubType": "MapIteration",
+    "EventId": 91,
+    "Id": "fc83151133a99e6d2696342a222f53ddfc18eeb48e6defb0141ae329d9a0fc12",
+    "Name": "map-item-11",
+    "EventTimestamp": "2026-09-20 18:30:13.136000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextStartedDetails": {}
+  },
+  {
+    "EventType": "CallbackStarted",
+    "SubType": "Callback",
+    "EventId": 92,
+    "Id": "ad4391bdd892e8fdbbabbd3890e99cd80c8e7caba58f836ff36f3dd77a0b0ca7",
+    "Name": "shard-11-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:13.136000-07:00",
+    "ParentId": "fc83151133a99e6d2696342a222f53ddfc18eeb48e6defb0141ae329d9a0fc12",
+    "CallbackStartedDetails": {
+      "CallbackId": "Ab9hZXi2YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoyL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtZmFub3V0LWFwcHJvdmVkLTIwMjYwOTIxLTAxMzAwMC9lNTE5Mzk5MS03MmIzLTM3NjktYTRhMy0wYzhmMmE0MDgyZTVhaXgkZGJlNDliN2ItMWNhMS00ZDIzLTk2OGEtNjBiMjg4YjY0OTcx/w",
+      "HeartbeatTimeout": 30,
+      "Timeout": 120
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 93,
+    "Id": "b60b5ad9ffcff0cd1408d2f47f6230514748083e54b653400c7f5a9fb6e84770",
+    "Name": "shard-11-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:13.167000-07:00",
+    "ParentId": "fc83151133a99e6d2696342a222f53ddfc18eeb48e6defb0141ae329d9a0fc12",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 94,
+    "Id": "79ca5b2dcb8afa01ff407eea18d2c1079936281723a184e3bdc731f218ba798a",
+    "Name": "shard-10-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:13.924000-07:00",
+    "ParentId": "f7a85c741995d60202674aca37ad405751542eb9bfc6a35ac0815e98084ab722",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-192e97e7-39eb-36f1-b8cd-5c91eff4172f\"},\"endpoint\":{\"t\":\"s\",\"v\":\"6ed060ca-e3c8-e565-7537-3c168a09ee11.lambda-microvm.us-east-1.on.aws\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "CallbackSucceeded",
+    "SubType": "Callback",
+    "EventId": 95,
+    "Id": "97e6f1aebeca9685bbd351dd5ebb795a6cf7fcba0aea2e27085b8bdea5d742d2",
+    "Name": "shard-9-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:14.643000-07:00",
+    "ParentId": "26a4721c3893b1c8af43f459de3ed92e037fc474ebe59403508c18df63496f4f",
+    "CallbackSucceededDetails": {
+      "Result": {
+        "Payload": "{\"microvm_id\": \"microvm-5f8942b1-abf7-3abb-a18e-41f803afb40d\", \"lease_id\": \"e5193991-72b3-3769-a4a3-0c8f2a4082e5\", \"elapsed_s\": 1.347, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 9\", \"exit_code\": 0, \"duration_s\": 0.029, \"output_tail\": \"shard 9\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.03, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-5f8942b1-abf7-3abb-a18e-41f803afb40d\", \"heartbeats\": 0}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 96,
+    "Id": "b60b5ad9ffcff0cd1408d2f47f6230514748083e54b653400c7f5a9fb6e84770",
+    "Name": "shard-11-0-launch",
+    "EventTimestamp": "2026-09-20 18:30:15.154000-07:00",
+    "ParentId": "fc83151133a99e6d2696342a222f53ddfc18eeb48e6defb0141ae329d9a0fc12",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-e3f2ee76-b778-3ed4-bd1f-19f42d953f61\"},\"endpoint\":{\"t\":\"s\",\"v\":\"8cd060ca-e63c-af9b-b60e-56c7304291ee.lambda-microvm.us-east-1.on.aws\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "CallbackSucceeded",
+    "SubType": "Callback",
+    "EventId": 97,
+    "Id": "dffbddd0974c6a28ad0af2bcb164ad329c1fdff6cbe05b7df8b4e29f8c0d283e",
+    "Name": "shard-8-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:15.182000-07:00",
+    "ParentId": "c5bb58ce8824f262e693782432ff40c1f63489cf15982c644227bf4d16ba9db2",
+    "CallbackSucceededDetails": {
+      "Result": {
+        "Payload": "{\"microvm_id\": \"microvm-98976623-f99f-3e27-9665-e741eeb60d30\", \"lease_id\": \"e5193991-72b3-3769-a4a3-0c8f2a4082e5\", \"elapsed_s\": 1.231, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 8\", \"exit_code\": 0, \"duration_s\": 0.015, \"output_tail\": \"shard 8\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.025, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-98976623-f99f-3e27-9665-e741eeb60d30\", \"heartbeats\": 0}}",
         "Truncated": false
       }
     }
   },
   {
     "EventType": "InvocationCompleted",
-    "EventId": 11,
-    "EventTimestamp": "2026-09-20 18:17:58.872000-07:00",
+    "EventId": 98,
+    "EventTimestamp": "2026-09-20 18:30:15.283000-07:00",
     "InvocationCompletedDetails": {
-      "StartTimestamp": "2026-09-20 18:17:56.428000-07:00",
-      "EndTimestamp": "2026-09-20 18:17:58.867000-07:00",
-      "RequestId": "dffbc1e7-89b7-4c55-8d10-0d1b25e574e5"
+      "StartTimestamp": "2026-09-20 18:30:12.888000-07:00",
+      "EndTimestamp": "2026-09-20 18:30:15.277000-07:00",
+      "RequestId": "d9059329-6f01-4355-b07d-df76fa1bccc2"
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 99,
+    "Id": "4dff260dc48b05dde27a8614b85cc507f3aa83703cf01a8c533abec6d5b270b0",
+    "Name": "shard-9-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:15.483000-07:00",
+    "ParentId": "26a4721c3893b1c8af43f459de3ed92e037fc474ebe59403508c18df63496f4f",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 100,
+    "Id": "0cd88e433a454d5ae5dc8b405b16bab502ae242196c85022b088f5fb7a31fd57",
+    "Name": "shard-8-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:15.483000-07:00",
+    "ParentId": "c5bb58ce8824f262e693782432ff40c1f63489cf15982c644227bf4d16ba9db2",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 101,
+    "Id": "4dff260dc48b05dde27a8614b85cc507f3aa83703cf01a8c533abec6d5b270b0",
+    "Name": "shard-9-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:15.483000-07:00",
+    "ParentId": "26a4721c3893b1c8af43f459de3ed92e037fc474ebe59403508c18df63496f4f",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"terminated\":{\"t\":\"s\",\"v\":\"microvm-5f8942b1-abf7-3abb-a18e-41f803afb40d\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 102,
+    "Id": "0cd88e433a454d5ae5dc8b405b16bab502ae242196c85022b088f5fb7a31fd57",
+    "Name": "shard-8-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:15.483000-07:00",
+    "ParentId": "c5bb58ce8824f262e693782432ff40c1f63489cf15982c644227bf4d16ba9db2",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"terminated\":{\"t\":\"s\",\"v\":\"microvm-98976623-f99f-3e27-9665-e741eeb60d30\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "ContextSucceeded",
+    "SubType": "MapIteration",
+    "EventId": 103,
+    "Id": "26a4721c3893b1c8af43f459de3ed92e037fc474ebe59403508c18df63496f4f",
+    "Name": "map-item-9",
+    "EventTimestamp": "2026-09-20 18:30:15.519000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 9\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.029},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 9\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.03},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-5f8942b1-abf7-3abb-a18e-41f803afb40d\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-5f8942b1-abf7-3abb-a18e-41f803afb40d\"},\"endpoint\":{\"t\":\"s\",\"v\":\"0ed060ca-dee9-7b3c-dc07-d2cab83a5b81.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "ContextSucceeded",
+    "SubType": "MapIteration",
+    "EventId": 104,
+    "Id": "c5bb58ce8824f262e693782432ff40c1f63489cf15982c644227bf4d16ba9db2",
+    "Name": "map-item-8",
+    "EventTimestamp": "2026-09-20 18:30:15.519000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 8\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.015},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 8\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.025},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-98976623-f99f-3e27-9665-e741eeb60d30\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-98976623-f99f-3e27-9665-e741eeb60d30\"},\"endpoint\":{\"t\":\"s\",\"v\":\"fad060ca-e159-c63b-7198-61746831a682.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "InvocationCompleted",
+    "EventId": 105,
+    "EventTimestamp": "2026-09-20 18:30:15.644000-07:00",
+    "InvocationCompletedDetails": {
+      "StartTimestamp": "2026-09-20 18:30:15.349000-07:00",
+      "EndTimestamp": "2026-09-20 18:30:15.639000-07:00",
+      "RequestId": "8a25c4ce-0500-4723-aeb8-c2084d2fe217"
+    }
+  },
+  {
+    "EventType": "CallbackSucceeded",
+    "SubType": "Callback",
+    "EventId": 106,
+    "Id": "c762a67833ff3949e09fa4569b36e48c5ba1cfe1f5746064dff50626fd312c5b",
+    "Name": "shard-10-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:16.662000-07:00",
+    "ParentId": "f7a85c741995d60202674aca37ad405751542eb9bfc6a35ac0815e98084ab722",
+    "CallbackSucceededDetails": {
+      "Result": {
+        "Payload": "{\"microvm_id\": \"microvm-192e97e7-39eb-36f1-b8cd-5c91eff4172f\", \"lease_id\": \"e5193991-72b3-3769-a4a3-0c8f2a4082e5\", \"elapsed_s\": 1.382, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 10\", \"exit_code\": 0, \"duration_s\": 0.029, \"output_tail\": \"shard 10\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.074, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-192e97e7-39eb-36f1-b8cd-5c91eff4172f\", \"heartbeats\": 0}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 107,
+    "Id": "b1763513663ef966f36f543ddbcecd9f5c1d5f08fa60c87e9103c934a3cfdc02",
+    "Name": "shard-10-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:16.832000-07:00",
+    "ParentId": "f7a85c741995d60202674aca37ad405751542eb9bfc6a35ac0815e98084ab722",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 108,
+    "Id": "b1763513663ef966f36f543ddbcecd9f5c1d5f08fa60c87e9103c934a3cfdc02",
+    "Name": "shard-10-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:16.860000-07:00",
+    "ParentId": "f7a85c741995d60202674aca37ad405751542eb9bfc6a35ac0815e98084ab722",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"terminated\":{\"t\":\"s\",\"v\":\"microvm-192e97e7-39eb-36f1-b8cd-5c91eff4172f\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "ContextSucceeded",
+    "SubType": "MapIteration",
+    "EventId": 109,
+    "Id": "f7a85c741995d60202674aca37ad405751542eb9bfc6a35ac0815e98084ab722",
+    "Name": "map-item-10",
+    "EventTimestamp": "2026-09-20 18:30:16.916000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 10\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.029},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 10\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.074},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-192e97e7-39eb-36f1-b8cd-5c91eff4172f\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-192e97e7-39eb-36f1-b8cd-5c91eff4172f\"},\"endpoint\":{\"t\":\"s\",\"v\":\"6ed060ca-e3c8-e565-7537-3c168a09ee11.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "InvocationCompleted",
+    "EventId": 110,
+    "EventTimestamp": "2026-09-20 18:30:17.037000-07:00",
+    "InvocationCompletedDetails": {
+      "StartTimestamp": "2026-09-20 18:30:16.698000-07:00",
+      "EndTimestamp": "2026-09-20 18:30:17.033000-07:00",
+      "RequestId": "cee90cc4-cbec-4363-9011-033f8dade8c0"
+    }
+  },
+  {
+    "EventType": "CallbackSucceeded",
+    "SubType": "Callback",
+    "EventId": 111,
+    "Id": "ad4391bdd892e8fdbbabbd3890e99cd80c8e7caba58f836ff36f3dd77a0b0ca7",
+    "Name": "shard-11-0-callback",
+    "EventTimestamp": "2026-09-20 18:30:17.810000-07:00",
+    "ParentId": "fc83151133a99e6d2696342a222f53ddfc18eeb48e6defb0141ae329d9a0fc12",
+    "CallbackSucceededDetails": {
+      "Result": {
+        "Payload": "{\"microvm_id\": \"microvm-e3f2ee76-b778-3ed4-bd1f-19f42d953f61\", \"lease_id\": \"e5193991-72b3-3769-a4a3-0c8f2a4082e5\", \"elapsed_s\": 1.327, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 11\", \"exit_code\": 0, \"duration_s\": 0.011, \"output_tail\": \"shard 11\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.042, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-e3f2ee76-b778-3ed4-bd1f-19f42d953f61\", \"heartbeats\": 0}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 112,
+    "Id": "15cd501635dc36af83899701241024d1a730f2081874a48968ad51c7189ff9c7",
+    "Name": "shard-11-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:18.038000-07:00",
+    "ParentId": "fc83151133a99e6d2696342a222f53ddfc18eeb48e6defb0141ae329d9a0fc12",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 113,
+    "Id": "15cd501635dc36af83899701241024d1a730f2081874a48968ad51c7189ff9c7",
+    "Name": "shard-11-0-terminate",
+    "EventTimestamp": "2026-09-20 18:30:18.067000-07:00",
+    "ParentId": "fc83151133a99e6d2696342a222f53ddfc18eeb48e6defb0141ae329d9a0fc12",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"terminated\":{\"t\":\"s\",\"v\":\"microvm-e3f2ee76-b778-3ed4-bd1f-19f42d953f61\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "ContextSucceeded",
+    "SubType": "MapIteration",
+    "EventId": 114,
+    "Id": "fc83151133a99e6d2696342a222f53ddfc18eeb48e6defb0141ae329d9a0fc12",
+    "Name": "map-item-11",
+    "EventTimestamp": "2026-09-20 18:30:18.099000-07:00",
+    "ParentId": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "ContextSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 11\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.011},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 11\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.042},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-e3f2ee76-b778-3ed4-bd1f-19f42d953f61\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-e3f2ee76-b778-3ed4-bd1f-19f42d953f61\"},\"endpoint\":{\"t\":\"s\",\"v\":\"8cd060ca-e63c-af9b-b60e-56c7304291ee.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "ContextSucceeded",
+    "SubType": "Map",
+    "EventId": 115,
+    "Id": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "Name": "shard-map",
+    "EventTimestamp": "2026-09-20 18:30:18.138000-07:00",
+    "ContextSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"br\",\"v\":{\"all\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"index\":{\"t\":\"i\",\"v\":0},\"status\":{\"t\":\"s\",\"v\":\"SUCCEEDED\"},\"result\":{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 0\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.016},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 0\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.022},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-b56ef778-80ca-3efa-be02-94163fb8cd2a\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-b56ef778-80ca-3efa-be02-94163fb8cd2a\"},\"endpoint\":{\"t\":\"s\",\"v\":\"08d060ca-d041-3472-e9fc-f93f998c2f23.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}},\"error\":{\"t\":\"n\",\"v\":null}}},{\"t\":\"m\",\"v\":{\"index\":{\"t\":\"i\",\"v\":1},\"status\":{\"t\":\"s\",\"v\":\"SUCCEEDED\"},\"result\":{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.037},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 1\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.05},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-9a21a731-6266-3118-beb7-0303da8c4087\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-9a21a731-6266-3118-beb7-0303da8c4087\"},\"endpoint\":{\"t\":\"s\",\"v\":\"fad060ca-cb62-142c-6135-5c2347905488.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}},\"error\":{\"t\":\"n\",\"v\":null}}},{\"t\":\"m\",\"v\":{\"index\":{\"t\":\"i\",\"v\":2},\"status\":{\"t\":\"s\",\"v\":\"SUCCEEDED\"},\"result\":{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 2\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.036},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 2\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.051},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-d62b2409-0116-3ad0-ac61-602dfa8a1d02\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-d62b2409-0116-3ad0-ac61-602dfa8a1d02\"},\"endpoint\":{\"t\":\"s\",\"v\":\"50d060ca-cdd0-d9e4-2e35-b0dfdd00b0d8.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}},\"error\":{\"t\":\"n\",\"v\":null}}},{\"t\":\"m\",\"v\":{\"index\":{\"t\":\"i\",\"v\":3},\"status\":{\"t\":\"s\",\"v\":\"SUCCEEDED\"},\"result\":{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 3\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.039},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 3\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.057},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-eacf35d6-988a-3039-9461-7b8b6c893a19\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-eacf35d6-988a-3039-9461-7b8b6c893a19\"},\"endpoint\":{\"t\":\"s\",\"v\":\"e6d060ca-d2b5-622e-d60e-db38c1174756.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}},\"error\":{\"t\":\"n\",\"v\":null}}},{\"t\":\"m\",\"v\":{\"index\":{\"t\":\"i\",\"v\":4},\"status\":{\"t\":\"s\",\"v\":\"SUCCEEDED\"},\"result\":{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 4\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.042},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 4\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.041},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-be17f08d-e46d-3b5a-8ce8-1e9f5b26b084\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-be17f08d-e46d-3b5a-8ce8-1e9f5b26b084\"},\"endpoint\":{\"t\":\"s\",\"v\":\"f6d060ca-d797-9025-eccc-6cdd696a1f73.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}},\"error\":{\"t\":\"n\",\"v\":null}}},{\"t\":\"m\",\"v\":{\"index\":{\"t\":\"i\",\"v\":5},\"status\":{\"t\":\"s\",\"v\":\"SUCCEEDED\"},\"result\":{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 5\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.023},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 5\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.013},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-1c76f9b9-6d49-3270-9187-46a052337875\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-1c76f9b9-6d49-3270-9187-46a052337875\"},\"endpoint\":{\"t\":\"s\",\"v\":\"02d060ca-d527-1c39-321a-11d934b6ebf0.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}},\"error\":{\"t\":\"n\",\"v\":null}}},{\"t\":\"m\",\"v\":{\"index\":{\"t\":\"i\",\"v\":6},\"status\":{\"t\":\"s\",\"v\":\"SUCCEEDED\"},\"result\":{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 6\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.029},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 6\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.016},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-24ba38f1-4025-34c9-9ba2-c27fc3436f3e\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-24ba38f1-4025-34c9-9ba2-c27fc3436f3e\"},\"endpoint\":{\"t\":\"s\",\"v\":\"58d060ca-dc77-0c64-c9e5-7953b04ba5ab.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}},\"error\":{\"t\":\"n\",\"v\":null}}},{\"t\":\"m\",\"v\":{\"index\":{\"t\":\"i\",\"v\":7},\"status\":{\"t\":\"s\",\"v\":\"SUCCEEDED\"},\"result\":{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 7\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.041},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 7\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.049},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-9c1d46cd-25a5-3057-89e2-47ad595f8067\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-9c1d46cd-25a5-3057-89e2-47ad595f8067\"},\"endpoint\":{\"t\":\"s\",\"v\":\"6ed060ca-da05-95b3-2504-013ef5a33117.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}},\"error\":{\"t\":\"n\",\"v\":null}}},{\"t\":\"m\",\"v\":{\"index\":{\"t\":\"i\",\"v\":8},\"status\":{\"t\":\"s\",\"v\":\"SUCCEEDED\"},\"result\":{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 8\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.015},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 8\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.025},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-98976623-f99f-3e27-9665-e741eeb60d30\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-98976623-f99f-3e27-9665-e741eeb60d30\"},\"endpoint\":{\"t\":\"s\",\"v\":\"fad060ca-e159-c63b-7198-61746831a682.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}},\"error\":{\"t\":\"n\",\"v\":null}}},{\"t\":\"m\",\"v\":{\"index\":{\"t\":\"i\",\"v\":9},\"status\":{\"t\":\"s\",\"v\":\"SUCCEEDED\"},\"result\":{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 9\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.029},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 9\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.03},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-5f8942b1-abf7-3abb-a18e-41f803afb40d\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-5f8942b1-abf7-3abb-a18e-41f803afb40d\"},\"endpoint\":{\"t\":\"s\",\"v\":\"0ed060ca-dee9-7b3c-dc07-d2cab83a5b81.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}},\"error\":{\"t\":\"n\",\"v\":null}}},{\"t\":\"m\",\"v\":{\"index\":{\"t\":\"i\",\"v\":10},\"status\":{\"t\":\"s\",\"v\":\"SUCCEEDED\"},\"result\":{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 10\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.029},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 10\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.074},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-192e97e7-39eb-36f1-b8cd-5c91eff4172f\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-192e97e7-39eb-36f1-b8cd-5c91eff4172f\"},\"endpoint\":{\"t\":\"s\",\"v\":\"6ed060ca-e3c8-e565-7537-3c168a09ee11.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}},\"error\":{\"t\":\"n\",\"v\":null}}},{\"t\":\"m\",\"v\":{\"index\":{\"t\":\"i\",\"v\":11},\"status\":{\"t\":\"s\",\"v\":\"SUCCEEDED\"},\"result\":{\"t\":\"m\",\"v\":{\"status\":{\"t\":\"s\",\"v\":\"done\"},\"result\":{\"t\":\"m\",\"v\":{\"passed\":{\"t\":\"b\",\"v\":true},\"steps\":{\"t\":\"l\",\"v\":[{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"echo shard 11\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":0.011},\"output_tail\":{\"t\":\"s\",\"v\":\"shard 11\\n\"}}},{\"t\":\"m\",\"v\":{\"cmd\":{\"t\":\"s\",\"v\":\"sleep 1\"},\"exit_code\":{\"t\":\"i\",\"v\":0},\"duration_s\":{\"t\":\"f\",\"v\":1.042},\"output_tail\":{\"t\":\"s\",\"v\":\"\"}}}]},\"parallel\":{\"t\":\"b\",\"v\":false},\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-e3f2ee76-b778-3ed4-bd1f-19f42d953f61\"},\"heartbeats\":{\"t\":\"i\",\"v\":0}}},\"retryable\":{\"t\":\"b\",\"v\":false},\"vm\":{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-e3f2ee76-b778-3ed4-bd1f-19f42d953f61\"},\"endpoint\":{\"t\":\"s\",\"v\":\"8cd060ca-e63c-af9b-b60e-56c7304291ee.lambda-microvm.us-east-1.on.aws\"}}},\"attempt\":{\"t\":\"i\",\"v\":0}}},\"error\":{\"t\":\"n\",\"v\":null}}}]},\"completionReason\":{\"t\":\"s\",\"v\":\"ALL_COMPLETED\"}}}",
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "InvocationCompleted",
+    "EventId": 116,
+    "EventTimestamp": "2026-09-20 18:30:18.262000-07:00",
+    "InvocationCompletedDetails": {
+      "StartTimestamp": "2026-09-20 18:30:17.877000-07:00",
+      "EndTimestamp": "2026-09-20 18:30:18.258000-07:00",
+      "RequestId": "efaecbea-15d2-4285-bbee-8a1de7a31893"
     }
   },
   {
     "EventType": "ExecutionSucceeded",
-    "EventId": 12,
-    "Id": "34caf69c-6d5f-3c79-98c8-777429a60bd1",
-    "Name": "mvm-demo-durable-fanout-approved-20260921-010756",
-    "EventTimestamp": "2026-09-20 18:17:58.872000-07:00",
+    "EventId": 117,
+    "Id": "e5193991-72b3-3769-a4a3-0c8f2a4082e5",
+    "Name": "mvm-demo-durable-fanout-approved-20260921-013000",
+    "EventTimestamp": "2026-09-20 18:30:18.262000-07:00",
     "ExecutionSucceededDetails": {
       "Result": {
-        "Payload": "{\"status\": \"denied\", \"reason\": \"no approval within 600s: Callback timed out\", \"plan\": {\"shards\": 12, \"baseline_mib\": 512, \"policy\": {\"budget_s\": 120, \"heartbeat_timeout_s\": 30, \"slack_s\": 60, \"max_concurrency\": 4, \"max_vm_seconds\": 3000, \"approval_usd\": 0.015}, \"limit\": {\"baseline_mib\": 512, \"memory_quota_gb\": 8.0, \"launch_rate\": 0.8, \"by_memory\": 16, \"by_policy\": 4, \"limit\": 4, \"reason\": \"policy max_concurrency 4\"}, \"concurrency\": 4, \"waves\": 3, \"launch_to_all_running_s\": 21.75, \"worst_case_vm_seconds\": 2160, \"worst_case_usd\": 0.018915, \"needs_approval\": true, \"rejected\": null, \"summary\": \"12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all running in ~22 s, worst case 2160 VM-s = $0.02, needs approval (above $0.015)\"}}",
+        "Payload": "{\"status\": \"done\", \"plan\": {\"shards\": 12, \"baseline_mib\": 512, \"policy\": {\"budget_s\": 120, \"heartbeat_timeout_s\": 30, \"slack_s\": 60, \"max_concurrency\": 4, \"max_vm_seconds\": 3000, \"approval_usd\": 0.015}, \"limit\": {\"baseline_mib\": 512, \"memory_quota_gb\": 8.0, \"launch_rate\": 0.8, \"by_memory\": 16, \"by_policy\": 4, \"limit\": 4, \"reason\": \"policy max_concurrency 4\"}, \"concurrency\": 4, \"waves\": 3, \"launch_to_all_running_s\": 21.75, \"worst_case_vm_seconds\": 2160, \"worst_case_usd\": 0.018915, \"needs_approval\": true, \"rejected\": null, \"summary\": \"12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all running in ~22 s, worst case 2160 VM-s = $0.02, needs approval (above $0.015)\"}, \"outcomes\": [{\"status\": \"done\", \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 0\", \"exit_code\": 0, \"duration_s\": 0.016, \"output_tail\": \"shard 0\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.022, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-b56ef778-80ca-3efa-be02-94163fb8cd2a\", \"heartbeats\": 0}, \"retryable\": false, \"vm\": {\"microvm_id\": \"microvm-b56ef778-80ca-3efa-be02-94163fb8cd2a\", \"endpoint\": \"08d060ca-d041-3472-e9fc-f93f998c2f23.lambda-microvm.us-east-1.on.aws\"}, \"attempt\": 0}, {\"status\": \"done\", \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 1\", \"exit_code\": 0, \"duration_s\": 0.037, \"output_tail\": \"shard 1\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.05, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-9a21a731-6266-3118-beb7-0303da8c4087\", \"heartbeats\": 0}, \"retryable\": false, \"vm\": {\"microvm_id\": \"microvm-9a21a731-6266-3118-beb7-0303da8c4087\", \"endpoint\": \"fad060ca-cb62-142c-6135-5c2347905488.lambda-microvm.us-east-1.on.aws\"}, \"attempt\": 0}, {\"status\": \"done\", \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 2\", \"exit_code\": 0, \"duration_s\": 0.036, \"output_tail\": \"shard 2\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.051, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-d62b2409-0116-3ad0-ac61-602dfa8a1d02\", \"heartbeats\": 0}, \"retryable\": false, \"vm\": {\"microvm_id\": \"microvm-d62b2409-0116-3ad0-ac61-602dfa8a1d02\", \"endpoint\": \"50d060ca-cdd0-d9e4-2e35-b0dfdd00b0d8.lambda-microvm.us-east-1.on.aws\"}, \"attempt\": 0}, {\"status\": \"done\", \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 3\", \"exit_code\": 0, \"duration_s\": 0.039, \"output_tail\": \"shard 3\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.057, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-eacf35d6-988a-3039-9461-7b8b6c893a19\", \"heartbeats\": 0}, \"retryable\": false, \"vm\": {\"microvm_id\": \"microvm-eacf35d6-988a-3039-9461-7b8b6c893a19\", \"endpoint\": \"e6d060ca-d2b5-622e-d60e-db38c1174756.lambda-microvm.us-east-1.on.aws\"}, \"attempt\": 0}, {\"status\": \"done\", \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 4\", \"exit_code\": 0, \"duration_s\": 0.042, \"output_tail\": \"shard 4\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.041, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-be17f08d-e46d-3b5a-8ce8-1e9f5b26b084\", \"heartbeats\": 0}, \"retryable\": false, \"vm\": {\"microvm_id\": \"microvm-be17f08d-e46d-3b5a-8ce8-1e9f5b26b084\", \"endpoint\": \"f6d060ca-d797-9025-eccc-6cdd696a1f73.lambda-microvm.us-east-1.on.aws\"}, \"attempt\": 0}, {\"status\": \"done\", \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 5\", \"exit_code\": 0, \"duration_s\": 0.023, \"output_tail\": \"shard 5\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.013, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-1c76f9b9-6d49-3270-9187-46a052337875\", \"heartbeats\": 0}, \"retryable\": false, \"vm\": {\"microvm_id\": \"microvm-1c76f9b9-6d49-3270-9187-46a052337875\", \"endpoint\": \"02d060ca-d527-1c39-321a-11d934b6ebf0.lambda-microvm.us-east-1.on.aws\"}, \"attempt\": 0}, {\"status\": \"done\", \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 6\", \"exit_code\": 0, \"duration_s\": 0.029, \"output_tail\": \"shard 6\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.016, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-24ba38f1-4025-34c9-9ba2-c27fc3436f3e\", \"heartbeats\": 0}, \"retryable\": false, \"vm\": {\"microvm_id\": \"microvm-24ba38f1-4025-34c9-9ba2-c27fc3436f3e\", \"endpoint\": \"58d060ca-dc77-0c64-c9e5-7953b04ba5ab.lambda-microvm.us-east-1.on.aws\"}, \"attempt\": 0}, {\"status\": \"done\", \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 7\", \"exit_code\": 0, \"duration_s\": 0.041, \"output_tail\": \"shard 7\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.049, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-9c1d46cd-25a5-3057-89e2-47ad595f8067\", \"heartbeats\": 0}, \"retryable\": false, \"vm\": {\"microvm_id\": \"microvm-9c1d46cd-25a5-3057-89e2-47ad595f8067\", \"endpoint\": \"6ed060ca-da05-95b3-2504-013ef5a33117.lambda-microvm.us-east-1.on.aws\"}, \"attempt\": 0}, {\"status\": \"done\", \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 8\", \"exit_code\": 0, \"duration_s\": 0.015, \"output_tail\": \"shard 8\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.025, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-98976623-f99f-3e27-9665-e741eeb60d30\", \"heartbeats\": 0}, \"retryable\": false, \"vm\": {\"microvm_id\": \"microvm-98976623-f99f-3e27-9665-e741eeb60d30\", \"endpoint\": \"fad060ca-e159-c63b-7198-61746831a682.lambda-microvm.us-east-1.on.aws\"}, \"attempt\": 0}, {\"status\": \"done\", \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 9\", \"exit_code\": 0, \"duration_s\": 0.029, \"output_tail\": \"shard 9\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.03, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-5f8942b1-abf7-3abb-a18e-41f803afb40d\", \"heartbeats\": 0}, \"retryable\": false, \"vm\": {\"microvm_id\": \"microvm-5f8942b1-abf7-3abb-a18e-41f803afb40d\", \"endpoint\": \"0ed060ca-dee9-7b3c-dc07-d2cab83a5b81.lambda-microvm.us-east-1.on.aws\"}, \"attempt\": 0}, {\"status\": \"done\", \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 10\", \"exit_code\": 0, \"duration_s\": 0.029, \"output_tail\": \"shard 10\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.074, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-192e97e7-39eb-36f1-b8cd-5c91eff4172f\", \"heartbeats\": 0}, \"retryable\": false, \"vm\": {\"microvm_id\": \"microvm-192e97e7-39eb-36f1-b8cd-5c91eff4172f\", \"endpoint\": \"6ed060ca-e3c8-e565-7537-3c168a09ee11.lambda-microvm.us-east-1.on.aws\"}, \"attempt\": 0}, {\"status\": \"done\", \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard 11\", \"exit_code\": 0, \"duration_s\": 0.011, \"output_tail\": \"shard 11\\n\"}, {\"cmd\": \"sleep 1\", \"exit_code\": 0, \"duration_s\": 1.042, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-e3f2ee76-b778-3ed4-bd1f-19f42d953f61\", \"heartbeats\": 0}, \"retryable\": false, \"vm\": {\"microvm_id\": \"microvm-e3f2ee76-b778-3ed4-bd1f-19f42d953f61\", \"endpoint\": \"8cd060ca-e63c-af9b-b60e-56c7304291ee.lambda-microvm.us-east-1.on.aws\"}, \"attempt\": 0}], \"succeeded\": 12, \"failed\": 0, \"errors\": []}",
         "Truncated": false
       }
     }

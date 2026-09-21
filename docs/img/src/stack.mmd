@@ -1,0 +1,69 @@
+flowchart LR
+  classDef orch fill:#e7eefc,stroke:#3b5bdb,color:#111
+  classDef plane fill:#f2f2f2,stroke:#666,color:#111
+  classDef vm fill:#e8f6ee,stroke:#2b8a3e,color:#111
+  classDef q fill:#fff4e0,stroke:#e67700,color:#111
+  classDef role fill:#fbfbfb,stroke:#999,stroke-dasharray:4 3,color:#111
+
+  subgraph CLI["Laptop: microvm-ctl CLI, profile heisenberg, us-east-1"]
+    C1["mvm image build agent/ -> demo-agent"]:::plane
+    C2["mvm lease plan --shards N<br/>exit 0 run, 2 rejected, 3 approval"]:::plane
+    C3["mvm lease run demo-agent --kind none --wait (cli-none)"]:::plane
+    C4["mvm watch --image demo-agent<br/>mvm playground: fleet job panel, lease form"]:::plane
+  end
+
+  subgraph SFN["Stack mvm-demo-sfn"]
+    S1["state machine mvm-demo-sfn-lease (budget 120 s)"]:::orch
+    S2["state machine mvm-demo-sfn-lease-short (budget 60 s, hang scenario)"]:::orch
+    SR["orchestrator role mvm-demo-sfn-states"]:::role
+    SA["agent role mvm-demo-sfn-agent"]:::role
+  end
+
+  subgraph MAP["Stack mvm-demo-sfn-map"]
+    M1["state machine mvm-demo-sfn-map-lease<br/>Gate -> RequestApproval -> Fanout Map, MaxConcurrency 4"]:::orch
+    SNS["SNS topic mvm-demo-approvals"]:::q
+    SQS1["SQS mvm-demo-approvals-q (raw delivery)"]:::q
+    AP1["approver: stepfunctions/run.py approve_or_deny<br/>SendTaskSuccess / SendTaskFailure"]:::q
+    MR["orchestrator role mvm-demo-sfn-map-states (+ sns:Publish)"]:::role
+    MA["agent role mvm-demo-sfn-map-agent"]:::role
+  end
+
+  subgraph DUR["Stack mvm-demo-durable"]
+    D1["durable function mvm-demo-durable-orchestrator:live<br/>python3.13, microvm-ctl[durable], policy from MVM_LEASE_* env"]:::orch
+    SQS2["SQS mvm-demo-durable-approvals"]:::q
+    AP2["approver: durable/approver.py<br/>SendDurableExecutionCallbackSuccess / Failure"]:::q
+    DR["orchestrator role of the function (+ sqs:SendMessage, servicequotas:GetServiceQuota)"]:::role
+    DA["agent role mvm-demo-durable-agent-execution-role"]:::role
+  end
+
+  subgraph PLANE["Lambda MicroVMs, account 643603452951, us-east-1"]
+    IMG["image demo-agent, 512 MiB<br/>agent/app.py + injected hook runtime"]:::vm
+    VMS["leased VMs: one per task, cap 180 s<br/>quota: 8 GB memory, RunMicrovm 1/s"]:::vm
+  end
+
+  LOGS["CloudWatch log group /aws/lambda-microvms/demo-agent<br/>one stream per VM"]:::plane
+
+  C1 --> IMG
+  C3 --> VMS
+  C4 -. "GET /status, GET /events" .-> VMS
+  IMG --> VMS
+  VMS --> LOGS
+
+  S1 --- SR
+  S2 --- SR
+  M1 --> SNS --> SQS1 --> AP1 -- "task token" --> M1
+  M1 --- MR
+  D1 --> SQS2 --> AP2 -- "callback id" --> D1
+  D1 --- DR
+
+  SR -- "lambda:RunMicrovm, GetMicrovm, TerminateMicrovm, ListMicrovms<br/>lambda:PassNetworkConnector, iam:PassRole on mvm-demo-sfn-agent" --> VMS
+  MR -- "the same four lambda:*Microvm actions<br/>PassNetworkConnector, PassRole on mvm-demo-sfn-map-agent" --> VMS
+  DR -- "the same four lambda:*Microvm actions<br/>PassNetworkConnector, PassRole on the durable agent role" --> VMS
+
+  VMS -. "runs as" .-> SA
+  VMS -. "runs as" .-> MA
+  VMS -. "runs as" .-> DA
+  SA -- "states:SendTaskSuccess / SendTaskFailure / SendTaskHeartbeat<br/>on mvm-demo-sfn-lease and -lease-short" --> S1
+  MA -- "states:SendTask* on mvm-demo-sfn-map-lease" --> M1
+  DA -- "lambda:SendDurableExecutionCallbackSuccess / Failure / Heartbeat<br/>on function:mvm-demo-durable-orchestrator:*" --> D1
+  SA -- "every agent role: logs:CreateLogGroup / CreateLogStream / PutLogEvents<br/>on /aws/lambda-microvms/* and /aws/lambda/microvms/*" --> LOGS

@@ -81,13 +81,16 @@ SCENARIOS = {
     "retryable-fail": {
         "machine": "lease",
         "input": {"steps": ["echo before the injected failure"], "fail_after_s": 2},
-        "expected": "sfn: Lease -> Catch -> Reap -> TerminateStale -> Failed with the typed error in the "
-                    "output",
+        "expected": "sfn (microvm-ctl 0.3.1): Lease -> OnLeaseError -> TerminateFailed (the VM the cause "
+                    "names is terminated at once) -> Reap -> TerminateStale -> Failed with the typed error "
+                    "in the output",
     },
     "hang": {
-        "machine": "short",
+        "machine": "short", "leave_vm": True,
         "input": {"steps": ["echo one step, then hang"], "hang_s": 400},
-        "expected": "sfn: States.Timeout -> Reap terminates the VM -> Failed",
+        "expected": "sfn: States.Timeout at 60 s -> OnLeaseError -> Reap (nothing stale yet) -> Failed; the "
+                    "timed-out task carries no VM id, so the VM runs until its MaximumDurationInSeconds "
+                    "(budget + slack = 120 s) ends it, which GetMicrovm's startedAt/terminatedAt must show",
     },
     "fanout-4": {
         "machine": "map", "shards": 4, "input": shards(4),
@@ -502,18 +505,24 @@ def wait_for_room(aws: Aws, needed: int) -> list[str]:
     raise SystemExit("the fleet never had room; refusing to exceed 8 x 512 MiB")
 
 
-def straggler_check(aws: Aws, scenario: str, started_at: datetime,
-                    vm_ids: list[str]) -> tuple[dict, list[str]]:
-    """List every VM; terminate demo-agent VMs this run left active; leave anything else alone."""
+def straggler_check(aws: Aws, scenario: str, started_at: datetime, vm_ids: list[str],
+                    leave: bool = False) -> tuple[dict, list[str]]:
+    """List every VM; terminate demo-agent VMs this run left active; leave anything else alone.
+    With `leave`, this scenario's VMs are watched until the platform ends them (the proof that
+    MaximumDurationInSeconds bounds a timed-out lease) instead of being terminated here."""
     notes: list[str] = []
-    check = {"at": now_iso(), "active_before": [], "terminated": [], "left_alone": []}
+    check = {"at": now_iso(), "active_before": [], "terminated": [], "left_alone": [], "watched": []}
     for v in aws.active_vms():
         row = {"microvmId": v["microvmId"], "state": v["state"], "image": v["imageArn"].rsplit(":", 1)[-1],
                "startedAt": iso(v.get("startedAt"))}
         check["active_before"].append(row)
         mine = v["imageArn"].endswith(f":{IMAGE}") and (
             v["microvmId"] in vm_ids or (v.get("startedAt") and v["startedAt"] >= started_at))
-        if mine:
+        if mine and leave:
+            check["watched"].append(v["microvmId"])
+            notes.append(f"{v['microvmId']} was still {v['state']} after the execution ended; run.py did "
+                         "not terminate it and polled GetMicrovm until the platform did")
+        elif mine:
             aws.terminate(v["microvmId"])
             check["terminated"].append(v["microvmId"])
             notes.append(f"straggler: {v['microvmId']} was still {v['state']} after the execution ended; "
@@ -530,15 +539,31 @@ def straggler_check(aws: Aws, scenario: str, started_at: datetime,
                 break
             time.sleep(5)
         check["all_terminated_by"] = now_iso()
+    if check["watched"]:
+        deadline = time.time() + 300
+        while time.time() < deadline:
+            still = [v["microvmId"] for v in aws.active_vms() if v["microvmId"] in check["watched"]]
+            if not still:
+                break
+            log(f"  waiting for the platform to end {still} ...")
+            time.sleep(10)
+        else:
+            for vm in check["watched"]:
+                aws.terminate(vm)
+                check["terminated"].append(vm)
+                notes.append(f"deviation: {vm} was still active 300 s after the execution ended, well past "
+                             "MaximumDurationInSeconds; run.py terminated it")
+        check["watched_until"] = now_iso()
     log(f"  fleet after {scenario}: {len(check['active_before'])} active, "
-        f"{len(check['terminated'])} terminated by run.py, {len(check['left_alone'])} left alone")
+        f"{len(check['terminated'])} terminated by run.py, {len(check['watched'])} watched, "
+        f"{len(check['left_alone'])} left alone")
     return check, notes
 
 
-def final_vm_states(aws: Aws, vm_ids: list[str]) -> dict[str, dict]:
+def final_vm_states(aws: Aws, vm_ids: list[str], polls: int = 12) -> dict[str, dict]:
     out = {}
     for vm in vm_ids:
-        for _ in range(12):
+        for _ in range(polls):
             v = aws.vm(vm)
             if v.get("state") not in ACTIVE_STATES:
                 break
@@ -608,29 +633,54 @@ def check_scenario(sid: str, s: dict, run: dict, a: dict, vm_states: dict,
         inner = _json_or_none(cause.get("Cause")) if isinstance(cause, dict) else None
         err = inner.get("error", {}) if isinstance(inner, dict) else {}
         checks["failed"] = meta["status"] == "FAILED"
-        checks["lease_reap_terminatestale_failed"] = entered == ["Lease", "Reap", "TerminateStale", "Failed"]
+        checks["path_onleaseerror_terminatefailed_reap_failed"] = entered == [
+            "Lease", "OnLeaseError", "TerminateFailed", "Reap", "TerminateStale", "Failed"]
         checks["error_lease_failed"] = meta.get("error") == "LeaseFailed"
         checks["typed_error_in_output"] = (isinstance(cause, dict) and cause.get("Error") == "Injected"
                                            and err.get("error_type") == "Injected"
                                            and err.get("retryable") is True)
-        extra["observations"] = {"vm_terminated_by_machine": terminated_by_machine}
+        checks["terminate_failed_named_the_vm"] = any(
+            t.startswith("TerminateFailed:") and t.split(":", 1)[1] in a["vm_ids"]
+            for t in a["terminated_by_machine"])
+        failed_at = next((t.get("TaskFailed") for t in a["lease_tasks"] if t["state"] == "Lease"), None)
+        gaps = {}
+        for vm, st in vm_states.items():
+            if failed_at and st.get("terminatedAt"):
+                gap = datetime.fromisoformat(st["terminatedAt"]) - datetime.fromisoformat(failed_at)
+                gaps[vm] = round(gap.total_seconds(), 3)
+        extra["observations"] = {"lease_task_failed_at": failed_at,
+                                 "seconds_from_task_failed_to_vm_terminated_at": gaps}
+        checks["vm_terminated_within_10s_of_failure"] = (bool(gaps)
+                                                          and all(-1 <= g <= 10 for g in gaps.values()))
         if not terminated_by_machine:
-            notes.append("deviation: the failed lease's VM was not terminated by the machine. TerminateStale "
-                         "only terminates members older than budget + slack (180 s) and this VM was ~10 s "
-                         "old, so the Map ran over an empty list and the VM stayed RUNNING until run.py's "
+            notes.append("deviation: the failed lease's VM was not terminated by the machine; run.py's "
                          "straggler check terminated it (SPEC: terminate everything you launch).")
     elif sid == "hang":
         lease_tasks = [t for t in a["lease_tasks"] if t["state"] == "Lease"]
         checks["failed"] = meta["status"] == "FAILED"
         checks["states_timeout"] = any(t.get("error") == "States.Timeout" for t in lease_tasks)
-        checks["reap_then_failed"] = entered == ["Lease", "Reap", "TerminateStale", "Failed"]
-        reaped = any(t.startswith("TerminateOne:") for t in a["terminated_by_machine"])
-        checks["reap_terminated_the_vm"] = reaped
-        if not reaped:
-            notes.append("deviation: Reap did not terminate the hung VM. TerminateStale only terminates "
-                         "members older than budget + slack (120 s here) and the VM was ~60 s old at "
-                         "States.Timeout, so the Map ran over an empty list; the VM kept running on its own "
-                         "MaximumDurationInSeconds cap until run.py's straggler check terminated it.")
+        timed_out_at = next((t.get("TaskTimedOut") for t in lease_tasks if t.get("TaskTimedOut")), None)
+        budget_gap = None
+        if timed_out_at:
+            budget_gap = (datetime.fromisoformat(timed_out_at) - meta["startDate"]).total_seconds()
+        checks["timeout_at_60s"] = budget_gap is not None and 59 <= budget_gap <= 65
+        checks["path_onleaseerror_reap_failed"] = entered == [
+            "Lease", "OnLeaseError", "Reap", "TerminateStale", "Failed"]
+        checks["nothing_terminated_by_machine"] = not a["terminated_by_machine"]
+        lifetimes = {vm: st.get("lifetime_s") for vm, st in vm_states.items()}
+        by_platform = {vm: st.get("terminated_by", "").startswith("platform") for vm, st in vm_states.items()}
+        extra["observations"] = {"lease_task_timed_out_at": timed_out_at,
+                                 "seconds_from_start_to_timeout": (round(budget_gap, 3)
+                                                                   if budget_gap else None),
+                                 "vm_lifetime_s": lifetimes, "vm_ended_by_platform": by_platform,
+                                 "maximum_duration_in_seconds": 120}
+        checks["vm_ended_by_platform_cap_about_120s"] = bool(lifetimes) and all(
+            by_platform[vm] and lt is not None and 115 <= lt <= 135 for vm, lt in lifetimes.items())
+        for vm, lt in lifetimes.items():
+            notes.append(f"{vm}: startedAt {vm_states[vm].get('startedAt')}, terminatedAt "
+                         f"{vm_states[vm].get('terminatedAt')}, lifetime {lt} s against "
+                         "MaximumDurationInSeconds 120 (budget 60 + slack 60); terminated by "
+                         f"{vm_states[vm].get('terminated_by')}")
     elif sid in ("fanout-4", "fanout-8"):
         n = s["shards"]
         plan = extra.get("plan") or {}
@@ -749,11 +799,11 @@ def run_scenario(aws: Aws, sid: str) -> dict:
                      f"{comp['meta']['executionArn']} (sequential, sequential/)")
     dump(d / "input.json", inputs)
 
-    fleet, n5 = straggler_check(aws, sid, started_at, a["vm_ids"])
+    fleet, n5 = straggler_check(aws, sid, started_at, a["vm_ids"], leave=bool(s.get("leave_vm")))
     for vm in fleet["terminated"]:
         if vm not in a["vm_ids"]:
             a["vm_ids"].append(vm)
-    vm_states = final_vm_states(aws, a["vm_ids"])
+    vm_states = final_vm_states(aws, a["vm_ids"], polls=60 if s.get("leave_vm") else 12)
     for vm, st in vm_states.items():
         if st.get("startedAt") and st.get("terminatedAt"):
             life = (datetime.fromisoformat(st["terminatedAt"]) - datetime.fromisoformat(st["startedAt"]))
@@ -826,51 +876,82 @@ def _history_line(s: dict) -> str:
     return line
 
 
+FIRST_PASS = "first-pass-0.3.0"
+
+
+def _table(rows: list[dict], link_prefix: str = "") -> list[str]:
+    lines = ["| scenario | microvm-ctl | status | seconds (service) | VMs | RunMicrovm calls | "
+             "matches expected | what the history shows |", "|---|---|---|---|---|---|---|---|"]
+    for s in rows:
+        sid = s["scenario"]
+        link = f"{sid}/{link_prefix}"
+        lines.append(f"| [{sid}]({link}) | {s['microvm_ctl']['version']} | {s['status']} | "
+                     f"{s['seconds_by_service']} | {len(s['vm_ids'])} | {s['runmicrovm_calls']} | "
+                     f"{'yes' if s['matches_expected'] else 'NO'} | {_history_line(s)} |")
+    return lines
+
+
+def _deviations(rows: list[dict], link_prefix: str = "") -> list[str]:
+    lines = []
+    for s in rows:
+        failed = [k for k, v in (s.get("checks") or {}).items() if not v]
+        dev_notes = [n for n in s["notes"] if n.startswith("deviation") or n.startswith("straggler")]
+        if failed or dev_notes or not s["matches_expected"]:
+            sid = s["scenario"]
+            lines.append(f"- **{sid}** (expected: {s['expected']})")
+            for k in failed:
+                lines.append(f"  - check `{k}` is false ([summary.json]({sid}/{link_prefix}summary.json))")
+            for n in dev_notes:
+                lines.append(f"  - {n}")
+    return lines or ["None: every scenario matched its expected column."]
+
+
 def write_report() -> Path:
-    rows = []
+    rows, first = [], []
     for sid in SCENARIOS:
         p = RESULTS / sid / "summary.json"
         if p.exists():
             rows.append(json.loads(p.read_text()))
+        fp = RESULTS / sid / FIRST_PASS / "summary.json"
+        if fp.exists():
+            first.append(json.loads(fp.read_text()))
     lines = ["# Step Functions results", "",
              "Every row is one live execution in account 643603452951 (us-east-1) driven by "
              "`stepfunctions/run.py`; the linked directory holds the input, the full history, the output, "
              "the VM's log lines, the machine's log lines, and `summary.json`. Seconds come from "
              "`describe_execution` startDate/stopDate. RunMicrovm calls are the `TaskScheduled` events for "
              "`runMicrovm` in the history (retries count). `matches expected` is the conjunction of the "
-             "named checks in each `summary.json`.", "",
-             "| scenario | status | seconds (service) | VMs | RunMicrovm calls | matches expected | "
-             "what the history shows |",
-             "|---|---|---|---|---|---|---|"]
-    for s in rows:
-        sid = s["scenario"]
-        lines.append(f"| [{sid}]({sid}/) | {s['status']} | {s['seconds_by_service']} | {len(s['vm_ids'])} | "
-                     f"{s['runmicrovm_calls']} | {'yes' if s['matches_expected'] else 'NO'} | "
-                     f"{_history_line(s)} |")
-    deviations = []
-    for s in rows:
-        failed = [k for k, v in (s.get("checks") or {}).items() if not v]
-        dev_notes = [n for n in s["notes"] if n.startswith("deviation") or n.startswith("straggler")]
-        if failed or dev_notes or not s["matches_expected"]:
-            deviations.append((s["scenario"], failed, dev_notes, s["expected"]))
-    lines += ["", "## Deviations from SPEC.md", ""]
-    if not deviations:
-        lines.append("None: every scenario matched its expected column.")
-    for sid, failed, dev_notes, expected in deviations:
-        lines.append(f"- **{sid}** (expected: {expected})")
-        for k in failed:
-            lines.append(f"  - check `{k}` is false ([summary.json]({sid}/summary.json))")
-        for n in dev_notes:
-            lines.append(f"  - {n}")
+             "named checks in each `summary.json`. The `microvm-ctl` column is the library version the "
+             "machine was generated from and run.py drove it with.", ""]
+    if first:
+        rerun = {s["scenario"] for s in first}
+        lines += ["## First pass on microvm-ctl 0.3.0", "",
+                  "The whole matrix ran once on 0.3.0. Two scenarios deviated from SPEC.md; their files are "
+                  f"kept under `<scenario>/{FIRST_PASS}/` and the deviations are quoted verbatim from those "
+                  "summaries:", ""]
+        lines += _deviations(first, f"{FIRST_PASS}/")
+        lines += ["", "First-pass rows for the scenarios that were rerun:", ""]
+        lines += _table(first, f"{FIRST_PASS}/")
+        lines += ["", "## Second pass on microvm-ctl 0.3.1", "",
+                  "0.3.1 adds `OnLeaseError` (Choice) and `TerminateFailed` between the Catch and `Reap`: "
+                  "a typed failure's cause names the VM and it is terminated at once; a timeout still "
+                  "carries no id and that VM is bounded by `MaximumDurationInSeconds`. The stacks were "
+                  "regenerated and redeployed and these scenarios were rerun; the other rows below are the "
+                  "first-pass results, which 0.3.1 does not change:", ""]
+        lines += _table([s for s in rows if s["scenario"] in rerun])
+        lines += ["", "## All scenarios (current files)", ""]
+    lines += _table(rows)
+    lines += ["", "## Deviations from SPEC.md (current files)", ""]
+    lines += _deviations(rows)
     lines += ["", "## Notes", ""]
     for s in rows:
         other = [n for n in s["notes"] if not (n.startswith("deviation") or n.startswith("straggler"))]
         for n in other:
             lines.append(f"- {s['scenario']}: {n}")
     if rows:
-        mc = rows[0]["microvm_ctl"]
-        lines += ["", f"microvm-ctl {mc['version']} from `{mc['path']}`; report generated {now_iso()} by "
-                  "`python3 stepfunctions/run.py --report`."]
+        versions = sorted({s["microvm_ctl"]["version"] for s in rows + first})
+        lines += ["", f"microvm-ctl {', '.join(versions)} from `{rows[0]['microvm_ctl']['path']}`; report "
+                  f"generated {now_iso()} by `python3 stepfunctions/run.py --report`."]
     RESULTS.mkdir(parents=True, exist_ok=True)
     out = RESULTS / "README.md"
     out.write_text("\n".join(lines) + "\n")

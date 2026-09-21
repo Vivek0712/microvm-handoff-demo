@@ -1,10 +1,10 @@
 {
-  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:1/durable-execution/mvm-demo-durable-fanout-refused-20260921-010734/ab07bcc2-f1f7-3147-ae37-17fc06ed9c74",
-  "execution_name": "mvm-demo-durable-fanout-refused-20260921-010734",
+  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:3/durable-execution/mvm-demo-durable-fanout-refused-20260921-013901/9be8d937-3a96-363d-b697-2bb80ab0c8be",
+  "execution_name": "mvm-demo-durable-fanout-refused-20260921-013901",
   "status": "SUCCEEDED",
-  "start": "2026-09-21T01:07:34.554Z",
-  "stop": "2026-09-21T01:07:34.774Z",
-  "seconds_by_service": 0.22,
+  "start": "2026-09-21T01:39:01.450Z",
+  "stop": "2026-09-21T01:39:01.674Z",
+  "seconds_by_service": 0.224,
   "result": {
     "status": "rejected",
     "reason": "worst case 7200 VM-seconds exceeds policy max_vm_seconds 3000",

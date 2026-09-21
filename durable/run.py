@@ -51,6 +51,9 @@ TERMINAL = {"SUCCEEDED", "FAILED", "TIMED_OUT", "STOPPED"}
 LIVE_STATES = {"PENDING", "RUNNING", "SUSPENDING", "SUSPENDED", "RESUMING"}
 MAX_VMS_ON_ACCOUNT = 8          # 8 GB quota / 512 MiB
 VM_RE = re.compile(r"microvm-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
+VERSION_RE = re.compile(r"microvm-ctl (\d+\.\d+\.\d+) handling")
+FIRST_PASS = "first-pass-0.3.0"
+CALLBACK_LINES = r"CallbackStarted|CallbackTimedOut|ExecutionSucceeded"
 
 SLEEP3 = ["sleep 3"] * 4
 SHARD = [{"steps": [f"echo shard {i}", "sleep 1"]} for i in range(40)]
@@ -80,7 +83,7 @@ SCENARIOS: dict[str, dict] = {
     "hang": {
         "description": "budget timeout while the VM keeps heartbeating",
         "event": {"mode": "single", "task": {"steps": ["echo hang"], "hang_s": 400}, "budget_s": 60},
-        "vms": 1, "approver": None,
+        "vms": 1, "approver": None, "sample_status": True,
         "expected": "CallbackTimeoutError -> terminate -> status: timeout",
     },
     "fanout-4": {
@@ -146,6 +149,19 @@ def parse_json(raw):
     return raw
 
 
+def _typed(raw):
+    """Decode the SDK's typed encoding ({"t": "m", "v": {...}}) or a JSON string into plain values."""
+    val = parse_json(raw)
+    if isinstance(val, dict) and set(val) == {"t", "v"}:
+        t, v = val["t"], val["v"]
+        if t == "m" and isinstance(v, dict):
+            return {k: _typed(x) for k, x in v.items()}
+        if t in ("l", "a") and isinstance(v, list):
+            return [_typed(x) for x in v]
+        return v
+    return val
+
+
 def write(path: Path, data) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     if isinstance(data, str):
@@ -189,15 +205,40 @@ class Plane:
             raise RuntimeError(f"no durable execution ARN for {name}")
         return arn
 
-    def wait(self, arn: str, timeout_s: float = 1500) -> dict:
-        deadline = time.time() + timeout_s
+    def wait(self, arn: str, timeout_s: float = 1500, samples: list | None = None) -> dict:
+        """Poll until the execution ends. With `samples`, every few seconds also read each launched
+        VM's GET /status (the hook runtime's snapshot: phase and the heartbeats it has sent) and
+        append {"t", "vm", "phase", "elapsed_s", "heartbeats", "lease_done"} to it."""
+        deadline, clients = time.time() + timeout_s, {}
         while True:
             d = self.lam.get_durable_execution(DurableExecutionArn=arn, IncludeExecutionData=True)
             if d["Status"] in TERMINAL:
                 return d
             if time.time() > deadline:
                 raise TimeoutError(f"{arn} still {d['Status']} after {timeout_s}s")
+            if samples is not None:
+                self._sample_status(arn, clients, samples)
             time.sleep(3)
+
+    def _sample_status(self, arn: str, clients: dict, samples: list) -> None:
+        from microvm import EndpointClient
+
+        for ev in self.history(arn):  # the launch steps' results name the VM and its endpoint
+            if ev.get("EventType") != "StepSucceeded" or not str(ev.get("Name", "")).endswith("-launch"):
+                continue
+            vm = _typed(ev["StepSucceededDetails"].get("Result", {}).get("Payload"))
+            if isinstance(vm, dict) and vm.get("microvm_id") and vm["microvm_id"] not in clients:
+                clients[vm["microvm_id"]] = EndpointClient(self.fm.cfg, vm["microvm_id"],
+                                                           endpoint=vm.get("endpoint"))
+        for vm, client in clients.items():
+            try:
+                snap = client.status(timeout=5, max_attempts=1)
+            except Exception:  # not serving yet, terminated, or the token still minting
+                continue
+            lease = snap.get("lease") or {}
+            samples.append({"t": iso(time.time()), "vm": vm, "phase": snap.get("phase"),
+                            "elapsed_s": snap.get("elapsed_s"), "heartbeats": lease.get("heartbeats"),
+                            "lease_done": lease.get("done")})
 
     def history(self, arn: str) -> list[dict]:
         events, marker = [], None
@@ -475,6 +516,12 @@ def check(scenario: str, status: str, out, events: list[dict], vm_states: dict, 
         budgets = [ev["CallbackStartedDetails"].get("Timeout") for ev in events
                    if ev.get("EventType") == "CallbackStarted" and ev.get("CallbackStartedDetails")]
         need(budgets and all(b == 60 for b in budgets), f"callback timeout 60 s (got {budgets})")
+        started = {ev.get("Name"): epoch(ev.get("EventTimestamp")) for ev in events
+                   if ev.get("EventType") == "CallbackStarted"}
+        waited = [round(epoch(ev.get("EventTimestamp")) - started.get(ev.get("Name"), 0), 1) for ev in events
+                  if ev.get("EventType") == "CallbackTimedOut" and ev.get("Name") in started]
+        need(waited and all(w >= 59.5 for w in waited),
+             f"each callback to time out at the 60 s budget, not the 30 s heartbeat timeout (got {waited} s)")
         need(count(events, "StepSucceeded", name_suffix="-terminate") == launches,
              "a terminate step per launch")
         need(all_terminated, f"VMs terminated (states {vm_states})")
@@ -531,11 +578,13 @@ def run_scenario(plane: Plane, sid: str, spec: dict) -> dict:
                                   session=plane.session)
         if handled:
             decision = handled[0]
-            notes.append(f"approver.py {decision['decision']}d callback {decision['callback_id'][:12]}... "
+            verb = "approved" if decision["decision"] == "approve" else "denied"
+            notes.append(f"approver.py {verb} callback {decision['callback_id'][:12]}... "
                          f"for execution {decision['execution']} ({decision['plan_summary']})")
         else:
             notes.append("approver.py saw no approval request within 300 s")
-    d = plane.wait(arn)
+    samples: list | None = [] if spec.get("sample_status") else None
+    d = plane.wait(arn, samples=samples)
     start, stop = epoch(d.get("StartTimestamp")), epoch(d.get("EndTimestamp"))
     result = parse_json(d.get("Result"))
     log(f"{sid}: {d['Status']} in {stop - start:.1f}s (service clock)")
@@ -563,6 +612,19 @@ def run_scenario(plane: Plane, sid: str, spec: dict) -> dict:
     blob = json.dumps(events, default=str) + json.dumps(result, default=str) + "\n".join(orch_lines)
     vm_ids = sorted(set(VM_RE.findall(blob)))
     runmicrovm_calls = sum(1 for line in orch_lines if "RunMicrovm call" in line)
+    versions = sorted({m.group(1) for line in orch_lines for m in [VERSION_RE.search(line)] if m})
+    microvm_ctl = versions[0] if len(versions) == 1 else (", ".join(versions) or None)
+    if samples is not None:
+        write(out_dir / "vm-status.json", samples)
+        for vm in vm_ids:
+            mine = [x for x in samples if x["vm"] == vm and x.get("heartbeats") is not None]
+            if mine:
+                first, last = mine[0], mine[-1]
+                notes.append(f"{vm}: GET /status sampled {len(mine)} times, heartbeats "
+                             f"{first['heartbeats']} -> {last['heartbeats']} between {first['t']} and "
+                             f"{last['t']}, last phase {last['phase']}")
+            else:
+                notes.append(f"{vm}: no GET /status sample answered")
     launches = count(events, "StepStarted", name_suffix="-launch")
     if runmicrovm_calls != launches:
         notes.append(f"RunMicrovm calls in the orchestrator log: {runmicrovm_calls}; "
@@ -586,6 +648,8 @@ def run_scenario(plane: Plane, sid: str, spec: dict) -> dict:
     ok, check_notes = check(sid, d["Status"], result, events, vm_states, orch_lines, runmicrovm_calls)
     summary = {
         "scenario": sid, "orchestrator": "durable", "status": d["Status"], "expected": spec["expected"],
+        "microvm_ctl": microvm_ctl,
+        "function_version": arn.split("/durable-execution/")[0].rsplit(":", 1)[-1],
         "matches_expected": ok, "start": iso(start), "stop": iso(stop),
         "seconds_by_service": round(stop - start, 3), "vm_ids": vm_ids, "runmicrovm_calls": runmicrovm_calls,
         "notes": notes + check_notes,
@@ -603,20 +667,52 @@ def run_scenario(plane: Plane, sid: str, spec: dict) -> dict:
 
 
 # ----------------------------------------------------------------- the report
+def _row(sid: str, s: dict, link: str) -> str:
+    version = s.get("microvm_ctl") or "0.3.0 [1]"
+    return (f"| [`{sid}`]({link}) | {version} | {s['status']} / `{s.get('outcome_status')}` | "
+            f"{s['seconds_by_service']:.1f} | {len(s['vm_ids'])} | {s['runmicrovm_calls']} | "
+            f"{'yes' if s['matches_expected'] else 'no'} | {s.get('history', '')} |")
+
+
+HEADER = ("| scenario | microvm-ctl | execution status / outcome | seconds (service) | VMs | "
+          "RunMicrovm calls | matches expected | what the history shows |",
+          "|---|---|---|---|---|---|---|---|")
+
+
+def _summary(path: Path) -> dict | None:
+    return json.loads(path.read_text()) if path.exists() else None
+
+
+def _quote(path: Path, pattern: str) -> list[str]:
+    """Verbatim lines of a captured file that match `pattern`, as a fenced block."""
+    if not path.exists():
+        return []
+    lines = [ln.rstrip() for ln in path.read_text().splitlines() if re.search(pattern, ln)]
+    return ["```", *lines, "```"] if lines else []
+
+
 def report() -> str:
-    rows, deviations = [], []
+    rows, deviations, first_rows = [], [], []
     for sid in SCENARIOS:
-        p = RESULTS / sid / "summary.json"
-        if not p.exists():
-            rows.append(f"| [`{sid}`]({sid}/) | not run | | | | | |")
+        s = _summary(RESULTS / sid / "summary.json")
+        if s is None:
+            rows.append(f"| [`{sid}`]({sid}/) | | not run | | | | | |")
             continue
-        s = json.loads(p.read_text())
-        rows.append(f"| [`{sid}`]({sid}/) | {s['status']} / `{s.get('outcome_status')}` | "
-                    f"{s['seconds_by_service']:.1f} | {len(s['vm_ids'])} | {s['runmicrovm_calls']} | "
-                    f"{'yes' if s['matches_expected'] else 'no'} | {s.get('history', '')} |")
+        rows.append(_row(sid, s, f"{sid}/"))
         for n in s.get("notes", []):
             if not n.startswith("parallel shard") and not n.startswith("sequential shard"):
                 deviations.append(f"- `{sid}`: {n}")
+        first = _summary(RESULTS / sid / FIRST_PASS / "summary.json")
+        if first:
+            first_rows.append(_row(sid, first, f"{sid}/{FIRST_PASS}/"))
+        for sub in (FIRST_PASS, "."):  # an attempt kept next to the final run, or in the first-pass folder
+            first_attempt = _summary(RESULTS / sid / sub / "first-attempt-summary.json")
+            if first_attempt:
+                link = f"{sid}/{sub}/".replace("/./", "/")
+                first_rows.append(_row(f"{sid} (first attempt)", first_attempt, link))
+    hang_first = RESULTS / "hang" / FIRST_PASS
+    approved_first = RESULTS / "fanout-approved" / "first-attempt-summary.json"
+    approved_first_summary = _summary(approved_first) or {}
     text = [
         "# Durable functions results", "",
         "Every row is one live execution of `mvm-demo-durable-orchestrator:live` (stack `mvm-demo-durable`, "
@@ -625,36 +721,127 @@ def report() -> str:
         "RunMicrovm calls are counted from the execution history and the orchestrator's CloudWatch log; "
         "`matches expected` is computed by `run.py` from the captured output and history against the SPEC "
         "row. Each directory holds `input.json`, `output.json`, `history.json`, `history.txt`, "
-        "`vm-logs.txt`, `orchestrator-logs.txt`, and `summary.json`.", "",
-        "| scenario | execution status / outcome | seconds (service) | VMs | RunMicrovm calls | "
-        "matches expected | what the history shows |",
-        "|---|---|---|---|---|---|---|",
-        *rows, "",
+        "`vm-logs.txt`, `orchestrator-logs.txt`, and `summary.json` (`hang` also `vm-status.json`, the "
+        "VM's own `GET /status` snapshots sampled while it hung). The microvm-ctl column is the version "
+        "the deployed function logged for that execution (`microvm-ctl X.Y.Z handling ...` in "
+        "`orchestrator-logs.txt`).", "",
+        "## Results (latest run of every scenario)", "",
+        *HEADER, *rows, "",
+        "[1] Function versions 1 and 2 (the first pass) were built from `microvm-ctl[durable]>=0.3.0` "
+        "before the orchestrator logged its library version; `microvm_ctl-0.3.0.dist-info` was in "
+        "`.aws-sam/build/Orchestrator` at deploy time.", "",
         "## Notes and deviations", "",
         "Every line below is copied from the `notes` of that scenario's `summary.json`.", "",
         *(deviations or ["- none"]), "",
-        "## Fixed during the run (first attempts kept as `first-attempt-*` files)", "",
-        "- `hang`, first attempt ([history](hang/first-attempt-history.txt), "
-        "[VM logs](hang/first-attempt-vm-logs.txt)): both callbacks ended with `CallbackTimedOut` at +30 s, "
-        "not at the 60 s budget. The library's default VM heartbeat interval is 30 s, equal to the policy's "
-        "30 s heartbeat timeout, and the first heartbeat lands after boot (~5 s) plus the interval, so the "
-        "heartbeat timeout fired first (the VM logs show no heartbeat before the callback closed). The "
-        "orchestrator now passes `heartbeat_s=10` to every lease; the final run reaches the 60 s budget.",
-        "- `fanout-approved`, first attempt ([history](fanout-approved/first-attempt-history.txt), "
-        "[summary](fanout-approved/first-attempt-summary.json)): the approval request was published, but "
-        "its `execution` field carried the execution *id* (the library's `execution_name` returns the last "
-        "ARN segment) while `approver.py` filters by the execution *name*; nothing answered and "
-        "`lease_map` returned `status: denied` after the 600 s approval timeout with nothing launched. The "
-        "orchestrator now publishes the name segment of the ARN (`execution_label`).", "",
+        f"## First pass on microvm-ctl 0.3.0 (kept under `<scenario>/{FIRST_PASS}/`)", "",
+        *(HEADER + tuple(first_rows) if first_rows else ["(no first-pass results kept)"]), "",
+        "### Deviation: `hang` lost the lease at +30 s, not at the 60 s budget", "",
+        f"First attempt, default heartbeat interval ([history](hang/{FIRST_PASS}/first-attempt-history.txt), "
+        f"[VM logs](hang/{FIRST_PASS}/first-attempt-vm-logs.txt)). Verbatim from the history:", "",
+        *_quote(hang_first / "first-attempt-history.txt", CALLBACK_LINES),
+        "",
+        "Both callbacks ended with `CallbackTimedOut` 30 s after `CallbackStarted` (`HeartbeatTimeout=30 "
+        "Timeout=60`), so the heartbeat timeout fired, not the budget: the library's default VM heartbeat "
+        "interval was 30 s, equal to the policy's heartbeat timeout, and the orchestrator's clock starts "
+        "before RunMicrovm returns, so no heartbeat could land in time (the VM logs show none). The second "
+        "0.3.0 attempt ([history](hang/" + FIRST_PASS + "/history.txt)) passed `heartbeat_s=10` from the "
+        "orchestrator as a workaround and reached the 60 s budget. microvm-ctl 0.3.1 fixes it in the "
+        "library (`LeasePolicy.heartbeat_every` clamps the interval to a third of the heartbeat timeout and "
+        "the hook runtime heartbeats on accept); the workaround was removed before the second pass.", "",
+        "### Deviation: `fanout-approved` first attempt was never answered", "",
+        "([history](fanout-approved/first-attempt-history.txt), "
+        "[summary](fanout-approved/first-attempt-summary.json), "
+        "[orchestrator log](fanout-approved/first-attempt-orchestrator-logs.txt)). Verbatim notes:", "",
+        *[f"- {n}" for n in approved_first_summary.get("notes", [])],
+        "",
+        "The approval request reached the queue, but its `execution` field carried the execution *id* "
+        "(the library's `execution_name` returns the last ARN segment) while `approver.py` filters by the "
+        "execution *name*; `lease_map` returned `status: denied` after its 600 s approval timeout with "
+        "nothing launched. The orchestrator now publishes the name segment of the ARN "
+        "(`execution_label` in `app.py`); the rows above are the rerun.", "",
+        "## Second pass on microvm-ctl 0.3.1", "",
+        "`single` and `hang` rerun after `requirements.txt` moved to `microvm-ctl[durable]>=0.3.1` and the "
+        "orchestrator stopped passing a heartbeat interval of its own (function version 3).", "",
+        *HEADER,
+        *[_row(sid, s, f"{sid}/") for sid in ("single", "hang")
+          if (s := _summary(RESULTS / sid / "summary.json")) and s.get("microvm_ctl") == "0.3.1"],
+        "",
+        "For `hang` the expected picture is `CallbackStarted ... Timeout=60`, `CallbackTimedOut` exactly "
+        "60 s later for each attempt, a terminate step per attempt, `status: timed_out`, and the VM's own "
+        "`GET /status` counter of heartbeats rising every 10 s in between "
+        "([vm-status.json](hang/vm-status.json), summarised in the notes above). The `demo-agent` image is "
+        "still version 1.0, whose hook runtime predates 0.3.1's heartbeat-on-accept, so the counter reaches "
+        "1 about 10 s after the lease is accepted and then rises by one every ~10 s; the 10 s interval is "
+        "the one the 0.3.1 library wrote into the lease payload (`LeasePolicy.heartbeat_every`). Verbatim "
+        "from the second-pass history:", "",
+        *_quote(RESULTS / "hang" / "history.txt", CALLBACK_LINES + "|-terminate"),
+        "",
     ]
     return "\n".join(text)
+
+
+CHECK_NOTE_PREFIXES = ("expected ", "the library reports", "parallel shard", "sequential shard",
+                       "RunMicrovm throttling retries")
+
+
+def recheck(path: Path, plane: Plane) -> None:
+    """Re-run `check` on a scenario directory's captured files (history, output, orchestrator log, VM
+    states) and rewrite matches_expected and the check notes. An attempt kept without its
+    history.json / output.json gets them fetched from the service (the execution is retained 7 days)."""
+    d = path.parent
+    prefix = "first-attempt-" if path.name.startswith("first-attempt-") else ""
+    s = json.loads(path.read_text())
+    history_path, orch_path = d / f"{prefix}history.json", d / f"{prefix}orchestrator-logs.txt"
+    if s.get("status") == "RUN_ERROR":
+        return
+    if not history_path.exists() and s.get("execution_arn"):
+        arn = s["execution_arn"]
+        write(history_path, jsonable(plane.history(arn)))
+        ex = plane.lam.get_durable_execution(DurableExecutionArn=arn, IncludeExecutionData=True)
+        start, stop = epoch(ex.get("StartTimestamp")), epoch(ex.get("EndTimestamp"))
+        write(d / f"{prefix}output.json", {
+            "execution_arn": arn, "execution_name": ex.get("DurableExecutionName"), "status": ex["Status"],
+            "start": iso(start), "stop": iso(stop), "seconds_by_service": round(stop - start, 3),
+            "result": parse_json(ex.get("Result")),
+            "error": jsonable(ex.get("Error")) if ex.get("Error") else None,
+            "fetched_by": "run.py --recheck, after the run"})
+        log(f"fetched {history_path.relative_to(RESULTS)} and output from the service")
+    if not history_path.exists():
+        return
+    events = json.loads(history_path.read_text())
+    for ev in events:  # timestamps were dumped with default=str: "2026-09-21 01:04:53.921000+00:00"
+        ts = ev.get("EventTimestamp")
+        if isinstance(ts, str):
+            ev["EventTimestamp"] = dt.datetime.fromisoformat(ts)
+    out_path = d / f"{prefix}output.json"
+    result = json.loads(out_path.read_text())["result"] if out_path.exists() else None
+    if result is None:  # the first attempt kept no output.json: the outcome is the execution's result event
+        for ev in reversed(events):
+            if ev.get("EventType") == "ExecutionSucceeded":
+                result = _typed(ev.get("ExecutionSucceededDetails", {}).get("Result", {}).get("Payload"))
+                break
+    orch_lines = orch_path.read_text().splitlines() if orch_path.exists() else []
+    ok, check_notes = check(s["scenario"], s["status"], result, events, s.get("vm_states_after") or {},
+                            orch_lines, s.get("runmicrovm_calls", 0))
+    kept = [n for n in s.get("notes", []) if not n.startswith(CHECK_NOTE_PREFIXES)]
+    s["matches_expected"], s["notes"] = ok, kept + check_notes
+    write(path, s)
+    log(f"recheck {path.relative_to(RESULTS)}: matches_expected={ok}")
 
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     ap.add_argument("--only", help="comma-separated scenario ids (default: all, in SPEC order)")
     ap.add_argument("--report", action="store_true", help="only rebuild results/durable/README.md")
+    ap.add_argument("--recheck", action="store_true",
+                    help="recompute matches_expected in every summary.json from captured files, then report")
     args = ap.parse_args(argv)
+    if args.recheck:
+        plane = Plane()
+        for pattern in ("**/summary.json", "**/first-attempt-summary.json"):
+            for path in sorted(RESULTS.glob(pattern)):
+                recheck(path, plane)
+        args.report = True
     if args.report:
         write(RESULTS / "README.md", report())
         print(RESULTS / "README.md")

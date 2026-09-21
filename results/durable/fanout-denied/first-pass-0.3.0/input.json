@@ -1,0 +1,77 @@
+{
+  "mode": "fanout",
+  "shards": [
+    {
+      "steps": [
+        "echo shard 0",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 1",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 2",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 3",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 4",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 5",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 6",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 7",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 8",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 9",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 10",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 11",
+        "sleep 1"
+      ]
+    }
+  ]
+}

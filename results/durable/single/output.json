@@ -1,10 +1,10 @@
 {
-  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:2/durable-execution/mvm-demo-durable-single-20260921-012354/aba681c1-ed24-3f98-afdd-6bc1e62c9e82",
-  "execution_name": "mvm-demo-durable-single-20260921-012354",
+  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:3/durable-execution/mvm-demo-durable-single-20260921-013442/a8e17cc6-5414-3352-8987-dd3840a1b035",
+  "execution_name": "mvm-demo-durable-single-20260921-013442",
   "status": "SUCCEEDED",
-  "start": "2026-09-21T01:23:54.783Z",
-  "stop": "2026-09-21T01:24:01.871Z",
-  "seconds_by_service": 7.088,
+  "start": "2026-09-21T01:34:43.112Z",
+  "stop": "2026-09-21T01:34:50.313Z",
+  "seconds_by_service": 7.201,
   "result": {
     "status": "done",
     "result": {
@@ -13,7 +13,7 @@
         {
           "cmd": "uname -m",
           "exit_code": 0,
-          "duration_s": 0.066,
+          "duration_s": 0.095,
           "output_tail": "aarch64\n"
         },
         {
@@ -25,18 +25,18 @@
         {
           "cmd": "sleep 2",
           "exit_code": 0,
-          "duration_s": 2.004,
+          "duration_s": 2.007,
           "output_tail": ""
         }
       ],
       "parallel": false,
-      "microvm_id": "microvm-83ecd6ce-ea26-397d-b92e-5f6d35e7c592",
+      "microvm_id": "microvm-a9b37a7f-d78d-3d99-b41d-3446d7c4757b",
       "heartbeats": 0
     },
     "retryable": false,
     "vm": {
-      "microvm_id": "microvm-83ecd6ce-ea26-397d-b92e-5f6d35e7c592",
-      "endpoint": "ccd060c8-0509-3c9d-0f4c-dab7c404eb6d.lambda-microvm.us-east-1.on.aws"
+      "microvm_id": "microvm-a9b37a7f-d78d-3d99-b41d-3446d7c4757b",
+      "endpoint": "6cd060cc-f7a5-5d3d-5a66-82fa60895930.lambda-microvm.us-east-1.on.aws"
     },
     "attempt": 0
   },

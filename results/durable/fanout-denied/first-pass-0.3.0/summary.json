@@ -1,0 +1,31 @@
+{
+  "scenario": "fanout-denied",
+  "orchestrator": "durable",
+  "status": "SUCCEEDED",
+  "expected": "SendDurableExecutionCallbackFailure -> status: denied, nothing launched",
+  "matches_expected": true,
+  "start": "2026-09-21T01:30:52.822Z",
+  "stop": "2026-09-21T01:30:53.549Z",
+  "seconds_by_service": 0.727,
+  "vm_ids": [],
+  "runmicrovm_calls": 0,
+  "notes": [
+    "approver.py denyd callback Ab9hZXi0YXJu... for execution mvm-demo-durable-fanout-denied-20260921-013052 (12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all running in ~22 s, worst case 2160 VM-s = $0.02, needs approval (above $0.015))"
+  ],
+  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:2/durable-execution/mvm-demo-durable-fanout-denied-20260921-013052/553ee9c1-37be-3d4a-9024-a930ac1c23a1",
+  "execution_name": "mvm-demo-durable-fanout-denied-20260921-013052",
+  "outcome_status": "denied",
+  "history_events": 12,
+  "history": "plan step; approval callback failed (denied); ExecutionSucceeded with status denied",
+  "vm_states_after": {},
+  "vm_seconds": null,
+  "vm_records": {},
+  "approval": {
+    "decision": "deny",
+    "callback_id": "Ab9hZXi0YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoyL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtZmFub3V0LWRlbmllZC0yMDI2MDkyMS0wMTMwNTIvNTUzZWU5YzEtMzdiZS0zZDRhLTkwMjQtYTkzMGFjMWMyM2ExYWl4JGNlYmJlNmRjLWU0M2QtNGE1ZC1iNGZjLWI4MTVmMDg1NjMzMf8",
+    "execution": "mvm-demo-durable-fanout-denied-20260921-013052",
+    "plan_summary": "12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all running in ~22 s, worst case 2160 VM-s = $0.02, needs approval (above $0.015)",
+    "decided_at": 1789954253.42828
+  },
+  "description": "approval gate, denied"
+}

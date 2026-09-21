@@ -1,0 +1,65 @@
+[
+  {
+    "EventType": "ExecutionStarted",
+    "EventId": 1,
+    "Id": "3d091387-8cdd-3784-8ef3-d7942825610f",
+    "Name": "mvm-demo-durable-fanout-refused-20260921-012937",
+    "EventTimestamp": "2026-09-20 18:29:37.364000-07:00",
+    "ExecutionStartedDetails": {
+      "Input": {
+        "Payload": "{\"mode\": \"fanout\", \"shards\": [{\"steps\": [\"echo shard 0\", \"sleep 1\"]}, {\"steps\": [\"echo shard 1\", \"sleep 1\"]}, {\"steps\": [\"echo shard 2\", \"sleep 1\"]}, {\"steps\": [\"echo shard 3\", \"sleep 1\"]}, {\"steps\": [\"echo shard 4\", \"sleep 1\"]}, {\"steps\": [\"echo shard 5\", \"sleep 1\"]}, {\"steps\": [\"echo shard 6\", \"sleep 1\"]}, {\"steps\": [\"echo shard 7\", \"sleep 1\"]}, {\"steps\": [\"echo shard 8\", \"sleep 1\"]}, {\"steps\": [\"echo shard 9\", \"sleep 1\"]}, {\"steps\": [\"echo shard 10\", \"sleep 1\"]}, {\"steps\": [\"echo shard 11\", \"sleep 1\"]}, {\"steps\": [\"echo shard 12\", \"sleep 1\"]}, {\"steps\": [\"echo shard 13\", \"sleep 1\"]}, {\"steps\": [\"echo shard 14\", \"sleep 1\"]}, {\"steps\": [\"echo shard 15\", \"sleep 1\"]}, {\"steps\": [\"echo shard 16\", \"sleep 1\"]}, {\"steps\": [\"echo shard 17\", \"sleep 1\"]}, {\"steps\": [\"echo shard 18\", \"sleep 1\"]}, {\"steps\": [\"echo shard 19\", \"sleep 1\"]}, {\"steps\": [\"echo shard 20\", \"sleep 1\"]}, {\"steps\": [\"echo shard 21\", \"sleep 1\"]}, {\"steps\": [\"echo shard 22\", \"sleep 1\"]}, {\"steps\": [\"echo shard 23\", \"sleep 1\"]}, {\"steps\": [\"echo shard 24\", \"sleep 1\"]}, {\"steps\": [\"echo shard 25\", \"sleep 1\"]}, {\"steps\": [\"echo shard 26\", \"sleep 1\"]}, {\"steps\": [\"echo shard 27\", \"sleep 1\"]}, {\"steps\": [\"echo shard 28\", \"sleep 1\"]}, {\"steps\": [\"echo shard 29\", \"sleep 1\"]}, {\"steps\": [\"echo shard 30\", \"sleep 1\"]}, {\"steps\": [\"echo shard 31\", \"sleep 1\"]}, {\"steps\": [\"echo shard 32\", \"sleep 1\"]}, {\"steps\": [\"echo shard 33\", \"sleep 1\"]}, {\"steps\": [\"echo shard 34\", \"sleep 1\"]}, {\"steps\": [\"echo shard 35\", \"sleep 1\"]}, {\"steps\": [\"echo shard 36\", \"sleep 1\"]}, {\"steps\": [\"echo shard 37\", \"sleep 1\"]}, {\"steps\": [\"echo shard 38\", \"sleep 1\"]}, {\"steps\": [\"echo shard 39\", \"sleep 1\"]}]}",
+        "Truncated": false
+      },
+      "ExecutionTimeout": 3600
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 2,
+    "Id": "1ced8f5be2db23a6513eba4d819c73806424748a7bc6fa0d792cc1c7d1775a97",
+    "Name": "shard-plan",
+    "EventTimestamp": "2026-09-20 18:29:37.453000-07:00",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 3,
+    "Id": "1ced8f5be2db23a6513eba4d819c73806424748a7bc6fa0d792cc1c7d1775a97",
+    "Name": "shard-plan",
+    "EventTimestamp": "2026-09-20 18:29:37.453000-07:00",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"shards\":{\"t\":\"i\",\"v\":40},\"baseline_mib\":{\"t\":\"i\",\"v\":512},\"policy\":{\"t\":\"m\",\"v\":{\"budget_s\":{\"t\":\"i\",\"v\":120},\"heartbeat_timeout_s\":{\"t\":\"i\",\"v\":30},\"slack_s\":{\"t\":\"i\",\"v\":60},\"max_concurrency\":{\"t\":\"i\",\"v\":4},\"max_vm_seconds\":{\"t\":\"i\",\"v\":3000},\"approval_usd\":{\"t\":\"f\",\"v\":0.015}}},\"limit\":{\"t\":\"m\",\"v\":{\"baseline_mib\":{\"t\":\"i\",\"v\":512},\"memory_quota_gb\":{\"t\":\"f\",\"v\":8.0},\"launch_rate\":{\"t\":\"f\",\"v\":0.8},\"by_memory\":{\"t\":\"i\",\"v\":16},\"by_policy\":{\"t\":\"i\",\"v\":4},\"limit\":{\"t\":\"i\",\"v\":4},\"reason\":{\"t\":\"s\",\"v\":\"policy max_concurrency 4\"}}},\"concurrency\":{\"t\":\"i\",\"v\":4},\"waves\":{\"t\":\"i\",\"v\":10},\"launch_to_all_running_s\":{\"t\":\"f\",\"v\":72.5},\"worst_case_vm_seconds\":{\"t\":\"i\",\"v\":7200},\"worst_case_usd\":{\"t\":\"f\",\"v\":0.06305},\"needs_approval\":{\"t\":\"b\",\"v\":true},\"rejected\":{\"t\":\"s\",\"v\":\"worst case 7200 VM-seconds exceeds policy max_vm_seconds 3000\"},\"summary\":{\"t\":\"s\",\"v\":\"40 shards on 0.5 GB rejected: worst case 7200 VM-seconds exceeds policy max_vm_seconds 3000\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "InvocationCompleted",
+    "EventId": 4,
+    "EventTimestamp": "2026-09-20 18:29:37.588000-07:00",
+    "InvocationCompletedDetails": {
+      "StartTimestamp": "2026-09-20 18:29:37.405000-07:00",
+      "EndTimestamp": "2026-09-20 18:29:37.573000-07:00",
+      "RequestId": "a7df7583-f437-443c-96b3-2655f4ce80d5"
+    }
+  },
+  {
+    "EventType": "ExecutionSucceeded",
+    "EventId": 5,
+    "Id": "3d091387-8cdd-3784-8ef3-d7942825610f",
+    "Name": "mvm-demo-durable-fanout-refused-20260921-012937",
+    "EventTimestamp": "2026-09-20 18:29:37.588000-07:00",
+    "ExecutionSucceededDetails": {
+      "Result": {
+        "Payload": "{\"status\": \"rejected\", \"reason\": \"worst case 7200 VM-seconds exceeds policy max_vm_seconds 3000\", \"plan\": {\"shards\": 40, \"baseline_mib\": 512, \"policy\": {\"budget_s\": 120, \"heartbeat_timeout_s\": 30, \"slack_s\": 60, \"max_concurrency\": 4, \"max_vm_seconds\": 3000, \"approval_usd\": 0.015}, \"limit\": {\"baseline_mib\": 512, \"memory_quota_gb\": 8.0, \"launch_rate\": 0.8, \"by_memory\": 16, \"by_policy\": 4, \"limit\": 4, \"reason\": \"policy max_concurrency 4\"}, \"concurrency\": 4, \"waves\": 10, \"launch_to_all_running_s\": 72.5, \"worst_case_vm_seconds\": 7200, \"worst_case_usd\": 0.06305, \"needs_approval\": true, \"rejected\": \"worst case 7200 VM-seconds exceeds policy max_vm_seconds 3000\", \"summary\": \"40 shards on 0.5 GB rejected: worst case 7200 VM-seconds exceeds policy max_vm_seconds 3000\"}}",
+        "Truncated": false
+      }
+    }
+  }
+]

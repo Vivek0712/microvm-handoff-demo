@@ -1,0 +1,15 @@
+===== microvm-295ee838-8d45-30a9-ab55-047354467276  (/aws/lambda-microvms/demo-agent / 2026/09/21[1.0]microvm-295ee838-8d45-30a9-ab55-047354467276) =====
+2026-09-21T01:26:46.027Z {"t": "2026-09-21T01:26:46Z", "level": "info", "msg": "lease accepted", "phase": "init", "kind": "durable", "lease_id": "cea66166-67fd-303d-a4c0-a549a0d8d419", "microvm_id": "microvm-295ee838-8d45-30a9-ab55-047354467276"}
+2026-09-21T01:26:46.033Z {"t": "2026-09-21T01:26:46Z", "level": "info", "msg": "phase: step 1/1", "phase": "step 1/1", "microvm_id": "microvm-295ee838-8d45-30a9-ab55-047354467276"}
+2026-09-21T01:26:46.033Z {"t": "2026-09-21T01:26:46Z", "level": "info", "msg": "$ echo hang", "phase": "step 1/1", "microvm_id": "microvm-295ee838-8d45-30a9-ab55-047354467276"}
+2026-09-21T01:26:46.039Z {"t": "2026-09-21T01:26:46Z", "level": "info", "msg": "hang", "phase": "step 1/1", "step": 1, "exit_code": 0, "duration_s": 0.008, "microvm_id": "microvm-295ee838-8d45-30a9-ab55-047354467276"}
+2026-09-21T01:26:46.039Z {"t": "2026-09-21T01:26:46Z", "level": "info", "msg": "phase: hang", "phase": "hang", "microvm_id": "microvm-295ee838-8d45-30a9-ab55-047354467276"}
+2026-09-21T01:27:44.524Z {"t": "2026-09-21T01:27:44Z", "level": "warning", "msg": "lease failure not delivered: An error occurred (CallbackTimeoutException) when calling the SendDurableExecutionCallbackFailure operation: The callback is either timed out or already completed", "phase": "hang", "microvm_id": "microvm-295ee838-8d45-30a9-ab55-047354467276"}
+
+===== microvm-2db26887-9c92-3ae6-8ecc-187678d8e6ff  (/aws/lambda-microvms/demo-agent / 2026/09/21[1.0]microvm-2db26887-9c92-3ae6-8ecc-187678d8e6ff) =====
+2026-09-21T01:25:45.904Z {"t": "2026-09-21T01:25:45Z", "level": "info", "msg": "lease accepted", "phase": "init", "kind": "durable", "lease_id": "cea66166-67fd-303d-a4c0-a549a0d8d419", "microvm_id": "microvm-2db26887-9c92-3ae6-8ecc-187678d8e6ff"}
+2026-09-21T01:25:45.911Z {"t": "2026-09-21T01:25:45Z", "level": "info", "msg": "phase: step 1/1", "phase": "step 1/1", "microvm_id": "microvm-2db26887-9c92-3ae6-8ecc-187678d8e6ff"}
+2026-09-21T01:25:45.911Z {"t": "2026-09-21T01:25:45Z", "level": "info", "msg": "$ echo hang", "phase": "step 1/1", "microvm_id": "microvm-2db26887-9c92-3ae6-8ecc-187678d8e6ff"}
+2026-09-21T01:25:45.951Z {"t": "2026-09-21T01:25:45Z", "level": "info", "msg": "hang", "phase": "step 1/1", "step": 1, "exit_code": 0, "duration_s": 0.042, "microvm_id": "microvm-2db26887-9c92-3ae6-8ecc-187678d8e6ff"}
+2026-09-21T01:25:45.951Z {"t": "2026-09-21T01:25:45Z", "level": "info", "msg": "phase: hang", "phase": "hang", "microvm_id": "microvm-2db26887-9c92-3ae6-8ecc-187678d8e6ff"}
+2026-09-21T01:26:44.312Z {"t": "2026-09-21T01:26:44Z", "level": "warning", "msg": "lease failure not delivered: An error occurred (CallbackTimeoutException) when calling the SendDurableExecutionCallbackFailure operation: The callback is either timed out or already completed", "phase": "hang", "microvm_id": "microvm-2db26887-9c92-3ae6-8ecc-187678d8e6ff"}

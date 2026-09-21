@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Build and deploy the mvm-demo-durable stack. Nothing local goes into the function: the
-# requirements pin microvm-ctl[durable]>=0.3.0 from PyPI, built with Python 3.13 (SAM CLI 1.166).
+# requirements pin microvm-ctl[durable]>=0.3.1 from PyPI, built with Python 3.13 (SAM CLI 1.166).
 set -euo pipefail
 cd "$(dirname "$0")"
 

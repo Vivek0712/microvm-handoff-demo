@@ -1,0 +1,5 @@
+{
+  "execution_arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-map-lease:playground-fanout-4-20260920-184240",
+  "status": "SUCCEEDED",
+  "seconds": 47.362
+}

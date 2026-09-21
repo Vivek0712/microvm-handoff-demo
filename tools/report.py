@@ -61,7 +61,8 @@ def cli_section() -> str:
         return "## CLI\n\nnot run"
     with open(path) as f:
         s = json.load(f)
-    files = ", ".join(f"[{x}](cli/{x})" for x in s.get("files", []) if not x.startswith("."))
+    present = sorted(x for x in os.listdir(os.path.join(RESULTS, "cli")) if not x.startswith("."))
+    files = ", ".join(f"[{x}](cli/{x})" for x in present)
     return ("## CLI, no orchestrator\n\n"
             f"`mvm lease run demo-agent --kind none --wait` launched `{s.get('vm_id')}`; `mvm watch` followed it for "
             f"{s.get('watch_seconds')} s; the whole scenario took {s.get('wall_seconds')} s of wall time.\n\n"

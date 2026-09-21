@@ -4,16 +4,16 @@
   "status": "SUCCEEDED",
   "expected": "SUCCEEDED, `passed: true`, 3 steps, VM terminated",
   "matches_expected": true,
-  "start": "2026-09-21T01:15:08.018+00:00",
-  "stop": "2026-09-21T01:15:12.184+00:00",
-  "seconds_by_service": 4.166,
+  "start": "2026-09-21T01:31:46.511+00:00",
+  "stop": "2026-09-21T01:31:50.818+00:00",
+  "seconds_by_service": 4.307,
   "vm_ids": [
-    "microvm-ed3d6725-ab49-32f9-b76a-7b210f42146e"
+    "microvm-e7e297ce-b5f9-38e7-b929-1e632897d825"
   ],
   "runmicrovm_calls": 1,
   "notes": [],
   "microvm_ctl": {
-    "version": "0.3.0",
+    "version": "0.3.1",
     "path": "/Users/vivekrajaps/Library/Python/3.9/lib/python/site-packages/microvm/__init__.py"
   },
   "checks": {
@@ -23,7 +23,7 @@
     "vm_terminated_by_machine": true,
     "lease_terminate_done": true
   },
-  "execution_arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease:single-20260921-011505",
+  "execution_arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease:single-20260921-013142",
   "state_machine_arn": "arn:aws:states:us-east-1:643603452951:stateMachine:mvm-demo-sfn-lease",
   "error": null,
   "states_entered": [
@@ -35,32 +35,33 @@
     {
       "state": "Lease",
       "index": null,
-      "TaskScheduled": "2026-09-21T01:15:08.037+00:00",
+      "TaskScheduled": "2026-09-21T01:31:46.532+00:00",
       "last": "TaskSucceeded",
-      "TaskSubmitted": "2026-09-21T01:15:08.293+00:00",
-      "TaskSucceeded": "2026-09-21T01:15:11.944+00:00"
+      "TaskSubmitted": "2026-09-21T01:31:46.837+00:00",
+      "TaskSucceeded": "2026-09-21T01:31:50.572+00:00"
     }
   ],
   "peak_in_flight": 1,
   "throttling_retries": 0,
   "terminated_by_machine": [
-    "Terminate:microvm-ed3d6725-ab49-32f9-b76a-7b210f42146e"
+    "Terminate:microvm-e7e297ce-b5f9-38e7-b929-1e632897d825"
   ],
-  "in_vm_wall_s": 2.074,
+  "in_vm_wall_s": 2.121,
   "vm_states": {
-    "microvm-ed3d6725-ab49-32f9-b76a-7b210f42146e": {
+    "microvm-e7e297ce-b5f9-38e7-b929-1e632897d825": {
       "state": "TERMINATED",
-      "startedAt": "2026-09-21T01:15:08.236+00:00",
-      "terminatedAt": "2026-09-21T01:15:12.648+00:00",
+      "startedAt": "2026-09-21T01:31:46.767+00:00",
+      "terminatedAt": "2026-09-21T01:31:51.241+00:00",
       "imageVersion": "1.0",
-      "lifetime_s": 4.412,
+      "lifetime_s": 4.474,
       "terminated_by": "machine"
     }
   },
   "fleet_check": {
-    "at": "2026-09-21T01:15:16+00:00",
+    "at": "2026-09-21T01:31:56+00:00",
     "active_before": [],
     "terminated": [],
-    "left_alone": []
+    "left_alone": [],
+    "watched": []
   }
 }

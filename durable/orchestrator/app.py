@@ -21,6 +21,7 @@ wrapped in try/finally because the SDK suspends by raising a BaseException.
 from __future__ import annotations
 
 import dataclasses
+import importlib.metadata
 import json
 import logging
 import os
@@ -39,11 +40,10 @@ BASELINE_MIB = int(os.environ.get("BASELINE_MIB", "512"))
 APPROVALS_QUEUE_URL = os.environ.get("APPROVALS_QUEUE_URL", "")
 MAX_RELAUNCHES = 1
 APPROVAL_TIMEOUT_S = 600
-# The VM heartbeats every HEARTBEAT_S against the policy's 30 s heartbeat timeout. The library's
-# default is 30 s, equal to the timeout, and the first heartbeat then lands after boot (~5 s) plus
-# 30 s: the callback's heartbeat timeout fires at +30 s before the budget is ever reached.
-HEARTBEAT_S = 10
 POLICY = LeasePolicy.from_env()
+# The VM's heartbeat interval is the library's: LeasePolicy.heartbeat_every clamps it to a third of the
+# heartbeat timeout (microvm-ctl >= 0.3.1), so a 30 s timeout gets a 10 s heartbeat.
+MICROVM_CTL_VERSION = importlib.metadata.version("microvm-ctl")
 
 _fm: FleetManager | None = None
 
@@ -133,19 +133,20 @@ def approver(context: DurableContext):
 # ----------------------------------------------------------------- handler
 @durable_execution
 def handler(event: dict, context: DurableContext) -> dict:
+    log.info("microvm-ctl %s handling mode=%s", MICROVM_CTL_VERSION, event.get("mode", "single"))
     mode = event.get("mode", "single")
     if mode == "single":
         task = event.get("task")
         if not isinstance(task, dict):
             return {"status": "bad_request", "reason": "mode single needs a task object"}
         return lease_with_relaunch(context, FM, IMAGE, task, max_relaunches=MAX_RELAUNCHES, label="lease",
-                                   policy=policy_for(event), version=IMAGE_VERSION, heartbeat_s=HEARTBEAT_S)
+                                   policy=policy_for(event), version=IMAGE_VERSION)
     if mode == "fanout":
         shards = event.get("shards")
         if not isinstance(shards, list) or not shards or not all(isinstance(s, dict) for s in shards):
             return {"status": "bad_request", "reason": "mode fanout needs a non-empty list of task objects"}
         return lease_map(context, FM, IMAGE, shards, policy=policy_for(event), label="shard",
                          baseline_mib=BASELINE_MIB, max_concurrency=POLICY.max_concurrency,
-                         max_relaunches=MAX_RELAUNCHES, approve=approver(context), heartbeat_s=HEARTBEAT_S,
+                         max_relaunches=MAX_RELAUNCHES, approve=approver(context),
                          approval_timeout_s=APPROVAL_TIMEOUT_S, version=IMAGE_VERSION)
     return {"status": "bad_request", "reason": f"unknown mode {mode!r}"}

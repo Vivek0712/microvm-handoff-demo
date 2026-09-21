@@ -1,31 +1,31 @@
 {
-  "microvm_id": "microvm-ed3d6725-ab49-32f9-b76a-7b210f42146e",
-  "lease_id": "single-20260921-011505",
-  "elapsed_s": 2.381,
+  "microvm_id": "microvm-e7e297ce-b5f9-38e7-b929-1e632897d825",
+  "lease_id": "single-20260921-013142",
+  "elapsed_s": 2.521,
   "result": {
     "passed": true,
     "steps": [
       {
         "cmd": "uname -m",
         "exit_code": 0,
-        "duration_s": 0.05,
+        "duration_s": 0.067,
         "output_tail": "aarch64\n"
       },
       {
         "cmd": "python3 -c 'print(2+2)'",
         "exit_code": 0,
-        "duration_s": 0.014,
+        "duration_s": 0.044,
         "output_tail": "4\n"
       },
       {
         "cmd": "sleep 2",
         "exit_code": 0,
-        "duration_s": 2.004,
+        "duration_s": 2.005,
         "output_tail": ""
       }
     ],
     "parallel": false,
-    "microvm_id": "microvm-ed3d6725-ab49-32f9-b76a-7b210f42146e",
+    "microvm_id": "microvm-e7e297ce-b5f9-38e7-b929-1e632897d825",
     "heartbeats": 0
   }
 }

@@ -1,0 +1,25 @@
+{
+  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:1/durable-execution/mvm-demo-durable-hang-20260921-010453/0d3e2c71-671a-3e31-a8d0-593d013f892f",
+  "execution_name": "mvm-demo-durable-hang-20260921-010453",
+  "status": "SUCCEEDED",
+  "start": "2026-09-21T01:04:53.820Z",
+  "stop": "2026-09-21T01:05:54.462Z",
+  "seconds_by_service": 60.642,
+  "result": {
+    "status": "timed_out",
+    "retryable": true,
+    "vm": {
+      "microvm_id": "microvm-3c0f910e-2a29-3825-8a8c-a7c329d77746",
+      "endpoint": "0cd060bf-867b-6a1e-28af-f6469b9cd011.lambda-microvm.us-east-1.on.aws"
+    },
+    "error": {
+      "error_type": "CallbackTimeout",
+      "message": "Callback timed out on heartbeat",
+      "retryable": true,
+      "data": {}
+    },
+    "attempt": 1
+  },
+  "error": null,
+  "fetched_by": "run.py --recheck, after the run"
+}

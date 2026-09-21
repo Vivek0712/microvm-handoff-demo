@@ -1,0 +1,24 @@
+{
+  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:2/durable-execution/mvm-demo-durable-hang-20260921-012543/cea66166-67fd-303d-a4c0-a549a0d8d419",
+  "execution_name": "mvm-demo-durable-hang-20260921-012543",
+  "status": "SUCCEEDED",
+  "start": "2026-09-21T01:25:44.011Z",
+  "stop": "2026-09-21T01:27:44.664Z",
+  "seconds_by_service": 120.653,
+  "result": {
+    "status": "timed_out",
+    "retryable": true,
+    "vm": {
+      "microvm_id": "microvm-295ee838-8d45-30a9-ab55-047354467276",
+      "endpoint": "c8d060c9-4add-eb7c-2a99-78a28fdf3321.lambda-microvm.us-east-1.on.aws"
+    },
+    "error": {
+      "error_type": "CallbackTimeout",
+      "message": "Callback timed out",
+      "retryable": true,
+      "data": {}
+    },
+    "attempt": 1
+  },
+  "error": null
+}

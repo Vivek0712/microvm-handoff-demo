@@ -1,0 +1,38 @@
+sequenceDiagram
+  autonumber
+  participant O as Orchestrator<br/>mvm-demo-sfn-lease (Step Functions)<br/>or mvm-demo-durable-orchestrator:live
+  participant P as Lambda MicroVMs plane
+  participant R as VM hook runtime<br/>(microvm_hooks, injected into the image)
+  participant H as @app.on_lease work(task, lease)<br/>agent/app.py
+
+  Note over O: sfn: runMicrovm.waitForTaskToken, TimeoutSeconds 120 = budget, HeartbeatSeconds 30<br/>durable: create_callback(timeout 120 s, heartbeat_timeout 30 s), launch in an at-most-once step
+  O->>P: RunMicrovm demo-agent (512 MiB), ClientToken from execution + state name<br/>runHookPayload = {lease: {kind: sfn or durable, token, region, heartbeat_s: 10, id}, task}<br/>MaximumDurationInSeconds 180 = budget 120 + slack 60, IdlePolicy max idle 120 s, no auto-resume
+  P->>R: POST /run with the payload
+  R-->>P: 200 at once (lease decoded, work started in a thread)
+  Note over O: waiting on the token, no compute billed
+  R->>O: first heartbeat immediately (0.3.1): SendTaskHeartbeat / SendDurableExecutionCallbackHeartbeat
+  R->>H: work(task, lease)
+  loop every heartbeat_s = 10 s (0.3.1 clamps it to heartbeat_timeout / 3, never under 5 s)
+    R->>O: heartbeat
+  end
+  loop step 1..n
+    H->>H: lease.check(), then bash -c step, job.phase / progress / log (GET /status, GET /events, CloudWatch)
+  end
+  alt success
+    H-->>R: return {passed, steps, parallel, microvm_id, heartbeats}
+    R->>O: SendTaskSuccess / SendDurableExecutionCallbackSuccess<br/>{microvm_id, lease_id, elapsed_s, result}
+    O->>P: TerminateMicrovm (id from the payload, durable: from the launch step)
+    Note over O: Done, output = result
+  else typed failure: LeaseError (StepFailed, Injected retryable) or Unexpected
+    H-->>R: raise LeaseError
+    R->>O: SendTaskFailure / SendDurableExecutionCallbackFailure<br/>cause = {microvm_id, lease_id, elapsed_s, error: {error_type, message, retryable, data}}
+    O->>P: sfn: OnLeaseError sees microvm_id in the cause, TerminateFailed (0.3.1) at once, then Reap, TerminateStale, Failed
+    Note over O,P: durable: terminate, status failed, retryable true means lease_with_relaunch tries once more
+  else budget timeout: the VM keeps heartbeating past 120 s (hang scenario)
+    Note over O,P: sfn: States.Timeout, the error carries no microvm_id, OnLeaseError goes to Reap (nothing stale yet), Failed<br/>the VM runs until MaximumDurationInSeconds (budget + slack: 180 s, or 120 s on the short machine) ends it (GetMicrovm startedAt / terminatedAt show it)
+    Note over O,P: durable: CallbackTimeoutError, the function holds the id from the launch step, terminates, status timed_out, relaunches once
+    R->>O: heartbeat answered TaskTimedOut / CallbackTimeoutException, lease.lost = true
+    H->>H: next lease.check() raises LeaseLost, the work stops
+  else heartbeat timeout: no heartbeat for 30 s (VM hung or dead, or heartbeat_s not clamped before 0.3.1)
+    Note over O,P: sfn: States.HeartbeatTimeout, no id in the error, Reap and TerminateStale, the VM is capped at budget + slack<br/>durable: heartbeat_timeout raises CallbackTimeoutError, terminate, status timed_out
+  end

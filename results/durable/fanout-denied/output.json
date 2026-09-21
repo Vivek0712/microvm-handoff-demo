@@ -1,0 +1,42 @@
+{
+  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:3/durable-execution/mvm-demo-durable-fanout-denied-20260921-013922/0a1ccc70-686d-370c-892f-02a102354f9e",
+  "execution_name": "mvm-demo-durable-fanout-denied-20260921-013922",
+  "status": "SUCCEEDED",
+  "start": "2026-09-21T01:39:22.608Z",
+  "stop": "2026-09-21T01:39:23.309Z",
+  "seconds_by_service": 0.701,
+  "result": {
+    "status": "denied",
+    "reason": "denied by approver.py: 12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all running in ~22 s, worst case 2160 VM-s = $0.02, needs approval (above $0.015)",
+    "plan": {
+      "shards": 12,
+      "baseline_mib": 512,
+      "policy": {
+        "budget_s": 120,
+        "heartbeat_timeout_s": 30,
+        "slack_s": 60,
+        "max_concurrency": 4,
+        "max_vm_seconds": 3000,
+        "approval_usd": 0.015
+      },
+      "limit": {
+        "baseline_mib": 512,
+        "memory_quota_gb": 8.0,
+        "launch_rate": 0.8,
+        "by_memory": 16,
+        "by_policy": 4,
+        "limit": 4,
+        "reason": "policy max_concurrency 4"
+      },
+      "concurrency": 4,
+      "waves": 3,
+      "launch_to_all_running_s": 21.75,
+      "worst_case_vm_seconds": 2160,
+      "worst_case_usd": 0.018915,
+      "needs_approval": true,
+      "rejected": null,
+      "summary": "12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all running in ~22 s, worst case 2160 VM-s = $0.02, needs approval (above $0.015)"
+    }
+  },
+  "error": null
+}

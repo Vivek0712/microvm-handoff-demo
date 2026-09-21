@@ -1,0 +1,13 @@
+       +s  timestamp                 event                        sub        name                                         detail
+   +0.000  2026-09-21T01:30:52.822Z  ExecutionStarted                        mvm-demo-durable-fanout-denied-20260921-013052 Input={'Payload': '{"mode": "fanout", "shards": [{"steps": ["echo shard 0", "sleep 1"]}, {"steps": ["echo shard 1", "sleep 1"]}, {"steps": ["echo shard 2", "sleep 1"]}, {"steps": ["echo shard 3", "sleep 1"]}, {"steps": ["echo shard 4", "sleep 1"]}, {"steps": ["echo shard 5", "sleep 1"]}, {"steps": ["echo shard 6", "sleep 1"]}, {"steps": ["echo shard 7", "sleep 1"]}, {"steps": ["echo shard 8", "sleep 1"]}, {"steps": ["echo shard 9", "sleep 1"]}, {"steps": ["echo shard 10", "sleep 1"]}, {"steps": ["echo shard 11", "sleep 1"]}]}', 'Truncated': False} ExecutionTimeout=3600
+   +0.114  2026-09-21T01:30:52.936Z  StepStarted                  Step       shard-plan
+   +0.114  2026-09-21T01:30:52.936Z  StepSucceeded                Step       shard-plan                                   result={"t": "m", "v": {"shards": {"t": "i", "v": 12}, "baseline_mib": {"t": "i", "v": 512}, "policy": {"t": "m", "v": {"budget_s": {"t": "i", "v": 120}, "heartbeat_ti... RetryDetails={'CurrentAttempt': 1}
+   +0.169  2026-09-21T01:30:52.991Z  ContextStarted               WaitForCallback shard-approval
+   +0.169  2026-09-21T01:30:52.991Z  CallbackStarted              Callback   shard-approval create callback id            callback_id=Ab9hZXi0YXJu... Timeout=600
+   +0.263  2026-09-21T01:30:53.085Z  StepStarted                  Step       shard-approval submitter
+   +0.263  2026-09-21T01:30:53.085Z  StepSucceeded                Step       shard-approval submitter                     result=null RetryDetails={'CurrentAttempt': 1}
+   +0.388  2026-09-21T01:30:53.210Z  InvocationCompleted                                                                  RequestId=91c71414-012e-452f-9b09-2c262272c5cd
+   +0.528  2026-09-21T01:30:53.350Z  CallbackFailed               Callback   shard-approval create callback id            error=None: None
+   +0.605  2026-09-21T01:30:53.427Z  ContextFailed                WaitForCallback shard-approval                               error=None: None
+   +0.727  2026-09-21T01:30:53.549Z  InvocationCompleted                                                                  RequestId=45c865ee-e4ab-47b9-880b-07fbb79e48cb
+   +0.727  2026-09-21T01:30:53.549Z  ExecutionSucceeded                      mvm-demo-durable-fanout-denied-20260921-013052 result={"status": "denied", "reason": "denied by approver.py: 12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all running in ~22 s, worst case 21...

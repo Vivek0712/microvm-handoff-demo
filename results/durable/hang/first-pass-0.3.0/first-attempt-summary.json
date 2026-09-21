@@ -1,0 +1,79 @@
+{
+  "scenario": "hang",
+  "orchestrator": "durable",
+  "status": "SUCCEEDED",
+  "expected": "CallbackTimeoutError -> terminate -> status: timeout",
+  "matches_expected": false,
+  "start": "2026-09-21T01:04:53.820Z",
+  "stop": "2026-09-21T01:05:54.462Z",
+  "seconds_by_service": 60.642,
+  "vm_ids": [
+    "microvm-3c0f910e-2a29-3825-8a8c-a7c329d77746",
+    "microvm-573d2ae4-d319-38ec-8e16-0314531a5381"
+  ],
+  "runmicrovm_calls": 2,
+  "notes": [
+    "the library reports the SPEC's `status: timeout` as `status: timed_out` (lease_microvm's outcome)",
+    "expected each callback to time out at the 60 s budget, not the 30 s heartbeat timeout (got [30.0, 30.0] s)"
+  ],
+  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:1/durable-execution/mvm-demo-durable-hang-20260921-010453/0d3e2c71-671a-3e31-a8d0-593d013f892f",
+  "execution_name": "mvm-demo-durable-hang-20260921-010453",
+  "outcome_status": "timed_out",
+  "history_events": 17,
+  "history": "2 launch steps; 2 lease callback timed out; 2 terminate steps; ExecutionSucceeded with status timed_out",
+  "vm_states_after": {
+    "microvm-3c0f910e-2a29-3825-8a8c-a7c329d77746": "TERMINATED",
+    "microvm-573d2ae4-d319-38ec-8e16-0314531a5381": "TERMINATED"
+  },
+  "vm_seconds": 61.2,
+  "vm_records": {
+    "microvm-3c0f910e-2a29-3825-8a8c-a7c329d77746": {
+      "microvmId": "microvm-3c0f910e-2a29-3825-8a8c-a7c329d77746",
+      "state": "TERMINATED",
+      "endpoint": "0cd060bf-867b-6a1e-28af-f6469b9cd011.lambda-microvm.us-east-1.on.aws",
+      "imageArn": "arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent",
+      "imageVersion": "1.0",
+      "executionRoleArn": "arn:aws:iam::643603452951:role/mvm-demo-durable-agent-execution-role",
+      "idlePolicy": {
+        "maxIdleDurationSeconds": 60,
+        "suspendedDurationSeconds": 60,
+        "autoResumeEnabled": false
+      },
+      "maximumDurationInSeconds": 120,
+      "startedAt": "2026-09-20 18:05:24.279000-07:00",
+      "terminatedAt": "2026-09-20 18:05:54.921000-07:00",
+      "stateReason": "Success.",
+      "ingressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS"
+      ],
+      "egressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS"
+      ]
+    },
+    "microvm-573d2ae4-d319-38ec-8e16-0314531a5381": {
+      "microvmId": "microvm-573d2ae4-d319-38ec-8e16-0314531a5381",
+      "state": "TERMINATED",
+      "endpoint": "6cd060bf-4b74-43f9-c48a-fd1c66f0a3fe.lambda-microvm.us-east-1.on.aws",
+      "imageArn": "arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent",
+      "imageVersion": "1.0",
+      "executionRoleArn": "arn:aws:iam::643603452951:role/mvm-demo-durable-agent-execution-role",
+      "idlePolicy": {
+        "maxIdleDurationSeconds": 60,
+        "suspendedDurationSeconds": 60,
+        "autoResumeEnabled": false
+      },
+      "maximumDurationInSeconds": 120,
+      "startedAt": "2026-09-20 18:04:54.095000-07:00",
+      "terminatedAt": "2026-09-20 18:05:24.670000-07:00",
+      "stateReason": "Success.",
+      "ingressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS"
+      ],
+      "egressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS"
+      ]
+    }
+  },
+  "approval": null,
+  "description": "budget timeout while the VM keeps heartbeating"
+}

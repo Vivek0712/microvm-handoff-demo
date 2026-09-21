@@ -1,0 +1,7 @@
+{
+  "error": "LeaseFailed",
+  "cause": {
+    "Error": "Injected",
+    "Cause": "{\"microvm_id\": \"microvm-8a168ff7-d287-342d-934f-b16cd996fd70\", \"lease_id\": \"retryable-fail-20260921-011342\", \"elapsed_s\": 2.297, \"error\": {\"error_type\": \"Injected\", \"message\": \"failed on purpose after 2 s\", \"retryable\": true, \"data\": {\"steps\": [{\"cmd\": \"echo before the injected failure\", \"exit_code\": 0, \"duration_s\": 0.02, \"output_tail\": \"before the injected failure\\n\"}]}}}"
+  }
+}

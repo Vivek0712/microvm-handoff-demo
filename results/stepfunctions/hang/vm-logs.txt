@@ -1,9 +1,9 @@
 log group /aws/lambda-microvms/demo-agent
-VM ids    microvm-a1f16a50-2105-3030-aafb-63c45e2176cf
-streams   2026/09/21[1.0]microvm-a1f16a50-2105-3030-aafb-63c45e2176cf
+VM ids    microvm-ce0cb515-1378-37d7-b878-90ed30ce5487
+streams   2026/09/21[1.0]microvm-ce0cb515-1378-37d7-b878-90ed30ce5487
 
-2026-09-21T01:09:35.117+00:00  2026/09/21[1.0]microvm-a1f16a50-2105-3030-aafb-63c45e2176cf  {"t": "2026-09-21T01:09:35Z", "level": "info", "msg": "lease accepted", "phase": "init", "kind": "sfn", "lease_id": "hang-20260921-010929", "microvm_id": "microvm-a1f16a50-2105-3030-aafb-63c45e2176cf"}
-2026-09-21T01:09:35.122+00:00  2026/09/21[1.0]microvm-a1f16a50-2105-3030-aafb-63c45e2176cf  {"t": "2026-09-21T01:09:35Z", "level": "info", "msg": "$ echo one step, then hang", "phase": "step 1/1", "microvm_id": "microvm-a1f16a50-2105-3030-aafb-63c45e2176cf"}
-2026-09-21T01:09:35.122+00:00  2026/09/21[1.0]microvm-a1f16a50-2105-3030-aafb-63c45e2176cf  {"t": "2026-09-21T01:09:35Z", "level": "info", "msg": "phase: step 1/1", "phase": "step 1/1", "microvm_id": "microvm-a1f16a50-2105-3030-aafb-63c45e2176cf"}
-2026-09-21T01:09:35.161+00:00  2026/09/21[1.0]microvm-a1f16a50-2105-3030-aafb-63c45e2176cf  {"t": "2026-09-21T01:09:35Z", "level": "info", "msg": "one step, then hang", "phase": "step 1/1", "step": 1, "exit_code": 0, "duration_s": 0.04, "microvm_id": "microvm-a1f16a50-2105-3030-aafb-63c45e2176cf"}
-2026-09-21T01:09:35.161+00:00  2026/09/21[1.0]microvm-a1f16a50-2105-3030-aafb-63c45e2176cf  {"t": "2026-09-21T01:09:35Z", "level": "info", "msg": "phase: hang", "phase": "hang", "microvm_id": "microvm-a1f16a50-2105-3030-aafb-63c45e2176cf"}
+2026-09-21T01:32:27.083+00:00  2026/09/21[1.0]microvm-ce0cb515-1378-37d7-b878-90ed30ce5487  {"t": "2026-09-21T01:32:27Z", "level": "info", "msg": "lease accepted", "phase": "init", "kind": "sfn", "lease_id": "hang-20260921-013219", "microvm_id": "microvm-ce0cb515-1378-37d7-b878-90ed30ce5487"}
+2026-09-21T01:32:27.090+00:00  2026/09/21[1.0]microvm-ce0cb515-1378-37d7-b878-90ed30ce5487  {"t": "2026-09-21T01:32:27Z", "level": "info", "msg": "$ echo one step, then hang", "phase": "step 1/1", "microvm_id": "microvm-ce0cb515-1378-37d7-b878-90ed30ce5487"}
+2026-09-21T01:32:27.090+00:00  2026/09/21[1.0]microvm-ce0cb515-1378-37d7-b878-90ed30ce5487  {"t": "2026-09-21T01:32:27Z", "level": "info", "msg": "phase: step 1/1", "phase": "step 1/1", "microvm_id": "microvm-ce0cb515-1378-37d7-b878-90ed30ce5487"}
+2026-09-21T01:32:27.128+00:00  2026/09/21[1.0]microvm-ce0cb515-1378-37d7-b878-90ed30ce5487  {"t": "2026-09-21T01:32:27Z", "level": "info", "msg": "one step, then hang", "phase": "step 1/1", "step": 1, "exit_code": 0, "duration_s": 0.04, "microvm_id": "microvm-ce0cb515-1378-37d7-b878-90ed30ce5487"}
+2026-09-21T01:32:27.128+00:00  2026/09/21[1.0]microvm-ce0cb515-1378-37d7-b878-90ed30ce5487  {"t": "2026-09-21T01:32:27Z", "level": "info", "msg": "phase: hang", "phase": "hang", "microvm_id": "microvm-ce0cb515-1378-37d7-b878-90ed30ce5487"}

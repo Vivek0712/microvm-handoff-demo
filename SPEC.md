@@ -71,8 +71,7 @@ filtered to that VM id, the orchestrator's CloudWatch log lines for that executi
 `benchmarks/bench.py` runs `single` 5 times per orchestrator and `fanout-4` and `fanout-8`
 twice each, timing only from the services' own timestamps (Step Functions
 `describe_execution` startDate/stopDate; durable `get_durable_execution` start/stop; VM
-`GetMicrovm` startedAt/terminatedAt for VM-seconds and cost at $0.0000350 per GiB-s ... use
-`microvm.lease.VM_USD_PER_GB_S`). Output `benchmarks/results/bench.json`, `bench.svg`, and
+`GetMicrovm` startedAt/terminatedAt for VM-seconds and cost at `microvm.lease.VM_USD_PER_GB_S` per GiB-s). Output `benchmarks/results/bench.json`, `bench.svg`, and
 `bench.png` (render SVG to PNG with headless Chrome:
 `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --screenshot=... --window-size=...`).
 Report p50 and max, VM-s, and USD per run. Never time from a poll loop.
@@ -93,7 +92,7 @@ RESULTS.md and ship the other screenshots; do not fabricate one.
 
 ## Rules
 
-- Install nothing local into the deployed functions: `requirements.txt` pins `microvm-ctl[durable]>=0.3.0`
+- Install nothing local into the deployed functions: `requirements.txt` pins `microvm-ctl[durable]>=0.3.1`
   and `sam build` uses Python 3.13 from `/private/tmp/claude-501/-Users-vivekrajaps-microvm-ctl/f2158993-27f3-4ba8-a3d9-31b91885a0a7/scratchpad/dvenv/bin` on PATH with `PIP_NO_CACHE_DIR=1`.
 - Generate ASL with `mvm lease asl` / `microvm.integrations.stepfunctions`; do not hand-write states.
 - Orchestrator roles need `lambda:RunMicrovm`, `lambda:GetMicrovm`, `lambda:TerminateMicrovm`,

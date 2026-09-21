@@ -1,0 +1,221 @@
+[
+  {
+    "EventType": "ExecutionStarted",
+    "EventId": 1,
+    "Id": "0d3e2c71-671a-3e31-a8d0-593d013f892f",
+    "Name": "mvm-demo-durable-hang-20260921-010453",
+    "EventTimestamp": "2026-09-20 18:04:53.820000-07:00",
+    "ExecutionStartedDetails": {
+      "Input": {
+        "Payload": "{\"mode\": \"single\", \"task\": {\"steps\": [\"echo hang\"], \"hang_s\": 400}, \"budget_s\": 60}",
+        "Truncated": false
+      },
+      "ExecutionTimeout": 3600
+    }
+  },
+  {
+    "EventType": "CallbackStarted",
+    "SubType": "Callback",
+    "EventId": 2,
+    "Id": "1ced8f5be2db23a6513eba4d819c73806424748a7bc6fa0d792cc1c7d1775a97",
+    "Name": "lease-0-callback",
+    "EventTimestamp": "2026-09-20 18:04:53.921000-07:00",
+    "CallbackStartedDetails": {
+      "CallbackId": "Ab9hZXirYXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoxL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtaGFuZy0yMDI2MDkyMS0wMTA0NTMvMGQzZTJjNzEtNjcxYS0zZTMxLWE4ZDAtNTkzZDAxM2Y4OTJmYWl4JDhiY2EzNGRkLWVhYTctNGE0NC04OTAwLWEwYmI5YjM3ZWExYv8",
+      "HeartbeatTimeout": 30,
+      "Timeout": 60
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 3,
+    "Id": "c5faca15ac2f93578b39ef4b6bbb871bdedce4ddd584fd31f0bb66fade3947e6",
+    "Name": "lease-0-launch",
+    "EventTimestamp": "2026-09-20 18:04:53.956000-07:00",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 4,
+    "Id": "c5faca15ac2f93578b39ef4b6bbb871bdedce4ddd584fd31f0bb66fade3947e6",
+    "Name": "lease-0-launch",
+    "EventTimestamp": "2026-09-20 18:04:54.168000-07:00",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-573d2ae4-d319-38ec-8e16-0314531a5381\"},\"endpoint\":{\"t\":\"s\",\"v\":\"6cd060bf-4b74-43f9-c48a-fd1c66f0a3fe.lambda-microvm.us-east-1.on.aws\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "InvocationCompleted",
+    "EventId": 5,
+    "EventTimestamp": "2026-09-20 18:04:54.292000-07:00",
+    "InvocationCompletedDetails": {
+      "StartTimestamp": "2026-09-20 18:04:53.867000-07:00",
+      "EndTimestamp": "2026-09-20 18:04:54.288000-07:00",
+      "RequestId": "bca1b03c-2ec9-4c5c-9b46-e6194133ece7"
+    }
+  },
+  {
+    "EventType": "CallbackTimedOut",
+    "SubType": "Callback",
+    "EventId": 6,
+    "Id": "1ced8f5be2db23a6513eba4d819c73806424748a7bc6fa0d792cc1c7d1775a97",
+    "Name": "lease-0-callback",
+    "EventTimestamp": "2026-09-20 18:05:23.921000-07:00",
+    "CallbackTimedOutDetails": {
+      "Error": {
+        "Payload": {
+          "ErrorType": "Callback.Heartbeat"
+        },
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 7,
+    "Id": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "Name": "lease-0-terminate",
+    "EventTimestamp": "2026-09-20 18:05:24.093000-07:00",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 8,
+    "Id": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "Name": "lease-0-terminate",
+    "EventTimestamp": "2026-09-20 18:05:24.093000-07:00",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"terminated\":{\"t\":\"s\",\"v\":\"microvm-573d2ae4-d319-38ec-8e16-0314531a5381\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "CallbackStarted",
+    "SubType": "Callback",
+    "EventId": 9,
+    "Id": "e8e70dc170e14333627b32c20ac6051fb9b6bd369c036afbaca2d9cd7ac3de65",
+    "Name": "lease-1-callback",
+    "EventTimestamp": "2026-09-20 18:05:24.151000-07:00",
+    "CallbackStartedDetails": {
+      "CallbackId": "Ab9hZXirYXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoxL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtaGFuZy0yMDI2MDkyMS0wMTA0NTMvMGQzZTJjNzEtNjcxYS0zZTMxLWE4ZDAtNTkzZDAxM2Y4OTJmYWl4JDg5NThmODI5LTM3OWQtNDcwNy04ZTI2LTVjYjRjNDYwMjEyNP8",
+      "HeartbeatTimeout": 30,
+      "Timeout": 60
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 10,
+    "Id": "73776e3e4cd3684316d26ec93cc6c438497ace5b08e359698667af6dbded88b6",
+    "Name": "lease-1-launch",
+    "EventTimestamp": "2026-09-20 18:05:24.180000-07:00",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 11,
+    "Id": "73776e3e4cd3684316d26ec93cc6c438497ace5b08e359698667af6dbded88b6",
+    "Name": "lease-1-launch",
+    "EventTimestamp": "2026-09-20 18:05:24.371000-07:00",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-3c0f910e-2a29-3825-8a8c-a7c329d77746\"},\"endpoint\":{\"t\":\"s\",\"v\":\"0cd060bf-867b-6a1e-28af-f6469b9cd011.lambda-microvm.us-east-1.on.aws\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "InvocationCompleted",
+    "EventId": 12,
+    "EventTimestamp": "2026-09-20 18:05:24.495000-07:00",
+    "InvocationCompletedDetails": {
+      "StartTimestamp": "2026-09-20 18:05:23.965000-07:00",
+      "EndTimestamp": "2026-09-20 18:05:24.491000-07:00",
+      "RequestId": "1979888e-292e-4ca2-963f-d1035c66b040"
+    }
+  },
+  {
+    "EventType": "CallbackTimedOut",
+    "SubType": "Callback",
+    "EventId": 13,
+    "Id": "e8e70dc170e14333627b32c20ac6051fb9b6bd369c036afbaca2d9cd7ac3de65",
+    "Name": "lease-1-callback",
+    "EventTimestamp": "2026-09-20 18:05:54.151000-07:00",
+    "CallbackTimedOutDetails": {
+      "Error": {
+        "Payload": {
+          "ErrorType": "Callback.Heartbeat"
+        },
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 14,
+    "Id": "8d322d4b02d9fcfb05bc70e486406e53c3cf9b97a252bf64752cafc5c2aaf95b",
+    "Name": "lease-1-terminate",
+    "EventTimestamp": "2026-09-20 18:05:54.338000-07:00",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 15,
+    "Id": "8d322d4b02d9fcfb05bc70e486406e53c3cf9b97a252bf64752cafc5c2aaf95b",
+    "Name": "lease-1-terminate",
+    "EventTimestamp": "2026-09-20 18:05:54.338000-07:00",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"terminated\":{\"t\":\"s\",\"v\":\"microvm-3c0f910e-2a29-3825-8a8c-a7c329d77746\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "InvocationCompleted",
+    "EventId": 16,
+    "EventTimestamp": "2026-09-20 18:05:54.462000-07:00",
+    "InvocationCompletedDetails": {
+      "StartTimestamp": "2026-09-20 18:05:54.200000-07:00",
+      "EndTimestamp": "2026-09-20 18:05:54.457000-07:00",
+      "RequestId": "14e380f9-f8c3-41bd-b43f-e35954ce19fb"
+    }
+  },
+  {
+    "EventType": "ExecutionSucceeded",
+    "EventId": 17,
+    "Id": "0d3e2c71-671a-3e31-a8d0-593d013f892f",
+    "Name": "mvm-demo-durable-hang-20260921-010453",
+    "EventTimestamp": "2026-09-20 18:05:54.462000-07:00",
+    "ExecutionSucceededDetails": {
+      "Result": {
+        "Payload": "{\"status\": \"timed_out\", \"retryable\": true, \"vm\": {\"microvm_id\": \"microvm-3c0f910e-2a29-3825-8a8c-a7c329d77746\", \"endpoint\": \"0cd060bf-867b-6a1e-28af-f6469b9cd011.lambda-microvm.us-east-1.on.aws\"}, \"error\": {\"error_type\": \"CallbackTimeout\", \"message\": \"Callback timed out on heartbeat\", \"retryable\": true, \"data\": {}}, \"attempt\": 1}",
+        "Truncated": false
+      }
+    }
+  }
+]
