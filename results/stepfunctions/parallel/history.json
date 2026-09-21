@@ -1,0 +1,199 @@
+[
+  {
+    "timestamp": "2026-09-20 18:13:13.087000-07:00",
+    "type": "ExecutionStarted",
+    "id": 1,
+    "previousEventId": 0,
+    "executionStartedEventDetails": {
+      "input": "{\"steps\": [\"sleep 3\", \"sleep 3\", \"sleep 3\", \"sleep 3\"], \"parallel\": true, \"max_parallel\": 4}",
+      "inputDetails": {
+        "truncated": false
+      },
+      "roleArn": "arn:aws:iam::643603452951:role/mvm-demo-sfn-states"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:13:13.111000-07:00",
+    "type": "TaskStateEntered",
+    "id": 2,
+    "previousEventId": 0,
+    "stateEnteredEventDetails": {
+      "name": "Lease",
+      "input": "{\"steps\": [\"sleep 3\", \"sleep 3\", \"sleep 3\", \"sleep 3\"], \"parallel\": true, \"max_parallel\": 4}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:13:13.111000-07:00",
+    "type": "TaskScheduled",
+    "id": 3,
+    "previousEventId": 2,
+    "taskScheduledEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken",
+      "region": "us-east-1",
+      "parameters": "{\"ImageIdentifier\":\"arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent\",\"ExecutionRoleArn\":\"arn:aws:iam::643603452951:role/mvm-demo-sfn-agent\",\"RunHookPayload\":\"{\\\"lease\\\":{\\\"kind\\\":\\\"sfn\\\",\\\"token\\\":\\\"<redacted>\\\",\\\"region\\\":\\\"us-east-1\\\",\\\"heartbeat_s\\\":10,\\\"id\\\":\\\"parallel-20260921-011310\\\"},\\\"task\\\":{\\\"steps\\\":[\\\"sleep 3\\\",\\\"sleep 3\\\",\\\"sleep 3\\\",\\\"sleep 3\\\"],\\\"parallel\\\":true,\\\"max_parallel\\\":4}}\",\"IdlePolicy\":{\"MaxIdleDurationSeconds\":120,\"SuspendedDurationSeconds\":60,\"AutoResumeEnabled\":false},\"MaximumDurationInSeconds\":180,\"ClientToken\":\"parallel-20260921-011310-Lease\"}",
+      "timeoutInSeconds": 120,
+      "heartbeatInSeconds": 30
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:13:13.179000-07:00",
+    "type": "TaskStarted",
+    "id": 4,
+    "previousEventId": 3,
+    "taskStartedEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:13:13.394000-07:00",
+    "type": "TaskSubmitted",
+    "id": 5,
+    "previousEventId": 4,
+    "taskSubmittedEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken",
+      "output": "{\"EgressNetworkConnectors\":[\"arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS\"],\"Endpoint\":\"fed060c3-1a95-7742-1190-0d7926e8707d.lambda-microvm.us-east-1.on.aws\",\"ExecutionRoleArn\":\"arn:aws:iam::643603452951:role/mvm-demo-sfn-agent\",\"IdlePolicy\":{\"AutoResumeEnabled\":false,\"MaxIdleDurationSeconds\":120,\"SuspendedDurationSeconds\":60},\"ImageArn\":\"arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent\",\"ImageVersion\":\"1.0\",\"IngressNetworkConnectors\":[\"arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS\"],\"MaximumDurationInSeconds\":180,\"MicrovmId\":\"microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc\",\"StartedAt\":\"2026-09-21T01:13:13.325Z\",\"State\":\"PENDING\"}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:13:18.391000-07:00",
+    "type": "TaskSucceeded",
+    "id": 6,
+    "previousEventId": 5,
+    "taskSucceededEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken",
+      "output": "{\"microvm_id\": \"microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc\", \"lease_id\": \"parallel-20260921-011310\", \"elapsed_s\": 3.426, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.082, \"output_tail\": \"\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.082, \"output_tail\": \"\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.081, \"output_tail\": \"\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.081, \"output_tail\": \"\"}], \"parallel\": true, \"microvm_id\": \"microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc\", \"heartbeats\": 0}}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:13:18.404000-07:00",
+    "type": "TaskStateExited",
+    "id": 7,
+    "previousEventId": 6,
+    "stateExitedEventDetails": {
+      "name": "Lease",
+      "output": "{\"microvm_id\": \"microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc\", \"lease_id\": \"parallel-20260921-011310\", \"elapsed_s\": 3.426, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.082, \"output_tail\": \"\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.082, \"output_tail\": \"\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.081, \"output_tail\": \"\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.081, \"output_tail\": \"\"}], \"parallel\": true, \"microvm_id\": \"microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc\", \"heartbeats\": 0}}",
+      "outputDetails": {
+        "truncated": false
+      },
+      "assignedVariables": {
+        "vm": "\"microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc\""
+      },
+      "assignedVariablesDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:13:18.404000-07:00",
+    "type": "TaskStateEntered",
+    "id": 8,
+    "previousEventId": 7,
+    "stateEnteredEventDetails": {
+      "name": "Terminate",
+      "input": "{\"microvm_id\": \"microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc\", \"lease_id\": \"parallel-20260921-011310\", \"elapsed_s\": 3.426, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.082, \"output_tail\": \"\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.082, \"output_tail\": \"\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.081, \"output_tail\": \"\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.081, \"output_tail\": \"\"}], \"parallel\": true, \"microvm_id\": \"microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc\", \"heartbeats\": 0}}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:13:18.404000-07:00",
+    "type": "TaskScheduled",
+    "id": 9,
+    "previousEventId": 8,
+    "taskScheduledEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "terminateMicrovm",
+      "region": "us-east-1",
+      "parameters": "{\"MicrovmIdentifier\":\"microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc\"}"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:13:18.451000-07:00",
+    "type": "TaskStarted",
+    "id": 10,
+    "previousEventId": 9,
+    "taskStartedEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "terminateMicrovm"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:13:18.589000-07:00",
+    "type": "TaskSucceeded",
+    "id": 11,
+    "previousEventId": 10,
+    "taskSucceededEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "terminateMicrovm",
+      "output": "{}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:13:18.602000-07:00",
+    "type": "TaskStateExited",
+    "id": 12,
+    "previousEventId": 11,
+    "stateExitedEventDetails": {
+      "name": "Terminate",
+      "output": "{\"microvm_id\":\"microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc\",\"lease_id\":\"parallel-20260921-011310\",\"elapsed_s\":3.426,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.082,\"output_tail\":\"\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.082,\"output_tail\":\"\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.081,\"output_tail\":\"\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.081,\"output_tail\":\"\"}],\"parallel\":true,\"microvm_id\":\"microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc\",\"heartbeats\":0}}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:13:18.602000-07:00",
+    "type": "SucceedStateEntered",
+    "id": 13,
+    "previousEventId": 12,
+    "stateEnteredEventDetails": {
+      "name": "Done",
+      "input": "{\"microvm_id\":\"microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc\",\"lease_id\":\"parallel-20260921-011310\",\"elapsed_s\":3.426,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.082,\"output_tail\":\"\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.082,\"output_tail\":\"\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.081,\"output_tail\":\"\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.081,\"output_tail\":\"\"}],\"parallel\":true,\"microvm_id\":\"microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc\",\"heartbeats\":0}}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:13:18.602000-07:00",
+    "type": "SucceedStateExited",
+    "id": 14,
+    "previousEventId": 13,
+    "stateExitedEventDetails": {
+      "name": "Done",
+      "output": "{\"microvm_id\":\"microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc\",\"lease_id\":\"parallel-20260921-011310\",\"elapsed_s\":3.426,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.082,\"output_tail\":\"\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.082,\"output_tail\":\"\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.081,\"output_tail\":\"\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.081,\"output_tail\":\"\"}],\"parallel\":true,\"microvm_id\":\"microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc\",\"heartbeats\":0}}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:13:18.636000-07:00",
+    "type": "ExecutionSucceeded",
+    "id": 15,
+    "previousEventId": 14,
+    "executionSucceededEventDetails": {
+      "output": "{\"microvm_id\":\"microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc\",\"lease_id\":\"parallel-20260921-011310\",\"elapsed_s\":3.426,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.082,\"output_tail\":\"\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.082,\"output_tail\":\"\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.081,\"output_tail\":\"\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.081,\"output_tail\":\"\"}],\"parallel\":true,\"microvm_id\":\"microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc\",\"heartbeats\":0}}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  }
+]

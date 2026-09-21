@@ -1,0 +1,18 @@
+execution  arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-map-lease:fanout-denied-20260921-011205
+status     FAILED
+start      2026-09-21T01:12:10.920+00:00
+stop       2026-09-21T01:12:11.559+00:00
+seconds    0.639
+
+ +seconds  timestamp                     event                          state
+   +0.000  2026-09-21T01:12:10.920+00:00 ExecutionStarted               
+   +0.023  2026-09-21T01:12:10.943+00:00 ChoiceStateEntered             Gate
+   +0.023  2026-09-21T01:12:10.943+00:00 ChoiceStateExited              Gate
+   +0.023  2026-09-21T01:12:10.943+00:00 TaskStateEntered               RequestApproval
+   +0.023  2026-09-21T01:12:10.943+00:00 TaskScheduled                  RequestApproval  sns:publish.waitForTaskToken
+   +0.081  2026-09-21T01:12:11.001+00:00 TaskStarted                    RequestApproval  sns:publish.waitForTaskToken
+   +0.134  2026-09-21T01:12:11.054+00:00 TaskSubmitted                  RequestApproval  sns:publish.waitForTaskToken
+   +0.604  2026-09-21T01:12:11.524+00:00 TaskFailed                     RequestApproval  sns:publish.waitForTaskToken  error=ApprovalDenied
+   +0.617  2026-09-21T01:12:11.537+00:00 TaskStateExited                RequestApproval
+   +0.617  2026-09-21T01:12:11.537+00:00 FailStateEntered               Denied
+   +0.639  2026-09-21T01:12:11.559+00:00 ExecutionFailed                Denied  error=ApprovalDenied

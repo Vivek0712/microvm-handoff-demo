@@ -1,0 +1,60 @@
+{
+  "scenario": "fanout-refused",
+  "orchestrator": "stepfunctions",
+  "status": "REFUSED",
+  "expected": "sfn: `mvm lease plan --shards 40` exits 2 and run.py refuses to start the execution (record the plan)",
+  "matches_expected": true,
+  "start": "2026-09-21T01:11:20.441819+00:00",
+  "stop": "2026-09-21T01:11:23+00:00",
+  "seconds_by_service": 0.0,
+  "vm_ids": [],
+  "runmicrovm_calls": 0,
+  "notes": [
+    "refused before start: worst case 7200 VM-seconds exceeds policy max_vm_seconds 3000"
+  ],
+  "microvm_ctl": {
+    "version": "0.3.0",
+    "path": "/Users/vivekrajaps/Library/Python/3.9/lib/python/site-packages/microvm/__init__.py"
+  },
+  "plan": {
+    "shards": 40,
+    "baseline_mib": 512,
+    "policy": {
+      "budget_s": 120,
+      "heartbeat_timeout_s": 30,
+      "slack_s": 60,
+      "max_concurrency": 4,
+      "max_vm_seconds": 3000,
+      "approval_usd": 0.015
+    },
+    "limit": {
+      "baseline_mib": 512,
+      "memory_quota_gb": 8.0,
+      "launch_rate": 0.8,
+      "by_memory": 16,
+      "by_policy": 4,
+      "limit": 4,
+      "reason": "policy max_concurrency 4"
+    },
+    "concurrency": 4,
+    "waves": 10,
+    "launch_to_all_running_s": 72.5,
+    "worst_case_vm_seconds": 7200,
+    "worst_case_usd": 0.06305,
+    "needs_approval": true,
+    "rejected": "worst case 7200 VM-seconds exceeds policy max_vm_seconds 3000",
+    "summary": "40 shards on 0.5 GB rejected: worst case 7200 VM-seconds exceeds policy max_vm_seconds 3000"
+  },
+  "plan_exit_code": 2,
+  "checks": {
+    "plan_exit_2": true,
+    "plan_rejected_reason": true,
+    "no_execution_started": true
+  },
+  "fleet_check": {
+    "at": "2026-09-21T01:11:23+00:00",
+    "active_before": [],
+    "terminated": [],
+    "left_alone": []
+  }
+}

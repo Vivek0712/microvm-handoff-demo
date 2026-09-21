@@ -1,0 +1,302 @@
+[
+  {
+    "microvm_id": "microvm-5ebbd035-6d22-3c8b-9ae9-1b2a6c1dedae",
+    "lease_id": "fanout-approved-20260921-011125-0",
+    "elapsed_s": 3.353,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.083,
+          "output_tail": "shard 0 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.006,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-5ebbd035-6d22-3c8b-9ae9-1b2a6c1dedae",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-7a08b310-a90a-380c-a7f4-5d4df216536c",
+    "lease_id": "fanout-approved-20260921-011125-1",
+    "elapsed_s": 3.388,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.073,
+          "output_tail": "shard 1 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.005,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-7a08b310-a90a-380c-a7f4-5d4df216536c",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-6ea38828-6cd3-3236-bb41-4326f36fd60a",
+    "lease_id": "fanout-approved-20260921-011125-2",
+    "elapsed_s": 3.237,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.014,
+          "output_tail": "shard 2 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.003,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-6ea38828-6cd3-3236-bb41-4326f36fd60a",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-20f36949-de0f-388c-89c4-f7f88a74fc60",
+    "lease_id": "fanout-approved-20260921-011125-3",
+    "elapsed_s": 3.337,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.076,
+          "output_tail": "shard 3 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.008,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-20f36949-de0f-388c-89c4-f7f88a74fc60",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-6facbe69-75f4-317c-8cdf-203c86089c14",
+    "lease_id": "fanout-approved-20260921-011125-4",
+    "elapsed_s": 3.337,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.058,
+          "output_tail": "shard 4 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.003,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-6facbe69-75f4-317c-8cdf-203c86089c14",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-3065de0d-fc18-30e1-9a78-9e17046a0887",
+    "lease_id": "fanout-approved-20260921-011125-5",
+    "elapsed_s": 3.364,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.08,
+          "output_tail": "shard 5 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.005,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-3065de0d-fc18-30e1-9a78-9e17046a0887",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-c525bf04-2c6c-3a2c-a764-195d18ee967e",
+    "lease_id": "fanout-approved-20260921-011125-6",
+    "elapsed_s": 3.388,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.117,
+          "output_tail": "shard 6 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.005,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-c525bf04-2c6c-3a2c-a764-195d18ee967e",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-2d6decca-1a48-3211-b267-3160db62b3cc",
+    "lease_id": "fanout-approved-20260921-011125-7",
+    "elapsed_s": 3.353,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.086,
+          "output_tail": "shard 7 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.004,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-2d6decca-1a48-3211-b267-3160db62b3cc",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-a62a0955-4f0e-3d28-a636-4dba8b1dc01c",
+    "lease_id": "fanout-approved-20260921-011125-8",
+    "elapsed_s": 3.36,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.08,
+          "output_tail": "shard 8 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.006,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-a62a0955-4f0e-3d28-a636-4dba8b1dc01c",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-3b81de2f-cc81-31af-9e6e-04e000d03bd0",
+    "lease_id": "fanout-approved-20260921-011125-9",
+    "elapsed_s": 3.257,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.013,
+          "output_tail": "shard 9 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.003,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-3b81de2f-cc81-31af-9e6e-04e000d03bd0",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-91a00719-8752-3faa-a060-06d17cfc5a02",
+    "lease_id": "fanout-approved-20260921-011125-10",
+    "elapsed_s": 3.51,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.191,
+          "output_tail": "shard 10 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.006,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-91a00719-8752-3faa-a060-06d17cfc5a02",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-6cf7333c-ccbe-36f2-beb0-a371daafafa0",
+    "lease_id": "fanout-approved-20260921-011125-11",
+    "elapsed_s": 3.393,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.08,
+          "output_tail": "shard 11 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.005,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-6cf7333c-ccbe-36f2-beb0-a371daafafa0",
+      "heartbeats": 0
+    }
+  }
+]

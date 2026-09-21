@@ -1,0 +1,27 @@
+{
+  "scenario": "fanout-approved",
+  "orchestrator": "durable",
+  "status": "SUCCEEDED",
+  "expected": "approve publishes callback id to SQS; approver calls SendDurableExecutionCallbackSuccess; status: done",
+  "matches_expected": false,
+  "start": "2026-09-21T01:07:56.211Z",
+  "stop": "2026-09-21T01:17:58.872Z",
+  "seconds_by_service": 602.661,
+  "vm_ids": [],
+  "runmicrovm_calls": 0,
+  "notes": [
+    "approver.py saw no approval request within 300 s",
+    "expected approval callback succeeded",
+    "expected 12 shards done (got denied, None)"
+  ],
+  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:1/durable-execution/mvm-demo-durable-fanout-approved-20260921-010756/34caf69c-6d5f-3c79-98c8-777429a60bd1",
+  "execution_name": "mvm-demo-durable-fanout-approved-20260921-010756",
+  "outcome_status": "denied",
+  "history_events": 12,
+  "history": "plan step; 1 lease callback timed out; ExecutionSucceeded with status denied",
+  "vm_states_after": {},
+  "vm_seconds": null,
+  "vm_records": {},
+  "approval": null,
+  "description": "approval gate, approved"
+}

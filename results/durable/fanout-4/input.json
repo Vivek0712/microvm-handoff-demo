@@ -1,0 +1,29 @@
+{
+  "mode": "fanout",
+  "shards": [
+    {
+      "steps": [
+        "echo shard 0",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 1",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 2",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 3",
+        "sleep 1"
+      ]
+    }
+  ]
+}

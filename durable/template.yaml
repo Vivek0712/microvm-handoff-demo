@@ -1,0 +1,143 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  mvm-demo-durable: a Lambda durable function that leases the demo-agent MicroVM image
+  through the microvm-ctl lease contract (single lease with one relaunch, or a planned
+  fan-out with an SQS approval gate), plus the execution role the leased VMs run as and
+  the queue the approval callback ids are published to.
+
+Parameters:
+  ImageName:
+    Type: String
+    Default: demo-agent
+    Description: Name of the agent MicroVM image built with `mvm image build` (512 MiB baseline).
+  BaselineMib:
+    Type: Number
+    Default: 512
+    Description: Baseline memory of ImageName, used by the fan-out plan.
+  # The lease policy every scenario runs under (SPEC.md: "Lease policy for every scenario").
+  BudgetSeconds:
+    Type: Number
+    Default: 120
+  HeartbeatTimeoutSeconds:
+    Type: Number
+    Default: 30
+  SlackSeconds:
+    Type: Number
+    Default: 60
+  MaxConcurrency:
+    Type: Number
+    Default: 4
+  MaxVmSeconds:
+    Type: Number
+    Default: 3000
+  ApprovalUsd:
+    Type: String
+    Default: "0.015"
+
+Resources:
+  # ---- where `approve` publishes {"callback_id", "plan", "execution"}; approver.py reads it
+  ApprovalsQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: mvm-demo-durable-approvals
+      MessageRetentionPeriod: 3600
+      VisibilityTimeout: 30
+
+  # ---- the role the leased VM runs as: logs on both prefixes, callbacks to this orchestrator
+  AgentExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: mvm-demo-durable-agent-execution-role
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: { Service: lambda.amazonaws.com }
+            Action: [sts:AssumeRole, sts:TagSession]
+      Policies:
+        - PolicyName: agent
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: Logs
+                Effect: Allow
+                Action: [logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents]
+                Resource:
+                  - !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda-microvms/*
+                  - !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/microvms/*
+              - Sid: CompleteTheLease
+                Effect: Allow
+                Action:
+                  - lambda:SendDurableExecutionCallbackSuccess
+                  - lambda:SendDurableExecutionCallbackFailure
+                  - lambda:SendDurableExecutionCallbackHeartbeat
+                # authorized against the durable execution ARN, which is version-qualified: use :*
+                Resource: !Sub arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:mvm-demo-durable-orchestrator:*
+
+  Orchestrator:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: mvm-demo-durable-orchestrator
+      CodeUri: ./orchestrator
+      Handler: app.handler
+      Runtime: python3.13
+      Architectures: [arm64]
+      MemorySize: 512
+      Timeout: 300
+      AutoPublishAlias: live
+      # Immutable after creation: changing it replaces the function and drops in-flight executions.
+      DurableConfig:
+        ExecutionTimeout: 3600
+        RetentionPeriodInDays: 7
+      Environment:
+        Variables:
+          MVM_REGION: !Ref AWS::Region
+          MVM_IMAGE: !Ref ImageName
+          MVM_EXECUTION_ROLE_ARN: !GetAtt AgentExecutionRole.Arn
+          BASELINE_MIB: !Ref BaselineMib
+          APPROVALS_QUEUE_URL: !Ref ApprovalsQueue
+          # read by microvm.LeasePolicy.from_env()
+          MVM_LEASE_BUDGET_S: !Ref BudgetSeconds
+          MVM_LEASE_HEARTBEAT_TIMEOUT_S: !Ref HeartbeatTimeoutSeconds
+          MVM_LEASE_SLACK_S: !Ref SlackSeconds
+          MVM_LEASE_MAX_CONCURRENCY: !Ref MaxConcurrency
+          MVM_LEASE_MAX_VM_SECONDS: !Ref MaxVmSeconds
+          MVM_LEASE_APPROVAL_USD: !Ref ApprovalUsd
+      Policies:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicDurableExecutionRolePolicy
+        - Version: '2012-10-17'
+          Statement:
+            - Sid: MicrovmControlPlane
+              Effect: Allow
+              Action: [lambda:RunMicrovm, lambda:GetMicrovm, lambda:TerminateMicrovm, lambda:ListMicrovms]
+              Resource: "*"
+            - Sid: ManagedNetworkConnectors
+              Effect: Allow
+              Action: lambda:PassNetworkConnector
+              Resource: arn:aws:lambda:*:aws:network-connector:aws-network-connector:*
+            - Sid: PassTheAgentRole
+              Effect: Allow
+              Action: iam:PassRole
+              Resource: !GetAtt AgentExecutionRole.Arn
+            - Sid: PublishApprovalRequests
+              Effect: Allow
+              Action: sqs:SendMessage
+              Resource: !GetAtt ApprovalsQueue.Arn
+            # FleetManager reads the applied RunMicrovm rate and memory quota so the plan is honest,
+            # and resolves the account id for image ARNs.
+            - Sid: PlaneReads
+              Effect: Allow
+              Action: [servicequotas:GetServiceQuota, sts:GetCallerIdentity]
+              Resource: "*"
+
+Outputs:
+  OrchestratorAlias:
+    Value: !Sub arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:mvm-demo-durable-orchestrator:live
+    Description: Invoke this asynchronously (InvocationType Event) with a mode of single or fanout.
+  ApprovalsQueueUrl:
+    Value: !Ref ApprovalsQueue
+    Description: approver.py reads approval requests here.
+  AgentExecutionRoleArn:
+    Value: !GetAtt AgentExecutionRole.Arn
+    Description: The role every leased demo-agent VM runs as.

@@ -1,0 +1,164 @@
+{
+  "scenario": "fanout-4",
+  "orchestrator": "stepfunctions",
+  "status": "SUCCEEDED",
+  "expected": "plan: concurrency 4, 1 wave; all 4 done; Map/lease_map output has 4 results",
+  "matches_expected": true,
+  "start": "2026-09-21T01:15:24.708+00:00",
+  "stop": "2026-09-21T01:15:30.250+00:00",
+  "seconds_by_service": 5.542,
+  "vm_ids": [
+    "microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0",
+    "microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f",
+    "microvm-bb4696d4-a4aa-3937-9721-ce13475d8382",
+    "microvm-5970313f-9aae-3248-8216-66d2b110ddb2"
+  ],
+  "runmicrovm_calls": 4,
+  "notes": [],
+  "microvm_ctl": {
+    "version": "0.3.0",
+    "path": "/Users/vivekrajaps/Library/Python/3.9/lib/python/site-packages/microvm/__init__.py"
+  },
+  "checks": {
+    "succeeded": true,
+    "4_results": true,
+    "plan_concurrency_4": true,
+    "plan_waves_1": true,
+    "peak_in_flight_le_4": true,
+    "vms_terminated_by_machine": true,
+    "no_approval_gate": true
+  },
+  "execution_arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-map-lease:fanout-4-20260921-011518",
+  "state_machine_arn": "arn:aws:states:us-east-1:643603452951:stateMachine:mvm-demo-sfn-map-lease",
+  "error": null,
+  "states_entered": [
+    "Gate",
+    "Fanout",
+    "Lease[0]",
+    "Lease[1]",
+    "Lease[2]",
+    "Lease[3]",
+    "Terminate[3]",
+    "Terminate[1]",
+    "Terminate[2]",
+    "Terminate[0]",
+    "ShardDone[1]",
+    "ShardDone[2]",
+    "ShardDone[3]",
+    "ShardDone[0]",
+    "Done[0]"
+  ],
+  "lease_tasks": [
+    {
+      "state": "Lease",
+      "index": 0,
+      "TaskScheduled": "2026-09-21T01:15:24.728+00:00",
+      "last": "TaskSucceeded",
+      "TaskSubmitted": "2026-09-21T01:15:25.029+00:00",
+      "TaskSucceeded": "2026-09-21T01:15:29.919+00:00"
+    },
+    {
+      "state": "Lease",
+      "index": 1,
+      "TaskScheduled": "2026-09-21T01:15:24.728+00:00",
+      "last": "TaskSucceeded",
+      "TaskSubmitted": "2026-09-21T01:15:25.015+00:00",
+      "TaskSucceeded": "2026-09-21T01:15:29.728+00:00"
+    },
+    {
+      "state": "Lease",
+      "index": 2,
+      "TaskScheduled": "2026-09-21T01:15:24.728+00:00",
+      "last": "TaskSucceeded",
+      "TaskSubmitted": "2026-09-21T01:15:25.088+00:00",
+      "TaskSucceeded": "2026-09-21T01:15:29.741+00:00"
+    },
+    {
+      "state": "Lease",
+      "index": 3,
+      "TaskScheduled": "2026-09-21T01:15:24.728+00:00",
+      "last": "TaskSucceeded",
+      "TaskSubmitted": "2026-09-21T01:15:24.990+00:00",
+      "TaskSucceeded": "2026-09-21T01:15:29.704+00:00"
+    }
+  ],
+  "peak_in_flight": 4,
+  "throttling_retries": 0,
+  "terminated_by_machine": [
+    "Terminate:microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0",
+    "Terminate:microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f",
+    "Terminate:microvm-5970313f-9aae-3248-8216-66d2b110ddb2",
+    "Terminate:microvm-bb4696d4-a4aa-3937-9721-ce13475d8382"
+  ],
+  "in_vm_wall_s": 3.04,
+  "vm_states": {
+    "microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:15:24.943+00:00",
+      "terminatedAt": "2026-09-21T01:15:30.357+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 5.414,
+      "terminated_by": "machine"
+    },
+    "microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:15:24.952+00:00",
+      "terminatedAt": "2026-09-21T01:15:30.434+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 5.482,
+      "terminated_by": "machine"
+    },
+    "microvm-bb4696d4-a4aa-3937-9721-ce13475d8382": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:15:24.954+00:00",
+      "terminatedAt": "2026-09-21T01:15:30.605+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 5.651,
+      "terminated_by": "machine"
+    },
+    "microvm-5970313f-9aae-3248-8216-66d2b110ddb2": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:15:25.015+00:00",
+      "terminatedAt": "2026-09-21T01:15:30.325+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 5.31,
+      "terminated_by": "machine"
+    }
+  },
+  "fleet_check": {
+    "at": "2026-09-21T01:15:35+00:00",
+    "active_before": [],
+    "terminated": [],
+    "left_alone": []
+  },
+  "plan": {
+    "shards": 4,
+    "baseline_mib": 512,
+    "policy": {
+      "budget_s": 120,
+      "heartbeat_timeout_s": 30,
+      "slack_s": 60,
+      "max_concurrency": 4,
+      "max_vm_seconds": 3000,
+      "approval_usd": 0.015
+    },
+    "limit": {
+      "baseline_mib": 512,
+      "memory_quota_gb": 8.0,
+      "launch_rate": 0.8,
+      "by_memory": 16,
+      "by_policy": 4,
+      "limit": 4,
+      "reason": "policy max_concurrency 4"
+    },
+    "concurrency": 4,
+    "waves": 1,
+    "launch_to_all_running_s": 7.25,
+    "worst_case_vm_seconds": 720,
+    "worst_case_usd": 0.006305,
+    "needs_approval": false,
+    "rejected": null,
+    "summary": "4 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 1 wave, all running in ~7 s, worst case 720 VM-s = $0.01"
+  },
+  "plan_exit_code": 0
+}

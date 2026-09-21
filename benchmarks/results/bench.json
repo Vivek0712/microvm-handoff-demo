@@ -1,0 +1,761 @@
+{
+  "meta": {
+    "started": "2026-09-21T01:18:44.774727+00:00",
+    "region": "us-east-1",
+    "image": "demo-agent",
+    "baseline_mib": 512,
+    "usd_per_gb_s": 1.7513900000000002e-05,
+    "args": {
+      "profile": "heisenberg",
+      "region": "us-east-1",
+      "sfn_arn": "arn:aws:states:us-east-1:643603452951:stateMachine:mvm-demo-sfn-lease",
+      "sfn_map_arn": "arn:aws:states:us-east-1:643603452951:stateMachine:mvm-demo-sfn-map-lease",
+      "durable_function": "mvm-demo-durable-orchestrator:live",
+      "kinds": "sfn,durable",
+      "single_runs": 5,
+      "fanouts": "4,8",
+      "fanout_runs": 2,
+      "summarize": false
+    }
+  },
+  "summary": [
+    {
+      "kind": "durable",
+      "shards": 0,
+      "runs": 5,
+      "ok": 5,
+      "p50_s": 4.5,
+      "max_s": 4.8,
+      "vm_seconds_p50": 5.0,
+      "usd_p50": 4e-05
+    },
+    {
+      "kind": "sfn",
+      "shards": 0,
+      "runs": 5,
+      "ok": 5,
+      "p50_s": 4.4,
+      "max_s": 4.4,
+      "vm_seconds_p50": 4.0,
+      "usd_p50": 4e-05
+    },
+    {
+      "kind": "durable",
+      "shards": 4,
+      "runs": 2,
+      "ok": 2,
+      "p50_s": 8.2,
+      "max_s": 8.2,
+      "vm_seconds_p50": 18.0,
+      "usd_p50": 0.00016
+    },
+    {
+      "kind": "sfn",
+      "shards": 4,
+      "runs": 2,
+      "ok": 2,
+      "p50_s": 4.4,
+      "max_s": 4.5,
+      "vm_seconds_p50": 18.0,
+      "usd_p50": 0.00016
+    },
+    {
+      "kind": "durable",
+      "shards": 8,
+      "runs": 2,
+      "ok": 2,
+      "p50_s": 13.9,
+      "max_s": 14.0,
+      "vm_seconds_p50": 38.0,
+      "usd_p50": 0.00033
+    },
+    {
+      "kind": "sfn",
+      "shards": 8,
+      "runs": 2,
+      "ok": 2,
+      "p50_s": 8.8,
+      "max_s": 9.0,
+      "vm_seconds_p50": 36.0,
+      "usd_p50": 0.00031
+    }
+  ],
+  "runs": [
+    {
+      "kind": "sfn",
+      "shards": 0,
+      "name": "bench-sfn-single-20260920-181844-0",
+      "arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease:bench-sfn-single-20260920-181844-0",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953525.068,
+      "stop": 1789953529.287,
+      "seconds": 4.219,
+      "vms": [
+        {
+          "id": "microvm-e2c16278-abf6-3ed5-881c-d4cdb7b1a9ee",
+          "state": "TERMINATED",
+          "startedAt": 1789953525.361,
+          "terminatedAt": 1789953529.621,
+          "seconds": 4.26
+        }
+      ],
+      "vm_seconds": 4.3,
+      "usd": 3.7e-05
+    },
+    {
+      "kind": "sfn",
+      "shards": 0,
+      "name": "bench-sfn-single-20260920-181844-1",
+      "arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease:bench-sfn-single-20260920-181844-1",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953531.913,
+      "stop": 1789953536.344,
+      "seconds": 4.431,
+      "vms": [
+        {
+          "id": "microvm-ac55e43c-f334-3d96-85cd-759f2b859266",
+          "state": "TERMINATED",
+          "startedAt": 1789953532.173,
+          "terminatedAt": 1789953536.706,
+          "seconds": 4.533
+        }
+      ],
+      "vm_seconds": 4.5,
+      "usd": 4e-05
+    },
+    {
+      "kind": "sfn",
+      "shards": 0,
+      "name": "bench-sfn-single-20260920-181844-2",
+      "arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease:bench-sfn-single-20260920-181844-2",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953538.465,
+      "stop": 1789953542.882,
+      "seconds": 4.417,
+      "vms": [
+        {
+          "id": "microvm-52f2ebab-d55a-3337-8498-0db14cf3c440",
+          "state": "TERMINATED",
+          "startedAt": 1789953538.705,
+          "terminatedAt": 1789953543.351,
+          "seconds": 4.646
+        }
+      ],
+      "vm_seconds": 4.6,
+      "usd": 4.1e-05
+    },
+    {
+      "kind": "sfn",
+      "shards": 0,
+      "name": "bench-sfn-single-20260920-181844-3",
+      "arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease:bench-sfn-single-20260920-181844-3",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953545.016,
+      "stop": 1789953549.242,
+      "seconds": 4.226,
+      "vms": [
+        {
+          "id": "microvm-5d04e58c-389d-370e-a8e3-162582fcd725",
+          "state": "TERMINATED",
+          "startedAt": 1789953545.289,
+          "terminatedAt": 1789953549.712,
+          "seconds": 4.423
+        }
+      ],
+      "vm_seconds": 4.4,
+      "usd": 3.9e-05
+    },
+    {
+      "kind": "sfn",
+      "shards": 0,
+      "name": "bench-sfn-single-20260920-181844-4",
+      "arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease:bench-sfn-single-20260920-181844-4",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953551.615,
+      "stop": 1789953556.063,
+      "seconds": 4.448,
+      "vms": [
+        {
+          "id": "microvm-d0fdaefb-3e8a-39e3-ac1b-bf595232fdd2",
+          "state": "TERMINATED",
+          "startedAt": 1789953551.866,
+          "terminatedAt": 1789953556.542,
+          "seconds": 4.676
+        }
+      ],
+      "vm_seconds": 4.7,
+      "usd": 4.1e-05
+    },
+    {
+      "kind": "sfn",
+      "shards": 4,
+      "name": "bench-sfn-4-20260920-181844-0",
+      "arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-map-lease:bench-sfn-4-20260920-181844-0",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953558.176,
+      "stop": 1789953562.709,
+      "seconds": 4.533,
+      "vms": [
+        {
+          "id": "microvm-c0ebd00f-0c2f-3e2d-bc7b-d50592d29074",
+          "state": "TERMINATED",
+          "startedAt": 1789953558.444,
+          "terminatedAt": 1789953562.963,
+          "seconds": 4.519
+        },
+        {
+          "id": "microvm-a546935f-c006-3ca9-94d0-5adfca5f6f28",
+          "state": "TERMINATED",
+          "startedAt": 1789953558.472,
+          "terminatedAt": 1789953563.077,
+          "seconds": 4.605
+        },
+        {
+          "id": "microvm-7aa869e1-0ef1-3cac-873f-e78197bb0f55",
+          "state": "TERMINATED",
+          "startedAt": 1789953558.412,
+          "terminatedAt": 1789953563.077,
+          "seconds": 4.665
+        },
+        {
+          "id": "microvm-0be00238-a9a1-3f8f-ade7-3b48dae59ace",
+          "state": "TERMINATED",
+          "startedAt": 1789953558.448,
+          "terminatedAt": 1789953562.758,
+          "seconds": 4.31
+        }
+      ],
+      "vm_seconds": 18.1,
+      "usd": 0.000158
+    },
+    {
+      "kind": "sfn",
+      "shards": 4,
+      "name": "bench-sfn-4-20260920-181844-1",
+      "arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-map-lease:bench-sfn-4-20260920-181844-1",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953565.044,
+      "stop": 1789953569.356,
+      "seconds": 4.312,
+      "vms": [
+        {
+          "id": "microvm-0fda764a-6cfa-3a90-836c-0657a1039ad5",
+          "state": "TERMINATED",
+          "startedAt": 1789953565.269,
+          "terminatedAt": 1789953569.355,
+          "seconds": 4.086
+        },
+        {
+          "id": "microvm-2867b026-5be9-3e4e-a4b8-187dbb54e305",
+          "state": "TERMINATED",
+          "startedAt": 1789953565.255,
+          "terminatedAt": 1789953569.75,
+          "seconds": 4.495
+        },
+        {
+          "id": "microvm-56798b1a-5079-396d-883f-d5cd109c7d6c",
+          "state": "TERMINATED",
+          "startedAt": 1789953565.256,
+          "terminatedAt": 1789953569.763,
+          "seconds": 4.507
+        },
+        {
+          "id": "microvm-6d00428e-62ef-3eea-adf7-db3803eaf926",
+          "state": "TERMINATED",
+          "startedAt": 1789953565.279,
+          "terminatedAt": 1789953569.707,
+          "seconds": 4.428
+        }
+      ],
+      "vm_seconds": 17.5,
+      "usd": 0.000153
+    },
+    {
+      "kind": "sfn",
+      "shards": 8,
+      "name": "bench-sfn-8-20260920-181844-0",
+      "arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-map-lease:bench-sfn-8-20260920-181844-0",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953571.907,
+      "stop": 1789953580.6,
+      "seconds": 8.693,
+      "vms": [
+        {
+          "id": "microvm-970382c6-32d0-3d6d-af77-f7b665815fe2",
+          "state": "TERMINATED",
+          "startedAt": 1789953572.147,
+          "terminatedAt": 1789953576.641,
+          "seconds": 4.494
+        },
+        {
+          "id": "microvm-8c3e547e-50ce-3115-bbc1-8909cd9859c6",
+          "state": "TERMINATED",
+          "startedAt": 1789953572.189,
+          "terminatedAt": 1789953575.965,
+          "seconds": 3.776
+        },
+        {
+          "id": "microvm-a7bc94bd-7f3f-3746-a306-fc2d2af53aca",
+          "state": "TERMINATED",
+          "startedAt": 1789953572.115,
+          "terminatedAt": 1789953576.63,
+          "seconds": 4.515
+        },
+        {
+          "id": "microvm-1883ecf9-1642-3dfc-97ea-49eb267182ac",
+          "state": "TERMINATED",
+          "startedAt": 1789953572.148,
+          "terminatedAt": 1789953576.591,
+          "seconds": 4.443
+        },
+        {
+          "id": "microvm-b74483ac-44ab-3c2c-91bc-60ca67227bc7",
+          "state": "TERMINATED",
+          "startedAt": 1789953575.759,
+          "terminatedAt": 1789953580.382,
+          "seconds": 4.623
+        },
+        {
+          "id": "microvm-90cd50e9-28db-3dde-a4d3-5534e7428c05",
+          "state": "TERMINATED",
+          "startedAt": 1789953576.461,
+          "terminatedAt": 1789953581.045,
+          "seconds": 4.584
+        },
+        {
+          "id": "microvm-e3ff5b4b-86a0-31f3-aeba-790e20bd7ee0",
+          "state": "TERMINATED",
+          "startedAt": 1789953576.418,
+          "terminatedAt": 1789953580.867,
+          "seconds": 4.449
+        },
+        {
+          "id": "microvm-ecbbffd8-a3ef-34c7-8e74-5dbfdffc79db",
+          "state": "TERMINATED",
+          "startedAt": 1789953576.431,
+          "terminatedAt": 1789953580.789,
+          "seconds": 4.358
+        }
+      ],
+      "vm_seconds": 35.2,
+      "usd": 0.000309
+    },
+    {
+      "kind": "sfn",
+      "shards": 8,
+      "name": "bench-sfn-8-20260920-181844-1",
+      "arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-map-lease:bench-sfn-8-20260920-181844-1",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953583.387,
+      "stop": 1789953592.34,
+      "seconds": 8.953,
+      "vms": [
+        {
+          "id": "microvm-373918c9-9989-3d58-a4e5-0827f87928c0",
+          "state": "TERMINATED",
+          "startedAt": 1789953583.613,
+          "terminatedAt": 1789953588.28,
+          "seconds": 4.667
+        },
+        {
+          "id": "microvm-e5210834-8a8f-37b8-ab6b-3a2a6de02b71",
+          "state": "TERMINATED",
+          "startedAt": 1789953583.689,
+          "terminatedAt": 1789953588.246,
+          "seconds": 4.557
+        },
+        {
+          "id": "microvm-918afdef-a336-3302-9d33-e7ad715555d8",
+          "state": "TERMINATED",
+          "startedAt": 1789953583.617,
+          "terminatedAt": 1789953587.714,
+          "seconds": 4.097
+        },
+        {
+          "id": "microvm-11f117d4-e93d-380f-ab71-eaa8eb26ab5b",
+          "state": "TERMINATED",
+          "startedAt": 1789953583.614,
+          "terminatedAt": 1789953588.256,
+          "seconds": 4.642
+        },
+        {
+          "id": "microvm-8cd3a97f-0cf1-33d3-9c32-1d5d4ecfd697",
+          "state": "TERMINATED",
+          "startedAt": 1789953587.622,
+          "terminatedAt": 1789953592.146,
+          "seconds": 4.524
+        },
+        {
+          "id": "microvm-3ecc6d5d-502e-3536-be6d-3bd8782e4b24",
+          "state": "TERMINATED",
+          "startedAt": 1789953588.066,
+          "terminatedAt": 1789953592.864,
+          "seconds": 4.798
+        },
+        {
+          "id": "microvm-dce9f0e4-d669-3c5a-bfc2-fed39e37ad8e",
+          "state": "TERMINATED",
+          "startedAt": 1789953588.055,
+          "terminatedAt": 1789953592.757,
+          "seconds": 4.702
+        },
+        {
+          "id": "microvm-2be69cce-ece9-31c2-bc47-669bc5c25dc9",
+          "state": "TERMINATED",
+          "startedAt": 1789953588.115,
+          "terminatedAt": 1789953592.74,
+          "seconds": 4.625
+        }
+      ],
+      "vm_seconds": 36.6,
+      "usd": 0.000321
+    },
+    {
+      "kind": "durable",
+      "shards": 0,
+      "name": "bench-durable-single-20260920-181844-0",
+      "arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:1/durable-execution/bench-durable-single-20260920-181844-0/76a33e89-d96a-3fda-876a-4d8878b5f64e",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953595.171,
+      "stop": 1789953599.972,
+      "seconds": 4.801,
+      "vms": [
+        {
+          "id": "microvm-ce6e0301-7f72-3c38-a7fd-4072389e1f2e",
+          "state": "TERMINATED",
+          "startedAt": 1789953595.53,
+          "terminatedAt": 1789953600.188,
+          "seconds": 4.658
+        }
+      ],
+      "vm_seconds": 4.7,
+      "usd": 4.1e-05
+    },
+    {
+      "kind": "durable",
+      "shards": 0,
+      "name": "bench-durable-single-20260920-181844-1",
+      "arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:1/durable-execution/bench-durable-single-20260920-181844-1/126290e3-d5eb-3ccf-8e36-08d352c7919d",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953602.368,
+      "stop": 1789953606.379,
+      "seconds": 4.011,
+      "vms": [
+        {
+          "id": "microvm-1da50226-37f9-3ad7-bd3f-f0333d11b793",
+          "state": "TERMINATED",
+          "startedAt": 1789953602.634,
+          "terminatedAt": 1789953606.617,
+          "seconds": 3.983
+        }
+      ],
+      "vm_seconds": 4.0,
+      "usd": 3.5e-05
+    },
+    {
+      "kind": "durable",
+      "shards": 0,
+      "name": "bench-durable-single-20260920-181844-2",
+      "arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:1/durable-execution/bench-durable-single-20260920-181844-2/177f1fa6-bdf7-3618-972a-f2127b43cb03",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953607.353,
+      "stop": 1789953611.875,
+      "seconds": 4.522,
+      "vms": [
+        {
+          "id": "microvm-ca8b8d3e-424b-3f48-aa91-c38cd5080df8",
+          "state": "TERMINATED",
+          "startedAt": 1789953607.567,
+          "terminatedAt": 1789953612.204,
+          "seconds": 4.637
+        }
+      ],
+      "vm_seconds": 4.6,
+      "usd": 4.1e-05
+    },
+    {
+      "kind": "durable",
+      "shards": 0,
+      "name": "bench-durable-single-20260920-181844-3",
+      "arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:1/durable-execution/bench-durable-single-20260920-181844-3/7e1e23e1-2d3f-30c6-9824-4adb4ffed878",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953614.283,
+      "stop": 1789953618.852,
+      "seconds": 4.569,
+      "vms": [
+        {
+          "id": "microvm-b352037f-a9b6-3e27-84b9-6ff765fabf41",
+          "state": "TERMINATED",
+          "startedAt": 1789953614.487,
+          "terminatedAt": 1789953619.403,
+          "seconds": 4.916
+        }
+      ],
+      "vm_seconds": 4.9,
+      "usd": 4.3e-05
+    },
+    {
+      "kind": "durable",
+      "shards": 0,
+      "name": "bench-durable-single-20260920-181844-4",
+      "arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:1/durable-execution/bench-durable-single-20260920-181844-4/17d6a92e-bf95-3bf0-a8b7-b159458a4abd",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953621.348,
+      "stop": 1789953625.785,
+      "seconds": 4.437,
+      "vms": [
+        {
+          "id": "microvm-3b9c29e0-f224-3a41-a962-223afe836f34",
+          "state": "TERMINATED",
+          "startedAt": 1789953621.533,
+          "terminatedAt": 1789953626.048,
+          "seconds": 4.515
+        }
+      ],
+      "vm_seconds": 4.5,
+      "usd": 4e-05
+    },
+    {
+      "kind": "durable",
+      "shards": 4,
+      "name": "bench-durable-4-20260920-181844-0",
+      "arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:1/durable-execution/bench-durable-4-20260920-181844-0/e36ea1fe-ec86-31ee-9a4c-6f0c723086b9",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953628.401,
+      "stop": 1789953636.615,
+      "seconds": 8.214,
+      "vms": [
+        {
+          "id": "microvm-7ab48137-74c1-3694-abd1-52cc59b2e25a",
+          "state": "TERMINATED",
+          "startedAt": 1789953632.413,
+          "terminatedAt": 1789953636.766,
+          "seconds": 4.353
+        },
+        {
+          "id": "microvm-029a875d-ab0f-3249-85ef-b7df89c4ca4c",
+          "state": "TERMINATED",
+          "startedAt": 1789953628.664,
+          "terminatedAt": 1789953634.216,
+          "seconds": 5.552
+        },
+        {
+          "id": "microvm-a75724e9-67a0-3762-ac3f-b6a7e26118aa",
+          "state": "TERMINATED",
+          "startedAt": 1789953629.906,
+          "terminatedAt": 1789953634.449,
+          "seconds": 4.543
+        },
+        {
+          "id": "microvm-9121320b-eae3-379b-a04f-7c0c515b81f7",
+          "state": "TERMINATED",
+          "startedAt": 1789953631.161,
+          "terminatedAt": 1789953635.413,
+          "seconds": 4.252
+        }
+      ],
+      "vm_seconds": 18.7,
+      "usd": 0.000164
+    },
+    {
+      "kind": "durable",
+      "shards": 4,
+      "name": "bench-durable-4-20260920-181844-1",
+      "arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:1/durable-execution/bench-durable-4-20260920-181844-1/767f003d-cde0-35ad-9b6f-0b90e178c6bd",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953638.044,
+      "stop": 1789953646.194,
+      "seconds": 8.15,
+      "vms": [
+        {
+          "id": "microvm-46b0b992-8442-3c9f-ac56-0efb82ddb28e",
+          "state": "TERMINATED",
+          "startedAt": 1789953640.862,
+          "terminatedAt": 1789953645.326,
+          "seconds": 4.464
+        },
+        {
+          "id": "microvm-10d7b0d9-5e7b-3c72-b24e-2917a63ef93c",
+          "state": "TERMINATED",
+          "startedAt": 1789953642.069,
+          "terminatedAt": 1789953646.479,
+          "seconds": 4.41
+        },
+        {
+          "id": "microvm-2cb5cecc-91ff-3dae-b6e4-cb7641ca953d",
+          "state": "TERMINATED",
+          "startedAt": 1789953638.318,
+          "terminatedAt": 1789953643.641,
+          "seconds": 5.323
+        },
+        {
+          "id": "microvm-d8f698c8-e1df-39ac-a878-c2dd8193ebaa",
+          "state": "TERMINATED",
+          "startedAt": 1789953639.567,
+          "terminatedAt": 1789953643.623,
+          "seconds": 4.056
+        }
+      ],
+      "vm_seconds": 18.3,
+      "usd": 0.00016
+    },
+    {
+      "kind": "durable",
+      "shards": 8,
+      "name": "bench-durable-8-20260920-181844-0",
+      "arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:1/durable-execution/bench-durable-8-20260920-181844-0/3e883c1c-a301-3125-965b-60b67cba2ff6",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953647.502,
+      "stop": 1789953661.331,
+      "seconds": 13.829,
+      "vms": [
+        {
+          "id": "microvm-46b05805-2abd-3f32-8188-acf4488890f3",
+          "state": "TERMINATED",
+          "startedAt": 1789953650.345,
+          "terminatedAt": 1789953655.891,
+          "seconds": 5.546
+        },
+        {
+          "id": "microvm-14b16e5d-e6d5-38a8-b9e3-f8feb0ff708e",
+          "state": "TERMINATED",
+          "startedAt": 1789953647.852,
+          "terminatedAt": 1789953653.462,
+          "seconds": 5.61
+        },
+        {
+          "id": "microvm-cc3b3b42-4e61-39d6-87d4-15868bc69c86",
+          "state": "TERMINATED",
+          "startedAt": 1789953651.586,
+          "terminatedAt": 1789953655.924,
+          "seconds": 4.338
+        },
+        {
+          "id": "microvm-3edc3eaf-fe32-3d77-8a76-385af5a04197",
+          "state": "TERMINATED",
+          "startedAt": 1789953649.11,
+          "terminatedAt": 1789953653.529,
+          "seconds": 4.419
+        },
+        {
+          "id": "microvm-d48bbf78-b8ef-3ef3-9704-f61e61b52797",
+          "state": "TERMINATED",
+          "startedAt": 1789953653.337,
+          "terminatedAt": 1789953658.022,
+          "seconds": 4.685
+        },
+        {
+          "id": "microvm-bb54be44-b7da-386a-a466-4c76d7bd06d8",
+          "state": "TERMINATED",
+          "startedAt": 1789953654.595,
+          "terminatedAt": 1789953659.083,
+          "seconds": 4.488
+        },
+        {
+          "id": "microvm-0515d285-16bc-3fdc-8986-a8adc636ed13",
+          "state": "TERMINATED",
+          "startedAt": 1789953657.092,
+          "terminatedAt": 1789953661.609,
+          "seconds": 4.517
+        },
+        {
+          "id": "microvm-d4423cf1-9d97-3548-9920-346746d89216",
+          "state": "TERMINATED",
+          "startedAt": 1789953655.834,
+          "terminatedAt": 1789953659.806,
+          "seconds": 3.972
+        }
+      ],
+      "vm_seconds": 37.6,
+      "usd": 0.000329
+    },
+    {
+      "kind": "durable",
+      "shards": 8,
+      "name": "bench-durable-8-20260920-181844-1",
+      "arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:1/durable-execution/bench-durable-8-20260920-181844-1/7f9a282d-8a3f-31d9-a6b0-5a4904a34176",
+      "status": "SUCCEEDED",
+      "ok": true,
+      "start": 1789953664.165,
+      "stop": 1789953678.194,
+      "seconds": 14.029,
+      "vms": [
+        {
+          "id": "microvm-9e7a743c-6fda-368e-8871-2b92484a83eb",
+          "state": "TERMINATED",
+          "startedAt": 1789953665.643,
+          "terminatedAt": 1789953670.124,
+          "seconds": 4.481
+        },
+        {
+          "id": "microvm-97f5623e-bd27-3d12-93fc-161c265dc3b8",
+          "state": "TERMINATED",
+          "startedAt": 1789953666.949,
+          "terminatedAt": 1789953672.87,
+          "seconds": 5.921
+        },
+        {
+          "id": "microvm-e316689d-03f5-33a5-9958-08c61d9e8bd6",
+          "state": "TERMINATED",
+          "startedAt": 1789953664.405,
+          "terminatedAt": 1789953669.03,
+          "seconds": 4.625
+        },
+        {
+          "id": "microvm-2b9d719a-6f5e-379a-a86d-db00aa00ea9d",
+          "state": "TERMINATED",
+          "startedAt": 1789953668.153,
+          "terminatedAt": 1789953674.897,
+          "seconds": 6.744
+        },
+        {
+          "id": "microvm-add8d061-d462-31cd-b680-44eaa5b33533",
+          "state": "TERMINATED",
+          "startedAt": 1789953669.396,
+          "terminatedAt": 1789953672.823,
+          "seconds": 3.427
+        },
+        {
+          "id": "microvm-bf4e4af1-d63f-3ad2-8384-5600ac5eef6f",
+          "state": "TERMINATED",
+          "startedAt": 1789953670.646,
+          "terminatedAt": 1789953674.934,
+          "seconds": 4.288
+        },
+        {
+          "id": "microvm-6b4186a6-6d1f-335c-bf3a-7dc5cee715d1",
+          "state": "TERMINATED",
+          "startedAt": 1789953672.754,
+          "terminatedAt": 1789953677.122,
+          "seconds": 4.368
+        },
+        {
+          "id": "microvm-493b6997-0e47-3045-aec8-83caf214cc96",
+          "state": "TERMINATED",
+          "startedAt": 1789953673.983,
+          "terminatedAt": 1789953678.369,
+          "seconds": 4.386
+        }
+      ],
+      "vm_seconds": 38.2,
+      "usd": 0.000335
+    }
+  ]
+}

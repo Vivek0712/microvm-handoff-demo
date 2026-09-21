@@ -1,0 +1,128 @@
+{
+  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:2/durable-execution/mvm-demo-durable-parallel-20260921-012428/93b970ac-b711-3906-b7c0-af164d6a1c8c",
+  "execution_name": "mvm-demo-durable-parallel-20260921-012428",
+  "status": "SUCCEEDED",
+  "start": "2026-09-21T01:24:28.780Z",
+  "stop": "2026-09-21T01:24:44.627Z",
+  "seconds_by_service": 15.847,
+  "result": {
+    "status": "done",
+    "plan": {
+      "shards": 2,
+      "baseline_mib": 512,
+      "policy": {
+        "budget_s": 120,
+        "heartbeat_timeout_s": 30,
+        "slack_s": 60,
+        "max_concurrency": 4,
+        "max_vm_seconds": 3000,
+        "approval_usd": 0.015
+      },
+      "limit": {
+        "baseline_mib": 512,
+        "memory_quota_gb": 8.0,
+        "launch_rate": 0.8,
+        "by_memory": 16,
+        "by_policy": 4,
+        "limit": 4,
+        "reason": "policy max_concurrency 4"
+      },
+      "concurrency": 2,
+      "waves": 1,
+      "launch_to_all_running_s": 4.75,
+      "worst_case_vm_seconds": 360,
+      "worst_case_usd": 0.003153,
+      "needs_approval": false,
+      "rejected": null,
+      "summary": "2 shards on 0.5 GB: 2 at a time (policy max_concurrency 4), 1 wave, all running in ~5 s, worst case 360 VM-s = $0.00"
+    },
+    "outcomes": [
+      {
+        "status": "done",
+        "result": {
+          "passed": true,
+          "steps": [
+            {
+              "cmd": "sleep 3",
+              "exit_code": 0,
+              "duration_s": 3.098,
+              "output_tail": ""
+            },
+            {
+              "cmd": "sleep 3",
+              "exit_code": 0,
+              "duration_s": 3.098,
+              "output_tail": ""
+            },
+            {
+              "cmd": "sleep 3",
+              "exit_code": 0,
+              "duration_s": 3.097,
+              "output_tail": ""
+            },
+            {
+              "cmd": "sleep 3",
+              "exit_code": 0,
+              "duration_s": 3.096,
+              "output_tail": ""
+            }
+          ],
+          "parallel": true,
+          "microvm_id": "microvm-379f8592-cb95-3d64-92dd-8956c75970c0",
+          "heartbeats": 0
+        },
+        "retryable": false,
+        "vm": {
+          "microvm_id": "microvm-379f8592-cb95-3d64-92dd-8956c75970c0",
+          "endpoint": "52d060c8-426b-8056-41b0-71f5cebb921b.lambda-microvm.us-east-1.on.aws"
+        },
+        "attempt": 0
+      },
+      {
+        "status": "done",
+        "result": {
+          "passed": true,
+          "steps": [
+            {
+              "cmd": "sleep 3",
+              "exit_code": 0,
+              "duration_s": 3.076,
+              "output_tail": ""
+            },
+            {
+              "cmd": "sleep 3",
+              "exit_code": 0,
+              "duration_s": 3.003,
+              "output_tail": ""
+            },
+            {
+              "cmd": "sleep 3",
+              "exit_code": 0,
+              "duration_s": 3.002,
+              "output_tail": ""
+            },
+            {
+              "cmd": "sleep 3",
+              "exit_code": 0,
+              "duration_s": 3.002,
+              "output_tail": ""
+            }
+          ],
+          "parallel": false,
+          "microvm_id": "microvm-ebd088c7-55b6-319b-a809-c41c6f829298",
+          "heartbeats": 1
+        },
+        "retryable": false,
+        "vm": {
+          "microvm_id": "microvm-ebd088c7-55b6-319b-a809-c41c6f829298",
+          "endpoint": "2ad060c8-44d1-eda3-e003-b08831eda27a.lambda-microvm.us-east-1.on.aws"
+        },
+        "attempt": 0
+      }
+    ],
+    "succeeded": 2,
+    "failed": 0,
+    "errors": []
+  },
+  "error": null
+}

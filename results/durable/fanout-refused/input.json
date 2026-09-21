@@ -1,0 +1,245 @@
+{
+  "mode": "fanout",
+  "shards": [
+    {
+      "steps": [
+        "echo shard 0",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 1",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 2",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 3",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 4",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 5",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 6",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 7",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 8",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 9",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 10",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 11",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 12",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 13",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 14",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 15",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 16",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 17",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 18",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 19",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 20",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 21",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 22",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 23",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 24",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 25",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 26",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 27",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 28",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 29",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 30",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 31",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 32",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 33",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 34",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 35",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 36",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 37",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 38",
+        "sleep 1"
+      ]
+    },
+    {
+      "steps": [
+        "echo shard 39",
+        "sleep 1"
+      ]
+    }
+  ]
+}

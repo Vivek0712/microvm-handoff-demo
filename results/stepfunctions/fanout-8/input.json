@@ -1,0 +1,80 @@
+{
+  "stateMachineArn": "arn:aws:states:us-east-1:643603452951:stateMachine:mvm-demo-sfn-map-lease",
+  "execution": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-map-lease:fanout-8-20260921-011051",
+  "input": {
+    "shards": [
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "0"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "1"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "2"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "3"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "4"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "5"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "6"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "7"
+        }
+      }
+    ]
+  }
+}

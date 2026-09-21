@@ -1,0 +1,23 @@
+{
+  "mode": "fanout",
+  "shards": [
+    {
+      "steps": [
+        "sleep 3",
+        "sleep 3",
+        "sleep 3",
+        "sleep 3"
+      ],
+      "parallel": true,
+      "max_parallel": 4
+    },
+    {
+      "steps": [
+        "sleep 3",
+        "sleep 3",
+        "sleep 3",
+        "sleep 3"
+      ]
+    }
+  ]
+}

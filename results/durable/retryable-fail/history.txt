@@ -1,0 +1,18 @@
+       +s  timestamp                 event                        sub        name                                         detail
+   +0.000  2026-09-21T01:25:10.106Z  ExecutionStarted                        mvm-demo-durable-retryable-fail-20260921-012509 Input={'Payload': '{"mode": "single", "task": {"steps": ["echo retryable-fail"], "fail_after_s": 2}}', 'Truncated': False} ExecutionTimeout=3600
+   +0.101  2026-09-21T01:25:10.207Z  CallbackStarted              Callback   lease-0-callback                             callback_id=Ab9hZXi1YXJu... HeartbeatTimeout=30 Timeout=120
+   +0.131  2026-09-21T01:25:10.237Z  StepStarted                  Step       lease-0-launch
+   +0.283  2026-09-21T01:25:10.389Z  StepSucceeded                Step       lease-0-launch                               result={"t": "m", "v": {"microvm_id": {"t": "s", "v": "microvm-65d23dd1-739e-3d28-9b67-9aad537c3e4c"}, "endpoint": {"t": "s", "v": "f2d060c8-92ff-a431-e60a-71beb7db955... RetryDetails={'CurrentAttempt': 1}
+   +0.408  2026-09-21T01:25:10.514Z  InvocationCompleted                                                                  RequestId=d15c4c51-37f1-427e-81ae-329b985e93e9
+   +4.333  2026-09-21T01:25:14.439Z  CallbackFailed               Callback   lease-0-callback                             error=None: None
+   +4.531  2026-09-21T01:25:14.637Z  StepStarted                  Step       lease-0-terminate
+   +4.563  2026-09-21T01:25:14.669Z  StepSucceeded                Step       lease-0-terminate                            result={"t": "m", "v": {"terminated": {"t": "s", "v": "microvm-65d23dd1-739e-3d28-9b67-9aad537c3e4c"}}} RetryDetails={'CurrentAttempt': 1}
+   +4.601  2026-09-21T01:25:14.707Z  CallbackStarted              Callback   lease-1-callback                             callback_id=Ab9hZXi1YXJu... HeartbeatTimeout=30 Timeout=120
+   +4.629  2026-09-21T01:25:14.735Z  StepStarted                  Step       lease-1-launch
+   +4.792  2026-09-21T01:25:14.898Z  StepSucceeded                Step       lease-1-launch                               result={"t": "m", "v": {"microvm_id": {"t": "s", "v": "microvm-f42a615b-03a9-3c0a-9797-5ade37e97b1a"}, "endpoint": {"t": "s", "v": "80d060c8-9bcb-9a39-3b42-49d66c0381f... RetryDetails={'CurrentAttempt': 1}
+   +4.915  2026-09-21T01:25:15.021Z  InvocationCompleted                                                                  RequestId=0f3bf088-cd3e-4243-85e9-3454cd1a5255
+   +8.225  2026-09-21T01:25:18.331Z  CallbackFailed               Callback   lease-1-callback                             error=None: None
+   +8.393  2026-09-21T01:25:18.499Z  StepStarted                  Step       lease-1-terminate
+   +8.393  2026-09-21T01:25:18.499Z  StepSucceeded                Step       lease-1-terminate                            result={"t": "m", "v": {"terminated": {"t": "s", "v": "microvm-f42a615b-03a9-3c0a-9797-5ade37e97b1a"}}} RetryDetails={'CurrentAttempt': 1}
+   +8.518  2026-09-21T01:25:18.624Z  InvocationCompleted                                                                  RequestId=182d5513-97b6-479e-8b61-6572eab32e99
+   +8.518  2026-09-21T01:25:18.624Z  ExecutionSucceeded                      mvm-demo-durable-retryable-fail-20260921-012509 result={"status": "failed", "error": {"error_type": "Injected", "message": "failed on purpose after 2 s", "retryable": true, "data": {"steps": [{"cmd": "echo retryable...

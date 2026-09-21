@@ -1,0 +1,10 @@
+{
+  "stateMachineArn": "arn:aws:states:us-east-1:643603452951:stateMachine:mvm-demo-sfn-lease-short",
+  "execution": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease-short:hang-20260921-010929",
+  "input": {
+    "steps": [
+      "echo one step, then hang"
+    ],
+    "hang_s": 400
+  }
+}

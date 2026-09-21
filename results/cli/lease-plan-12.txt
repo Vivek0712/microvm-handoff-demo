@@ -1,0 +1,18 @@
+$ MVM_LEASE_APPROVAL_USD=0.015 mvm lease plan --image demo-agent --shards 12
+                  lease plan: 12 shards                  
+┌───────────────────────┬───────────────────────────────┐
+│ shards                │ 12                            │
+│ baseline              │ 512 MiB                       │
+│ memory quota          │ 8 GB                          │
+│ launch rate           │ 0.8/s                         │
+│ concurrency           │ 4  (policy max_concurrency 4) │
+│ waves                 │ 3                             │
+│ launch to all running │ ~21.8 s                       │
+│ worst case VM-s       │ 2160                          │
+│ worst case USD        │ $0.0189                       │
+│ approval needed       │ yes                           │
+│ rejected              │ no                            │
+└───────────────────────┴───────────────────────────────┘
+12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all 
+running in ~22 s, worst case 2160 VM-s = $0.02, needs approval (above $0.015)
+exit 3

@@ -1,0 +1,202 @@
+[
+  {
+    "microvm_id": "microvm-41f879c5-f3e0-3d41-8a1e-31a016bfcd04",
+    "lease_id": "fanout-8-20260921-011051-0",
+    "elapsed_s": 3.426,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.086,
+          "output_tail": "shard 0 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.006,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-41f879c5-f3e0-3d41-8a1e-31a016bfcd04",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-ddefcffe-c9e7-3e69-8406-cba49efb5fa8",
+    "lease_id": "fanout-8-20260921-011051-1",
+    "elapsed_s": 3.371,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.079,
+          "output_tail": "shard 1 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.003,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-ddefcffe-c9e7-3e69-8406-cba49efb5fa8",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-3a7d0c8e-bb7e-3089-84cc-c0185afcb0fd",
+    "lease_id": "fanout-8-20260921-011051-2",
+    "elapsed_s": 3.288,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.014,
+          "output_tail": "shard 2 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.002,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-3a7d0c8e-bb7e-3089-84cc-c0185afcb0fd",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-4d9a6661-3914-3475-8d1c-4ba82f947173",
+    "lease_id": "fanout-8-20260921-011051-3",
+    "elapsed_s": 3.356,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.107,
+          "output_tail": "shard 3 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.003,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-4d9a6661-3914-3475-8d1c-4ba82f947173",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-e7cbde16-ccaa-30ff-8251-0ced2db88226",
+    "lease_id": "fanout-8-20260921-011051-4",
+    "elapsed_s": 3.373,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.089,
+          "output_tail": "shard 4 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.007,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-e7cbde16-ccaa-30ff-8251-0ced2db88226",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-074542ca-918e-3f03-b8eb-1b5cb9fec183",
+    "lease_id": "fanout-8-20260921-011051-5",
+    "elapsed_s": 3.404,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.095,
+          "output_tail": "shard 5 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.005,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-074542ca-918e-3f03-b8eb-1b5cb9fec183",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-4479bcd1-befc-3d7b-b8e6-1d33649ecda7",
+    "lease_id": "fanout-8-20260921-011051-6",
+    "elapsed_s": 3.395,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.098,
+          "output_tail": "shard 6 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.008,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-4479bcd1-befc-3d7b-b8e6-1d33649ecda7",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-400cd0d8-fd89-388b-9f82-493256b01b71",
+    "lease_id": "fanout-8-20260921-011051-7",
+    "elapsed_s": 3.357,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.146,
+          "output_tail": "shard 7 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.003,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-400cd0d8-fd89-388b-9f82-493256b01b71",
+      "heartbeats": 0
+    }
+  }
+]

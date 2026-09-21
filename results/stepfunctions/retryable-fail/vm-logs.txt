@@ -1,0 +1,10 @@
+log group /aws/lambda-microvms/demo-agent
+VM ids    microvm-8a168ff7-d287-342d-934f-b16cd996fd70
+streams   2026/09/21[1.0]microvm-8a168ff7-d287-342d-934f-b16cd996fd70
+
+2026-09-21T01:13:47.520+00:00  2026/09/21[1.0]microvm-8a168ff7-d287-342d-934f-b16cd996fd70  {"t": "2026-09-21T01:13:47Z", "level": "info", "msg": "lease accepted", "phase": "init", "kind": "sfn", "lease_id": "retryable-fail-20260921-011342", "microvm_id": "microvm-8a168ff7-d287-342d-934f-b16cd996fd70"}
+2026-09-21T01:13:47.526+00:00  2026/09/21[1.0]microvm-8a168ff7-d287-342d-934f-b16cd996fd70  {"t": "2026-09-21T01:13:47Z", "level": "info", "msg": "$ echo before the injected failure", "phase": "step 1/1", "microvm_id": "microvm-8a168ff7-d287-342d-934f-b16cd996fd70"}
+2026-09-21T01:13:47.526+00:00  2026/09/21[1.0]microvm-8a168ff7-d287-342d-934f-b16cd996fd70  {"t": "2026-09-21T01:13:47Z", "level": "info", "msg": "phase: step 1/1", "phase": "step 1/1", "microvm_id": "microvm-8a168ff7-d287-342d-934f-b16cd996fd70"}
+2026-09-21T01:13:47.544+00:00  2026/09/21[1.0]microvm-8a168ff7-d287-342d-934f-b16cd996fd70  {"t": "2026-09-21T01:13:47Z", "level": "info", "msg": "before the injected failure", "phase": "step 1/1", "step": 1, "exit_code": 0, "duration_s": 0.02, "microvm_id": "microvm-8a168ff7-d287-342d-934f-b16cd996fd70"}
+2026-09-21T01:13:47.545+00:00  2026/09/21[1.0]microvm-8a168ff7-d287-342d-934f-b16cd996fd70  {"t": "2026-09-21T01:13:47Z", "level": "info", "msg": "phase: injected failure", "phase": "injected failure", "microvm_id": "microvm-8a168ff7-d287-342d-934f-b16cd996fd70"}
+2026-09-21T01:13:49.600+00:00  2026/09/21[1.0]microvm-8a168ff7-d287-342d-934f-b16cd996fd70  {"t": "2026-09-21T01:13:49Z", "level": "info", "msg": "lease failure delivered", "phase": "injected failure", "kind": "sfn", "microvm_id": "microvm-8a168ff7-d287-342d-934f-b16cd996fd70"}

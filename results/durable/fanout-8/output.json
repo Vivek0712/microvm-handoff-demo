@@ -1,0 +1,278 @@
+{
+  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:1/durable-execution/mvm-demo-durable-fanout-8-20260921-010654/ba102cd9-e251-3439-ba0c-7d9ccebbef93",
+  "execution_name": "mvm-demo-durable-fanout-8-20260921-010654",
+  "status": "SUCCEEDED",
+  "start": "2026-09-21T01:06:54.137Z",
+  "stop": "2026-09-21T01:07:06.408Z",
+  "seconds_by_service": 12.271,
+  "result": {
+    "status": "done",
+    "plan": {
+      "shards": 8,
+      "baseline_mib": 512,
+      "policy": {
+        "budget_s": 120,
+        "heartbeat_timeout_s": 30,
+        "slack_s": 60,
+        "max_concurrency": 4,
+        "max_vm_seconds": 3000,
+        "approval_usd": 0.015
+      },
+      "limit": {
+        "baseline_mib": 512,
+        "memory_quota_gb": 8.0,
+        "launch_rate": 0.8,
+        "by_memory": 16,
+        "by_policy": 4,
+        "limit": 4,
+        "reason": "policy max_concurrency 4"
+      },
+      "concurrency": 4,
+      "waves": 2,
+      "launch_to_all_running_s": 14.5,
+      "worst_case_vm_seconds": 1440,
+      "worst_case_usd": 0.01261,
+      "needs_approval": false,
+      "rejected": null,
+      "summary": "8 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 2 waves, all running in ~14 s, worst case 1440 VM-s = $0.01"
+    },
+    "outcomes": [
+      {
+        "status": "done",
+        "result": {
+          "passed": true,
+          "steps": [
+            {
+              "cmd": "echo shard 0",
+              "exit_code": 0,
+              "duration_s": 0.014,
+              "output_tail": "shard 0\n"
+            },
+            {
+              "cmd": "sleep 1",
+              "exit_code": 0,
+              "duration_s": 1.021,
+              "output_tail": ""
+            }
+          ],
+          "parallel": false,
+          "microvm_id": "microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d",
+          "heartbeats": 0
+        },
+        "retryable": false,
+        "vm": {
+          "microvm_id": "microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d",
+          "endpoint": "70d060c0-3699-94b6-e57e-dad97590e701.lambda-microvm.us-east-1.on.aws"
+        },
+        "attempt": 0
+      },
+      {
+        "status": "done",
+        "result": {
+          "passed": true,
+          "steps": [
+            {
+              "cmd": "echo shard 1",
+              "exit_code": 0,
+              "duration_s": 0.024,
+              "output_tail": "shard 1\n"
+            },
+            {
+              "cmd": "sleep 1",
+              "exit_code": 0,
+              "duration_s": 1.078,
+              "output_tail": ""
+            }
+          ],
+          "parallel": false,
+          "microvm_id": "microvm-b5093f96-3919-3848-95c0-5d8264a3cc45",
+          "heartbeats": 0
+        },
+        "retryable": false,
+        "vm": {
+          "microvm_id": "microvm-b5093f96-3919-3848-95c0-5d8264a3cc45",
+          "endpoint": "aed060c0-3de9-30fb-f1ff-48e51453924f.lambda-microvm.us-east-1.on.aws"
+        },
+        "attempt": 0
+      },
+      {
+        "status": "done",
+        "result": {
+          "passed": true,
+          "steps": [
+            {
+              "cmd": "echo shard 2",
+              "exit_code": 0,
+              "duration_s": 0.022,
+              "output_tail": "shard 2\n"
+            },
+            {
+              "cmd": "sleep 1",
+              "exit_code": 0,
+              "duration_s": 1.043,
+              "output_tail": ""
+            }
+          ],
+          "parallel": false,
+          "microvm_id": "microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f",
+          "heartbeats": 0
+        },
+        "retryable": false,
+        "vm": {
+          "microvm_id": "microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f",
+          "endpoint": "d2d060c0-3b78-5e04-af51-f4a90dd57c39.lambda-microvm.us-east-1.on.aws"
+        },
+        "attempt": 0
+      },
+      {
+        "status": "done",
+        "result": {
+          "passed": true,
+          "steps": [
+            {
+              "cmd": "echo shard 3",
+              "exit_code": 0,
+              "duration_s": 0.018,
+              "output_tail": "shard 3\n"
+            },
+            {
+              "cmd": "sleep 1",
+              "exit_code": 0,
+              "duration_s": 1.045,
+              "output_tail": ""
+            }
+          ],
+          "parallel": false,
+          "microvm_id": "microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c",
+          "heartbeats": 0
+        },
+        "retryable": false,
+        "vm": {
+          "microvm_id": "microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c",
+          "endpoint": "66d060c0-3909-01f1-9a1d-8d8c006ff278.lambda-microvm.us-east-1.on.aws"
+        },
+        "attempt": 0
+      },
+      {
+        "status": "done",
+        "result": {
+          "passed": true,
+          "steps": [
+            {
+              "cmd": "echo shard 4",
+              "exit_code": 0,
+              "duration_s": 0.024,
+              "output_tail": "shard 4\n"
+            },
+            {
+              "cmd": "sleep 1",
+              "exit_code": 0,
+              "duration_s": 1.028,
+              "output_tail": ""
+            }
+          ],
+          "parallel": false,
+          "microvm_id": "microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72",
+          "heartbeats": 0
+        },
+        "retryable": false,
+        "vm": {
+          "microvm_id": "microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72",
+          "endpoint": "ded060c0-405b-5629-600a-2cd11ab18328.lambda-microvm.us-east-1.on.aws"
+        },
+        "attempt": 0
+      },
+      {
+        "status": "done",
+        "result": {
+          "passed": true,
+          "steps": [
+            {
+              "cmd": "echo shard 5",
+              "exit_code": 0,
+              "duration_s": 0.01,
+              "output_tail": "shard 5\n"
+            },
+            {
+              "cmd": "sleep 1",
+              "exit_code": 0,
+              "duration_s": 1.071,
+              "output_tail": ""
+            }
+          ],
+          "parallel": false,
+          "microvm_id": "microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f",
+          "heartbeats": 0
+        },
+        "retryable": false,
+        "vm": {
+          "microvm_id": "microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f",
+          "endpoint": "14d060c0-42ca-f14c-3f83-9a45beb8516f.lambda-microvm.us-east-1.on.aws"
+        },
+        "attempt": 0
+      },
+      {
+        "status": "done",
+        "result": {
+          "passed": true,
+          "steps": [
+            {
+              "cmd": "echo shard 6",
+              "exit_code": 0,
+              "duration_s": 0.037,
+              "output_tail": "shard 6\n"
+            },
+            {
+              "cmd": "sleep 1",
+              "exit_code": 0,
+              "duration_s": 1.057,
+              "output_tail": ""
+            }
+          ],
+          "parallel": false,
+          "microvm_id": "microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1",
+          "heartbeats": 0
+        },
+        "retryable": false,
+        "vm": {
+          "microvm_id": "microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1",
+          "endpoint": "24d060c0-47ac-6b15-3037-c975ec5976a6.lambda-microvm.us-east-1.on.aws"
+        },
+        "attempt": 0
+      },
+      {
+        "status": "done",
+        "result": {
+          "passed": true,
+          "steps": [
+            {
+              "cmd": "echo shard 7",
+              "exit_code": 0,
+              "duration_s": 0.013,
+              "output_tail": "shard 7\n"
+            },
+            {
+              "cmd": "sleep 1",
+              "exit_code": 0,
+              "duration_s": 1.017,
+              "output_tail": ""
+            }
+          ],
+          "parallel": false,
+          "microvm_id": "microvm-08481ac5-6695-3c37-a77a-3845660d8adf",
+          "heartbeats": 0
+        },
+        "retryable": false,
+        "vm": {
+          "microvm_id": "microvm-08481ac5-6695-3c37-a77a-3845660d8adf",
+          "endpoint": "fcd060c0-453e-bdef-859d-bbc0184ac12d.lambda-microvm.us-east-1.on.aws"
+        },
+        "attempt": 0
+      }
+    ],
+    "succeeded": 8,
+    "failed": 0,
+    "errors": []
+  },
+  "error": null
+}

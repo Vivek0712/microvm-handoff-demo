@@ -1,0 +1,347 @@
+{
+  "scenario": "fanout-approved",
+  "orchestrator": "stepfunctions",
+  "status": "SUCCEEDED",
+  "expected": "sfn: RequestApproval publishes to SNS with the task token; approver reads SQS and calls SendTaskSuccess; Fanout runs",
+  "matches_expected": true,
+  "start": "2026-09-21T01:11:31.378+00:00",
+  "stop": "2026-09-21T01:11:48.661+00:00",
+  "seconds_by_service": 17.283,
+  "vm_ids": [
+    "microvm-6ea38828-6cd3-3236-bb41-4326f36fd60a",
+    "microvm-5ebbd035-6d22-3c8b-9ae9-1b2a6c1dedae",
+    "microvm-7a08b310-a90a-380c-a7f4-5d4df216536c",
+    "microvm-20f36949-de0f-388c-89c4-f7f88a74fc60",
+    "microvm-6facbe69-75f4-317c-8cdf-203c86089c14",
+    "microvm-2d6decca-1a48-3211-b267-3160db62b3cc",
+    "microvm-3065de0d-fc18-30e1-9a78-9e17046a0887",
+    "microvm-c525bf04-2c6c-3a2c-a764-195d18ee967e",
+    "microvm-a62a0955-4f0e-3d28-a636-4dba8b1dc01c",
+    "microvm-6cf7333c-ccbe-36f2-beb0-a371daafafa0",
+    "microvm-3b81de2f-cc81-31af-9e6e-04e000d03bd0",
+    "microvm-91a00719-8752-3faa-a060-06d17cfc5a02"
+  ],
+  "runmicrovm_calls": 12,
+  "notes": [
+    "plan exit 3 (needs approval): the machine's Gate handles approval, so run.py started it"
+  ],
+  "microvm_ctl": {
+    "version": "0.3.0",
+    "path": "/Users/vivekrajaps/Library/Python/3.9/lib/python/site-packages/microvm/__init__.py"
+  },
+  "checks": {
+    "request_approval_published": true,
+    "approver_send_task_success": true,
+    "fanout_ran": true,
+    "succeeded_12_results": true,
+    "vms_terminated_by_machine": true
+  },
+  "execution_arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-map-lease:fanout-approved-20260921-011125",
+  "state_machine_arn": "arn:aws:states:us-east-1:643603452951:stateMachine:mvm-demo-sfn-map-lease",
+  "error": null,
+  "states_entered": [
+    "Gate",
+    "RequestApproval",
+    "Fanout",
+    "Lease[0]",
+    "Lease[1]",
+    "Lease[2]",
+    "Lease[3]",
+    "Terminate[2]",
+    "ShardDone[2]",
+    "Lease[4]",
+    "Terminate[0]",
+    "Terminate[3]",
+    "Terminate[1]",
+    "ShardDone[1]",
+    "ShardDone[0]",
+    "ShardDone[3]",
+    "Lease[5]",
+    "Lease[6]",
+    "Lease[7]",
+    "Terminate[4]",
+    "ShardDone[4]",
+    "Lease[8]",
+    "Terminate[7]",
+    "Terminate[5]",
+    "Terminate[6]",
+    "ShardDone[7]",
+    "ShardDone[5]",
+    "ShardDone[6]",
+    "Lease[9]",
+    "Lease[10]",
+    "Lease[11]",
+    "Terminate[9]",
+    "Terminate[8]",
+    "ShardDone[8]",
+    "ShardDone[9]",
+    "Terminate[11]",
+    "ShardDone[11]",
+    "Terminate[10]",
+    "ShardDone[10]",
+    "Done[10]"
+  ],
+  "lease_tasks": [
+    {
+      "state": "Lease",
+      "index": 0,
+      "TaskScheduled": "2026-09-21T01:11:31.914+00:00",
+      "last": "TaskSucceeded",
+      "TaskSubmitted": "2026-09-21T01:11:32.210+00:00",
+      "TaskSucceeded": "2026-09-21T01:11:36.934+00:00"
+    },
+    {
+      "state": "Lease",
+      "index": 1,
+      "TaskScheduled": "2026-09-21T01:11:31.914+00:00",
+      "last": "TaskSucceeded",
+      "TaskSubmitted": "2026-09-21T01:11:32.214+00:00",
+      "TaskSucceeded": "2026-09-21T01:11:36.994+00:00"
+    },
+    {
+      "state": "Lease",
+      "index": 2,
+      "TaskScheduled": "2026-09-21T01:11:31.914+00:00",
+      "last": "TaskSucceeded",
+      "TaskSubmitted": "2026-09-21T01:11:32.177+00:00",
+      "TaskSucceeded": "2026-09-21T01:11:36.528+00:00"
+    },
+    {
+      "state": "Lease",
+      "index": 3,
+      "TaskScheduled": "2026-09-21T01:11:31.914+00:00",
+      "last": "TaskSucceeded",
+      "TaskSubmitted": "2026-09-21T01:11:32.250+00:00",
+      "TaskSucceeded": "2026-09-21T01:11:36.994+00:00"
+    },
+    {
+      "state": "Lease",
+      "index": 4,
+      "TaskScheduled": "2026-09-21T01:11:36.769+00:00",
+      "last": "TaskSucceeded",
+      "TaskSubmitted": "2026-09-21T01:11:37.101+00:00",
+      "TaskSucceeded": "2026-09-21T01:11:41.721+00:00"
+    },
+    {
+      "state": "Lease",
+      "index": 5,
+      "TaskScheduled": "2026-09-21T01:11:37.225+00:00",
+      "last": "TaskSucceeded",
+      "TaskSubmitted": "2026-09-21T01:11:37.553+00:00",
+      "TaskSucceeded": "2026-09-21T01:11:42.359+00:00"
+    },
+    {
+      "state": "Lease",
+      "index": 6,
+      "TaskScheduled": "2026-09-21T01:11:37.225+00:00",
+      "last": "TaskSucceeded",
+      "TaskSubmitted": "2026-09-21T01:11:37.570+00:00",
+      "TaskSucceeded": "2026-09-21T01:11:42.415+00:00"
+    },
+    {
+      "state": "Lease",
+      "index": 7,
+      "TaskScheduled": "2026-09-21T01:11:37.225+00:00",
+      "last": "TaskSucceeded",
+      "TaskSubmitted": "2026-09-21T01:11:37.539+00:00",
+      "TaskSucceeded": "2026-09-21T01:11:42.295+00:00"
+    },
+    {
+      "state": "Lease",
+      "index": 8,
+      "TaskScheduled": "2026-09-21T01:11:41.921+00:00",
+      "last": "TaskSucceeded",
+      "TaskSubmitted": "2026-09-21T01:11:42.219+00:00",
+      "TaskSucceeded": "2026-09-21T01:11:47.096+00:00"
+    },
+    {
+      "state": "Lease",
+      "index": 9,
+      "TaskScheduled": "2026-09-21T01:11:42.656+00:00",
+      "last": "TaskSucceeded",
+      "TaskSubmitted": "2026-09-21T01:11:42.981+00:00",
+      "TaskSucceeded": "2026-09-21T01:11:47.062+00:00"
+    },
+    {
+      "state": "Lease",
+      "index": 10,
+      "TaskScheduled": "2026-09-21T01:11:42.656+00:00",
+      "last": "TaskSucceeded",
+      "TaskSubmitted": "2026-09-21T01:11:43.028+00:00",
+      "TaskSucceeded": "2026-09-21T01:11:48.381+00:00"
+    },
+    {
+      "state": "Lease",
+      "index": 11,
+      "TaskScheduled": "2026-09-21T01:11:42.656+00:00",
+      "last": "TaskSucceeded",
+      "TaskSubmitted": "2026-09-21T01:11:42.972+00:00",
+      "TaskSucceeded": "2026-09-21T01:11:47.624+00:00"
+    }
+  ],
+  "peak_in_flight": 4,
+  "throttling_retries": 0,
+  "terminated_by_machine": [
+    "Terminate:microvm-6ea38828-6cd3-3236-bb41-4326f36fd60a",
+    "Terminate:microvm-5ebbd035-6d22-3c8b-9ae9-1b2a6c1dedae",
+    "Terminate:microvm-20f36949-de0f-388c-89c4-f7f88a74fc60",
+    "Terminate:microvm-7a08b310-a90a-380c-a7f4-5d4df216536c",
+    "Terminate:microvm-6facbe69-75f4-317c-8cdf-203c86089c14",
+    "Terminate:microvm-2d6decca-1a48-3211-b267-3160db62b3cc",
+    "Terminate:microvm-3065de0d-fc18-30e1-9a78-9e17046a0887",
+    "Terminate:microvm-c525bf04-2c6c-3a2c-a764-195d18ee967e",
+    "Terminate:microvm-3b81de2f-cc81-31af-9e6e-04e000d03bd0",
+    "Terminate:microvm-a62a0955-4f0e-3d28-a636-4dba8b1dc01c",
+    "Terminate:microvm-6cf7333c-ccbe-36f2-beb0-a371daafafa0",
+    "Terminate:microvm-91a00719-8752-3faa-a060-06d17cfc5a02"
+  ],
+  "in_vm_wall_s": 3.02,
+  "vm_states": {
+    "microvm-6ea38828-6cd3-3236-bb41-4326f36fd60a": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:11:32.126+00:00",
+      "terminatedAt": "2026-09-21T01:11:37.103+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 4.977,
+      "terminated_by": "machine"
+    },
+    "microvm-5ebbd035-6d22-3c8b-9ae9-1b2a6c1dedae": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:11:32.150+00:00",
+      "terminatedAt": "2026-09-21T01:11:37.684+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 5.534,
+      "terminated_by": "machine"
+    },
+    "microvm-7a08b310-a90a-380c-a7f4-5d4df216536c": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:11:32.121+00:00",
+      "terminatedAt": "2026-09-21T01:11:37.683+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 5.562,
+      "terminated_by": "machine"
+    },
+    "microvm-20f36949-de0f-388c-89c4-f7f88a74fc60": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:11:32.172+00:00",
+      "terminatedAt": "2026-09-21T01:11:37.559+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 5.387,
+      "terminated_by": "machine"
+    },
+    "microvm-6facbe69-75f4-317c-8cdf-203c86089c14": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:11:37.019+00:00",
+      "terminatedAt": "2026-09-21T01:11:42.248+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 5.229,
+      "terminated_by": "machine"
+    },
+    "microvm-2d6decca-1a48-3211-b267-3160db62b3cc": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:11:37.478+00:00",
+      "terminatedAt": "2026-09-21T01:11:43.016+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 5.538,
+      "terminated_by": "machine"
+    },
+    "microvm-3065de0d-fc18-30e1-9a78-9e17046a0887": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:11:37.472+00:00",
+      "terminatedAt": "2026-09-21T01:11:43.069+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 5.597,
+      "terminated_by": "machine"
+    },
+    "microvm-c525bf04-2c6c-3a2c-a764-195d18ee967e": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:11:37.494+00:00",
+      "terminatedAt": "2026-09-21T01:11:43.159+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 5.665,
+      "terminated_by": "machine"
+    },
+    "microvm-a62a0955-4f0e-3d28-a636-4dba8b1dc01c": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:11:42.130+00:00",
+      "terminatedAt": "2026-09-21T01:11:47.638+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 5.508,
+      "terminated_by": "machine"
+    },
+    "microvm-6cf7333c-ccbe-36f2-beb0-a371daafafa0": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:11:42.923+00:00",
+      "terminatedAt": "2026-09-21T01:11:48.237+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 5.314,
+      "terminated_by": "machine"
+    },
+    "microvm-3b81de2f-cc81-31af-9e6e-04e000d03bd0": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:11:42.929+00:00",
+      "terminatedAt": "2026-09-21T01:11:47.789+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 4.86,
+      "terminated_by": "machine"
+    },
+    "microvm-91a00719-8752-3faa-a060-06d17cfc5a02": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:11:42.961+00:00",
+      "terminatedAt": "2026-09-21T01:11:49.117+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 6.156,
+      "terminated_by": "machine"
+    }
+  },
+  "fleet_check": {
+    "at": "2026-09-21T01:12:01+00:00",
+    "active_before": [],
+    "terminated": [],
+    "left_alone": []
+  },
+  "plan": {
+    "shards": 12,
+    "baseline_mib": 512,
+    "policy": {
+      "budget_s": 120,
+      "heartbeat_timeout_s": 30,
+      "slack_s": 60,
+      "max_concurrency": 4,
+      "max_vm_seconds": 3000,
+      "approval_usd": 0.015
+    },
+    "limit": {
+      "baseline_mib": 512,
+      "memory_quota_gb": 8.0,
+      "launch_rate": 0.8,
+      "by_memory": 16,
+      "by_policy": 4,
+      "limit": 4,
+      "reason": "policy max_concurrency 4"
+    },
+    "concurrency": 4,
+    "waves": 3,
+    "launch_to_all_running_s": 21.75,
+    "worst_case_vm_seconds": 2160,
+    "worst_case_usd": 0.018915,
+    "needs_approval": true,
+    "rejected": null,
+    "summary": "12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all running in ~22 s, worst case 2160 VM-s = $0.02, needs approval (above $0.015)"
+  },
+  "plan_exit_code": 3,
+  "approval": {
+    "decision": "approve",
+    "queue": "https://sqs.us-east-1.amazonaws.com/643603452951/mvm-demo-approvals-q",
+    "stale_messages_deleted": 0,
+    "message": {
+      "action": "microvm-ctl lease fan-out approval",
+      "shards": 12,
+      "image": "arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent",
+      "execution": "fanout-approved-20260921-011125"
+    },
+    "received_at": "2026-09-21T01:11:31+00:00",
+    "call": "SendTaskSuccess",
+    "completed_at": "2026-09-21T01:11:31+00:00"
+  }
+}

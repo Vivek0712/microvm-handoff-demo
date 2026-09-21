@@ -1,0 +1,44 @@
+{
+  "stateMachineArn": "arn:aws:states:us-east-1:643603452951:stateMachine:mvm-demo-sfn-map-lease",
+  "execution": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-map-lease:fanout-4-20260921-011518",
+  "input": {
+    "shards": [
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "0"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "1"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "2"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "3"
+        }
+      }
+    ]
+  }
+}

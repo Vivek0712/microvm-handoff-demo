@@ -1,0 +1,28 @@
+$ mvm status microvm-af779375-4397-3675-9522-41a334a5620f
+       job on microvm-af779375-4397-3675-9522-41a334a5620f       
+┌──────────┬────────────────────────────────────────────────────┐
+│ phase    │ done                                               │
+│ elapsed  │ 129 s                                              │
+│ progress │ 4/4                                                │
+│ lease    │ none  cli-none-20260920-175313  heartbeats=0  done │
+└──────────┴────────────────────────────────────────────────────┘
+info    init lease accepted  {"kind": "none", "lease_id": "cli-none-20260920-175313"}
+info    step 1/4 phase: step 1/4
+info    step 1/4 $ uname -m
+info    step 1/4 aarch64  {"step": 1, "exit_code": 0, "duration_s": 2.395}
+info    step 2/4 phase: step 2/4
+info    step 2/4 $ python3 -c 'print(2+2)'
+info    step 2/4 4  {"step": 2, "exit_code": 0, "duration_s": 1.377}
+info    step 3/4 phase: step 3/4
+info    step 3/4 $ sleep 2
+info    step 3/4 (no output)  {"step": 3, "exit_code": 0, "duration_s": 2.002}
+info    step 4/4 phase: step 4/4
+info    step 4/4 $ echo done
+info    step 4/4 done  {"step": 4, "exit_code": 0, "duration_s": 0.001}
+info    done phase: done
+info    done passed 4 step(s)  {"result": {"passed": true, "steps": [{"cmd": "uname -m", "exit_code": 0, 
+"duration_s": 2.395}, {"cmd": "python3 -c 'print(2+2)'", "exit_code": 0, "duration_s": 1.377}, {"cmd": "sleep 
+2", "exit_code": 0, "duration_s": 2.002}, {"cmd": "echo done", "exit_code": 0, "duration_s": 0.001}], 
+"parallel": false, "microvm_id": "microvm-af779375-4397-3675-9522-41a334a5620f", "heartbeats": 0}}
+info    done lease success delivered  {"kind": "none"}
+exit 0

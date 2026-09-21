@@ -1,0 +1,367 @@
+{
+  "would_have_started": {
+    "shards": [
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "0"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "1"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "2"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "3"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "4"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "5"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "6"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "7"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "8"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "9"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "10"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "11"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "12"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "13"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "14"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "15"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "16"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "17"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "18"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "19"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "20"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "21"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "22"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "23"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "24"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "25"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "26"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "27"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "28"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "29"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "30"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "31"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "32"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "33"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "34"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "35"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "36"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "37"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "38"
+        }
+      },
+      {
+        "steps": [
+          "echo shard $SHARD on $(uname -m)",
+          "sleep 3"
+        ],
+        "env": {
+          "SHARD": "39"
+        }
+      }
+    ]
+  },
+  "started": false
+}

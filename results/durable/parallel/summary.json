@@ -1,0 +1,79 @@
+{
+  "scenario": "parallel",
+  "orchestrator": "durable",
+  "status": "SUCCEEDED",
+  "expected": "parallel wall time ~3 s vs ~12 s inside the VM (from the result's step durations)",
+  "matches_expected": true,
+  "start": "2026-09-21T01:24:28.780Z",
+  "stop": "2026-09-21T01:24:44.627Z",
+  "seconds_by_service": 15.847,
+  "vm_ids": [
+    "microvm-379f8592-cb95-3d64-92dd-8956c75970c0",
+    "microvm-ebd088c7-55b6-319b-a809-c41c6f829298"
+  ],
+  "runmicrovm_calls": 2,
+  "notes": [
+    "parallel shard: 4 steps, in-VM wall ~3.10 s (max step), sum 12.39 s",
+    "sequential shard: 4 steps, in-VM wall 12.08 s (sum of steps)"
+  ],
+  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:2/durable-execution/mvm-demo-durable-parallel-20260921-012428/93b970ac-b711-3906-b7c0-af164d6a1c8c",
+  "execution_name": "mvm-demo-durable-parallel-20260921-012428",
+  "outcome_status": "done",
+  "history_events": 25,
+  "history": "plan step; 2 launch steps; 2 lease callback succeeded; 2 terminate steps; ExecutionSucceeded with status done",
+  "vm_states_after": {
+    "microvm-379f8592-cb95-3d64-92dd-8956c75970c0": "TERMINATED",
+    "microvm-ebd088c7-55b6-319b-a809-c41c6f829298": "TERMINATED"
+  },
+  "vm_seconds": 19.8,
+  "vm_records": {
+    "microvm-379f8592-cb95-3d64-92dd-8956c75970c0": {
+      "microvmId": "microvm-379f8592-cb95-3d64-92dd-8956c75970c0",
+      "state": "TERMINATED",
+      "endpoint": "52d060c8-426b-8056-41b0-71f5cebb921b.lambda-microvm.us-east-1.on.aws",
+      "imageArn": "arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent",
+      "imageVersion": "1.0",
+      "executionRoleArn": "arn:aws:iam::643603452951:role/mvm-demo-durable-agent-execution-role",
+      "idlePolicy": {
+        "maxIdleDurationSeconds": 120,
+        "suspendedDurationSeconds": 60,
+        "autoResumeEnabled": false
+      },
+      "maximumDurationInSeconds": 180,
+      "startedAt": "2026-09-20 18:24:29.069000-07:00",
+      "terminatedAt": "2026-09-20 18:24:34.426000-07:00",
+      "stateReason": "Success.",
+      "ingressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS"
+      ],
+      "egressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS"
+      ]
+    },
+    "microvm-ebd088c7-55b6-319b-a809-c41c6f829298": {
+      "microvmId": "microvm-ebd088c7-55b6-319b-a809-c41c6f829298",
+      "state": "TERMINATED",
+      "endpoint": "2ad060c8-44d1-eda3-e003-b08831eda27a.lambda-microvm.us-east-1.on.aws",
+      "imageArn": "arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent",
+      "imageVersion": "1.0",
+      "executionRoleArn": "arn:aws:iam::643603452951:role/mvm-demo-durable-agent-execution-role",
+      "idlePolicy": {
+        "maxIdleDurationSeconds": 120,
+        "suspendedDurationSeconds": 60,
+        "autoResumeEnabled": false
+      },
+      "maximumDurationInSeconds": 180,
+      "startedAt": "2026-09-20 18:24:30.307000-07:00",
+      "terminatedAt": "2026-09-20 18:24:44.750000-07:00",
+      "stateReason": "Success.",
+      "ingressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS"
+      ],
+      "egressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS"
+      ]
+    }
+  },
+  "approval": null,
+  "description": "in-VM parallelism: 4 x sleep 3 in parallel vs the same 4 sequential (two shards)"
+}

@@ -1,0 +1,22 @@
+execution  arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease:parallel-20260921-011310
+status     SUCCEEDED
+start      2026-09-21T01:13:13.087+00:00
+stop       2026-09-21T01:13:18.636+00:00
+seconds    5.549
+
+ +seconds  timestamp                     event                          state
+   +0.000  2026-09-21T01:13:13.087+00:00 ExecutionStarted               
+   +0.024  2026-09-21T01:13:13.111+00:00 TaskStateEntered               Lease
+   +0.024  2026-09-21T01:13:13.111+00:00 TaskScheduled                  Lease  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +0.092  2026-09-21T01:13:13.179+00:00 TaskStarted                    Lease  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +0.307  2026-09-21T01:13:13.394+00:00 TaskSubmitted                  Lease  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +5.304  2026-09-21T01:13:18.391+00:00 TaskSucceeded                  Lease  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +5.317  2026-09-21T01:13:18.404+00:00 TaskStateExited                Lease
+   +5.317  2026-09-21T01:13:18.404+00:00 TaskStateEntered               Terminate
+   +5.317  2026-09-21T01:13:18.404+00:00 TaskScheduled                  Terminate  aws-sdk:lambdamicrovms:terminateMicrovm
+   +5.364  2026-09-21T01:13:18.451+00:00 TaskStarted                    Terminate  aws-sdk:lambdamicrovms:terminateMicrovm
+   +5.502  2026-09-21T01:13:18.589+00:00 TaskSucceeded                  Terminate  aws-sdk:lambdamicrovms:terminateMicrovm
+   +5.515  2026-09-21T01:13:18.602+00:00 TaskStateExited                Terminate
+   +5.515  2026-09-21T01:13:18.602+00:00 SucceedStateEntered            Done
+   +5.515  2026-09-21T01:13:18.602+00:00 SucceedStateExited             Done
+   +5.549  2026-09-21T01:13:18.636+00:00 ExecutionSucceeded             Done

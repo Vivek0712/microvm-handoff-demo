@@ -1,0 +1,77 @@
+execution  arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-map-lease:fanout-4-20260921-011518
+status     SUCCEEDED
+start      2026-09-21T01:15:24.708+00:00
+stop       2026-09-21T01:15:30.250+00:00
+seconds    5.542
+
+ +seconds  timestamp                     event                          state
+   +0.000  2026-09-21T01:15:24.708+00:00 ExecutionStarted               
+   +0.020  2026-09-21T01:15:24.728+00:00 ChoiceStateEntered             Gate
+   +0.020  2026-09-21T01:15:24.728+00:00 ChoiceStateExited              Gate
+   +0.020  2026-09-21T01:15:24.728+00:00 MapStateEntered                Fanout
+   +0.020  2026-09-21T01:15:24.728+00:00 MapStateStarted                Fanout  length=4
+   +0.020  2026-09-21T01:15:24.728+00:00 MapIterationStarted            
+   +0.020  2026-09-21T01:15:24.728+00:00 MapIterationStarted            
+   +0.020  2026-09-21T01:15:24.728+00:00 MapIterationStarted            
+   +0.020  2026-09-21T01:15:24.728+00:00 MapIterationStarted            
+   +0.020  2026-09-21T01:15:24.728+00:00 TaskStateEntered               Lease[0]
+   +0.020  2026-09-21T01:15:24.728+00:00 TaskScheduled                  Lease[0]  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +0.020  2026-09-21T01:15:24.728+00:00 TaskStateEntered               Lease[1]
+   +0.020  2026-09-21T01:15:24.728+00:00 TaskScheduled                  Lease[1]  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +0.020  2026-09-21T01:15:24.728+00:00 TaskStateEntered               Lease[2]
+   +0.020  2026-09-21T01:15:24.728+00:00 TaskScheduled                  Lease[2]  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +0.020  2026-09-21T01:15:24.728+00:00 TaskStateEntered               Lease[3]
+   +0.020  2026-09-21T01:15:24.728+00:00 TaskScheduled                  Lease[3]  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +0.094  2026-09-21T01:15:24.802+00:00 TaskStarted                    Lease[1]  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +0.096  2026-09-21T01:15:24.804+00:00 TaskStarted                    Lease[3]  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +0.097  2026-09-21T01:15:24.805+00:00 TaskStarted                    Lease[0]  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +0.103  2026-09-21T01:15:24.811+00:00 TaskStarted                    Lease[2]  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +0.282  2026-09-21T01:15:24.990+00:00 TaskSubmitted                  Lease[3]  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +0.307  2026-09-21T01:15:25.015+00:00 TaskSubmitted                  Lease[1]  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +0.321  2026-09-21T01:15:25.029+00:00 TaskSubmitted                  Lease[0]  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +0.380  2026-09-21T01:15:25.088+00:00 TaskSubmitted                  Lease[2]  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +4.996  2026-09-21T01:15:29.704+00:00 TaskSucceeded                  Lease[3]  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +5.020  2026-09-21T01:15:29.728+00:00 TaskSucceeded                  Lease[1]  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +5.033  2026-09-21T01:15:29.741+00:00 TaskSucceeded                  Lease[2]  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +5.044  2026-09-21T01:15:29.752+00:00 TaskStateExited                Lease[3]
+   +5.044  2026-09-21T01:15:29.752+00:00 TaskStateExited                Lease[1]
+   +5.044  2026-09-21T01:15:29.752+00:00 TaskStateExited                Lease[2]
+   +5.044  2026-09-21T01:15:29.752+00:00 TaskStateEntered               Terminate[3]
+   +5.044  2026-09-21T01:15:29.752+00:00 TaskScheduled                  Terminate[3]  aws-sdk:lambdamicrovms:terminateMicrovm
+   +5.044  2026-09-21T01:15:29.752+00:00 TaskStateEntered               Terminate[1]
+   +5.044  2026-09-21T01:15:29.752+00:00 TaskScheduled                  Terminate[1]  aws-sdk:lambdamicrovms:terminateMicrovm
+   +5.044  2026-09-21T01:15:29.752+00:00 TaskStateEntered               Terminate[2]
+   +5.044  2026-09-21T01:15:29.752+00:00 TaskScheduled                  Terminate[2]  aws-sdk:lambdamicrovms:terminateMicrovm
+   +5.094  2026-09-21T01:15:29.802+00:00 TaskStarted                    Terminate[1]  aws-sdk:lambdamicrovms:terminateMicrovm
+   +5.102  2026-09-21T01:15:29.810+00:00 TaskStarted                    Terminate[2]  aws-sdk:lambdamicrovms:terminateMicrovm
+   +5.124  2026-09-21T01:15:29.832+00:00 TaskStarted                    Terminate[3]  aws-sdk:lambdamicrovms:terminateMicrovm
+   +5.211  2026-09-21T01:15:29.919+00:00 TaskSucceeded                  Lease[0]  aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken
+   +5.218  2026-09-21T01:15:29.926+00:00 TaskSucceeded                  Terminate[1]  aws-sdk:lambdamicrovms:terminateMicrovm
+   +5.223  2026-09-21T01:15:29.931+00:00 TaskSucceeded                  Terminate[2]  aws-sdk:lambdamicrovms:terminateMicrovm
+   +5.262  2026-09-21T01:15:29.970+00:00 TaskSucceeded                  Terminate[3]  aws-sdk:lambdamicrovms:terminateMicrovm
+   +5.295  2026-09-21T01:15:30.003+00:00 TaskStateExited                Lease[0]
+   +5.295  2026-09-21T01:15:30.003+00:00 TaskStateExited                Terminate[1]
+   +5.295  2026-09-21T01:15:30.003+00:00 TaskStateExited                Terminate[2]
+   +5.295  2026-09-21T01:15:30.003+00:00 TaskStateExited                Terminate[3]
+   +5.295  2026-09-21T01:15:30.003+00:00 TaskStateEntered               Terminate[0]
+   +5.295  2026-09-21T01:15:30.003+00:00 TaskScheduled                  Terminate[0]  aws-sdk:lambdamicrovms:terminateMicrovm
+   +5.295  2026-09-21T01:15:30.003+00:00 SucceedStateEntered            ShardDone[1]
+   +5.295  2026-09-21T01:15:30.003+00:00 SucceedStateExited             ShardDone[1]
+   +5.295  2026-09-21T01:15:30.003+00:00 MapIterationSucceeded          ShardDone[1]
+   +5.295  2026-09-21T01:15:30.003+00:00 SucceedStateEntered            ShardDone[2]
+   +5.295  2026-09-21T01:15:30.003+00:00 SucceedStateExited             ShardDone[2]
+   +5.295  2026-09-21T01:15:30.003+00:00 MapIterationSucceeded          ShardDone[2]
+   +5.295  2026-09-21T01:15:30.003+00:00 SucceedStateEntered            ShardDone[3]
+   +5.295  2026-09-21T01:15:30.003+00:00 SucceedStateExited             ShardDone[3]
+   +5.295  2026-09-21T01:15:30.003+00:00 MapIterationSucceeded          ShardDone[3]
+   +5.350  2026-09-21T01:15:30.058+00:00 TaskStarted                    Terminate[0]  aws-sdk:lambdamicrovms:terminateMicrovm
+   +5.499  2026-09-21T01:15:30.207+00:00 TaskSucceeded                  Terminate[0]  aws-sdk:lambdamicrovms:terminateMicrovm
+   +5.510  2026-09-21T01:15:30.218+00:00 TaskStateExited                Terminate[0]
+   +5.510  2026-09-21T01:15:30.218+00:00 SucceedStateEntered            ShardDone[0]
+   +5.510  2026-09-21T01:15:30.218+00:00 SucceedStateExited             ShardDone[0]
+   +5.510  2026-09-21T01:15:30.218+00:00 MapIterationSucceeded          ShardDone[0]
+   +5.510  2026-09-21T01:15:30.218+00:00 MapStateSucceeded              ShardDone[0]
+   +5.510  2026-09-21T01:15:30.218+00:00 MapStateExited                 ShardDone[0]
+   +5.510  2026-09-21T01:15:30.218+00:00 SucceedStateEntered            Done[0]
+   +5.510  2026-09-21T01:15:30.218+00:00 SucceedStateExited             Done[0]
+   +5.542  2026-09-21T01:15:30.250+00:00 ExecutionSucceeded             Done[0]

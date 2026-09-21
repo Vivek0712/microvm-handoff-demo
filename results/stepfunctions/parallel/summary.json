@@ -1,0 +1,105 @@
+{
+  "scenario": "parallel",
+  "orchestrator": "stepfunctions",
+  "status": "SUCCEEDED",
+  "expected": "parallel wall time ~3 s vs ~12 s inside the VM (from the result's step durations)",
+  "matches_expected": true,
+  "start": "2026-09-21T01:13:13.087+00:00",
+  "stop": "2026-09-21T01:13:18.636+00:00",
+  "seconds_by_service": 5.549,
+  "vm_ids": [
+    "microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc",
+    "microvm-81b99305-b7d7-3ff8-8f06-b97180417ea7"
+  ],
+  "runmicrovm_calls": 2,
+  "notes": [
+    "two executions: arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease:parallel-20260921-011310 (parallel, top-level files) and arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease:parallel-sequential-20260921-011310 (sequential, sequential/)",
+    "in-VM wall time is `lease accepted` -> `passed 4 step(s)` in vm-logs.txt; the payload's elapsed_s also counts the completer's boto3 import before `lease accepted` and is several seconds larger"
+  ],
+  "microvm_ctl": {
+    "version": "0.3.0",
+    "path": "/Users/vivekrajaps/Library/Python/3.9/lib/python/site-packages/microvm/__init__.py"
+  },
+  "checks": {
+    "both_succeeded": true,
+    "parallel_wall_about_3s": true,
+    "sequential_wall_about_12s": true,
+    "vms_terminated_by_machine": true
+  },
+  "execution_arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease:parallel-20260921-011310",
+  "state_machine_arn": "arn:aws:states:us-east-1:643603452951:stateMachine:mvm-demo-sfn-lease",
+  "error": null,
+  "states_entered": [
+    "Lease",
+    "Terminate",
+    "Done"
+  ],
+  "lease_tasks": [
+    {
+      "state": "Lease",
+      "index": null,
+      "TaskScheduled": "2026-09-21T01:13:13.111+00:00",
+      "last": "TaskSucceeded",
+      "TaskSubmitted": "2026-09-21T01:13:13.394+00:00",
+      "TaskSucceeded": "2026-09-21T01:13:18.391+00:00"
+    }
+  ],
+  "peak_in_flight": 1,
+  "throttling_retries": 0,
+  "terminated_by_machine": [
+    "Terminate:microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc",
+    "Terminate:microvm-81b99305-b7d7-3ff8-8f06-b97180417ea7"
+  ],
+  "in_vm_wall_s": 3.088,
+  "vm_states": {
+    "microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:13:13.325+00:00",
+      "terminatedAt": "2026-09-21T01:13:18.985+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 5.66,
+      "terminated_by": "machine"
+    },
+    "microvm-81b99305-b7d7-3ff8-8f06-b97180417ea7": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:13:21.858+00:00",
+      "terminatedAt": "2026-09-21T01:13:36.410+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 14.552,
+      "terminated_by": "machine"
+    }
+  },
+  "fleet_check": {
+    "at": "2026-09-21T01:13:39+00:00",
+    "active_before": [],
+    "terminated": [],
+    "left_alone": []
+  },
+  "comparison_summary": {
+    "parallel_wall_s_in_vm_from_logs": 3.088,
+    "sequential_wall_s_in_vm_from_logs": 12.113,
+    "parallel_step_durations_s": [
+      3.082,
+      3.082,
+      3.081,
+      3.081
+    ],
+    "sequential_step_durations_s": [
+      3.099,
+      3.003,
+      3.002,
+      3.002
+    ],
+    "parallel_wall_from_step_durations_s": 3.082,
+    "sequential_wall_from_step_durations_s": 12.106,
+    "parallel_payload_elapsed_s": 3.426,
+    "sequential_payload_elapsed_s": 12.396,
+    "parallel_seconds_by_service": 5.549,
+    "sequential_seconds_by_service": 14.504
+  },
+  "comparison_execution": {
+    "execution_arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease:parallel-sequential-20260921-011310",
+    "status": "SUCCEEDED",
+    "seconds_by_service": 14.504
+  }
+}

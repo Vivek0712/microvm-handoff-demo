@@ -1,0 +1,10 @@
+{
+  "mode": "single",
+  "task": {
+    "steps": [
+      "uname -m",
+      "python3 -c 'print(2+2)'",
+      "sleep 2"
+    ]
+  }
+}

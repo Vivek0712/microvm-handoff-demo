@@ -1,0 +1,6 @@
+0.3.0 /Users/vivekrajaps/Library/Python/3.9/lib/python/site-packages/microvm/__init__.py
+/Users/vivekrajaps/Library/Python/3.9/bin/mvm
+✓ demo-agent:1.0 (122.7s)
+  memory snapshot: 452 MB   disk snapshot: 21 MB
+
+[exited with code 0]

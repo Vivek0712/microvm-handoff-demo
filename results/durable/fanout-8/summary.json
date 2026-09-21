@@ -1,0 +1,228 @@
+{
+  "scenario": "fanout-8",
+  "orchestrator": "durable",
+  "status": "SUCCEEDED",
+  "expected": "plan: concurrency 4, 2 waves; 8 done; RunMicrovm throttling retries visible if they happen",
+  "matches_expected": true,
+  "start": "2026-09-21T01:06:54.137Z",
+  "stop": "2026-09-21T01:07:06.408Z",
+  "seconds_by_service": 12.271,
+  "vm_ids": [
+    "microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f",
+    "microvm-08481ac5-6695-3c37-a77a-3845660d8adf",
+    "microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72",
+    "microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f",
+    "microvm-b5093f96-3919-3848-95c0-5d8264a3cc45",
+    "microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1",
+    "microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d",
+    "microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c"
+  ],
+  "runmicrovm_calls": 8,
+  "notes": [
+    "RunMicrovm throttling retries seen in the orchestrator log: 0"
+  ],
+  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:1/durable-execution/mvm-demo-durable-fanout-8-20260921-010654/ba102cd9-e251-3439-ba0c-7d9ccebbef93",
+  "execution_name": "mvm-demo-durable-fanout-8-20260921-010654",
+  "outcome_status": "done",
+  "history_events": 76,
+  "history": "plan step; 8 launch steps; 8 lease callback succeeded; 8 terminate steps; ExecutionSucceeded with status done",
+  "vm_states_after": {
+    "microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f": "TERMINATED",
+    "microvm-08481ac5-6695-3c37-a77a-3845660d8adf": "TERMINATED",
+    "microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72": "TERMINATED",
+    "microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f": "TERMINATED",
+    "microvm-b5093f96-3919-3848-95c0-5d8264a3cc45": "TERMINATED",
+    "microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1": "TERMINATED",
+    "microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d": "TERMINATED",
+    "microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c": "TERMINATED"
+  },
+  "vm_seconds": 30.8,
+  "vm_records": {
+    "microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f": {
+      "microvmId": "microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f",
+      "state": "TERMINATED",
+      "endpoint": "d2d060c0-3b78-5e04-af51-f4a90dd57c39.lambda-microvm.us-east-1.on.aws",
+      "imageArn": "arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent",
+      "imageVersion": "1.0",
+      "executionRoleArn": "arn:aws:iam::643603452951:role/mvm-demo-durable-agent-execution-role",
+      "idlePolicy": {
+        "maxIdleDurationSeconds": 120,
+        "suspendedDurationSeconds": 60,
+        "autoResumeEnabled": false
+      },
+      "maximumDurationInSeconds": 180,
+      "startedAt": "2026-09-20 18:06:56.929000-07:00",
+      "terminatedAt": "2026-09-20 18:07:01.721000-07:00",
+      "stateReason": "Success.",
+      "ingressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS"
+      ],
+      "egressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS"
+      ]
+    },
+    "microvm-08481ac5-6695-3c37-a77a-3845660d8adf": {
+      "microvmId": "microvm-08481ac5-6695-3c37-a77a-3845660d8adf",
+      "state": "TERMINATED",
+      "endpoint": "fcd060c0-453e-bdef-859d-bbc0184ac12d.lambda-microvm.us-east-1.on.aws",
+      "imageArn": "arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent",
+      "imageVersion": "1.0",
+      "executionRoleArn": "arn:aws:iam::643603452951:role/mvm-demo-durable-agent-execution-role",
+      "idlePolicy": {
+        "maxIdleDurationSeconds": 120,
+        "suspendedDurationSeconds": 60,
+        "autoResumeEnabled": false
+      },
+      "maximumDurationInSeconds": 180,
+      "startedAt": "2026-09-20 18:07:01.956000-07:00",
+      "terminatedAt": "2026-09-20 18:07:04.762000-07:00",
+      "stateReason": "Success.",
+      "ingressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS"
+      ],
+      "egressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS"
+      ]
+    },
+    "microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72": {
+      "microvmId": "microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72",
+      "state": "TERMINATED",
+      "endpoint": "ded060c0-405b-5629-600a-2cd11ab18328.lambda-microvm.us-east-1.on.aws",
+      "imageArn": "arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent",
+      "imageVersion": "1.0",
+      "executionRoleArn": "arn:aws:iam::643603452951:role/mvm-demo-durable-agent-execution-role",
+      "idlePolicy": {
+        "maxIdleDurationSeconds": 120,
+        "suspendedDurationSeconds": 60,
+        "autoResumeEnabled": false
+      },
+      "maximumDurationInSeconds": 180,
+      "startedAt": "2026-09-20 18:06:59.434000-07:00",
+      "terminatedAt": "2026-09-20 18:07:04.134000-07:00",
+      "stateReason": "Success.",
+      "ingressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS"
+      ],
+      "egressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS"
+      ]
+    },
+    "microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f": {
+      "microvmId": "microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f",
+      "state": "TERMINATED",
+      "endpoint": "14d060c0-42ca-f14c-3f83-9a45beb8516f.lambda-microvm.us-east-1.on.aws",
+      "imageArn": "arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent",
+      "imageVersion": "1.0",
+      "executionRoleArn": "arn:aws:iam::643603452951:role/mvm-demo-durable-agent-execution-role",
+      "idlePolicy": {
+        "maxIdleDurationSeconds": 120,
+        "suspendedDurationSeconds": 60,
+        "autoResumeEnabled": false
+      },
+      "maximumDurationInSeconds": 180,
+      "startedAt": "2026-09-20 18:07:00.689000-07:00",
+      "terminatedAt": "2026-09-20 18:07:04.135000-07:00",
+      "stateReason": "Success.",
+      "ingressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS"
+      ],
+      "egressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS"
+      ]
+    },
+    "microvm-b5093f96-3919-3848-95c0-5d8264a3cc45": {
+      "microvmId": "microvm-b5093f96-3919-3848-95c0-5d8264a3cc45",
+      "state": "TERMINATED",
+      "endpoint": "aed060c0-3de9-30fb-f1ff-48e51453924f.lambda-microvm.us-east-1.on.aws",
+      "imageArn": "arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent",
+      "imageVersion": "1.0",
+      "executionRoleArn": "arn:aws:iam::643603452951:role/mvm-demo-durable-agent-execution-role",
+      "idlePolicy": {
+        "maxIdleDurationSeconds": 120,
+        "suspendedDurationSeconds": 60,
+        "autoResumeEnabled": false
+      },
+      "maximumDurationInSeconds": 180,
+      "startedAt": "2026-09-20 18:06:58.178000-07:00",
+      "terminatedAt": "2026-09-20 18:07:01.712000-07:00",
+      "stateReason": "Success.",
+      "ingressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS"
+      ],
+      "egressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS"
+      ]
+    },
+    "microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1": {
+      "microvmId": "microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1",
+      "state": "TERMINATED",
+      "endpoint": "24d060c0-47ac-6b15-3037-c975ec5976a6.lambda-microvm.us-east-1.on.aws",
+      "imageArn": "arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent",
+      "imageVersion": "1.0",
+      "executionRoleArn": "arn:aws:iam::643603452951:role/mvm-demo-durable-agent-execution-role",
+      "idlePolicy": {
+        "maxIdleDurationSeconds": 120,
+        "suspendedDurationSeconds": 60,
+        "autoResumeEnabled": false
+      },
+      "maximumDurationInSeconds": 180,
+      "startedAt": "2026-09-20 18:07:03.180000-07:00",
+      "terminatedAt": "2026-09-20 18:07:06.646000-07:00",
+      "stateReason": "Success.",
+      "ingressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS"
+      ],
+      "egressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS"
+      ]
+    },
+    "microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d": {
+      "microvmId": "microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d",
+      "state": "TERMINATED",
+      "endpoint": "70d060c0-3699-94b6-e57e-dad97590e701.lambda-microvm.us-east-1.on.aws",
+      "imageArn": "arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent",
+      "imageVersion": "1.0",
+      "executionRoleArn": "arn:aws:iam::643603452951:role/mvm-demo-durable-agent-execution-role",
+      "idlePolicy": {
+        "maxIdleDurationSeconds": 120,
+        "suspendedDurationSeconds": 60,
+        "autoResumeEnabled": false
+      },
+      "maximumDurationInSeconds": 180,
+      "startedAt": "2026-09-20 18:06:54.448000-07:00",
+      "terminatedAt": "2026-09-20 18:06:58.994000-07:00",
+      "stateReason": "Success.",
+      "ingressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS"
+      ],
+      "egressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS"
+      ]
+    },
+    "microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c": {
+      "microvmId": "microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c",
+      "state": "TERMINATED",
+      "endpoint": "66d060c0-3909-01f1-9a1d-8d8c006ff278.lambda-microvm.us-east-1.on.aws",
+      "imageArn": "arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent",
+      "imageVersion": "1.0",
+      "executionRoleArn": "arn:aws:iam::643603452951:role/mvm-demo-durable-agent-execution-role",
+      "idlePolicy": {
+        "maxIdleDurationSeconds": 120,
+        "suspendedDurationSeconds": 60,
+        "autoResumeEnabled": false
+      },
+      "maximumDurationInSeconds": 180,
+      "startedAt": "2026-09-20 18:06:55.694000-07:00",
+      "terminatedAt": "2026-09-20 18:06:59.167000-07:00",
+      "stateReason": "Success.",
+      "ingressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS"
+      ],
+      "egressNetworkConnectors": [
+        "arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS"
+      ]
+    }
+  },
+  "approval": null,
+  "description": "fan-out in waves"
+}

@@ -1,0 +1,81 @@
+{
+  "scenario": "retryable-fail",
+  "orchestrator": "stepfunctions",
+  "status": "FAILED",
+  "expected": "sfn: Lease -> Catch -> Reap -> TerminateStale -> Failed with the typed error in the output",
+  "matches_expected": true,
+  "start": "2026-09-21T01:13:46.004+00:00",
+  "stop": "2026-09-21T01:13:49.831+00:00",
+  "seconds_by_service": 3.827,
+  "vm_ids": [
+    "microvm-8a168ff7-d287-342d-934f-b16cd996fd70"
+  ],
+  "runmicrovm_calls": 1,
+  "notes": [
+    "deviation: the failed lease's VM was not terminated by the machine. TerminateStale only terminates members older than budget + slack (180 s) and this VM was ~10 s old, so the Map ran over an empty list and the VM stayed RUNNING until run.py's straggler check terminated it (SPEC: terminate everything you launch).",
+    "straggler: microvm-8a168ff7-d287-342d-934f-b16cd996fd70 was still RUNNING after the execution ended; run.py terminated it"
+  ],
+  "microvm_ctl": {
+    "version": "0.3.0",
+    "path": "/Users/vivekrajaps/Library/Python/3.9/lib/python/site-packages/microvm/__init__.py"
+  },
+  "checks": {
+    "failed": true,
+    "lease_reap_terminatestale_failed": true,
+    "error_lease_failed": true,
+    "typed_error_in_output": true
+  },
+  "execution_arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease:retryable-fail-20260921-011342",
+  "state_machine_arn": "arn:aws:states:us-east-1:643603452951:stateMachine:mvm-demo-sfn-lease",
+  "error": "LeaseFailed",
+  "states_entered": [
+    "Lease",
+    "Reap",
+    "TerminateStale",
+    "Failed"
+  ],
+  "lease_tasks": [
+    {
+      "state": "Lease",
+      "index": null,
+      "TaskScheduled": "2026-09-21T01:13:46.029+00:00",
+      "last": "TaskFailed",
+      "TaskSubmitted": "2026-09-21T01:13:46.288+00:00",
+      "TaskFailed": "2026-09-21T01:13:49.594+00:00",
+      "error": "Injected"
+    }
+  ],
+  "peak_in_flight": 1,
+  "throttling_retries": 0,
+  "terminated_by_machine": [],
+  "in_vm_wall_s": null,
+  "vm_states": {
+    "microvm-8a168ff7-d287-342d-934f-b16cd996fd70": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:13:46.237+00:00",
+      "terminatedAt": "2026-09-21T01:14:13.396+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 27.159,
+      "terminated_by": "run.py straggler check"
+    }
+  },
+  "fleet_check": {
+    "at": "2026-09-21T01:14:10+00:00",
+    "active_before": [
+      {
+        "microvmId": "microvm-8a168ff7-d287-342d-934f-b16cd996fd70",
+        "state": "RUNNING",
+        "image": "demo-agent",
+        "startedAt": "2026-09-21T01:13:46.237+00:00"
+      }
+    ],
+    "terminated": [
+      "microvm-8a168ff7-d287-342d-934f-b16cd996fd70"
+    ],
+    "left_alone": [],
+    "all_terminated_by": "2026-09-21T01:14:23+00:00"
+  },
+  "observations": {
+    "vm_terminated_by_machine": false
+  }
+}

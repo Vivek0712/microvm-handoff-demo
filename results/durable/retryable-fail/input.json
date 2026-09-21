@@ -1,0 +1,9 @@
+{
+  "mode": "single",
+  "task": {
+    "steps": [
+      "echo retryable-fail"
+    ],
+    "fail_after_s": 2
+  }
+}

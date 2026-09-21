@@ -1,0 +1,214 @@
+{
+  "Comment": "microvm-ctl lease fan-out of demo-agent: 4 at a time, budget 120s, VM cap 180s, approval above 8 shards",
+  "QueryLanguage": "JSONata",
+  "StartAt": "Gate",
+  "States": {
+    "Gate": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Condition": "{% $count($states.input.shards) > 8 %}",
+          "Next": "RequestApproval"
+        }
+      ],
+      "Default": "Fanout"
+    },
+    "RequestApproval": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sns:publish.waitForTaskToken",
+      "Arguments": {
+        "TopicArn": "arn:aws:sns:us-east-1:643603452951:mvm-demo-approvals",
+        "Message": "{% $string({'action': 'microvm-ctl lease fan-out approval', 'shards': $count($states.input.shards), 'image': 'arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent', 'execution': $states.context.Execution.Name, 'task_token': $states.context.Task.Token}) %}"
+      },
+      "TimeoutSeconds": 3600,
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.Timeout",
+            "States.TaskFailed"
+          ],
+          "Next": "Denied"
+        }
+      ],
+      "Output": "{% $states.input %}",
+      "Next": "Fanout"
+    },
+    "Denied": {
+      "Type": "Fail",
+      "Error": "ApprovalDenied",
+      "Cause": "no approval within 3600s, or the approver sent a task failure"
+    },
+    "Fanout": {
+      "Type": "Map",
+      "Items": "{% $map($states.input.shards, function($v, $i) { {'index': $i, 'task': $v} }) %}",
+      "MaxConcurrency": 4,
+      "ItemProcessor": {
+        "ProcessorConfig": {
+          "Mode": "INLINE"
+        },
+        "StartAt": "Lease",
+        "States": {
+          "Lease": {
+            "Type": "Task",
+            "Resource": "arn:aws:states:::aws-sdk:lambdamicrovms:runMicrovm.waitForTaskToken",
+            "Arguments": {
+              "ImageIdentifier": "arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent",
+              "ExecutionRoleArn": "arn:aws:iam::643603452951:role/mvm-demo-sfn-map-agent",
+              "RunHookPayload": "{% $string({'lease': {'kind': 'sfn', 'token': $states.context.Task.Token, 'region': 'us-east-1', 'heartbeat_s': 10, 'id': $states.context.Execution.Name & '-' & $string($states.input.index)}, 'task': $states.input.task}) %}",
+              "IdlePolicy": {
+                "MaxIdleDurationSeconds": 120,
+                "SuspendedDurationSeconds": 60,
+                "AutoResumeEnabled": false
+              },
+              "MaximumDurationInSeconds": 180,
+              "ClientToken": "{% $substring($states.context.Execution.Name & '-' & $states.context.State.Name & '-' & $string($states.input.index), 0, 128) %}"
+            },
+            "TimeoutSeconds": 120,
+            "HeartbeatSeconds": 30,
+            "Retry": [
+              {
+                "ErrorEquals": [
+                  "LambdaMicrovms.ThrottlingException",
+                  "LambdaMicrovms.ServiceQuotaExceededException"
+                ],
+                "IntervalSeconds": 2,
+                "MaxAttempts": 8,
+                "BackoffRate": 2,
+                "JitterStrategy": "FULL"
+              }
+            ],
+            "Catch": [
+              {
+                "ErrorEquals": [
+                  "States.Timeout",
+                  "States.HeartbeatTimeout",
+                  "States.TaskFailed"
+                ],
+                "Assign": {
+                  "lease_error": "{% $states.errorOutput %}"
+                },
+                "Next": "Reap"
+              }
+            ],
+            "Assign": {
+              "vm": "{% $states.result.microvm_id %}"
+            },
+            "Next": "Terminate"
+          },
+          "Terminate": {
+            "Type": "Task",
+            "Resource": "arn:aws:states:::aws-sdk:lambdamicrovms:terminateMicrovm",
+            "Arguments": {
+              "MicrovmIdentifier": "{% $vm %}"
+            },
+            "Retry": [
+              {
+                "ErrorEquals": [
+                  "LambdaMicrovms.ThrottlingException",
+                  "LambdaMicrovms.ServiceQuotaExceededException"
+                ],
+                "IntervalSeconds": 2,
+                "MaxAttempts": 8,
+                "BackoffRate": 2,
+                "JitterStrategy": "FULL"
+              }
+            ],
+            "Catch": [
+              {
+                "ErrorEquals": [
+                  "LambdaMicrovms.ResourceNotFoundException"
+                ],
+                "Output": "{% $states.input %}",
+                "Next": "ShardDone"
+              }
+            ],
+            "Output": "{% $states.input %}",
+            "Next": "ShardDone"
+          },
+          "Reap": {
+            "Type": "Task",
+            "Resource": "arn:aws:states:::aws-sdk:lambdamicrovms:listMicrovms",
+            "Arguments": {
+              "ImageIdentifier": "arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent"
+            },
+            "Catch": [
+              {
+                "ErrorEquals": [
+                  "States.ALL"
+                ],
+                "Next": "Failed"
+              }
+            ],
+            "Next": "TerminateStale"
+          },
+          "TerminateStale": {
+            "Type": "Map",
+            "Items": "{% [$states.input.Items[State in ['RUNNING', 'SUSPENDED', 'PENDING'] and $toMillis(StartedAt) < $toMillis($now()) - 180000]] %}",
+            "MaxConcurrency": 4,
+            "ItemProcessor": {
+              "ProcessorConfig": {
+                "Mode": "INLINE"
+              },
+              "StartAt": "TerminateOne",
+              "States": {
+                "TerminateOne": {
+                  "Type": "Task",
+                  "Resource": "arn:aws:states:::aws-sdk:lambdamicrovms:terminateMicrovm",
+                  "Arguments": {
+                    "MicrovmIdentifier": "{% $states.input.MicrovmId %}"
+                  },
+                  "Retry": [
+                    {
+                      "ErrorEquals": [
+                        "LambdaMicrovms.ThrottlingException",
+                        "LambdaMicrovms.ServiceQuotaExceededException"
+                      ],
+                      "IntervalSeconds": 2,
+                      "MaxAttempts": 8,
+                      "BackoffRate": 2,
+                      "JitterStrategy": "FULL"
+                    }
+                  ],
+                  "Catch": [
+                    {
+                      "ErrorEquals": [
+                        "LambdaMicrovms.ResourceNotFoundException"
+                      ],
+                      "Next": "AlreadyGone"
+                    }
+                  ],
+                  "End": true
+                },
+                "AlreadyGone": {
+                  "Type": "Pass",
+                  "End": true
+                }
+              }
+            },
+            "Catch": [
+              {
+                "ErrorEquals": [
+                  "States.ALL"
+                ],
+                "Next": "Failed"
+              }
+            ],
+            "Next": "Failed"
+          },
+          "Failed": {
+            "Type": "Fail",
+            "Error": "LeaseFailed",
+            "Cause": "{% $string($lease_error) %}"
+          },
+          "ShardDone": {
+            "Type": "Succeed"
+          }
+        }
+      },
+      "Next": "Done"
+    },
+    "Done": {
+      "Type": "Succeed"
+    }
+  }
+}

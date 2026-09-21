@@ -1,0 +1,37 @@
+{
+  "microvm_id": "microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc",
+  "lease_id": "parallel-20260921-011310",
+  "elapsed_s": 3.426,
+  "result": {
+    "passed": true,
+    "steps": [
+      {
+        "cmd": "sleep 3",
+        "exit_code": 0,
+        "duration_s": 3.082,
+        "output_tail": ""
+      },
+      {
+        "cmd": "sleep 3",
+        "exit_code": 0,
+        "duration_s": 3.082,
+        "output_tail": ""
+      },
+      {
+        "cmd": "sleep 3",
+        "exit_code": 0,
+        "duration_s": 3.081,
+        "output_tail": ""
+      },
+      {
+        "cmd": "sleep 3",
+        "exit_code": 0,
+        "duration_s": 3.081,
+        "output_tail": ""
+      }
+    ],
+    "parallel": true,
+    "microvm_id": "microvm-a757cebb-65d9-33e4-8d02-5e8bff10f9bc",
+    "heartbeats": 0
+  }
+}

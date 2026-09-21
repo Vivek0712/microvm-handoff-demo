@@ -1,0 +1,23 @@
+{
+  "scenario": "fanout-refused",
+  "orchestrator": "durable",
+  "status": "SUCCEEDED",
+  "expected": "lease_map plan step returns status: rejected, zero RunMicrovm calls",
+  "matches_expected": true,
+  "start": "2026-09-21T01:07:34.554Z",
+  "stop": "2026-09-21T01:07:34.774Z",
+  "seconds_by_service": 0.22,
+  "vm_ids": [],
+  "runmicrovm_calls": 0,
+  "notes": [],
+  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:1/durable-execution/mvm-demo-durable-fanout-refused-20260921-010734/ab07bcc2-f1f7-3147-ae37-17fc06ed9c74",
+  "execution_name": "mvm-demo-durable-fanout-refused-20260921-010734",
+  "outcome_status": "rejected",
+  "history_events": 5,
+  "history": "plan step; ExecutionSucceeded with status rejected",
+  "vm_states_after": {},
+  "vm_seconds": null,
+  "vm_records": {},
+  "approval": null,
+  "description": "pre-flight refusal, nothing launched"
+}

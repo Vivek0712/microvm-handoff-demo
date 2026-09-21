@@ -1,0 +1,17 @@
+$ mvm lease plan --image demo-agent --shards 8 --budget 120 --heartbeat 30 --slack 60 --max-concurrency 4 --max-vm-seconds 3000 --approval-usd 0.015
+                  lease plan: 8 shards                   
+┌───────────────────────┬───────────────────────────────┐
+│ shards                │ 8                             │
+│ baseline              │ 512 MiB                       │
+│ memory quota          │ 8 GB                          │
+│ launch rate           │ 0.8/s                         │
+│ concurrency           │ 4  (policy max_concurrency 4) │
+│ waves                 │ 2                             │
+│ launch to all running │ ~14.5 s                       │
+│ worst case VM-s       │ 1440                          │
+│ worst case USD        │ $0.0126                       │
+│ approval needed       │ no                            │
+│ rejected              │ no                            │
+└───────────────────────┴───────────────────────────────┘
+8 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 2 waves, all running in ~14 s, worst case 1440 VM-s = $0.01
+exit code 0  (0 = can launch, 2 = rejected, 3 = needs approval)

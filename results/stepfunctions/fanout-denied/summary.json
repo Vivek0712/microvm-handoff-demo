@@ -1,0 +1,89 @@
+{
+  "scenario": "fanout-denied",
+  "orchestrator": "stepfunctions",
+  "status": "FAILED",
+  "expected": "sfn: SendTaskFailure -> Denied state, nothing launched",
+  "matches_expected": true,
+  "start": "2026-09-21T01:12:10.920+00:00",
+  "stop": "2026-09-21T01:12:11.559+00:00",
+  "seconds_by_service": 0.639,
+  "vm_ids": [],
+  "runmicrovm_calls": 0,
+  "notes": [
+    "plan exit 3 (needs approval): the machine's Gate handles approval, so run.py started it"
+  ],
+  "microvm_ctl": {
+    "version": "0.3.0",
+    "path": "/Users/vivekrajaps/Library/Python/3.9/lib/python/site-packages/microvm/__init__.py"
+  },
+  "checks": {
+    "approver_send_task_failure": true,
+    "denied_state": true,
+    "failed_approval_denied": true,
+    "nothing_launched": true
+  },
+  "execution_arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-map-lease:fanout-denied-20260921-011205",
+  "state_machine_arn": "arn:aws:states:us-east-1:643603452951:stateMachine:mvm-demo-sfn-map-lease",
+  "error": "ApprovalDenied",
+  "states_entered": [
+    "Gate",
+    "RequestApproval",
+    "Denied"
+  ],
+  "lease_tasks": [],
+  "peak_in_flight": 0,
+  "throttling_retries": 0,
+  "terminated_by_machine": [],
+  "in_vm_wall_s": null,
+  "vm_states": {},
+  "fleet_check": {
+    "at": "2026-09-21T01:12:26+00:00",
+    "active_before": [],
+    "terminated": [],
+    "left_alone": []
+  },
+  "plan": {
+    "shards": 12,
+    "baseline_mib": 512,
+    "policy": {
+      "budget_s": 120,
+      "heartbeat_timeout_s": 30,
+      "slack_s": 60,
+      "max_concurrency": 4,
+      "max_vm_seconds": 3000,
+      "approval_usd": 0.015
+    },
+    "limit": {
+      "baseline_mib": 512,
+      "memory_quota_gb": 8.0,
+      "launch_rate": 0.8,
+      "by_memory": 16,
+      "by_policy": 4,
+      "limit": 4,
+      "reason": "policy max_concurrency 4"
+    },
+    "concurrency": 4,
+    "waves": 3,
+    "launch_to_all_running_s": 21.75,
+    "worst_case_vm_seconds": 2160,
+    "worst_case_usd": 0.018915,
+    "needs_approval": true,
+    "rejected": null,
+    "summary": "12 shards on 0.5 GB: 4 at a time (policy max_concurrency 4), 3 waves, all running in ~22 s, worst case 2160 VM-s = $0.02, needs approval (above $0.015)"
+  },
+  "plan_exit_code": 3,
+  "approval": {
+    "decision": "deny",
+    "queue": "https://sqs.us-east-1.amazonaws.com/643603452951/mvm-demo-approvals-q",
+    "stale_messages_deleted": 0,
+    "message": {
+      "action": "microvm-ctl lease fan-out approval",
+      "shards": 12,
+      "image": "arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent",
+      "execution": "fanout-denied-20260921-011205"
+    },
+    "received_at": "2026-09-21T01:12:11+00:00",
+    "call": "SendTaskFailure",
+    "completed_at": "2026-09-21T01:12:11+00:00"
+  }
+}

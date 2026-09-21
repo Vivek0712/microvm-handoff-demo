@@ -1,0 +1,4 @@
+{
+  "error": "ApprovalDenied",
+  "cause": "no approval within 3600s, or the approver sent a task failure"
+}

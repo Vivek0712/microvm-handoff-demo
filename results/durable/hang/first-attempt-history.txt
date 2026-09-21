@@ -1,0 +1,18 @@
+       +s  timestamp                 event                        sub        name                                         detail
+   +0.000  2026-09-21T01:04:53.820Z  ExecutionStarted                        mvm-demo-durable-hang-20260921-010453        Input={'Payload': '{"mode": "single", "task": {"steps": ["echo hang"], "hang_s": 400}, "budget_s": 60}', 'Truncated': False} ExecutionTimeout=3600
+   +0.101  2026-09-21T01:04:53.921Z  CallbackStarted              Callback   lease-0-callback                             callback_id=Ab9hZXirYXJu... HeartbeatTimeout=30 Timeout=60
+   +0.136  2026-09-21T01:04:53.956Z  StepStarted                  Step       lease-0-launch
+   +0.348  2026-09-21T01:04:54.168Z  StepSucceeded                Step       lease-0-launch                               result={"t": "m", "v": {"microvm_id": {"t": "s", "v": "microvm-573d2ae4-d319-38ec-8e16-0314531a5381"}, "endpoint": {"t": "s", "v": "6cd060bf-4b74-43f9-c48a-fd1c66f0a3f... RetryDetails={'CurrentAttempt': 1}
+   +0.472  2026-09-21T01:04:54.292Z  InvocationCompleted                                                                  RequestId=bca1b03c-2ec9-4c5c-9b46-e6194133ece7
+  +30.101  2026-09-21T01:05:23.921Z  CallbackTimedOut             Callback   lease-0-callback                             error=None: None
+  +30.273  2026-09-21T01:05:24.093Z  StepStarted                  Step       lease-0-terminate
+  +30.273  2026-09-21T01:05:24.093Z  StepSucceeded                Step       lease-0-terminate                            result={"t": "m", "v": {"terminated": {"t": "s", "v": "microvm-573d2ae4-d319-38ec-8e16-0314531a5381"}}} RetryDetails={'CurrentAttempt': 1}
+  +30.331  2026-09-21T01:05:24.151Z  CallbackStarted              Callback   lease-1-callback                             callback_id=Ab9hZXirYXJu... HeartbeatTimeout=30 Timeout=60
+  +30.360  2026-09-21T01:05:24.180Z  StepStarted                  Step       lease-1-launch
+  +30.551  2026-09-21T01:05:24.371Z  StepSucceeded                Step       lease-1-launch                               result={"t": "m", "v": {"microvm_id": {"t": "s", "v": "microvm-3c0f910e-2a29-3825-8a8c-a7c329d77746"}, "endpoint": {"t": "s", "v": "0cd060bf-867b-6a1e-28af-f6469b9cd01... RetryDetails={'CurrentAttempt': 1}
+  +30.675  2026-09-21T01:05:24.495Z  InvocationCompleted                                                                  RequestId=1979888e-292e-4ca2-963f-d1035c66b040
+  +60.331  2026-09-21T01:05:54.151Z  CallbackTimedOut             Callback   lease-1-callback                             error=None: None
+  +60.518  2026-09-21T01:05:54.338Z  StepStarted                  Step       lease-1-terminate
+  +60.518  2026-09-21T01:05:54.338Z  StepSucceeded                Step       lease-1-terminate                            result={"t": "m", "v": {"terminated": {"t": "s", "v": "microvm-3c0f910e-2a29-3825-8a8c-a7c329d77746"}}} RetryDetails={'CurrentAttempt': 1}
+  +60.642  2026-09-21T01:05:54.462Z  InvocationCompleted                                                                  RequestId=14e380f9-f8c3-41bd-b43f-e35954ce19fb
+  +60.642  2026-09-21T01:05:54.462Z  ExecutionSucceeded                      mvm-demo-durable-hang-20260921-010453        result={"status": "timed_out", "retryable": true, "vm": {"microvm_id": "microvm-3c0f910e-2a29-3825-8a8c-a7c329d77746", "endpoint": "0cd060bf-867b-6a1e-28af-f6469b9cd01...

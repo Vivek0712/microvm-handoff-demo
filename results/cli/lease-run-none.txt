@@ -1,0 +1,5 @@
+$ mvm lease run demo-agent --kind none --id cli-none-20260920-175313 --task {"steps": ["uname -m", "python3 -c 'print(2+2)'", "sleep 2", "echo done"], "workdir": "/tmp/job"} --wait
+✓ microvm-af779375-4397-3675-9522-41a334a5620f  PENDING  
+2ed060b9-f5fe-4e53-d98a-9e9b45513ee2.lambda-microvm.us-east-1.on.aws  lease none
+  now RUNNING; follow it with: mvm watch microvm-af779375-4397-3675-9522-41a334a5620f
+exit 0

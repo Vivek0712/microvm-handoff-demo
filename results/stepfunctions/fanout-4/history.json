@@ -1,0 +1,888 @@
+[
+  {
+    "timestamp": "2026-09-20 18:15:24.708000-07:00",
+    "type": "ExecutionStarted",
+    "id": 1,
+    "previousEventId": 0,
+    "executionStartedEventDetails": {
+      "input": "{\"shards\": [{\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"0\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"1\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"2\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"3\"}}]}",
+      "inputDetails": {
+        "truncated": false
+      },
+      "roleArn": "arn:aws:iam::643603452951:role/mvm-demo-sfn-map-states"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.728000-07:00",
+    "type": "ChoiceStateEntered",
+    "id": 2,
+    "previousEventId": 0,
+    "stateEnteredEventDetails": {
+      "name": "Gate",
+      "input": "{\"shards\": [{\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"0\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"1\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"2\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"3\"}}]}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.728000-07:00",
+    "type": "ChoiceStateExited",
+    "id": 3,
+    "previousEventId": 2,
+    "stateExitedEventDetails": {
+      "name": "Gate",
+      "output": "{\"shards\": [{\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"0\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"1\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"2\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"3\"}}]}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.728000-07:00",
+    "type": "MapStateEntered",
+    "id": 4,
+    "previousEventId": 3,
+    "stateEnteredEventDetails": {
+      "name": "Fanout",
+      "input": "{\"shards\": [{\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"0\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"1\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"2\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"3\"}}]}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.728000-07:00",
+    "type": "MapStateStarted",
+    "id": 5,
+    "previousEventId": 4,
+    "mapStateStartedEventDetails": {
+      "length": 4
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.728000-07:00",
+    "type": "MapIterationStarted",
+    "id": 6,
+    "previousEventId": 5,
+    "mapIterationStartedEventDetails": {
+      "name": "Fanout",
+      "index": 0
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.728000-07:00",
+    "type": "MapIterationStarted",
+    "id": 7,
+    "previousEventId": 5,
+    "mapIterationStartedEventDetails": {
+      "name": "Fanout",
+      "index": 1
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.728000-07:00",
+    "type": "MapIterationStarted",
+    "id": 8,
+    "previousEventId": 5,
+    "mapIterationStartedEventDetails": {
+      "name": "Fanout",
+      "index": 2
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.728000-07:00",
+    "type": "MapIterationStarted",
+    "id": 9,
+    "previousEventId": 5,
+    "mapIterationStartedEventDetails": {
+      "name": "Fanout",
+      "index": 3
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.728000-07:00",
+    "type": "TaskStateEntered",
+    "id": 10,
+    "previousEventId": 6,
+    "stateEnteredEventDetails": {
+      "name": "Lease",
+      "input": "{\"index\":0,\"task\":{\"steps\":[\"echo shard $SHARD on $(uname -m)\",\"sleep 3\"],\"env\":{\"SHARD\":\"0\"}}}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.728000-07:00",
+    "type": "TaskScheduled",
+    "id": 11,
+    "previousEventId": 10,
+    "taskScheduledEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken",
+      "region": "us-east-1",
+      "parameters": "{\"ImageIdentifier\":\"arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent\",\"ExecutionRoleArn\":\"arn:aws:iam::643603452951:role/mvm-demo-sfn-map-agent\",\"RunHookPayload\":\"{\\\"lease\\\":{\\\"kind\\\":\\\"sfn\\\",\\\"token\\\":\\\"<redacted>\\\",\\\"region\\\":\\\"us-east-1\\\",\\\"heartbeat_s\\\":10,\\\"id\\\":\\\"fanout-4-20260921-011518-0\\\"},\\\"task\\\":{\\\"steps\\\":[\\\"echo shard $SHARD on $(uname -m)\\\",\\\"sleep 3\\\"],\\\"env\\\":{\\\"SHARD\\\":\\\"0\\\"}}}\",\"IdlePolicy\":{\"MaxIdleDurationSeconds\":120,\"SuspendedDurationSeconds\":60,\"AutoResumeEnabled\":false},\"MaximumDurationInSeconds\":180,\"ClientToken\":\"fanout-4-20260921-011518-Lease-0\"}",
+      "timeoutInSeconds": 120,
+      "heartbeatInSeconds": 30
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.728000-07:00",
+    "type": "TaskStateEntered",
+    "id": 12,
+    "previousEventId": 7,
+    "stateEnteredEventDetails": {
+      "name": "Lease",
+      "input": "{\"index\":1,\"task\":{\"steps\":[\"echo shard $SHARD on $(uname -m)\",\"sleep 3\"],\"env\":{\"SHARD\":\"1\"}}}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.728000-07:00",
+    "type": "TaskScheduled",
+    "id": 13,
+    "previousEventId": 12,
+    "taskScheduledEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken",
+      "region": "us-east-1",
+      "parameters": "{\"ImageIdentifier\":\"arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent\",\"ExecutionRoleArn\":\"arn:aws:iam::643603452951:role/mvm-demo-sfn-map-agent\",\"RunHookPayload\":\"{\\\"lease\\\":{\\\"kind\\\":\\\"sfn\\\",\\\"token\\\":\\\"<redacted>\\\",\\\"region\\\":\\\"us-east-1\\\",\\\"heartbeat_s\\\":10,\\\"id\\\":\\\"fanout-4-20260921-011518-1\\\"},\\\"task\\\":{\\\"steps\\\":[\\\"echo shard $SHARD on $(uname -m)\\\",\\\"sleep 3\\\"],\\\"env\\\":{\\\"SHARD\\\":\\\"1\\\"}}}\",\"IdlePolicy\":{\"MaxIdleDurationSeconds\":120,\"SuspendedDurationSeconds\":60,\"AutoResumeEnabled\":false},\"MaximumDurationInSeconds\":180,\"ClientToken\":\"fanout-4-20260921-011518-Lease-1\"}",
+      "timeoutInSeconds": 120,
+      "heartbeatInSeconds": 30
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.728000-07:00",
+    "type": "TaskStateEntered",
+    "id": 14,
+    "previousEventId": 8,
+    "stateEnteredEventDetails": {
+      "name": "Lease",
+      "input": "{\"index\":2,\"task\":{\"steps\":[\"echo shard $SHARD on $(uname -m)\",\"sleep 3\"],\"env\":{\"SHARD\":\"2\"}}}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.728000-07:00",
+    "type": "TaskScheduled",
+    "id": 15,
+    "previousEventId": 14,
+    "taskScheduledEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken",
+      "region": "us-east-1",
+      "parameters": "{\"ImageIdentifier\":\"arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent\",\"ExecutionRoleArn\":\"arn:aws:iam::643603452951:role/mvm-demo-sfn-map-agent\",\"RunHookPayload\":\"{\\\"lease\\\":{\\\"kind\\\":\\\"sfn\\\",\\\"token\\\":\\\"<redacted>\\\",\\\"region\\\":\\\"us-east-1\\\",\\\"heartbeat_s\\\":10,\\\"id\\\":\\\"fanout-4-20260921-011518-2\\\"},\\\"task\\\":{\\\"steps\\\":[\\\"echo shard $SHARD on $(uname -m)\\\",\\\"sleep 3\\\"],\\\"env\\\":{\\\"SHARD\\\":\\\"2\\\"}}}\",\"IdlePolicy\":{\"MaxIdleDurationSeconds\":120,\"SuspendedDurationSeconds\":60,\"AutoResumeEnabled\":false},\"MaximumDurationInSeconds\":180,\"ClientToken\":\"fanout-4-20260921-011518-Lease-2\"}",
+      "timeoutInSeconds": 120,
+      "heartbeatInSeconds": 30
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.728000-07:00",
+    "type": "TaskStateEntered",
+    "id": 16,
+    "previousEventId": 9,
+    "stateEnteredEventDetails": {
+      "name": "Lease",
+      "input": "{\"index\":3,\"task\":{\"steps\":[\"echo shard $SHARD on $(uname -m)\",\"sleep 3\"],\"env\":{\"SHARD\":\"3\"}}}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.728000-07:00",
+    "type": "TaskScheduled",
+    "id": 17,
+    "previousEventId": 16,
+    "taskScheduledEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken",
+      "region": "us-east-1",
+      "parameters": "{\"ImageIdentifier\":\"arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent\",\"ExecutionRoleArn\":\"arn:aws:iam::643603452951:role/mvm-demo-sfn-map-agent\",\"RunHookPayload\":\"{\\\"lease\\\":{\\\"kind\\\":\\\"sfn\\\",\\\"token\\\":\\\"<redacted>\\\",\\\"region\\\":\\\"us-east-1\\\",\\\"heartbeat_s\\\":10,\\\"id\\\":\\\"fanout-4-20260921-011518-3\\\"},\\\"task\\\":{\\\"steps\\\":[\\\"echo shard $SHARD on $(uname -m)\\\",\\\"sleep 3\\\"],\\\"env\\\":{\\\"SHARD\\\":\\\"3\\\"}}}\",\"IdlePolicy\":{\"MaxIdleDurationSeconds\":120,\"SuspendedDurationSeconds\":60,\"AutoResumeEnabled\":false},\"MaximumDurationInSeconds\":180,\"ClientToken\":\"fanout-4-20260921-011518-Lease-3\"}",
+      "timeoutInSeconds": 120,
+      "heartbeatInSeconds": 30
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.802000-07:00",
+    "type": "TaskStarted",
+    "id": 18,
+    "previousEventId": 13,
+    "taskStartedEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.804000-07:00",
+    "type": "TaskStarted",
+    "id": 19,
+    "previousEventId": 17,
+    "taskStartedEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.805000-07:00",
+    "type": "TaskStarted",
+    "id": 20,
+    "previousEventId": 11,
+    "taskStartedEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.811000-07:00",
+    "type": "TaskStarted",
+    "id": 21,
+    "previousEventId": 15,
+    "taskStartedEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:24.990000-07:00",
+    "type": "TaskSubmitted",
+    "id": 22,
+    "previousEventId": 19,
+    "taskSubmittedEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken",
+      "output": "{\"EgressNetworkConnectors\":[\"arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS\"],\"Endpoint\":\"96d060c4-1ba5-d6ef-3aa1-8baed2889339.lambda-microvm.us-east-1.on.aws\",\"ExecutionRoleArn\":\"arn:aws:iam::643603452951:role/mvm-demo-sfn-map-agent\",\"IdlePolicy\":{\"AutoResumeEnabled\":false,\"MaxIdleDurationSeconds\":120,\"SuspendedDurationSeconds\":60},\"ImageArn\":\"arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent\",\"ImageVersion\":\"1.0\",\"IngressNetworkConnectors\":[\"arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS\"],\"MaximumDurationInSeconds\":180,\"MicrovmId\":\"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\",\"StartedAt\":\"2026-09-21T01:15:24.943Z\",\"State\":\"PENDING\"}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:25.015000-07:00",
+    "type": "TaskSubmitted",
+    "id": 23,
+    "previousEventId": 18,
+    "taskSubmittedEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken",
+      "output": "{\"EgressNetworkConnectors\":[\"arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS\"],\"Endpoint\":\"10d060c4-1baf-0d2b-86bf-992b98672f8d.lambda-microvm.us-east-1.on.aws\",\"ExecutionRoleArn\":\"arn:aws:iam::643603452951:role/mvm-demo-sfn-map-agent\",\"IdlePolicy\":{\"AutoResumeEnabled\":false,\"MaxIdleDurationSeconds\":120,\"SuspendedDurationSeconds\":60},\"ImageArn\":\"arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent\",\"ImageVersion\":\"1.0\",\"IngressNetworkConnectors\":[\"arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS\"],\"MaximumDurationInSeconds\":180,\"MicrovmId\":\"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\",\"StartedAt\":\"2026-09-21T01:15:24.952Z\",\"State\":\"PENDING\"}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:25.029000-07:00",
+    "type": "TaskSubmitted",
+    "id": 24,
+    "previousEventId": 20,
+    "taskSubmittedEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken",
+      "output": "{\"EgressNetworkConnectors\":[\"arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS\"],\"Endpoint\":\"b6d060c4-1bb1-5dfd-3533-29251adc93e1.lambda-microvm.us-east-1.on.aws\",\"ExecutionRoleArn\":\"arn:aws:iam::643603452951:role/mvm-demo-sfn-map-agent\",\"IdlePolicy\":{\"AutoResumeEnabled\":false,\"MaxIdleDurationSeconds\":120,\"SuspendedDurationSeconds\":60},\"ImageArn\":\"arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent\",\"ImageVersion\":\"1.0\",\"IngressNetworkConnectors\":[\"arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS\"],\"MaximumDurationInSeconds\":180,\"MicrovmId\":\"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\",\"StartedAt\":\"2026-09-21T01:15:24.954Z\",\"State\":\"PENDING\"}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:25.088000-07:00",
+    "type": "TaskSubmitted",
+    "id": 25,
+    "previousEventId": 21,
+    "taskSubmittedEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken",
+      "output": "{\"EgressNetworkConnectors\":[\"arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:INTERNET_EGRESS\"],\"Endpoint\":\"c2d060c4-1bc3-fdc0-3272-e9aecf166b95.lambda-microvm.us-east-1.on.aws\",\"ExecutionRoleArn\":\"arn:aws:iam::643603452951:role/mvm-demo-sfn-map-agent\",\"IdlePolicy\":{\"AutoResumeEnabled\":false,\"MaxIdleDurationSeconds\":120,\"SuspendedDurationSeconds\":60},\"ImageArn\":\"arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent\",\"ImageVersion\":\"1.0\",\"IngressNetworkConnectors\":[\"arn:aws:lambda:us-east-1:aws:network-connector:aws-network-connector:HTTP_INGRESS\"],\"MaximumDurationInSeconds\":180,\"MicrovmId\":\"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\",\"StartedAt\":\"2026-09-21T01:15:25.015Z\",\"State\":\"PENDING\"}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.704000-07:00",
+    "type": "TaskSucceeded",
+    "id": 26,
+    "previousEventId": 22,
+    "taskSucceededEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken",
+      "output": "{\"microvm_id\": \"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\", \"lease_id\": \"fanout-4-20260921-011518-3\", \"elapsed_s\": 3.241, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard $SHARD on $(uname -m)\", \"exit_code\": 0, \"duration_s\": 0.031, \"output_tail\": \"shard 3 on aarch64\\n\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.004, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\", \"heartbeats\": 0}}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.728000-07:00",
+    "type": "TaskSucceeded",
+    "id": 27,
+    "previousEventId": 23,
+    "taskSucceededEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken",
+      "output": "{\"microvm_id\": \"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\", \"lease_id\": \"fanout-4-20260921-011518-1\", \"elapsed_s\": 3.415, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard $SHARD on $(uname -m)\", \"exit_code\": 0, \"duration_s\": 0.082, \"output_tail\": \"shard 1 on aarch64\\n\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.006, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\", \"heartbeats\": 0}}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.741000-07:00",
+    "type": "TaskSucceeded",
+    "id": 28,
+    "previousEventId": 25,
+    "taskSucceededEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken",
+      "output": "{\"microvm_id\": \"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\", \"lease_id\": \"fanout-4-20260921-011518-2\", \"elapsed_s\": 3.376, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard $SHARD on $(uname -m)\", \"exit_code\": 0, \"duration_s\": 0.075, \"output_tail\": \"shard 2 on aarch64\\n\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.003, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\", \"heartbeats\": 0}}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.752000-07:00",
+    "type": "TaskStateExited",
+    "id": 29,
+    "previousEventId": 26,
+    "stateExitedEventDetails": {
+      "name": "Lease",
+      "output": "{\"microvm_id\": \"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\", \"lease_id\": \"fanout-4-20260921-011518-3\", \"elapsed_s\": 3.241, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard $SHARD on $(uname -m)\", \"exit_code\": 0, \"duration_s\": 0.031, \"output_tail\": \"shard 3 on aarch64\\n\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.004, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\", \"heartbeats\": 0}}",
+      "outputDetails": {
+        "truncated": false
+      },
+      "assignedVariables": {
+        "vm": "\"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\""
+      },
+      "assignedVariablesDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.752000-07:00",
+    "type": "TaskStateExited",
+    "id": 30,
+    "previousEventId": 27,
+    "stateExitedEventDetails": {
+      "name": "Lease",
+      "output": "{\"microvm_id\": \"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\", \"lease_id\": \"fanout-4-20260921-011518-1\", \"elapsed_s\": 3.415, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard $SHARD on $(uname -m)\", \"exit_code\": 0, \"duration_s\": 0.082, \"output_tail\": \"shard 1 on aarch64\\n\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.006, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\", \"heartbeats\": 0}}",
+      "outputDetails": {
+        "truncated": false
+      },
+      "assignedVariables": {
+        "vm": "\"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\""
+      },
+      "assignedVariablesDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.752000-07:00",
+    "type": "TaskStateExited",
+    "id": 31,
+    "previousEventId": 28,
+    "stateExitedEventDetails": {
+      "name": "Lease",
+      "output": "{\"microvm_id\": \"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\", \"lease_id\": \"fanout-4-20260921-011518-2\", \"elapsed_s\": 3.376, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard $SHARD on $(uname -m)\", \"exit_code\": 0, \"duration_s\": 0.075, \"output_tail\": \"shard 2 on aarch64\\n\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.003, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\", \"heartbeats\": 0}}",
+      "outputDetails": {
+        "truncated": false
+      },
+      "assignedVariables": {
+        "vm": "\"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\""
+      },
+      "assignedVariablesDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.752000-07:00",
+    "type": "TaskStateEntered",
+    "id": 32,
+    "previousEventId": 29,
+    "stateEnteredEventDetails": {
+      "name": "Terminate",
+      "input": "{\"microvm_id\": \"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\", \"lease_id\": \"fanout-4-20260921-011518-3\", \"elapsed_s\": 3.241, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard $SHARD on $(uname -m)\", \"exit_code\": 0, \"duration_s\": 0.031, \"output_tail\": \"shard 3 on aarch64\\n\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.004, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\", \"heartbeats\": 0}}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.752000-07:00",
+    "type": "TaskScheduled",
+    "id": 33,
+    "previousEventId": 32,
+    "taskScheduledEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "terminateMicrovm",
+      "region": "us-east-1",
+      "parameters": "{\"MicrovmIdentifier\":\"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\"}"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.752000-07:00",
+    "type": "TaskStateEntered",
+    "id": 34,
+    "previousEventId": 30,
+    "stateEnteredEventDetails": {
+      "name": "Terminate",
+      "input": "{\"microvm_id\": \"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\", \"lease_id\": \"fanout-4-20260921-011518-1\", \"elapsed_s\": 3.415, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard $SHARD on $(uname -m)\", \"exit_code\": 0, \"duration_s\": 0.082, \"output_tail\": \"shard 1 on aarch64\\n\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.006, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\", \"heartbeats\": 0}}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.752000-07:00",
+    "type": "TaskScheduled",
+    "id": 35,
+    "previousEventId": 34,
+    "taskScheduledEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "terminateMicrovm",
+      "region": "us-east-1",
+      "parameters": "{\"MicrovmIdentifier\":\"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\"}"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.752000-07:00",
+    "type": "TaskStateEntered",
+    "id": 36,
+    "previousEventId": 31,
+    "stateEnteredEventDetails": {
+      "name": "Terminate",
+      "input": "{\"microvm_id\": \"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\", \"lease_id\": \"fanout-4-20260921-011518-2\", \"elapsed_s\": 3.376, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard $SHARD on $(uname -m)\", \"exit_code\": 0, \"duration_s\": 0.075, \"output_tail\": \"shard 2 on aarch64\\n\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.003, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\", \"heartbeats\": 0}}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.752000-07:00",
+    "type": "TaskScheduled",
+    "id": 37,
+    "previousEventId": 36,
+    "taskScheduledEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "terminateMicrovm",
+      "region": "us-east-1",
+      "parameters": "{\"MicrovmIdentifier\":\"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\"}"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.802000-07:00",
+    "type": "TaskStarted",
+    "id": 38,
+    "previousEventId": 35,
+    "taskStartedEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "terminateMicrovm"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.810000-07:00",
+    "type": "TaskStarted",
+    "id": 39,
+    "previousEventId": 37,
+    "taskStartedEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "terminateMicrovm"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.832000-07:00",
+    "type": "TaskStarted",
+    "id": 40,
+    "previousEventId": 33,
+    "taskStartedEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "terminateMicrovm"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.919000-07:00",
+    "type": "TaskSucceeded",
+    "id": 41,
+    "previousEventId": 24,
+    "taskSucceededEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "runMicrovm.waitForTaskToken",
+      "output": "{\"microvm_id\": \"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\", \"lease_id\": \"fanout-4-20260921-011518-0\", \"elapsed_s\": 3.408, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard $SHARD on $(uname -m)\", \"exit_code\": 0, \"duration_s\": 0.089, \"output_tail\": \"shard 0 on aarch64\\n\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.005, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\", \"heartbeats\": 0}}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.926000-07:00",
+    "type": "TaskSucceeded",
+    "id": 42,
+    "previousEventId": 38,
+    "taskSucceededEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "terminateMicrovm",
+      "output": "{}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.931000-07:00",
+    "type": "TaskSucceeded",
+    "id": 43,
+    "previousEventId": 39,
+    "taskSucceededEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "terminateMicrovm",
+      "output": "{}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:29.970000-07:00",
+    "type": "TaskSucceeded",
+    "id": 44,
+    "previousEventId": 40,
+    "taskSucceededEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "terminateMicrovm",
+      "output": "{}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.003000-07:00",
+    "type": "TaskStateExited",
+    "id": 45,
+    "previousEventId": 41,
+    "stateExitedEventDetails": {
+      "name": "Lease",
+      "output": "{\"microvm_id\": \"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\", \"lease_id\": \"fanout-4-20260921-011518-0\", \"elapsed_s\": 3.408, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard $SHARD on $(uname -m)\", \"exit_code\": 0, \"duration_s\": 0.089, \"output_tail\": \"shard 0 on aarch64\\n\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.005, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\", \"heartbeats\": 0}}",
+      "outputDetails": {
+        "truncated": false
+      },
+      "assignedVariables": {
+        "vm": "\"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\""
+      },
+      "assignedVariablesDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.003000-07:00",
+    "type": "TaskStateExited",
+    "id": 46,
+    "previousEventId": 42,
+    "stateExitedEventDetails": {
+      "name": "Terminate",
+      "output": "{\"microvm_id\":\"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\",\"lease_id\":\"fanout-4-20260921-011518-1\",\"elapsed_s\":3.415,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.082,\"output_tail\":\"shard 1 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.006,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\",\"heartbeats\":0}}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.003000-07:00",
+    "type": "TaskStateExited",
+    "id": 47,
+    "previousEventId": 43,
+    "stateExitedEventDetails": {
+      "name": "Terminate",
+      "output": "{\"microvm_id\":\"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\",\"lease_id\":\"fanout-4-20260921-011518-2\",\"elapsed_s\":3.376,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.075,\"output_tail\":\"shard 2 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.003,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\",\"heartbeats\":0}}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.003000-07:00",
+    "type": "TaskStateExited",
+    "id": 48,
+    "previousEventId": 44,
+    "stateExitedEventDetails": {
+      "name": "Terminate",
+      "output": "{\"microvm_id\":\"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\",\"lease_id\":\"fanout-4-20260921-011518-3\",\"elapsed_s\":3.241,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.031,\"output_tail\":\"shard 3 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.004,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\",\"heartbeats\":0}}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.003000-07:00",
+    "type": "TaskStateEntered",
+    "id": 49,
+    "previousEventId": 45,
+    "stateEnteredEventDetails": {
+      "name": "Terminate",
+      "input": "{\"microvm_id\": \"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\", \"lease_id\": \"fanout-4-20260921-011518-0\", \"elapsed_s\": 3.408, \"result\": {\"passed\": true, \"steps\": [{\"cmd\": \"echo shard $SHARD on $(uname -m)\", \"exit_code\": 0, \"duration_s\": 0.089, \"output_tail\": \"shard 0 on aarch64\\n\"}, {\"cmd\": \"sleep 3\", \"exit_code\": 0, \"duration_s\": 3.005, \"output_tail\": \"\"}], \"parallel\": false, \"microvm_id\": \"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\", \"heartbeats\": 0}}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.003000-07:00",
+    "type": "TaskScheduled",
+    "id": 50,
+    "previousEventId": 49,
+    "taskScheduledEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "terminateMicrovm",
+      "region": "us-east-1",
+      "parameters": "{\"MicrovmIdentifier\":\"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\"}"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.003000-07:00",
+    "type": "SucceedStateEntered",
+    "id": 51,
+    "previousEventId": 46,
+    "stateEnteredEventDetails": {
+      "name": "ShardDone",
+      "input": "{\"microvm_id\":\"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\",\"lease_id\":\"fanout-4-20260921-011518-1\",\"elapsed_s\":3.415,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.082,\"output_tail\":\"shard 1 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.006,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\",\"heartbeats\":0}}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.003000-07:00",
+    "type": "SucceedStateExited",
+    "id": 52,
+    "previousEventId": 51,
+    "stateExitedEventDetails": {
+      "name": "ShardDone",
+      "output": "{\"microvm_id\":\"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\",\"lease_id\":\"fanout-4-20260921-011518-1\",\"elapsed_s\":3.415,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.082,\"output_tail\":\"shard 1 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.006,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\",\"heartbeats\":0}}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.003000-07:00",
+    "type": "MapIterationSucceeded",
+    "id": 53,
+    "previousEventId": 52,
+    "mapIterationSucceededEventDetails": {
+      "name": "Fanout",
+      "index": 1
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.003000-07:00",
+    "type": "SucceedStateEntered",
+    "id": 54,
+    "previousEventId": 47,
+    "stateEnteredEventDetails": {
+      "name": "ShardDone",
+      "input": "{\"microvm_id\":\"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\",\"lease_id\":\"fanout-4-20260921-011518-2\",\"elapsed_s\":3.376,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.075,\"output_tail\":\"shard 2 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.003,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\",\"heartbeats\":0}}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.003000-07:00",
+    "type": "SucceedStateExited",
+    "id": 55,
+    "previousEventId": 54,
+    "stateExitedEventDetails": {
+      "name": "ShardDone",
+      "output": "{\"microvm_id\":\"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\",\"lease_id\":\"fanout-4-20260921-011518-2\",\"elapsed_s\":3.376,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.075,\"output_tail\":\"shard 2 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.003,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\",\"heartbeats\":0}}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.003000-07:00",
+    "type": "MapIterationSucceeded",
+    "id": 56,
+    "previousEventId": 55,
+    "mapIterationSucceededEventDetails": {
+      "name": "Fanout",
+      "index": 2
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.003000-07:00",
+    "type": "SucceedStateEntered",
+    "id": 57,
+    "previousEventId": 48,
+    "stateEnteredEventDetails": {
+      "name": "ShardDone",
+      "input": "{\"microvm_id\":\"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\",\"lease_id\":\"fanout-4-20260921-011518-3\",\"elapsed_s\":3.241,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.031,\"output_tail\":\"shard 3 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.004,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\",\"heartbeats\":0}}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.003000-07:00",
+    "type": "SucceedStateExited",
+    "id": 58,
+    "previousEventId": 57,
+    "stateExitedEventDetails": {
+      "name": "ShardDone",
+      "output": "{\"microvm_id\":\"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\",\"lease_id\":\"fanout-4-20260921-011518-3\",\"elapsed_s\":3.241,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.031,\"output_tail\":\"shard 3 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.004,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\",\"heartbeats\":0}}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.003000-07:00",
+    "type": "MapIterationSucceeded",
+    "id": 59,
+    "previousEventId": 58,
+    "mapIterationSucceededEventDetails": {
+      "name": "Fanout",
+      "index": 3
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.058000-07:00",
+    "type": "TaskStarted",
+    "id": 60,
+    "previousEventId": 50,
+    "taskStartedEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "terminateMicrovm"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.207000-07:00",
+    "type": "TaskSucceeded",
+    "id": 61,
+    "previousEventId": 60,
+    "taskSucceededEventDetails": {
+      "resourceType": "aws-sdk:lambdamicrovms",
+      "resource": "terminateMicrovm",
+      "output": "{}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.218000-07:00",
+    "type": "TaskStateExited",
+    "id": 62,
+    "previousEventId": 61,
+    "stateExitedEventDetails": {
+      "name": "Terminate",
+      "output": "{\"microvm_id\":\"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\",\"lease_id\":\"fanout-4-20260921-011518-0\",\"elapsed_s\":3.408,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.089,\"output_tail\":\"shard 0 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.005,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\",\"heartbeats\":0}}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.218000-07:00",
+    "type": "SucceedStateEntered",
+    "id": 63,
+    "previousEventId": 62,
+    "stateEnteredEventDetails": {
+      "name": "ShardDone",
+      "input": "{\"microvm_id\":\"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\",\"lease_id\":\"fanout-4-20260921-011518-0\",\"elapsed_s\":3.408,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.089,\"output_tail\":\"shard 0 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.005,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\",\"heartbeats\":0}}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.218000-07:00",
+    "type": "SucceedStateExited",
+    "id": 64,
+    "previousEventId": 63,
+    "stateExitedEventDetails": {
+      "name": "ShardDone",
+      "output": "{\"microvm_id\":\"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\",\"lease_id\":\"fanout-4-20260921-011518-0\",\"elapsed_s\":3.408,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.089,\"output_tail\":\"shard 0 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.005,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\",\"heartbeats\":0}}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.218000-07:00",
+    "type": "MapIterationSucceeded",
+    "id": 65,
+    "previousEventId": 64,
+    "mapIterationSucceededEventDetails": {
+      "name": "Fanout",
+      "index": 0
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.218000-07:00",
+    "type": "MapStateSucceeded",
+    "id": 66,
+    "previousEventId": 65
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.218000-07:00",
+    "type": "MapStateExited",
+    "id": 67,
+    "previousEventId": 65,
+    "stateExitedEventDetails": {
+      "name": "Fanout",
+      "output": "[{\"microvm_id\":\"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\",\"lease_id\":\"fanout-4-20260921-011518-0\",\"elapsed_s\":3.408,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.089,\"output_tail\":\"shard 0 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.005,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\",\"heartbeats\":0}},{\"microvm_id\":\"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\",\"lease_id\":\"fanout-4-20260921-011518-1\",\"elapsed_s\":3.415,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.082,\"output_tail\":\"shard 1 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.006,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\",\"heartbeats\":0}},{\"microvm_id\":\"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\",\"lease_id\":\"fanout-4-20260921-011518-2\",\"elapsed_s\":3.376,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.075,\"output_tail\":\"shard 2 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.003,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\",\"heartbeats\":0}},{\"microvm_id\":\"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\",\"lease_id\":\"fanout-4-20260921-011518-3\",\"elapsed_s\":3.241,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.031,\"output_tail\":\"shard 3 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.004,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\",\"heartbeats\":0}}]",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.218000-07:00",
+    "type": "SucceedStateEntered",
+    "id": 68,
+    "previousEventId": 67,
+    "stateEnteredEventDetails": {
+      "name": "Done",
+      "input": "[{\"microvm_id\":\"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\",\"lease_id\":\"fanout-4-20260921-011518-0\",\"elapsed_s\":3.408,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.089,\"output_tail\":\"shard 0 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.005,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\",\"heartbeats\":0}},{\"microvm_id\":\"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\",\"lease_id\":\"fanout-4-20260921-011518-1\",\"elapsed_s\":3.415,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.082,\"output_tail\":\"shard 1 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.006,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\",\"heartbeats\":0}},{\"microvm_id\":\"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\",\"lease_id\":\"fanout-4-20260921-011518-2\",\"elapsed_s\":3.376,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.075,\"output_tail\":\"shard 2 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.003,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\",\"heartbeats\":0}},{\"microvm_id\":\"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\",\"lease_id\":\"fanout-4-20260921-011518-3\",\"elapsed_s\":3.241,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.031,\"output_tail\":\"shard 3 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.004,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\",\"heartbeats\":0}}]",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.218000-07:00",
+    "type": "SucceedStateExited",
+    "id": 69,
+    "previousEventId": 68,
+    "stateExitedEventDetails": {
+      "name": "Done",
+      "output": "[{\"microvm_id\":\"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\",\"lease_id\":\"fanout-4-20260921-011518-0\",\"elapsed_s\":3.408,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.089,\"output_tail\":\"shard 0 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.005,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\",\"heartbeats\":0}},{\"microvm_id\":\"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\",\"lease_id\":\"fanout-4-20260921-011518-1\",\"elapsed_s\":3.415,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.082,\"output_tail\":\"shard 1 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.006,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\",\"heartbeats\":0}},{\"microvm_id\":\"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\",\"lease_id\":\"fanout-4-20260921-011518-2\",\"elapsed_s\":3.376,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.075,\"output_tail\":\"shard 2 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.003,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\",\"heartbeats\":0}},{\"microvm_id\":\"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\",\"lease_id\":\"fanout-4-20260921-011518-3\",\"elapsed_s\":3.241,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.031,\"output_tail\":\"shard 3 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.004,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\",\"heartbeats\":0}}]",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:15:30.250000-07:00",
+    "type": "ExecutionSucceeded",
+    "id": 70,
+    "previousEventId": 69,
+    "executionSucceededEventDetails": {
+      "output": "[{\"microvm_id\":\"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\",\"lease_id\":\"fanout-4-20260921-011518-0\",\"elapsed_s\":3.408,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.089,\"output_tail\":\"shard 0 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.005,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-bb4696d4-a4aa-3937-9721-ce13475d8382\",\"heartbeats\":0}},{\"microvm_id\":\"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\",\"lease_id\":\"fanout-4-20260921-011518-1\",\"elapsed_s\":3.415,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.082,\"output_tail\":\"shard 1 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.006,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f\",\"heartbeats\":0}},{\"microvm_id\":\"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\",\"lease_id\":\"fanout-4-20260921-011518-2\",\"elapsed_s\":3.376,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.075,\"output_tail\":\"shard 2 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.003,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-5970313f-9aae-3248-8216-66d2b110ddb2\",\"heartbeats\":0}},{\"microvm_id\":\"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\",\"lease_id\":\"fanout-4-20260921-011518-3\",\"elapsed_s\":3.241,\"result\":{\"passed\":true,\"steps\":[{\"cmd\":\"echo shard $SHARD on $(uname -m)\",\"exit_code\":0,\"duration_s\":0.031,\"output_tail\":\"shard 3 on aarch64\\n\"},{\"cmd\":\"sleep 3\",\"exit_code\":0,\"duration_s\":3.004,\"output_tail\":\"\"}],\"parallel\":false,\"microvm_id\":\"microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0\",\"heartbeats\":0}}]",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  }
+]

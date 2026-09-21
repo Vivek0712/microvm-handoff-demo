@@ -1,0 +1,139 @@
+[
+  {
+    "timestamp": "2026-09-20 18:12:10.920000-07:00",
+    "type": "ExecutionStarted",
+    "id": 1,
+    "previousEventId": 0,
+    "executionStartedEventDetails": {
+      "input": "{\"shards\": [{\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"0\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"1\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"2\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"3\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"4\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"5\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"6\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"7\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"8\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"9\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"10\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"11\"}}]}",
+      "inputDetails": {
+        "truncated": false
+      },
+      "roleArn": "arn:aws:iam::643603452951:role/mvm-demo-sfn-map-states"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:12:10.943000-07:00",
+    "type": "ChoiceStateEntered",
+    "id": 2,
+    "previousEventId": 0,
+    "stateEnteredEventDetails": {
+      "name": "Gate",
+      "input": "{\"shards\": [{\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"0\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"1\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"2\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"3\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"4\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"5\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"6\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"7\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"8\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"9\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"10\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"11\"}}]}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:12:10.943000-07:00",
+    "type": "ChoiceStateExited",
+    "id": 3,
+    "previousEventId": 2,
+    "stateExitedEventDetails": {
+      "name": "Gate",
+      "output": "{\"shards\": [{\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"0\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"1\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"2\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"3\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"4\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"5\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"6\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"7\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"8\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"9\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"10\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"11\"}}]}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:12:10.943000-07:00",
+    "type": "TaskStateEntered",
+    "id": 4,
+    "previousEventId": 3,
+    "stateEnteredEventDetails": {
+      "name": "RequestApproval",
+      "input": "{\"shards\": [{\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"0\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"1\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"2\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"3\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"4\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"5\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"6\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"7\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"8\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"9\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"10\"}}, {\"steps\": [\"echo shard $SHARD on $(uname -m)\", \"sleep 3\"], \"env\": {\"SHARD\": \"11\"}}]}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:12:10.943000-07:00",
+    "type": "TaskScheduled",
+    "id": 5,
+    "previousEventId": 4,
+    "taskScheduledEventDetails": {
+      "resourceType": "sns",
+      "resource": "publish.waitForTaskToken",
+      "region": "us-east-1",
+      "parameters": "{\"TopicArn\":\"arn:aws:sns:us-east-1:643603452951:mvm-demo-approvals\",\"Message\":\"{\\\"action\\\":\\\"microvm-ctl lease fan-out approval\\\",\\\"shards\\\":12,\\\"image\\\":\\\"arn:aws:lambda:us-east-1:643603452951:microvm-image:demo-agent\\\",\\\"execution\\\":\\\"fanout-denied-20260921-011205\\\",\\\"task_token\\\":\\\"<redacted>\\\"}\"}",
+      "timeoutInSeconds": 3600
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:12:11.001000-07:00",
+    "type": "TaskStarted",
+    "id": 6,
+    "previousEventId": 5,
+    "taskStartedEventDetails": {
+      "resourceType": "sns",
+      "resource": "publish.waitForTaskToken"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:12:11.054000-07:00",
+    "type": "TaskSubmitted",
+    "id": 7,
+    "previousEventId": 6,
+    "taskSubmittedEventDetails": {
+      "resourceType": "sns",
+      "resource": "publish.waitForTaskToken",
+      "output": "{\"MessageId\":\"59a2eb7e-4f15-5b5e-b484-8854c9be0b52\",\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"x-amzn-RequestId\":[\"f9bfcf39-2ed9-446e-8e93-37ee7aca82f9\"],\"connection\":[\"keep-alive\"],\"Content-Length\":[\"294\"],\"Date\":[\"Mon, 21 Sep 2026 01:12:11 GMT\"],\"Content-Type\":[\"text/xml\"]},\"HttpHeaders\":{\"connection\":\"keep-alive\",\"Content-Length\":\"294\",\"Content-Type\":\"text/xml\",\"Date\":\"Mon, 21 Sep 2026 01:12:11 GMT\",\"x-amzn-RequestId\":\"f9bfcf39-2ed9-446e-8e93-37ee7aca82f9\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"f9bfcf39-2ed9-446e-8e93-37ee7aca82f9\"}}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:12:11.524000-07:00",
+    "type": "TaskFailed",
+    "id": 8,
+    "previousEventId": 7,
+    "taskFailedEventDetails": {
+      "resourceType": "sns",
+      "resource": "publish.waitForTaskToken",
+      "error": "ApprovalDenied",
+      "cause": "denied by stepfunctions/run.py approver"
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:12:11.537000-07:00",
+    "type": "TaskStateExited",
+    "id": 9,
+    "previousEventId": 8,
+    "stateExitedEventDetails": {
+      "name": "RequestApproval",
+      "output": "{\"Error\":\"ApprovalDenied\",\"Cause\":\"denied by stepfunctions/run.py approver\"}",
+      "outputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:12:11.537000-07:00",
+    "type": "FailStateEntered",
+    "id": 10,
+    "previousEventId": 9,
+    "stateEnteredEventDetails": {
+      "name": "Denied",
+      "input": "{\"Error\":\"ApprovalDenied\",\"Cause\":\"denied by stepfunctions/run.py approver\"}",
+      "inputDetails": {
+        "truncated": false
+      }
+    }
+  },
+  {
+    "timestamp": "2026-09-20 18:12:11.559000-07:00",
+    "type": "ExecutionFailed",
+    "id": 11,
+    "previousEventId": 10,
+    "executionFailedEventDetails": {
+      "error": "ApprovalDenied",
+      "cause": "no approval within 3600s, or the approver sent a task failure"
+    }
+  }
+]

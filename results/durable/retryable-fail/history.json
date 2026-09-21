@@ -1,0 +1,225 @@
+[
+  {
+    "EventType": "ExecutionStarted",
+    "EventId": 1,
+    "Id": "64b1a0ab-51ee-33b3-804f-288029b15023",
+    "Name": "mvm-demo-durable-retryable-fail-20260921-012509",
+    "EventTimestamp": "2026-09-20 18:25:10.106000-07:00",
+    "ExecutionStartedDetails": {
+      "Input": {
+        "Payload": "{\"mode\": \"single\", \"task\": {\"steps\": [\"echo retryable-fail\"], \"fail_after_s\": 2}}",
+        "Truncated": false
+      },
+      "ExecutionTimeout": 3600
+    }
+  },
+  {
+    "EventType": "CallbackStarted",
+    "SubType": "Callback",
+    "EventId": 2,
+    "Id": "1ced8f5be2db23a6513eba4d819c73806424748a7bc6fa0d792cc1c7d1775a97",
+    "Name": "lease-0-callback",
+    "EventTimestamp": "2026-09-20 18:25:10.207000-07:00",
+    "CallbackStartedDetails": {
+      "CallbackId": "Ab9hZXi1YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoyL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtcmV0cnlhYmxlLWZhaWwtMjAyNjA5MjEtMDEyNTA5LzY0YjFhMGFiLTUxZWUtMzNiMy04MDRmLTI4ODAyOWIxNTAyM2FpeCQyZmFmNGU1Mi02ZWFkLTQ4NWYtYjczYS04Mjg1YTI2NTJkMzf/",
+      "HeartbeatTimeout": 30,
+      "Timeout": 120
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 3,
+    "Id": "c5faca15ac2f93578b39ef4b6bbb871bdedce4ddd584fd31f0bb66fade3947e6",
+    "Name": "lease-0-launch",
+    "EventTimestamp": "2026-09-20 18:25:10.237000-07:00",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 4,
+    "Id": "c5faca15ac2f93578b39ef4b6bbb871bdedce4ddd584fd31f0bb66fade3947e6",
+    "Name": "lease-0-launch",
+    "EventTimestamp": "2026-09-20 18:25:10.389000-07:00",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-65d23dd1-739e-3d28-9b67-9aad537c3e4c\"},\"endpoint\":{\"t\":\"s\",\"v\":\"f2d060c8-92ff-a431-e60a-71beb7db955e.lambda-microvm.us-east-1.on.aws\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "InvocationCompleted",
+    "EventId": 5,
+    "EventTimestamp": "2026-09-20 18:25:10.514000-07:00",
+    "InvocationCompletedDetails": {
+      "StartTimestamp": "2026-09-20 18:25:10.152000-07:00",
+      "EndTimestamp": "2026-09-20 18:25:10.509000-07:00",
+      "RequestId": "d15c4c51-37f1-427e-81ae-329b985e93e9"
+    }
+  },
+  {
+    "EventType": "CallbackFailed",
+    "SubType": "Callback",
+    "EventId": 6,
+    "Id": "1ced8f5be2db23a6513eba4d819c73806424748a7bc6fa0d792cc1c7d1775a97",
+    "Name": "lease-0-callback",
+    "EventTimestamp": "2026-09-20 18:25:14.439000-07:00",
+    "CallbackFailedDetails": {
+      "Error": {
+        "Payload": {
+          "ErrorMessage": "failed on purpose after 2 s",
+          "ErrorType": "Injected",
+          "ErrorData": "{\"microvm_id\": \"microvm-65d23dd1-739e-3d28-9b67-9aad537c3e4c\", \"lease_id\": \"64b1a0ab-51ee-33b3-804f-288029b15023\", \"elapsed_s\": 2.36, \"error\": {\"error_type\": \"Injected\", \"message\": \"failed on purpose after 2 s\", \"retryable\": true, \"data\": {\"steps\": [{\"cmd\": \"echo retryable-fail\", \"exit_code\": 0, \"duration_s\": 0.028, \"output_tail\": \"retryable-fail\\n\"}]}}}"
+        },
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 7,
+    "Id": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "Name": "lease-0-terminate",
+    "EventTimestamp": "2026-09-20 18:25:14.637000-07:00",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 8,
+    "Id": "6f760b9e9eac89f07ab0223b0f4acb04d1e355d893a1b86a83f4d4b405adee99",
+    "Name": "lease-0-terminate",
+    "EventTimestamp": "2026-09-20 18:25:14.669000-07:00",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"terminated\":{\"t\":\"s\",\"v\":\"microvm-65d23dd1-739e-3d28-9b67-9aad537c3e4c\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "CallbackStarted",
+    "SubType": "Callback",
+    "EventId": 9,
+    "Id": "e8e70dc170e14333627b32c20ac6051fb9b6bd369c036afbaca2d9cd7ac3de65",
+    "Name": "lease-1-callback",
+    "EventTimestamp": "2026-09-20 18:25:14.707000-07:00",
+    "CallbackStartedDetails": {
+      "CallbackId": "Ab9hZXi1YXJuOmF3czpsYW1iZGE6dXMtZWFzdC0xOjY0MzYwMzQ1Mjk1MTpmdW5jdGlvbjptdm0tZGVtby1kdXJhYmxlLW9yY2hlc3RyYXRvcjoyL2R1cmFibGUtZXhlY3V0aW9uL212bS1kZW1vLWR1cmFibGUtcmV0cnlhYmxlLWZhaWwtMjAyNjA5MjEtMDEyNTA5LzY0YjFhMGFiLTUxZWUtMzNiMy04MDRmLTI4ODAyOWIxNTAyM2FpeCQzMjUzZDhhYS04MzdjLTRmMWItODVhOS1jNjE0MzI2ZGM2MjL/",
+      "HeartbeatTimeout": 30,
+      "Timeout": 120
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 10,
+    "Id": "73776e3e4cd3684316d26ec93cc6c438497ace5b08e359698667af6dbded88b6",
+    "Name": "lease-1-launch",
+    "EventTimestamp": "2026-09-20 18:25:14.735000-07:00",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 11,
+    "Id": "73776e3e4cd3684316d26ec93cc6c438497ace5b08e359698667af6dbded88b6",
+    "Name": "lease-1-launch",
+    "EventTimestamp": "2026-09-20 18:25:14.898000-07:00",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"microvm_id\":{\"t\":\"s\",\"v\":\"microvm-f42a615b-03a9-3c0a-9797-5ade37e97b1a\"},\"endpoint\":{\"t\":\"s\",\"v\":\"80d060c8-9bcb-9a39-3b42-49d66c0381fb.lambda-microvm.us-east-1.on.aws\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "InvocationCompleted",
+    "EventId": 12,
+    "EventTimestamp": "2026-09-20 18:25:15.021000-07:00",
+    "InvocationCompletedDetails": {
+      "StartTimestamp": "2026-09-20 18:25:14.492000-07:00",
+      "EndTimestamp": "2026-09-20 18:25:15.017000-07:00",
+      "RequestId": "0f3bf088-cd3e-4243-85e9-3454cd1a5255"
+    }
+  },
+  {
+    "EventType": "CallbackFailed",
+    "SubType": "Callback",
+    "EventId": 13,
+    "Id": "e8e70dc170e14333627b32c20ac6051fb9b6bd369c036afbaca2d9cd7ac3de65",
+    "Name": "lease-1-callback",
+    "EventTimestamp": "2026-09-20 18:25:18.331000-07:00",
+    "CallbackFailedDetails": {
+      "Error": {
+        "Payload": {
+          "ErrorMessage": "failed on purpose after 2 s",
+          "ErrorType": "Injected",
+          "ErrorData": "{\"microvm_id\": \"microvm-f42a615b-03a9-3c0a-9797-5ade37e97b1a\", \"lease_id\": \"64b1a0ab-51ee-33b3-804f-288029b15023\", \"elapsed_s\": 2.183, \"error\": {\"error_type\": \"Injected\", \"message\": \"failed on purpose after 2 s\", \"retryable\": true, \"data\": {\"steps\": [{\"cmd\": \"echo retryable-fail\", \"exit_code\": 0, \"duration_s\": 0.007, \"output_tail\": \"retryable-fail\\n\"}]}}}"
+        },
+        "Truncated": false
+      }
+    }
+  },
+  {
+    "EventType": "StepStarted",
+    "SubType": "Step",
+    "EventId": 14,
+    "Id": "8d322d4b02d9fcfb05bc70e486406e53c3cf9b97a252bf64752cafc5c2aaf95b",
+    "Name": "lease-1-terminate",
+    "EventTimestamp": "2026-09-20 18:25:18.499000-07:00",
+    "StepStartedDetails": {}
+  },
+  {
+    "EventType": "StepSucceeded",
+    "SubType": "Step",
+    "EventId": 15,
+    "Id": "8d322d4b02d9fcfb05bc70e486406e53c3cf9b97a252bf64752cafc5c2aaf95b",
+    "Name": "lease-1-terminate",
+    "EventTimestamp": "2026-09-20 18:25:18.499000-07:00",
+    "StepSucceededDetails": {
+      "Result": {
+        "Payload": "{\"t\":\"m\",\"v\":{\"terminated\":{\"t\":\"s\",\"v\":\"microvm-f42a615b-03a9-3c0a-9797-5ade37e97b1a\"}}}",
+        "Truncated": false
+      },
+      "RetryDetails": {
+        "CurrentAttempt": 1
+      }
+    }
+  },
+  {
+    "EventType": "InvocationCompleted",
+    "EventId": 16,
+    "EventTimestamp": "2026-09-20 18:25:18.624000-07:00",
+    "InvocationCompletedDetails": {
+      "StartTimestamp": "2026-09-20 18:25:18.376000-07:00",
+      "EndTimestamp": "2026-09-20 18:25:18.618000-07:00",
+      "RequestId": "182d5513-97b6-479e-8b61-6572eab32e99"
+    }
+  },
+  {
+    "EventType": "ExecutionSucceeded",
+    "EventId": 17,
+    "Id": "64b1a0ab-51ee-33b3-804f-288029b15023",
+    "Name": "mvm-demo-durable-retryable-fail-20260921-012509",
+    "EventTimestamp": "2026-09-20 18:25:18.624000-07:00",
+    "ExecutionSucceededDetails": {
+      "Result": {
+        "Payload": "{\"status\": \"failed\", \"error\": {\"error_type\": \"Injected\", \"message\": \"failed on purpose after 2 s\", \"retryable\": true, \"data\": {\"steps\": [{\"cmd\": \"echo retryable-fail\", \"exit_code\": 0, \"duration_s\": 0.007, \"output_tail\": \"retryable-fail\\n\"}]}}, \"retryable\": true, \"vm\": {\"microvm_id\": \"microvm-f42a615b-03a9-3c0a-9797-5ade37e97b1a\", \"endpoint\": \"80d060c8-9bcb-9a39-3b42-49d66c0381fb.lambda-microvm.us-east-1.on.aws\"}, \"attempt\": 1}",
+        "Truncated": false
+      }
+    }
+  }
+]

@@ -1,0 +1,21 @@
+                      Lambda MicroVMs quotas in us-east-1                       
+┏━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃                   ┃                   ┃ applied to this   ┃ plane throttles  ┃
+┃ quota             ┃ published default ┃ account           ┃ at               ┃
+┡━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ RunMicrovm (TPS)  │ 5                 │ 1.0               │ 0.8/s            │
+│ SuspendMicrovm    │ 2                 │ 2.0               │ 1.6/s            │
+│ (TPS)             │                   │                   │                  │
+│ ResumeMicrovm     │ 5                 │ 5.0               │ 4/s              │
+│ (TPS)             │                   │                   │                  │
+│ TerminateMicrovm  │ 10                │ 10.0              │ 8/s              │
+│ (TPS)             │                   │                   │                  │
+│ Max allocated     │ 1024              │ 8.0               │ -                │
+│ microVM memory    │                   │                   │                  │
+│ (GB)              │                   │                   │                  │
+└───────────────────┴───────────────────┴───────────────────┴──────────────────┘
+0.5 GB images: 16 at once
+1 GB images: 8 at once
+2 GB images: 4 at once
+4 GB images: 2 at once
+8 GB images: 1 at once

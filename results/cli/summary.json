@@ -1,0 +1,32 @@
+{
+  "scenario": "cli-none",
+  "orchestrator": "cli",
+  "lease_id": "cli-none-20260920-175313",
+  "vm_id": "microvm-af779375-4397-3675-9522-41a334a5620f",
+  "watch_seconds": 5.9,
+  "wall_seconds": 182.7,
+  "status": {
+    "error": "microvm-af779375-4397-3675-9522-41a334a5620f answered 502 on /status"
+  },
+  "vm_log_lines": 16,
+  "files": [
+    "image-build.txt",
+    "lease-plan-12.txt",
+    "lease-plan-4.txt",
+    "lease-plan-40.txt",
+    "lease-plan-8.txt",
+    "lease-policy-durable.txt",
+    "lease-policy-sfn.txt",
+    "lease-run-none.txt",
+    "logs.txt",
+    "ls.txt",
+    "quotas.txt",
+    "status.txt",
+    "summary.json",
+    "terminate.txt",
+    "vm-logs.txt",
+    "watch.png",
+    "watch.svg",
+    "watch.txt"
+  ]
+}

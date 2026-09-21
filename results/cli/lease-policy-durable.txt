@@ -1,0 +1,42 @@
+$ mvm lease policy --kind durable
+{
+  "execution_role": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "lambda:SendDurableExecutionCallbackSuccess",
+          "lambda:SendDurableExecutionCallbackFailure",
+          "lambda:SendDurableExecutionCallbackHeartbeat"
+        ],
+        "Resource": "*"
+      }
+    ]
+  },
+  "orchestrator_role": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "lambda:RunMicrovm",
+          "lambda:TerminateMicrovm",
+          "lambda:ListMicrovms",
+          "lambda:GetMicrovm"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": "iam:PassRole",
+        "Resource": "arn:aws:iam::643603452951:role/microvm-ctl-execution-role"
+      },
+      {
+        "Effect": "Allow",
+        "Action": "lambda:PassNetworkConnector",
+        "Resource": "arn:aws:lambda:*:aws:network-connector:aws-network-connector:*"
+      }
+    ]
+  }
+}

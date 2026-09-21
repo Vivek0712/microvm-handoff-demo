@@ -1,0 +1,102 @@
+[
+  {
+    "microvm_id": "microvm-bb4696d4-a4aa-3937-9721-ce13475d8382",
+    "lease_id": "fanout-4-20260921-011518-0",
+    "elapsed_s": 3.408,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.089,
+          "output_tail": "shard 0 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.005,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-bb4696d4-a4aa-3937-9721-ce13475d8382",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f",
+    "lease_id": "fanout-4-20260921-011518-1",
+    "elapsed_s": 3.415,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.082,
+          "output_tail": "shard 1 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.006,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-c1804c57-8b3c-3e39-ad46-2d5b5973336f",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-5970313f-9aae-3248-8216-66d2b110ddb2",
+    "lease_id": "fanout-4-20260921-011518-2",
+    "elapsed_s": 3.376,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.075,
+          "output_tail": "shard 2 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.003,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-5970313f-9aae-3248-8216-66d2b110ddb2",
+      "heartbeats": 0
+    }
+  },
+  {
+    "microvm_id": "microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0",
+    "lease_id": "fanout-4-20260921-011518-3",
+    "elapsed_s": 3.241,
+    "result": {
+      "passed": true,
+      "steps": [
+        {
+          "cmd": "echo shard $SHARD on $(uname -m)",
+          "exit_code": 0,
+          "duration_s": 0.031,
+          "output_tail": "shard 3 on aarch64\n"
+        },
+        {
+          "cmd": "sleep 3",
+          "exit_code": 0,
+          "duration_s": 3.004,
+          "output_tail": ""
+        }
+      ],
+      "parallel": false,
+      "microvm_id": "microvm-bcda2866-db06-3739-9cac-d6a95fc84cd0",
+      "heartbeats": 0
+    }
+  }
+]

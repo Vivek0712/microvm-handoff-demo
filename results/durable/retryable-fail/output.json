@@ -1,0 +1,33 @@
+{
+  "execution_arn": "arn:aws:lambda:us-east-1:643603452951:function:mvm-demo-durable-orchestrator:2/durable-execution/mvm-demo-durable-retryable-fail-20260921-012509/64b1a0ab-51ee-33b3-804f-288029b15023",
+  "execution_name": "mvm-demo-durable-retryable-fail-20260921-012509",
+  "status": "SUCCEEDED",
+  "start": "2026-09-21T01:25:10.106Z",
+  "stop": "2026-09-21T01:25:18.624Z",
+  "seconds_by_service": 8.518,
+  "result": {
+    "status": "failed",
+    "error": {
+      "error_type": "Injected",
+      "message": "failed on purpose after 2 s",
+      "retryable": true,
+      "data": {
+        "steps": [
+          {
+            "cmd": "echo retryable-fail",
+            "exit_code": 0,
+            "duration_s": 0.007,
+            "output_tail": "retryable-fail\n"
+          }
+        ]
+      }
+    },
+    "retryable": true,
+    "vm": {
+      "microvm_id": "microvm-f42a615b-03a9-3c0a-9797-5ade37e97b1a",
+      "endpoint": "80d060c8-9bcb-9a39-3b42-49d66c0381fb.lambda-microvm.us-east-1.on.aws"
+    },
+    "attempt": 1
+  },
+  "error": null
+}

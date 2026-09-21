@@ -1,0 +1,78 @@
+{
+  "scenario": "hang",
+  "orchestrator": "stepfunctions",
+  "status": "FAILED",
+  "expected": "sfn: States.Timeout -> Reap terminates the VM -> Failed",
+  "matches_expected": false,
+  "start": "2026-09-21T01:09:33.347+00:00",
+  "stop": "2026-09-21T01:10:33.665+00:00",
+  "seconds_by_service": 60.318,
+  "vm_ids": [
+    "microvm-a1f16a50-2105-3030-aafb-63c45e2176cf"
+  ],
+  "runmicrovm_calls": 1,
+  "notes": [
+    "deviation: Reap did not terminate the hung VM. TerminateStale only terminates members older than budget + slack (120 s here) and the VM was ~60 s old at States.Timeout, so the Map ran over an empty list; the VM kept running on its own MaximumDurationInSeconds cap until run.py's straggler check terminated it.",
+    "straggler: microvm-a1f16a50-2105-3030-aafb-63c45e2176cf was still RUNNING after the execution ended; run.py terminated it"
+  ],
+  "microvm_ctl": {
+    "version": "0.3.0",
+    "path": "/Users/vivekrajaps/Library/Python/3.9/lib/python/site-packages/microvm/__init__.py"
+  },
+  "checks": {
+    "failed": true,
+    "states_timeout": true,
+    "reap_then_failed": true,
+    "reap_terminated_the_vm": false
+  },
+  "execution_arn": "arn:aws:states:us-east-1:643603452951:execution:mvm-demo-sfn-lease-short:hang-20260921-010929",
+  "state_machine_arn": "arn:aws:states:us-east-1:643603452951:stateMachine:mvm-demo-sfn-lease-short",
+  "error": "LeaseFailed",
+  "states_entered": [
+    "Lease",
+    "Reap",
+    "TerminateStale",
+    "Failed"
+  ],
+  "lease_tasks": [
+    {
+      "state": "Lease",
+      "index": null,
+      "TaskScheduled": "2026-09-21T01:09:33.369+00:00",
+      "last": "TaskTimedOut",
+      "TaskSubmitted": "2026-09-21T01:09:33.644+00:00",
+      "TaskTimedOut": "2026-09-21T01:10:33.439+00:00",
+      "error": "States.Timeout"
+    }
+  ],
+  "peak_in_flight": 1,
+  "throttling_retries": 0,
+  "terminated_by_machine": [],
+  "in_vm_wall_s": null,
+  "vm_states": {
+    "microvm-a1f16a50-2105-3030-aafb-63c45e2176cf": {
+      "state": "TERMINATED",
+      "startedAt": "2026-09-21T01:09:33.576+00:00",
+      "terminatedAt": "2026-09-21T01:10:40.634+00:00",
+      "imageVersion": "1.0",
+      "lifetime_s": 67.058,
+      "terminated_by": "run.py straggler check"
+    }
+  },
+  "fleet_check": {
+    "at": "2026-09-21T01:10:38+00:00",
+    "active_before": [
+      {
+        "microvmId": "microvm-a1f16a50-2105-3030-aafb-63c45e2176cf",
+        "state": "RUNNING",
+        "image": "demo-agent",
+        "startedAt": "2026-09-21T01:09:33.576+00:00"
+      }
+    ],
+    "terminated": [
+      "microvm-a1f16a50-2105-3030-aafb-63c45e2176cf"
+    ],
+    "left_alone": [],
+    "all_terminated_by": "2026-09-21T01:10:51+00:00"
+  }
+}

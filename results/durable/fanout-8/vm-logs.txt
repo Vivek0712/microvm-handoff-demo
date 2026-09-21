@@ -1,0 +1,95 @@
+===== microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f  (/aws/lambda-microvms/demo-agent / 2026/09/21[1.0]microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f) =====
+2026-09-21T01:06:58.889Z {"t": "2026-09-21T01:06:58Z", "level": "info", "msg": "lease accepted", "phase": "init", "kind": "durable", "lease_id": "ba102cd9-e251-3439-ba0c-7d9ccebbef93", "microvm_id": "microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f"}
+2026-09-21T01:06:58.896Z {"t": "2026-09-21T01:06:58Z", "level": "info", "msg": "phase: step 1/2", "phase": "step 1/2", "microvm_id": "microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f"}
+2026-09-21T01:06:58.896Z {"t": "2026-09-21T01:06:58Z", "level": "info", "msg": "$ echo shard 2", "phase": "step 1/2", "microvm_id": "microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f"}
+2026-09-21T01:06:58.915Z {"t": "2026-09-21T01:06:58Z", "level": "info", "msg": "shard 2", "phase": "step 1/2", "step": 1, "exit_code": 0, "duration_s": 0.022, "microvm_id": "microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f"}
+2026-09-21T01:06:58.915Z {"t": "2026-09-21T01:06:58Z", "level": "info", "msg": "phase: step 2/2", "phase": "step 2/2", "microvm_id": "microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f"}
+2026-09-21T01:06:58.916Z {"t": "2026-09-21T01:06:58Z", "level": "info", "msg": "$ sleep 1", "phase": "step 2/2", "microvm_id": "microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f"}
+2026-09-21T01:06:59.959Z {"t": "2026-09-21T01:06:59Z", "level": "info", "msg": "(no output)", "phase": "step 2/2", "step": 2, "exit_code": 0, "duration_s": 1.043, "microvm_id": "microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f"}
+2026-09-21T01:06:59.959Z {"t": "2026-09-21T01:06:59Z", "level": "info", "msg": "phase: done", "phase": "done", "microvm_id": "microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f"}
+2026-09-21T01:06:59.959Z {"t": "2026-09-21T01:06:59Z", "level": "info", "msg": "passed 2 step(s)", "phase": "done", "result": {"passed": true, "steps": [{"cmd": "echo shard 2", "exit_code": 0, "duration_s": 0.022}, {"cmd": "sleep 1", "exit_code": 0, "duration_s": 1.043}], "parallel": false, "microvm_id": "microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f", "heartbeats": 0}, "microvm_id": "microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f"}
+2026-09-21T01:07:00.058Z {"t": "2026-09-21T01:07:00Z", "level": "info", "msg": "lease success delivered", "phase": "done", "kind": "durable", "microvm_id": "microvm-00c2aac3-94fb-3d1d-ae10-0b14764c762f"}
+
+===== microvm-08481ac5-6695-3c37-a77a-3845660d8adf  (/aws/lambda-microvms/demo-agent / 2026/09/21[1.0]microvm-08481ac5-6695-3c37-a77a-3845660d8adf) =====
+2026-09-21T01:07:03.134Z {"t": "2026-09-21T01:07:03Z", "level": "info", "msg": "lease accepted", "phase": "init", "kind": "durable", "lease_id": "ba102cd9-e251-3439-ba0c-7d9ccebbef93", "microvm_id": "microvm-08481ac5-6695-3c37-a77a-3845660d8adf"}
+2026-09-21T01:07:03.137Z {"t": "2026-09-21T01:07:03Z", "level": "info", "msg": "phase: step 1/2", "phase": "step 1/2", "microvm_id": "microvm-08481ac5-6695-3c37-a77a-3845660d8adf"}
+2026-09-21T01:07:03.137Z {"t": "2026-09-21T01:07:03Z", "level": "info", "msg": "$ echo shard 7", "phase": "step 1/2", "microvm_id": "microvm-08481ac5-6695-3c37-a77a-3845660d8adf"}
+2026-09-21T01:07:03.150Z {"t": "2026-09-21T01:07:03Z", "level": "info", "msg": "shard 7", "phase": "step 1/2", "step": 1, "exit_code": 0, "duration_s": 0.013, "microvm_id": "microvm-08481ac5-6695-3c37-a77a-3845660d8adf"}
+2026-09-21T01:07:03.150Z {"t": "2026-09-21T01:07:03Z", "level": "info", "msg": "phase: step 2/2", "phase": "step 2/2", "microvm_id": "microvm-08481ac5-6695-3c37-a77a-3845660d8adf"}
+2026-09-21T01:07:03.150Z {"t": "2026-09-21T01:07:03Z", "level": "info", "msg": "$ sleep 1", "phase": "step 2/2", "microvm_id": "microvm-08481ac5-6695-3c37-a77a-3845660d8adf"}
+2026-09-21T01:07:04.167Z {"t": "2026-09-21T01:07:04Z", "level": "info", "msg": "(no output)", "phase": "step 2/2", "step": 2, "exit_code": 0, "duration_s": 1.017, "microvm_id": "microvm-08481ac5-6695-3c37-a77a-3845660d8adf"}
+2026-09-21T01:07:04.167Z {"t": "2026-09-21T01:07:04Z", "level": "info", "msg": "phase: done", "phase": "done", "microvm_id": "microvm-08481ac5-6695-3c37-a77a-3845660d8adf"}
+2026-09-21T01:07:04.167Z {"t": "2026-09-21T01:07:04Z", "level": "info", "msg": "passed 2 step(s)", "phase": "done", "result": {"passed": true, "steps": [{"cmd": "echo shard 7", "exit_code": 0, "duration_s": 0.013}, {"cmd": "sleep 1", "exit_code": 0, "duration_s": 1.017}], "parallel": false, "microvm_id": "microvm-08481ac5-6695-3c37-a77a-3845660d8adf", "heartbeats": 0}, "microvm_id": "microvm-08481ac5-6695-3c37-a77a-3845660d8adf"}
+2026-09-21T01:07:04.262Z {"t": "2026-09-21T01:07:04Z", "level": "info", "msg": "lease success delivered", "phase": "done", "kind": "durable", "microvm_id": "microvm-08481ac5-6695-3c37-a77a-3845660d8adf"}
+
+===== microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72  (/aws/lambda-microvms/demo-agent / 2026/09/21[1.0]microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72) =====
+2026-09-21T01:07:01.300Z {"t": "2026-09-21T01:07:01Z", "level": "info", "msg": "lease accepted", "phase": "init", "kind": "durable", "lease_id": "ba102cd9-e251-3439-ba0c-7d9ccebbef93", "microvm_id": "microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72"}
+2026-09-21T01:07:01.306Z {"t": "2026-09-21T01:07:01Z", "level": "info", "msg": "phase: step 1/2", "phase": "step 1/2", "microvm_id": "microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72"}
+2026-09-21T01:07:01.306Z {"t": "2026-09-21T01:07:01Z", "level": "info", "msg": "$ echo shard 4", "phase": "step 1/2", "microvm_id": "microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72"}
+2026-09-21T01:07:01.329Z {"t": "2026-09-21T01:07:01Z", "level": "info", "msg": "shard 4", "phase": "step 1/2", "step": 1, "exit_code": 0, "duration_s": 0.024, "microvm_id": "microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72"}
+2026-09-21T01:07:01.329Z {"t": "2026-09-21T01:07:01Z", "level": "info", "msg": "phase: step 2/2", "phase": "step 2/2", "microvm_id": "microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72"}
+2026-09-21T01:07:01.329Z {"t": "2026-09-21T01:07:01Z", "level": "info", "msg": "$ sleep 1", "phase": "step 2/2", "microvm_id": "microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72"}
+2026-09-21T01:07:02.357Z {"t": "2026-09-21T01:07:02Z", "level": "info", "msg": "(no output)", "phase": "step 2/2", "step": 2, "exit_code": 0, "duration_s": 1.028, "microvm_id": "microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72"}
+2026-09-21T01:07:02.357Z {"t": "2026-09-21T01:07:02Z", "level": "info", "msg": "phase: done", "phase": "done", "microvm_id": "microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72"}
+2026-09-21T01:07:02.357Z {"t": "2026-09-21T01:07:02Z", "level": "info", "msg": "passed 2 step(s)", "phase": "done", "result": {"passed": true, "steps": [{"cmd": "echo shard 4", "exit_code": 0, "duration_s": 0.024}, {"cmd": "sleep 1", "exit_code": 0, "duration_s": 1.028}], "parallel": false, "microvm_id": "microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72", "heartbeats": 0}, "microvm_id": "microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72"}
+2026-09-21T01:07:02.433Z {"t": "2026-09-21T01:07:02Z", "level": "info", "msg": "lease success delivered", "phase": "done", "kind": "durable", "microvm_id": "microvm-2967fa7a-768c-349b-bf53-fc5b1c0e7d72"}
+
+===== microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f  (/aws/lambda-microvms/demo-agent / 2026/09/21[1.0]microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f) =====
+2026-09-21T01:07:02.444Z {"t": "2026-09-21T01:07:02Z", "level": "info", "msg": "lease accepted", "phase": "init", "kind": "durable", "lease_id": "ba102cd9-e251-3439-ba0c-7d9ccebbef93", "microvm_id": "microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f"}
+2026-09-21T01:07:02.448Z {"t": "2026-09-21T01:07:02Z", "level": "info", "msg": "phase: step 1/2", "phase": "step 1/2", "microvm_id": "microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f"}
+2026-09-21T01:07:02.448Z {"t": "2026-09-21T01:07:02Z", "level": "info", "msg": "$ echo shard 5", "phase": "step 1/2", "microvm_id": "microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f"}
+2026-09-21T01:07:02.459Z {"t": "2026-09-21T01:07:02Z", "level": "info", "msg": "shard 5", "phase": "step 1/2", "step": 1, "exit_code": 0, "duration_s": 0.01, "microvm_id": "microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f"}
+2026-09-21T01:07:02.459Z {"t": "2026-09-21T01:07:02Z", "level": "info", "msg": "phase: step 2/2", "phase": "step 2/2", "microvm_id": "microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f"}
+2026-09-21T01:07:02.459Z {"t": "2026-09-21T01:07:02Z", "level": "info", "msg": "$ sleep 1", "phase": "step 2/2", "microvm_id": "microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f"}
+2026-09-21T01:07:03.530Z {"t": "2026-09-21T01:07:03Z", "level": "info", "msg": "(no output)", "phase": "step 2/2", "step": 2, "exit_code": 0, "duration_s": 1.071, "microvm_id": "microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f"}
+2026-09-21T01:07:03.530Z {"t": "2026-09-21T01:07:03Z", "level": "info", "msg": "phase: done", "phase": "done", "microvm_id": "microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f"}
+2026-09-21T01:07:03.530Z {"t": "2026-09-21T01:07:03Z", "level": "info", "msg": "passed 2 step(s)", "phase": "done", "result": {"passed": true, "steps": [{"cmd": "echo shard 5", "exit_code": 0, "duration_s": 0.01}, {"cmd": "sleep 1", "exit_code": 0, "duration_s": 1.071}], "parallel": false, "microvm_id": "microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f", "heartbeats": 0}, "microvm_id": "microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f"}
+2026-09-21T01:07:03.596Z {"t": "2026-09-21T01:07:03Z", "level": "info", "msg": "lease success delivered", "phase": "done", "kind": "durable", "microvm_id": "microvm-4a11f1cc-70c9-3383-b352-9790bc9e7f6f"}
+
+===== microvm-b5093f96-3919-3848-95c0-5d8264a3cc45  (/aws/lambda-microvms/demo-agent / 2026/09/21[1.0]microvm-b5093f96-3919-3848-95c0-5d8264a3cc45) =====
+2026-09-21T01:06:59.878Z {"t": "2026-09-21T01:06:59Z", "level": "info", "msg": "lease accepted", "phase": "init", "kind": "durable", "lease_id": "ba102cd9-e251-3439-ba0c-7d9ccebbef93", "microvm_id": "microvm-b5093f96-3919-3848-95c0-5d8264a3cc45"}
+2026-09-21T01:06:59.884Z {"t": "2026-09-21T01:06:59Z", "level": "info", "msg": "phase: step 1/2", "phase": "step 1/2", "microvm_id": "microvm-b5093f96-3919-3848-95c0-5d8264a3cc45"}
+2026-09-21T01:06:59.884Z {"t": "2026-09-21T01:06:59Z", "level": "info", "msg": "$ echo shard 1", "phase": "step 1/2", "microvm_id": "microvm-b5093f96-3919-3848-95c0-5d8264a3cc45"}
+2026-09-21T01:06:59.906Z {"t": "2026-09-21T01:06:59Z", "level": "info", "msg": "shard 1", "phase": "step 1/2", "step": 1, "exit_code": 0, "duration_s": 0.024, "microvm_id": "microvm-b5093f96-3919-3848-95c0-5d8264a3cc45"}
+2026-09-21T01:06:59.906Z {"t": "2026-09-21T01:06:59Z", "level": "info", "msg": "phase: step 2/2", "phase": "step 2/2", "microvm_id": "microvm-b5093f96-3919-3848-95c0-5d8264a3cc45"}
+2026-09-21T01:06:59.906Z {"t": "2026-09-21T01:06:59Z", "level": "info", "msg": "$ sleep 1", "phase": "step 2/2", "microvm_id": "microvm-b5093f96-3919-3848-95c0-5d8264a3cc45"}
+2026-09-21T01:07:00.984Z {"t": "2026-09-21T01:07:00Z", "level": "info", "msg": "(no output)", "phase": "step 2/2", "step": 2, "exit_code": 0, "duration_s": 1.078, "microvm_id": "microvm-b5093f96-3919-3848-95c0-5d8264a3cc45"}
+2026-09-21T01:07:00.985Z {"t": "2026-09-21T01:07:00Z", "level": "info", "msg": "phase: done", "phase": "done", "microvm_id": "microvm-b5093f96-3919-3848-95c0-5d8264a3cc45"}
+2026-09-21T01:07:00.985Z {"t": "2026-09-21T01:07:00Z", "level": "info", "msg": "passed 2 step(s)", "phase": "done", "result": {"passed": true, "steps": [{"cmd": "echo shard 1", "exit_code": 0, "duration_s": 0.024}, {"cmd": "sleep 1", "exit_code": 0, "duration_s": 1.078}], "parallel": false, "microvm_id": "microvm-b5093f96-3919-3848-95c0-5d8264a3cc45", "heartbeats": 0}, "microvm_id": "microvm-b5093f96-3919-3848-95c0-5d8264a3cc45"}
+2026-09-21T01:07:01.052Z {"t": "2026-09-21T01:07:01Z", "level": "info", "msg": "lease success delivered", "phase": "done", "kind": "durable", "microvm_id": "microvm-b5093f96-3919-3848-95c0-5d8264a3cc45"}
+
+===== microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1  (/aws/lambda-microvms/demo-agent / 2026/09/21[1.0]microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1) =====
+2026-09-21T01:07:04.854Z {"t": "2026-09-21T01:07:04Z", "level": "info", "msg": "lease accepted", "phase": "init", "kind": "durable", "lease_id": "ba102cd9-e251-3439-ba0c-7d9ccebbef93", "microvm_id": "microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1"}
+2026-09-21T01:07:04.860Z {"t": "2026-09-21T01:07:04Z", "level": "info", "msg": "phase: step 1/2", "phase": "step 1/2", "microvm_id": "microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1"}
+2026-09-21T01:07:04.860Z {"t": "2026-09-21T01:07:04Z", "level": "info", "msg": "$ echo shard 6", "phase": "step 1/2", "microvm_id": "microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1"}
+2026-09-21T01:07:04.895Z {"t": "2026-09-21T01:07:04Z", "level": "info", "msg": "shard 6", "phase": "step 1/2", "step": 1, "exit_code": 0, "duration_s": 0.037, "microvm_id": "microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1"}
+2026-09-21T01:07:04.895Z {"t": "2026-09-21T01:07:04Z", "level": "info", "msg": "phase: step 2/2", "phase": "step 2/2", "microvm_id": "microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1"}
+2026-09-21T01:07:04.896Z {"t": "2026-09-21T01:07:04Z", "level": "info", "msg": "$ sleep 1", "phase": "step 2/2", "microvm_id": "microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1"}
+2026-09-21T01:07:05.953Z {"t": "2026-09-21T01:07:05Z", "level": "info", "msg": "(no output)", "phase": "step 2/2", "step": 2, "exit_code": 0, "duration_s": 1.057, "microvm_id": "microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1"}
+2026-09-21T01:07:05.953Z {"t": "2026-09-21T01:07:05Z", "level": "info", "msg": "phase: done", "phase": "done", "microvm_id": "microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1"}
+2026-09-21T01:07:05.953Z {"t": "2026-09-21T01:07:05Z", "level": "info", "msg": "passed 2 step(s)", "phase": "done", "result": {"passed": true, "steps": [{"cmd": "echo shard 6", "exit_code": 0, "duration_s": 0.037}, {"cmd": "sleep 1", "exit_code": 0, "duration_s": 1.057}], "parallel": false, "microvm_id": "microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1", "heartbeats": 0}, "microvm_id": "microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1"}
+2026-09-21T01:07:06.033Z {"t": "2026-09-21T01:07:06Z", "level": "info", "msg": "lease success delivered", "phase": "done", "kind": "durable", "microvm_id": "microvm-b7dbd41f-4d92-3bb7-9ef7-196337b5a6d1"}
+
+===== microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d  (/aws/lambda-microvms/demo-agent / 2026/09/21[1.0]microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d) =====
+2026-09-21T01:06:55.866Z {"t": "2026-09-21T01:06:55Z", "level": "info", "msg": "lease accepted", "phase": "init", "kind": "durable", "lease_id": "ba102cd9-e251-3439-ba0c-7d9ccebbef93", "microvm_id": "microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d"}
+2026-09-21T01:06:55.870Z {"t": "2026-09-21T01:06:55Z", "level": "info", "msg": "phase: step 1/2", "phase": "step 1/2", "microvm_id": "microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d"}
+2026-09-21T01:06:55.870Z {"t": "2026-09-21T01:06:55Z", "level": "info", "msg": "$ echo shard 0", "phase": "step 1/2", "microvm_id": "microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d"}
+2026-09-21T01:06:55.884Z {"t": "2026-09-21T01:06:55Z", "level": "info", "msg": "shard 0", "phase": "step 1/2", "step": 1, "exit_code": 0, "duration_s": 0.014, "microvm_id": "microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d"}
+2026-09-21T01:06:55.884Z {"t": "2026-09-21T01:06:55Z", "level": "info", "msg": "phase: step 2/2", "phase": "step 2/2", "microvm_id": "microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d"}
+2026-09-21T01:06:55.884Z {"t": "2026-09-21T01:06:55Z", "level": "info", "msg": "$ sleep 1", "phase": "step 2/2", "microvm_id": "microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d"}
+2026-09-21T01:06:56.905Z {"t": "2026-09-21T01:06:56Z", "level": "info", "msg": "(no output)", "phase": "step 2/2", "step": 2, "exit_code": 0, "duration_s": 1.021, "microvm_id": "microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d"}
+2026-09-21T01:06:56.905Z {"t": "2026-09-21T01:06:56Z", "level": "info", "msg": "phase: done", "phase": "done", "microvm_id": "microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d"}
+2026-09-21T01:06:56.905Z {"t": "2026-09-21T01:06:56Z", "level": "info", "msg": "passed 2 step(s)", "phase": "done", "result": {"passed": true, "steps": [{"cmd": "echo shard 0", "exit_code": 0, "duration_s": 0.014}, {"cmd": "sleep 1", "exit_code": 0, "duration_s": 1.021}], "parallel": false, "microvm_id": "microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d", "heartbeats": 0}, "microvm_id": "microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d"}
+2026-09-21T01:06:56.994Z {"t": "2026-09-21T01:06:56Z", "level": "info", "msg": "lease success delivered", "phase": "done", "kind": "durable", "microvm_id": "microvm-b8639063-d26d-3e79-bcfe-a206977b5c7d"}
+
+===== microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c  (/aws/lambda-microvms/demo-agent / 2026/09/21[1.0]microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c) =====
+2026-09-21T01:06:57.399Z {"t": "2026-09-21T01:06:57Z", "level": "info", "msg": "lease accepted", "phase": "init", "kind": "durable", "lease_id": "ba102cd9-e251-3439-ba0c-7d9ccebbef93", "microvm_id": "microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c"}
+2026-09-21T01:06:57.405Z {"t": "2026-09-21T01:06:57Z", "level": "info", "msg": "phase: step 1/2", "phase": "step 1/2", "microvm_id": "microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c"}
+2026-09-21T01:06:57.405Z {"t": "2026-09-21T01:06:57Z", "level": "info", "msg": "$ echo shard 3", "phase": "step 1/2", "microvm_id": "microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c"}
+2026-09-21T01:06:57.422Z {"t": "2026-09-21T01:06:57Z", "level": "info", "msg": "shard 3", "phase": "step 1/2", "step": 1, "exit_code": 0, "duration_s": 0.018, "microvm_id": "microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c"}
+2026-09-21T01:06:57.422Z {"t": "2026-09-21T01:06:57Z", "level": "info", "msg": "phase: step 2/2", "phase": "step 2/2", "microvm_id": "microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c"}
+2026-09-21T01:06:57.422Z {"t": "2026-09-21T01:06:57Z", "level": "info", "msg": "$ sleep 1", "phase": "step 2/2", "microvm_id": "microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c"}
+2026-09-21T01:06:58.468Z {"t": "2026-09-21T01:06:58Z", "level": "info", "msg": "(no output)", "phase": "step 2/2", "step": 2, "exit_code": 0, "duration_s": 1.045, "microvm_id": "microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c"}
+2026-09-21T01:06:58.468Z {"t": "2026-09-21T01:06:58Z", "level": "info", "msg": "phase: done", "phase": "done", "microvm_id": "microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c"}
+2026-09-21T01:06:58.468Z {"t": "2026-09-21T01:06:58Z", "level": "info", "msg": "passed 2 step(s)", "phase": "done", "result": {"passed": true, "steps": [{"cmd": "echo shard 3", "exit_code": 0, "duration_s": 0.018}, {"cmd": "sleep 1", "exit_code": 0, "duration_s": 1.045}], "parallel": false, "microvm_id": "microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c", "heartbeats": 0}, "microvm_id": "microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c"}
+2026-09-21T01:06:58.553Z {"t": "2026-09-21T01:06:58Z", "level": "info", "msg": "lease success delivered", "phase": "done", "kind": "durable", "microvm_id": "microvm-e2f4c852-8257-324e-83fa-3e8a274ff90c"}
