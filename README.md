@@ -2,7 +2,7 @@
 
 One agent image, `demo-agent`, is leased by AWS Step Functions and by a Lambda durable function through the microvm-ctl lease contract, and every scenario in the matrix was run live in us-east-1 (account 643603452951). The execution histories, VM logs, orchestrator logs, benchmarks, and console screenshots are checked in under [`results/`](results/) and [`benchmarks/results/`](benchmarks/results/); nothing in them is typed in by hand.
 
-The library is microvm-ctl 0.3.1 from PyPI. The first pass ran on 0.3.0 and found two things that became 0.3.1 ([CHANGELOG](https://github.com/Vivek0712/microvm-ctl/blob/main/CHANGELOG.md)); the rows that changed were rerun and the first-pass files are kept under `<scenario>/first-pass-0.3.0/`.
+The library is microvm-ctl 0.3.1 from PyPI. The article this repo backs is part 4 of the series, [Hand a task to a MicroVM from anywhere](https://builder.aws.com/content/3Jcx0VcEOq9QQBtqr59y4S8dVFC/hand-a-task-to-a-microvm-from-anywhere-one-lease-step-functions-durable-functions-or-your-own-controller). The first pass ran on 0.3.0 and found two things that became 0.3.1 ([CHANGELOG](https://github.com/Vivek0712/microvm-ctl/blob/main/CHANGELOG.md)); the rows that changed were rerun and the first-pass files are kept under `<scenario>/first-pass-0.3.0/`.
 
 ## What was run
 
